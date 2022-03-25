@@ -1,3 +1,4 @@
+package virologist;
+
 public class Virologist {
-    int id;
 }
