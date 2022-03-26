@@ -1,11 +1,12 @@
 package Materials;
 
+import Collectible.Collectible;
 import PropertyHandler.PropertyHandler;
 
 /**
  * A nukleotid-ot reprezentáló osztály
  */
-public class Nucleotid {
+public class Nucleotid implements Collectible{
     /**
      * Összegyűjteti magát a paraméterként megadott propertyHandler-rel
      * @param propertyHandler           Ehhez adja hozzá magát
