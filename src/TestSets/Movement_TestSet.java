@@ -30,8 +30,8 @@ public class Movement_TestSet {
         Field jelenlegi = new Field();
 
         MovementBehavior movementBehavior = new MovementBehavior(virologist);
-        ArrayList neighbours = jelenlegi.getNeighbours();
-        Field cél = (Field)neighbours.get(0);
+        ArrayList<Field> neighbours = jelenlegi.getNeighbours();
+        Field cel = neighbours.get(0);
 
         try {
             Scanner sc = new Scanner(System.in);
@@ -41,32 +41,31 @@ public class Movement_TestSet {
             switch (MovementType) {
                 case "Sima":
 
-                    movementBehavior.Move(jelenlegi, cél);
+                    movementBehavior.Move(jelenlegi, cel);
 
-                    virologist.setCurrField(cél);
+                    virologist.setCurrField(cel);
                     jelenlegi.RemoveVirologist(virologist);
-                    cél.AddVirologist(virologist);
+                    cel.AddVirologist(virologist);
                     break;
 
                 case "Crazy":
                     CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
-                    crazyMoveBehavior.Move(jelenlegi, cél);
+                    crazyMoveBehavior.Move(jelenlegi, cel);
 
                     virologist.AddCrazyMoveBeh(crazyMoveBehavior);
-                    virologist.setCurrField(cél);
+                    virologist.setCurrField(cel);
                     jelenlegi.RemoveVirologist(virologist);
-                    cél.AddVirologist(virologist);
+                    cel.AddVirologist(virologist);
                     break;
 
                 case "Stunned":
                     StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
                     virologist.AddMoveBeh(stunnedMoveBehavior);
-                    stunnedMoveBehavior.Move(jelenlegi, cél);
+                    stunnedMoveBehavior.Move(jelenlegi, cel);
                     break;
 
                 default:
-                    System.err.println("Wrong input! We choose Sima 4 u");
-                    MovementType = "Sima";
+                    System.err.println("Wrong input!");
                     break;
 
             }
