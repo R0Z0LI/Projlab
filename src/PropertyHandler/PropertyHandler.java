@@ -1,7 +1,7 @@
 package PropertyHandler;
 
-import Collectible.Equipment;
-import Collectible.GenCode;
+import equipments.Equipment;
+import gencode.GenCode;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
 import Steppable.Agent;
@@ -118,11 +118,16 @@ public class PropertyHandler {
 
     }
 
+
     /**
      * equipments setterje
      * @param equipments            Erre állítja be a felszerelést
      */
     public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
+
+    public void setMax_material(int n){
+        max_material=max_material+n;
+
     }
 }

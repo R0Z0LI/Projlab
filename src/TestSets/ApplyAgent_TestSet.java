@@ -1,7 +1,9 @@
 package TestSets;
 
-import Steppable.Agent;
+import agent.Agent;
 import behaviors.*;
+import equipments.Cape;
+import equipments.Gloves;
 import virologist.Virologist;
 import Field.Field;
 

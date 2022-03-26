@@ -6,7 +6,7 @@ import virologist.Virologist;
 import java.util.ArrayList;
 
 public class CrazyMoveBehavior extends MovementBehavior {
-    public CrazyMoveBehavior(Virologist v){
+    public CrazyMoveBehavior(){
         super(v);
     }
 

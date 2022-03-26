@@ -1,6 +1,6 @@
 package behaviors;
 
-import Collectible.GenCode;
+import gencode.GenCode;
 import virologist.Virologist;
 
 public class CreateBehavior {
