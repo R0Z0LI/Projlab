@@ -31,11 +31,11 @@ public class Steal_TestSet {
     // initializing everything we need for this test
     private void init_test() {
 
-        PropertyHandler ph1 = new PropertyHandler(3, 10, 10, stealingViro, null, null, null, null, null);
+        PropertyHandler ph1 = new PropertyHandler(3, 10, 10, stealingViro);
         stealingViro = new Virologist(2, ph1, null);
         stealingViro.setStealBehaviors(new StealBehavior(stealingViro));
 
-        PropertyHandler ph2 = new PropertyHandler(3, 10, 10, affectedViro, null, null, null, null, null);
+        PropertyHandler ph2 = new PropertyHandler(3, 10, 10, affectedViro);
         affectedViro = new Virologist(2, ph2, null);
         affectedViro.setStealBehaviors(new StealBehavior(affectedViro));
 
