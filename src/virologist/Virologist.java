@@ -28,7 +28,6 @@ public class Virologist {
 
 
     }
-    
 
     public Virologist( int actionCounter, PropertyHandler myProperties, Field currField){
 
