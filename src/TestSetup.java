@@ -1,5 +1,6 @@
 import TestSets.ApplyAgent_TestSet;
 import TestSets.Collect_TestSet;
+import TestSets.Movement_TestSet;
 
 import java.util.Scanner;
 
@@ -21,6 +22,8 @@ public class TestSetup {
 
         switch (sc.next()) {
             case "1":
+                Movement_TestSet test1 = new Movement_TestSet();
+                test1.test();
                 break;
             case "2":
                 Collect_TestSet test2 = new Collect_TestSet();
