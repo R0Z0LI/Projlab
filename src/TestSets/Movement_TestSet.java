@@ -35,7 +35,6 @@ public class Movement_TestSet {
         Virologist virologist = new Virologist();
         Field jelenlegi = new Field();
         MovementBehavior movementBehavior = new MovementBehavior(virologist);
-
         ArrayList neighbours = jelenlegi.getNeighbours();
         Field cél = (Field)neighbours.get(0);
 
@@ -54,7 +53,8 @@ public class Movement_TestSet {
                     break;
 
                 case "Crazy":
-                    CrazyMoveBehavior.Move(jelenlegi, cél);
+                    CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
+                    crazyMoveBehavior.Move(jelenlegi, cél);
 
                     virologist.setCurrField(cél);
                     jelenlegi.RemoveVirologist(virologist);
@@ -62,7 +62,8 @@ public class Movement_TestSet {
                     break;
 
                 case "Stunned":
-                    StunnedMoveBehavior.Move(jelenlegi, cél);
+                    StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
+                    stunnedMoveBehavior.Move(jelenlegi, cél);
                     break;
 
                 default:
