@@ -29,9 +29,15 @@ public class Movement_TestSet {
         Virologist virologist = new Virologist();
         Field jelenlegi = new Field();
 
-        MovementBehavior movementBehavior = new MovementBehavior(virologist);
         ArrayList<Field> neighbours = jelenlegi.getNeighbours();
-        Field cel = neighbours.get(0);
+
+        Field cel = new Field();
+        jelenlegi.addNeighbour(cel);
+        cel = neighbours.get(0);
+
+        MovementBehavior movementBehavior = new MovementBehavior(virologist);
+
+
 
         try {
             Scanner sc = new Scanner(System.in);
