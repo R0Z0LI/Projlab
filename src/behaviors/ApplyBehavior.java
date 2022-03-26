@@ -20,10 +20,14 @@ public class ApplyBehavior {
      * @param agent     ágens, amit kenni kell
      * @param affected  virológus, akire kenni kell
      */
-    public void Apply(Agent agent, Virologist affected){
-        if(affected==virologist)
+    public void apply(Agent agent, Virologist affected){
+        System.out.println("->ApplyBehavior.apply(agent, affected)");
+        if(affected==virologist) {
+            System.out.println("! A virológusra rákeni magára az ágenst.");
             agent.AddBehToStack(virologist);
+        }
         else {
+            System.out.println("! A  másik virológusra rákenik az ágenst.");
             affected.beInfected(agent, virologist);
         }
 
