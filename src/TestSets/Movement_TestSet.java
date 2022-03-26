@@ -70,7 +70,7 @@ public class Movement_TestSet {
                     MovementType = "Sima";
                     break;
 
-        }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
