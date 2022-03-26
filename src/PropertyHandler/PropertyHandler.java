@@ -17,6 +17,7 @@ public class PropertyHandler {
     private int max_material;
     private int max_equipment;
     private int max_gencode;
+
     private Virologist viro;
     private List<GenCode> gencodes = new ArrayList<>();
     private List<AminoAcid> aminos = new ArrayList<>();
@@ -149,5 +150,9 @@ public class PropertyHandler {
 
     public List<Equipment> getEquipments() {
         return equipments;
+    }
+
+    public void setViro(Virologist viro) {
+        this.viro = viro;
     }
 }

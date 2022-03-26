@@ -36,7 +36,6 @@ public class ApplyAgent_TestSet {
         applyingViro = new Virologist(2, ph1, null);
         applyingViro.setApplyBehaviors(new ApplyBehavior(applyingViro));
         applyingViro.setCurrField(field);
-
         Scanner sc = new Scanner(System.in);
 
         // setting up the applied agent

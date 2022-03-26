@@ -15,6 +15,7 @@ import java.util.Stack;
  */
 public class Virologist {
     private int actionCounter;
+
     private PropertyHandler myProperties;
     private Field currField;
     private Stack<MovementBehavior> movementBehaviors = new Stack<>();
@@ -313,5 +314,8 @@ public class Virologist {
             this.defenseBehaviors.add(defAgentDef);
         }
 
+    public void setMyProperties(PropertyHandler myProperties) {
+        this.myProperties = myProperties;
+    }
 }
 
