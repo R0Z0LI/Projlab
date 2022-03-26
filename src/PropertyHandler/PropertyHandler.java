@@ -139,6 +139,15 @@ public class PropertyHandler {
     }
 
     /**
+     * agents setterje
+     * @param agents            Erre állítja be az ágenseket
+     */
+    public void setAgents(List<Agent> agents) {
+        System.out.println("-> setAgents(List<Agent> agents)\n! agents setterje");
+        this.agents = agents;
+    }
+
+    /**
      * max_material setterje
      * @param n                     Erre az értékre állítja be
      */

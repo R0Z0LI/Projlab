@@ -23,7 +23,6 @@ public class Collect_TestSet {
     Collectible c;
 
 
-
     public Collect_TestSet() {
         init_test();
     }

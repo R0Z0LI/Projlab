@@ -68,7 +68,7 @@ public class Movement_TestSet {
                     System.err.println("Wrong input!");
                     break;
 
-        }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

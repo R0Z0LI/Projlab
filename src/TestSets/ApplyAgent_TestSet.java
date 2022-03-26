@@ -1,18 +1,21 @@
 package TestSets;
 
+import PropertyHandler.PropertyHandler;
 import agent.*;
 import behaviors.*;
 import equipments.Cape;
+import equipments.Equipment;
 import equipments.Gloves;
-import gencode.ProtecionCode;
 import virologist.Virologist;
 import Field.Field;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class ApplyAgent_TestSet {
 
-    private Agent usedAgent;
+    private List<Agent> usedAgent;
     private Virologist applyingViro;
     private Virologist affectedViro;
 
@@ -23,7 +26,7 @@ public class ApplyAgent_TestSet {
 
     // testing use case
     public void test() {
-        applyingViro.ApplyAgent(usedAgent, affectedViro);
+        applyingViro.ApplyAgent(usedAgent.get(0), affectedViro);
     }
 
     // initializing everything we need for this test
@@ -33,7 +36,7 @@ public class ApplyAgent_TestSet {
 
         // setting up applying virologist
         applyingViro = new Virologist();
-        applyingViro.setApplyBehaviors(new ApplyBehavior(applyingViro));
+        applyingViro.setApplyBeh(new ApplyBehavior(applyingViro));
         applyingViro.setCurrField(field);
 
         Scanner sc = new Scanner(System.in);
@@ -43,20 +46,20 @@ public class ApplyAgent_TestSet {
         String agentType = sc.next();
         switch (agentType) {
             case "v":
-                usedAgent = new ProtectionAgent();
+                usedAgent.add(new ProtectionAgent(30));
                 break;
             case "f":
-                usedAgent = new AmnesiaAgent();
+                usedAgent.add(new AmnesiaAgent(30));
                 break;
             case "b":
-                usedAgent = new ParalyseAgent();
+                usedAgent.add(new ParalyseAgent(30));
                 break;
             case "t":
-                usedAgent = new CrazyDanceAgent();
+                usedAgent.add(new CrazyDanceAgent(30));
                 break;
             default:
                 System.err.println("You used a wrong Agent type! WE are gonna choose CrazyAgent for you!");
-                usedAgent = new CrazyDanceAgent();
+                usedAgent.add(new CrazyDanceAgent(30));
         }
         applyingViro.getPropertyHandler().setAgents(usedAgent);
 
@@ -64,40 +67,39 @@ public class ApplyAgent_TestSet {
         if (sc.next() == "i") {
             // setting up affected virologist
             affectedViro = new Virologist();
-            affectedViro.setDefenseBehaviors(new DefenseBehavior(affectedViro));
+            affectedViro.setDefenseBeh(new DefenseBehavior(affectedViro));
             affectedViro.setCurrField(field);
 
             // setting up defenses for both virologists
 
             System.out.print("Van kesztyűje a másik virológusnak? [i/n] ");
             if (sc.next() == "i") {
-                affectedViro.getPropertyHandler().AddEquipment(new Gloves());
-                affectedViro.setDefenseBehaviors(new GloveDefBehavior(affectedViro));
+                affectedViro.getPropertyHandler().setEquipments((List<Equipment>) new Gloves());
+                affectedViro.setDefenseBeh(new GloveDefBehavior(affectedViro));
 
                 System.out.print("Van kesztyűje a támadó virológusnak? [i/n] ");
                 if (sc.next() == "i") {
-                    applyingViro.getPropertyHandler().AddEquipment(new Gloves());
-                    applyingViro.setDefenseBehaviors(new GloveDefBehavior(applyingViro));
+                    applyingViro.getPropertyHandler().setEquipments((List<Equipment>) new Gloves());
+                    applyingViro.setDefenseBeh(new GloveDefBehavior(applyingViro));
                 }
             }
 
-            System.out.print("Hat védő ágens a másik virológusra? [i/n] ");
+            System.out.print("Hat védő ágens  a másik virológusra? [i/n] ");
             if (sc.next() == "i") {
-                affectedViro.getPropertyHandler().MakeAgent(new ProtecionCode());
-                affectedViro.setDefenseBehaviors(new DefAgentDefBehavior(affectedViro));
+                affectedViro.getPropertyHandler().setAgents((List<Agent>) new ProtectionAgent(30));
+                affectedViro.setDefenseBeh(new DefAgentDefBehavior(affectedViro));
             }
 
-            System.out.print("Van védőköpenye a másik virológusnak? [i/n] ");
+            System.out.print("Van védőköpenye  a másik virológusnak? [i/n] ");
             if (sc.next() == "i") {
-                affectedViro.getPropertyHandler().AddEquipment(new Cape());
-                affectedViro.setDefenseBehaviors(new CapeDefBehavior(affectedViro));
+                affectedViro.getPropertyHandler().setEquipments((List<Equipment>) new Cape());
+                affectedViro.setDefenseBeh(new CapeDefBehavior(affectedViro));
             }
 
         } else {
             // if we are applying it on ourselves
             affectedViro = applyingViro;
         }
-
     }
 
 }
