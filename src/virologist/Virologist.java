@@ -47,6 +47,8 @@ public class Virologist {
      * @param collectible     Amit összegyűjt
      */
     public void Collect(Collectible collectible){
+        System.out.print("-> Collect(Collectible collectible)\n! A collectBeh első elemétől függően meghívja a CollectBehavior objekt leszármazottjának\n" +
+                " a Collect metódusát, ezzel elindítva a begyűjtés folyamatát\n\n");
         collectBeh.firstElement().Collect(collectible, myProperties);
     }
 
@@ -56,6 +58,8 @@ public class Virologist {
      * @param field             A mező ahova lépni szeretne a virológus
      */
     public void Step(Field field){
+        System.out.println("-> Step(Field field)\n! A MovementBeh első elemétől függően meghívja a MovementBehavior objekt leszármazottjának\n" +
+                " a Step metódusát, ezzel elindítva a mozgás folyamatát\n\n");
         moveBeh.firstElement().Move(this.currField, field);
     }
 
@@ -66,6 +70,8 @@ public class Virologist {
      * @param affected          A virológus akitől el akarja lopni
      */
     public void Steal(Collectible collectibel, Virologist affected){
+        System.out.print("-> Steal(Collectible collectibel, Virologist affected)\n! A StealBeh első elemétől függően meghívja a StealBehavior objekt leszármazottjának\n" +
+                " Steal metódusát, ezzel elindítva a lopás folyamatát\n\n");
         stealBeh.firstElement().Steal(collectibel, affected, myProperties);
     }
 
@@ -75,6 +81,8 @@ public class Virologist {
      * @param genCode           A genetikai kód amiből létre akarja hozni az ágenst
      */
     public void CreateAgent(GenCode genCode){
+        System.out.println("-> CreateAgent(GenCode genCode)\n! A CreateBeh első elemétől függően meghívja a CreateBehavior objekt leszármazottjának\n" +
+                " CreateAgent metódusát, ezzel elindítva a lopás folyamatát\n\n");
         createBeh.firstElement().Create(genCode);
     }
 
@@ -85,6 +93,8 @@ public class Virologist {
      * @param affected          Akire rá akarja kenni
      */
     public void ApplyAgent(Agent agent, Virologist affected){
+        System.out.println("-> ApplyAgent(Agent agent, Virologist affected)\n! Az ApplyBeh első elemétől függően meghívja az ApplyBehavior objekt leszármazottjának\n" +
+                " ApplyAgent metódusát, ezzel elindítva a lopás folyamatát\n\n");
         applyBeh.firstElement().Apply(agent, affected);
     }
 
@@ -92,21 +102,19 @@ public class Virologist {
      * Elindítja a virológus körét
      */
     public void YourTurn(){
-
+        System.out.println("-> YourTurn()\n! Elindítja a virológus körét\n\n");
     }
 
     /**
-     * Az DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának
+     * A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának
      * Defend metódusát, ezzel elindítva a lopás folyamatát
      * @param agent             Az ágens amit rákentek
      * @param attacker          Aki rákente
      */
     public void BeInfected(Agent agent, Virologist attacker){
+        System.out.println("-> BeInfected(Agent agent, Virologist attacker)\n! A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának\n" +
+                " Defend metódusát, ezzel elindítva a lopás folyamatát\n\n");
         defenseBeh.firstElement().Defend(agent, attacker);
-    }
-
-    public void BeStolen(){
-
     }
 
     /**
@@ -114,7 +122,7 @@ public class Virologist {
      * @param e                 Ezt a felszerelést pusztítja el
      */
     public void DestroyEquipment(Equipment e){
-
+        System.out.println("-> DestroyEquipment(Equipment e)\n! Elpusztítja a virológus egyik, a játékos által választott felszerelését\n\n");
     }
 
     /**
@@ -122,6 +130,7 @@ public class Virologist {
      * @param after             Erre változtatja meg
      */
     public void setCurrField(Field after) {
+        System.out.println("-> setCurrField(Field after)\n! currField settere\n\n");
         this.currField = after;
     }
 
@@ -130,6 +139,7 @@ public class Virologist {
      * @param applyBehavior     Ezt az elemet adja hozzá
      */
     public void setApplyBeh(ApplyBehavior applyBehavior) {
+        System.out.println("-> setApplyBeh(ApplyBehavior applyBehavior)\n! applyBeh settere\n\n");
         this.applyBeh.add(applyBehavior);
     }
 
@@ -138,6 +148,7 @@ public class Virologist {
      * @param defenseBehavior   Ezt az elemet adja hozzá
      */
     public void setDefenseBeh(DefenseBehavior defenseBehavior) {
+        System.out.println("-> setDefenseBeh(DefenseBehavior defenseBehavior)\n! defenseBeh settere\n\n");
         this.defenseBeh.add(defenseBehavior);
     }
 
@@ -146,6 +157,7 @@ public class Virologist {
      * @return                  A myProperties-el tér vissza
      */
     public PropertyHandler getPropertyHandler(){
+        System.out.println("-> getPropertyHandler()\n! Visszaadja a PropertyHandlerét a virológusnak\n\n");
         return myProperties;
     }
 }

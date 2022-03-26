@@ -20,7 +20,7 @@ public class Field {
      * @return                  visszaadja a virológusok listáját
      */
     public List<Virologist> GetTouchableVirologists(){
-
+        System.out.println("-> GetTouchableVirologists()\n! virologists getterje\n <- return virologists\n\n");
         return virologists;
     }
 
@@ -29,7 +29,7 @@ public class Field {
      * @param virologist        Ezt a virológust törli ki
      */
     public void RemoveVirologist(Virologist virologist) {
-
+        System.out.println("-> RemoveVirologist(Virologist virologist)\n! Kitörli a paraméterként megadott virológust a mezőn lévő virológusok közül\n\n");
         virologists.remove(virologist);
     }
 
@@ -38,7 +38,7 @@ public class Field {
      * @param virologsit        Ezt adja hozzá
      */
     public void AddVirologist(Virologist virologsit){
-
+        System.out.println("-> AddVirologist(Virologist virologsit)\n! Hozzáadja a paraméterként megadott virológust a mezőn lévő virológusokhoz\n\n");
         virologists.add(virologsit);
     }
 
@@ -47,7 +47,7 @@ public class Field {
      * @return                  A szomszédos mezők listáját adja vissza
      */
     public ArrayList<Field> getNeighbours() {
-
+        System.out.println("-> getNeighbours()\n! Visszaadja a szomszédos mezőket\n <- neighbours\n\n");
         return neighbours;
     }
 }

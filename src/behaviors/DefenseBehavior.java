@@ -1,5 +1,6 @@
 package behaviors;
 
+import agent.Agent;
 import virologist.Virologist;
 
 public class DefenseBehavior {

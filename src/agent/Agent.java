@@ -1,8 +1,9 @@
 package agent;
 
+import Steppable.Steppable;
 import virologist.Virologist;
 
-public abstract class Agent implements Steppable{
+public abstract class Agent implements Steppable {
 
     private int time_left;
 

@@ -18,12 +18,12 @@ public abstract class GenCode implements Collectible {
     private Nucleotid[] nucleoBill;
 
     public GenCode(int aminoneeded, int nucleoneeded, Field field){
-        amino_needed=aminoneeded;
-        nucleo_needed=nucleoneeded;
-        currPosition=field;
-        aminoBill=new AminoAcid[amino_needed];
-        nucleoBill=new Nucleotid[nucleo_needed];
-        uid= UUID.randomUUID().toString();
+        amino_needed = aminoneeded;
+        nucleo_needed = nucleoneeded;
+        currPosition = field;
+        aminoBill = new AminoAcid[amino_needed];
+        nucleoBill = new Nucleotid[nucleo_needed];
+        uid = UUID.randomUUID().toString();
     }
 
     public int getAmino_needed(){
@@ -36,6 +36,14 @@ public abstract class GenCode implements Collectible {
 
     public Field getCurrPosition(){
         return currPosition;
+    }
+
+    public AminoAcid[] getAminoBill() {
+        return aminoBill;
+    }
+
+    public Nucleotid[] getNucleoBill() {
+        return nucleoBill;
     }
 
     public String getUid(){

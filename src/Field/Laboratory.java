@@ -1,6 +1,6 @@
 package Field;
 
-import Collectible.GenCode;
+import gencode.GenCode;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Laboratory extends Field{
      * @param genCode           Ezt adja hozzá
      */
     public void AddGenCode(GenCode genCode){
-
+        System.out.println("-> AddGenCode(GenCode genCode)\n! Hozzáadja a currGenCode-hoz a paraméterként kapott genetikai kódot\n\n");
     }
 
     /**
@@ -23,7 +23,7 @@ public class Laboratory extends Field{
      * @param genCode           Ezt törli ki
      */
     public void RemoveGenCode(GenCode genCode){
-
+        System.out.println("-> RemoveGenCode(GenCode genCode)\n! Elveszi a currGenCode-ból a paraméterként kapott genetikai kódot\n\n");
     }
 
     /**
@@ -31,6 +31,7 @@ public class Laboratory extends Field{
      * @return                  Visszaadja a currGenCode-ot
      */
     public List<GenCode> getGenCode(){
+        System.out.println("-> getGenCode\n! currGenCode getterje\n<- currGenCode");
         return currGenCode;
     }
 }

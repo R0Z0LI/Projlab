@@ -1,6 +1,6 @@
 package Field;
 
-import Collectible.Equipment;
+import equipments.Equipment;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Shelter extends Field{
      * @param equipment         Ezt adja hozzá
      */
     public void AddEquipment(Equipment equipment){
-
+        System.out.println("-> AddEquipment(Equipment equipment)\n! Hozzáadja a currEquipment-hez a paraméterként kapott felszerelést\n\n");
     }
 
     /**
@@ -23,7 +23,7 @@ public class Shelter extends Field{
      * @param equipment         Ezt veszi el
      */
     public void RemoveEquipment(Equipment equipment){
-
+        System.out.println("-> RemoveEquipment(Equipment equipment)\n! Eltávolítja a currEquipment-bőé a paraméterként kapott felszerelést\n\n");
     }
 
     /**
@@ -31,6 +31,7 @@ public class Shelter extends Field{
      * @return                  Visszaadja currEquipment-et
      */
     public List<Equipment> getCurrEquipment(){
+        System.out.println("-> getCurrEquipment()\n! A currEquipment getterje\n <- currEquipment\n\n");
         return currEquipment;
     }
 }

@@ -1,8 +1,6 @@
 package behaviors;
 
 import Field.Field;
-import virologist.Virologist;
-
 import java.util.ArrayList;
 
 public class CrazyMoveBehavior extends MovementBehavior {
