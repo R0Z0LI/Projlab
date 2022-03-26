@@ -9,6 +9,9 @@ import virologist.Virologist;
 
 import java.util.List;
 
+/**
+ * A virológus felszerelését, nyersanyagait, genetikai kódjait, és ágenseit tároló osztály
+ */
 public class PropertyHandler {
     private int max_material;
     private int max_equipment;
@@ -18,6 +21,8 @@ public class PropertyHandler {
     private List<AminoAcid> aminos;
     private List<Nucleotid> nucleos;
     private List<Agent> agents;
+
+
     private List<Equipment> equipments;
 
     public PropertyHandler(int max_equipment, int max_gencode, int max_material, Virologist viro, List<GenCode> gencodes, List<AminoAcid> aminos,
@@ -33,43 +38,91 @@ public class PropertyHandler {
         this.equipments = equipments;
     }
 
+    /**
+     * Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz
+     * @param genCode               Ezt adja hozzá
+     */
     public void AddGenCode(GenCode genCode){
 
     }
 
+    /**
+     * Hozzáadja a paraméterként kapott aminósavat a saját aminósavjaihoz
+     * @param aminoAcid             Ezt az aminósavat adja hozzá
+     */
     public void AddAmino(AminoAcid aminoAcid){
 
     }
 
+    /**
+     * Hozzáadja a paraméterként kapott nukleotidot a saját nukleotidjaihoz
+     * @param nucleotid             Ezt a nukleotidot adja hozzá
+     */
     public void AddNucleo(Nucleotid nucleotid){
 
     }
 
+    /**
+     * Hozzáadja a paraméterként kapott felszerelést a saját felszerelést
+     * @param equipment             Ezt a felszerelést adja hozzá
+     */
     public void AddEquipment(Equipment equipment){
 
     }
 
+    /**
+     * Elkészít egy ágenst
+     * @param genCode
+     */
     public void MakeAgent(GenCode genCode){
 
     }
 
-    public void DeleteGenCodes(){
+    /**
+     * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
+     * @param genCode               Ezt az genetikai kódot tővolítja el
+     */
+    public void DeleteGenCodes(GenCode genCode){
 
     }
 
-    public void RemoveAmino(){
+    /**
+     * Eltávolítja a paraméterként kapott aminósavat a saját aminósavjaiból
+     * @param aminoAcid             Ezt az aminósavat tővolítja el
+     */
+    public void RemoveAmino(AminoAcid aminoAcid){
 
     }
 
-    public void RemoveNucleo(){
+    /**
+     * Eltávolítja a paraméterként kapott nukleotidot a saját nukleotidjaiból
+     * @param nucleotid             Ezt a nukleotidot tővolítja el
+     */
+    public void RemoveNucleo(Nucleotid nucleotid){
 
     }
 
+    /**
+     * Eltávolítja a paraméterként kapott felszerelést a saját felszerelést
+     * @param equipment             Ezt a felszerelést tővolítja el
+     */
     public void RemoveEqupment(Equipment equipment){
 
     }
 
+    /**
+     * Eltávolítja a paraméterként kapott ágenst a saját ágenseiből
+     * @param agent                 Ezt az ágenst tővolítja el
+     */
     public void RemoveAgent(Agent agent){
 
+    }
+
+    /**
+     * equipments setterje
+     * @param equipments            Erre állítja be a felszerelést
+     */
+    public void setEquipments(List<Equipment> equipments) {
+        this.equipments = equipments;
     }
 }
