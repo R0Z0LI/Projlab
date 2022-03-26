@@ -29,8 +29,8 @@ public class Steal_TestSet {
     // initializing everything we need for this test
     private void init_test() {
 
-        PropertyHandler ph = new PropertyHandler(3, 10, 10, stealingViro, null, null, null, null, null);
-        stealingViro = new Virologist(2, ph, null, null, null, null, null, null, null);
+        PropertyHandler ph = new PropertyHandler(3, 10, 10, stealingViro);
+        stealingViro = new Virologist(2, ph, null);
         stealingViro.setStealBehaviors(new StealBehavior(stealingViro));
 
         Scanner sc = new Scanner(System.in);
