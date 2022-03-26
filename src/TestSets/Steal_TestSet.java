@@ -23,7 +23,7 @@ public class Steal_TestSet {
     // testing use case
     public void test() {
         for (int i = 0; i < amount; i++)
-            stealingViro.Steal(valuable, affectedViro);
+            stealingViro.steal(valuable, affectedViro);
     }
 
     // initializing everything we need for this test

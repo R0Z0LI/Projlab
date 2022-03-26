@@ -163,7 +163,7 @@ public class Virologist {
      */
     public void setStealBeh(StealBehavior stealBehavior) {
         System.out.println("-> setStealBeh(StealBehavior stealBehavior)\n! stealBeh settere\n\n");
-        this.stealBeh.add(stealBehavior);
+        this.stealBehaviors.add(stealBehavior);
     }
 
     /**
