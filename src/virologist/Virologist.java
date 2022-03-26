@@ -17,28 +17,33 @@ public class Virologist {
     private int actionCounter;
     private PropertyHandler myProperties;
     private Field currField;
-    private Stack<MovementBehavior> moveBeh;
-    private Stack<CreateBehavior> createBeh;
-    private Stack<ApplyBehavior> applyBeh;
-    private Stack<CollectBehavior> collectBeh;
-    private Stack<StealBehavior> stealBeh;
-    private Stack<DefenseBehavior> defenseBeh;
+    private Stack<MovementBehavior> movementBehaviors = new Stack<>();
+    private Stack<CreateBehavior> createBehaviors = new Stack<>();
+    private Stack<ApplyBehavior> applyBehaviors = new Stack<>();
+    private Stack<CollectBehavior> collectBehaviors = new Stack<>();
+    private Stack<StealBehavior> stealBehaviors = new Stack<>();
+    private Stack<DefenseBehavior> defenseBehaviors = new Stack<>();
 
     public Virologist(){
 
     }
 
-    public Virologist(int actionCounter, PropertyHandler myProperties, Field currField, Stack<MovementBehavior> moveBeh, Stack<CreateBehavior> createBeh,
-                      Stack<ApplyBehavior> applyBeh, Stack<CollectBehavior> collectBeh, Stack<StealBehavior> stealBeh, Stack<DefenseBehavior> defenseBeh){
+    public Virologist(int actionCounter, PropertyHandler myProperties, Field currField){
         this.actionCounter = actionCounter;
-        this.applyBeh = applyBeh;
-        this.collectBeh = collectBeh;
-        this.createBeh = createBeh;
         this.currField = currField;
-        this.defenseBeh = defenseBeh;
-        this.moveBeh = moveBeh;
         this.myProperties = myProperties;
-        this.stealBeh = stealBeh;
+        CollectBehavior collectBehavior = new CollectBehavior();
+        ApplyBehavior applyBehavior = new ApplyBehavior();
+        CreateBehavior createBehavior = new CreateBehavior();
+        DefenseBehavior defenseBehavior = new DefenseBehavior();
+        MovementBehavior movementBehavior = new MovementBehavior();
+        StealBehavior stealBehavior = new StealBehavior();
+        this.applyBehaviors.add(applyBehavior);
+        this.collectBehaviors.add(collectBehavior);
+        this.createBehaviors.add(createBehavior);
+        this.defenseBehaviors.add(defenseBehavior);
+        this.movementBehaviors.add(movementBehavior);
+        this.stealBehaviors.add(stealBehavior);
     }
 
     /**
@@ -49,7 +54,7 @@ public class Virologist {
     public void Collect(Collectible collectible){
         System.out.print("-> Collect(Collectible collectible)\n! A collectBeh első elemétől függően meghívja a CollectBehavior objekt leszármazottjának\n" +
                 " a Collect metódusát, ezzel elindítva a begyűjtés folyamatát\n\n");
-        collectBeh.firstElement().Collect(collectible, myProperties);
+        collectBehaviors.firstElement().Collect(collectible, myProperties);
     }
 
     /**
@@ -60,7 +65,7 @@ public class Virologist {
     public void Step(Field field){
         System.out.println("-> Step(Field field)\n! A MovementBeh első elemétől függően meghívja a MovementBehavior objekt leszármazottjának\n" +
                 " a Step metódusát, ezzel elindítva a mozgás folyamatát\n\n");
-        moveBeh.firstElement().Move(this.currField, field);
+        movementBehaviors.firstElement().Move(this.currField, field);
     }
 
     /**
@@ -72,7 +77,7 @@ public class Virologist {
     public void Steal(Collectible collectibel, Virologist affected){
         System.out.print("-> Steal(Collectible collectibel, Virologist affected)\n! A StealBeh első elemétől függően meghívja a StealBehavior objekt leszármazottjának\n" +
                 " Steal metódusát, ezzel elindítva a lopás folyamatát\n\n");
-        stealBeh.firstElement().Steal(collectibel, affected, myProperties);
+        stealBehaviors.firstElement().Steal(collectibel, affected, myProperties);
     }
 
     /**
@@ -83,7 +88,7 @@ public class Virologist {
     public void CreateAgent(GenCode genCode){
         System.out.println("-> CreateAgent(GenCode genCode)\n! A CreateBeh első elemétől függően meghívja a CreateBehavior objekt leszármazottjának\n" +
                 " CreateAgent metódusát, ezzel elindítva a lopás folyamatát\n\n");
-        createBeh.firstElement().Create(genCode);
+        createBehaviors.firstElement().Create(genCode);
     }
 
     /**
@@ -95,7 +100,7 @@ public class Virologist {
     public void ApplyAgent(Agent agent, Virologist affected){
         System.out.println("-> ApplyAgent(Agent agent, Virologist affected)\n! Az ApplyBeh első elemétől függően meghívja az ApplyBehavior objekt leszármazottjának\n" +
                 " ApplyAgent metódusát, ezzel elindítva a lopás folyamatát\n\n");
-        applyBeh.firstElement().Apply(agent, affected);
+        applyBehaviors.firstElement().Apply(agent, affected);
     }
 
     /**
@@ -114,7 +119,7 @@ public class Virologist {
     public void BeInfected(Agent agent, Virologist attacker){
         System.out.println("-> BeInfected(Agent agent, Virologist attacker)\n! A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának\n" +
                 " Defend metódusát, ezzel elindítva a lopás folyamatát\n\n");
-        defenseBeh.firstElement().Defend(agent, attacker);
+        defenseBehaviors.firstElement().Defend(agent, attacker);
     }
 
     /**
@@ -138,18 +143,18 @@ public class Virologist {
      * applyBeh settere
      * @param applyBehavior     Ezt az elemet adja hozzá
      */
-    public void setApplyBeh(ApplyBehavior applyBehavior) {
+    public void setApplyBehaviors(ApplyBehavior applyBehavior) {
         System.out.println("-> setApplyBeh(ApplyBehavior applyBehavior)\n! applyBeh settere\n\n");
-        this.applyBeh.add(applyBehavior);
+        this.applyBehaviors.add(applyBehavior);
     }
 
     /**
      * defenseBeh settere
      * @param defenseBehavior   Ezt az elemet adja hozzá
      */
-    public void setDefenseBeh(DefenseBehavior defenseBehavior) {
+    public void setDefenseBehaviors(DefenseBehavior defenseBehavior) {
         System.out.println("-> setDefenseBeh(DefenseBehavior defenseBehavior)\n! defenseBeh settere\n\n");
-        this.defenseBeh.add(defenseBehavior);
+        this.defenseBehaviors.add(defenseBehavior);
     }
 
     /**

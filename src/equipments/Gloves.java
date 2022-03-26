@@ -14,7 +14,7 @@ public class Gloves extends Equipment{
 
     @Override
     public void AddBehToStack(Virologist v) {
-        v.setDefenseBeh(new GloveDefBehavior(v));
+        v.setDefenseBehaviors(new GloveDefBehavior(v));
     }
 
     @Override
