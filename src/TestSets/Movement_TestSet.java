@@ -1,16 +1,12 @@
 package TestSets;
 
-import agent.*;
-import behaviors.*;
-import virologist.Virologist;
 import Field.Field;
-import java.util.ArrayList;
-import java.util.Random;
+import behaviors.CrazyMoveBehavior;
+import behaviors.MovementBehavior;
+import behaviors.StunnedMoveBehavior;
+import virologist.Virologist;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Movement_TestSet {
