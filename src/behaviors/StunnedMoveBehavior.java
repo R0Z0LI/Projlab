@@ -1,5 +1,6 @@
 package behaviors;
 
+import Field.Field;
 import virologist.Virologist;
 
 public class StunnedMoveBehavior extends MovementBehavior{

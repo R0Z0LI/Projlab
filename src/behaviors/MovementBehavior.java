@@ -1,5 +1,6 @@
 package behaviors;
 
+import Field.Field;
 import virologist.Virologist;
 
 public class MovementBehavior {
@@ -17,6 +18,6 @@ public class MovementBehavior {
     public void Move(Field before, Field after){
         before.RemoveVirologist(virologist);
         after.AddVirologist(virologist);
-        virologist.SetCurrField(after);
+        virologist.setCurrField(after);
     }
 }

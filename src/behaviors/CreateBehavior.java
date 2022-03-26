@@ -1,5 +1,6 @@
 package behaviors;
 
+import Collectible.GenCode;
 import virologist.Virologist;
 
 public class CreateBehavior {
@@ -14,6 +15,6 @@ public class CreateBehavior {
      * @param code  genetikai kód, amelyből az ágenst elő kell állítani.
      */
     public void Create(GenCode code){
-        virologist.GetPropertyHandler().MakeAgent(code);
+        virologist.getPropertyHandler().MakeAgent(code);
     }
 }

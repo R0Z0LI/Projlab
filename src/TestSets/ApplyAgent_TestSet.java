@@ -1,8 +1,9 @@
 package TestSets;
 
+import Steppable.Agent;
 import behaviors.*;
-import com.sun.jdi.Field;
 import virologist.Virologist;
+import Field.Field;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -38,7 +39,7 @@ public class ApplyAgent_TestSet {
 
             // setting up the applied agent
             System.out.print("Melyik ágenst használja? [v/f/b/t] ");
-            string agentType = sc.next();
+            String agentType = sc.next();
             switch (agentType) {
                 case "v":
                     usedAgent = new DefAgent();

@@ -12,16 +12,16 @@ import java.util.List;
 public class PropertyHandler {
     private int max_material;
     private int max_equipment;
-    private  int max_gencode;
+    private int max_gencode;
     private Virologist viro;
-    private GenCode gencodes;
+    private List<GenCode> gencodes;
     private List<AminoAcid> aminos;
     private List<Nucleotid> nucleos;
-    private Agent agents;
+    private List<Agent> agents;
     private List<Equipment> equipments;
 
-    public PropertyHandler(int max_equipment, int max_gencode, int max_material, Virologist viro, GenCode gencodes, List<AminoAcid> aminos,
-                           List<Nucleotid> nucleos, Agent agents, List<Equipment> equipments){
+    public PropertyHandler(int max_equipment, int max_gencode, int max_material, Virologist viro, List<GenCode> gencodes, List<AminoAcid> aminos,
+                           List<Nucleotid> nucleos, List<Agent> agents, List<Equipment> equipments){
         this.max_equipment = max_equipment;
         this.max_gencode = max_gencode;
         this.max_material = max_material;
@@ -49,7 +49,7 @@ public class PropertyHandler {
 
     }
 
-    public void MakeAgent(Agent agent){
+    public void MakeAgent(GenCode genCode){
 
     }
 

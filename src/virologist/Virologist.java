@@ -8,7 +8,6 @@ import behaviors.*;
 import Collectible.GenCode;
 import Collectible.Equipment;
 
-import java.util.List;
 import java.util.Stack;
 
 public class Virologist {
@@ -21,6 +20,10 @@ public class Virologist {
     private Stack<CollectBehavior> collectBeh;
     private Stack<StealBehavior> stealBeh;
     private Stack<DefenseBehavior> defenseBeh;
+
+    public Virologist(){
+
+    }
 
     public Virologist(int actionCounter, PropertyHandler myProperties, Field currField, Stack<MovementBehavior> moveBeh, Stack<CreateBehavior> createBeh,
                       Stack<ApplyBehavior> applyBeh, Stack<CollectBehavior> collectBeh, Stack<StealBehavior> stealBeh, Stack<DefenseBehavior> defenseBeh){
@@ -36,35 +39,31 @@ public class Virologist {
     }
 
     public void Collect(Collectible collectible){
-        //if(collectBeh.firstElement().equals())
+        collectBeh.firstElement().Collect(collectible, myProperties);
     }
 
     public void Step(Field field){
-
+        moveBeh.firstElement().Move(this.currField, field);
     }
 
     public void Steal(Collectible collectibel, Virologist affected){
-
+        stealBeh.firstElement().Steal(collectibel, affected, myProperties);
     }
 
     public void CreateAgent(GenCode genCode){
-
+        createBeh.firstElement().Create(genCode);
     }
 
     public void ApplyAgent(Agent agent, Virologist affected){
-
-    }
-
-    public PropertyHandler GetPropertyHandler(){
-
+        applyBeh.firstElement().Apply(agent, affected);
     }
 
     public void YourTurn(){
 
     }
 
-    public void BeInfected(Agent agent, Virologist attacked){
-
+    public void BeInfected(Agent agent, Virologist attacker){
+        defenseBeh.firstElement().Defend(agent, attacker);
     }
 
     public void BeStolen(){
@@ -73,5 +72,21 @@ public class Virologist {
 
     public void DestroyEquipment(Equipment e){
 
+    }
+
+    public void setCurrField(Field after) {
+        this.currField = after;
+    }
+
+    public void setApplyBeh(ApplyBehavior applyBehavior) {
+        this.applyBeh.add(applyBehavior);
+    }
+
+    public void setDefenseBeh(DefenseBehavior defenseBehavior) {
+        this.defenseBeh.add(defenseBehavior);
+    }
+
+    public PropertyHandler getPropertyHandler(){
+        return myProperties;
     }
 }

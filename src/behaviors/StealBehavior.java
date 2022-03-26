@@ -1,5 +1,6 @@
 package behaviors;
 
+import Collectible.Collectible;
 import PropertyHandler.PropertyHandler;
 import virologist.Virologist;
 
@@ -17,7 +18,7 @@ public class StealBehavior {
      * @param ph        annak virológusnak a tárolója, aki lop
      */
     public void Steal(Collectible c, Virologist affected, PropertyHandler ph){
-        PropertyHandler ph2 = affected.GetPropertyHandler();
+        PropertyHandler ph2 = affected.getPropertyHandler();
         if(c.BeCollected(ph))
             c.BeRemoved(ph2);
     }
