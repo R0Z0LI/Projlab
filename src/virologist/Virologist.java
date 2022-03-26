@@ -153,6 +153,15 @@ public class Virologist {
     }
 
     /**
+     * stealBeh settere
+     * @param stealBehavior   Ezt az elemet adja hozzá
+     */
+    public void setStealBeh(StealBehavior stealBehavior) {
+        System.out.println("-> setStealBeh(StealBehavior stealBehavior)\n! stealBeh settere\n\n");
+        this.stealBeh.add(stealBehavior);
+    }
+
+    /**
      * Visszaadja a PropertyHandlerét a virológusnak
      * @return                  A myProperties-el tér vissza
      */

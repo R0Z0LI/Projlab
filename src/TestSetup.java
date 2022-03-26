@@ -1,5 +1,7 @@
 import TestSets.ApplyAgent_TestSet;
 import TestSets.Collect_TestSet;
+import TestSets.Steal_TestSet;
+import TestSets.ThrowEquipment_TestSet;
 
 import java.util.Scanner;
 
@@ -37,8 +39,12 @@ public class TestSetup {
                 test6.test();
                 break;
             case "7":
+                Steal_TestSet test7 = new Steal_TestSet();
+                test7.test();
                 break;
             case "8":
+                ThrowEquipment_TestSet test8 = new ThrowEquipment_TestSet();
+                test8.test();
                 break;
             case "9":
                 break;
