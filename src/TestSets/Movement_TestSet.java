@@ -45,7 +45,7 @@ public class Movement_TestSet {
 
                     virologist.setCurrField(cel);
                     jelenlegi.RemoveVirologist(virologist);
-                    cel.AddVirologist(virologist);
+                    cel.addVirologist(virologist);
                     break;
 
                 case "Crazy":
@@ -55,7 +55,7 @@ public class Movement_TestSet {
                     virologist.AddCrazyMoveBeh(crazyMoveBehavior);
                     virologist.setCurrField(cel);
                     jelenlegi.RemoveVirologist(virologist);
-                    cel.AddVirologist(virologist);
+                    cel.addVirologist(virologist);
                     break;
 
                 case "Stunned":
