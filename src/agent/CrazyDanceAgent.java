@@ -3,23 +3,27 @@ package agent;
 import behaviors.CrazyMoveBehavior;
 import virologist.Virologist;
 
-public class CrazyDanceAgent extends Agent{
+public class CrazyDanceAgent extends Agent {
 
     private CrazyMoveBehavior crazyMove;
 
     public CrazyDanceAgent(int timeleft) {
         super(timeleft);
-        crazyMove=new CrazyMoveBehavior();//VIROLOGUS??
+        crazyMove = new CrazyMoveBehavior();//VIROLOGUS??
+    }
+
+    public CrazyDanceAgent() {
+
     }
 
     @Override
     public void RemoveBehFromStack(Virologist v) {
-        v.RemoveMoveBeh(crazyMove);
+        v.RemoveCrazyMoveBeh(crazyMove);
     }
 
     @Override
     public void AddBehToStack(Virologist v) {
-        v.AddMoveBeh(crazyMove);
+        v.AddCrazyMoveBeh(crazyMove);
     }
 
     @Override

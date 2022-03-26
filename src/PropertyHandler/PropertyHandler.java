@@ -21,6 +21,8 @@ public class PropertyHandler {
     private List<AminoAcid> aminos;
     private List<Nucleotid> nucleos;
     private List<Agent> agents;
+
+
     private List<Equipment> equipments;
 
     public PropertyHandler(int max_equipment, int max_gencode, int max_material, Virologist viro, List<GenCode> gencodes, List<AminoAcid> aminos,
@@ -86,7 +88,6 @@ public class PropertyHandler {
 
     /**
      * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
-     * @param genCode               Ezt az genetikai kódot tővolítja el
      */
     public void DeleteGenCodes(){
         System.out.println("DeleteGenCodes()\n! Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból\n\n");
@@ -150,5 +151,13 @@ public class PropertyHandler {
         System.out.println("-> setMax_material(int n)\n! max_material setterje");
         max_material=max_material+n;
 
+    }
+
+    public void setAgents(Agent usedAgent) {
+
+    }
+
+    public List<Equipment> getEquipments() {
+        return equipments;
     }
 }

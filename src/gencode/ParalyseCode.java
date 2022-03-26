@@ -3,6 +3,7 @@ package gencode;
 import Field.Field;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
+import PropertyHandler.PropertyHandler;
 import agent.Agent;
 import agent.ParalyseAgent;
 
@@ -29,4 +30,13 @@ public class ParalyseCode extends GenCode{
         //????????????
     }
 
+    @Override
+    public void BeCollected(PropertyHandler propertyHandler) {
+
+    }
+
+    @Override
+    public void BeRemoved(PropertyHandler propertyHandler) {
+
+    }
 }

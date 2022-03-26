@@ -6,4 +6,8 @@ public class StunnedApplyBehavior extends ApplyBehavior{
     public StunnedApplyBehavior(Virologist v){
         super(v);
     }
+
+    public StunnedApplyBehavior() {
+        super();
+    }
 }

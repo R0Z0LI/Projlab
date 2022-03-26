@@ -5,4 +5,8 @@ public class StunnedStealBehavior extends StealBehavior{
     public StunnedStealBehavior(Virologist v){
         super(v);
     }
+
+    public StunnedStealBehavior() {
+        super();
+    }
 }

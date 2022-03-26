@@ -12,6 +12,10 @@ public class ProtectionAgent extends Agent{
         defAgentDef=new DefAgentDefBehavior();
     }
 
+    public ProtectionAgent() {
+
+    }
+
     @Override
     public void RemoveBehFromStack(Virologist v) {
         v.RemoveDefenseBeh(defAgentDef);

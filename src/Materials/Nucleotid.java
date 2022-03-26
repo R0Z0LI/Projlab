@@ -19,7 +19,7 @@ public class Nucleotid implements Collectible{
      * Kitörölteti magát a paraméterként megadott propertyHandler-ből
      * @param propertyHandler           Ebből törlődik ki
      */
-    public static void BeRemoved(PropertyHandler propertyHandler){
+    public void BeRemoved(PropertyHandler propertyHandler){
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitörölteti magát a paraméterként megadott propertyHandler-ből\n\n");
     }
 }

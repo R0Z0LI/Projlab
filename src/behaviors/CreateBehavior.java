@@ -10,6 +10,10 @@ public class CreateBehavior {
         virologist=v;
     }
 
+    public CreateBehavior() {
+
+    }
+
     /**+
      * Kezdeményezi egy ágens előállítását genetikai kódból.
      * @param code  genetikai kód, amelyből az ágenst elő kell állítani.

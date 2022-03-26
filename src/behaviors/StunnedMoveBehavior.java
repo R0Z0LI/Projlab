@@ -8,6 +8,11 @@ public class StunnedMoveBehavior extends MovementBehavior{
         super(v);
     }
 
+    public StunnedMoveBehavior() {
+        super();
+    }
+
+
     /**+
      * A virológus helyben marad.
      * @param before    a virológus eredeti pozíciója

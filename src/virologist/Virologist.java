@@ -169,4 +169,64 @@ public class Virologist {
         System.out.println("-> getPropertyHandler()\n! Visszaadja a PropertyHandlerét a virológusnak\n\n");
         return myProperties;
     }
+
+    /**
+     *
+     * @param stunnedMove
+     */
+    public void AddMoveBeh(StunnedMoveBehavior stunnedMove) {
+
+    }
+
+    public void AddCrazyMoveBeh(CrazyMoveBehavior crazyMoveBehavior){
+
+    }
+
+    public void AddApplyBeh(StunnedApplyBehavior stunnedApply) {
+
+    }
+
+    public void AddCreateBeh(StunnedCreateBehavior stunnedCreate) {
+
+    }
+
+    public void AddCollectBeh(StunnedCollectBehavior stunnedCollect) {
+
+    }
+
+    public void AddStealBeh(StunnedStealBehavior stunnedSteal) {
+
+    }
+
+    public void RemoveMoveBeh(StunnedMoveBehavior stunnedMove) {
+
+    }
+
+    public void RemoveCrazyMoveBeh(CrazyMoveBehavior crazyMoveBehavior){
+
+    }
+
+    public void RemoveApplyBeh(StunnedApplyBehavior stunnedApply) {
+
+    }
+
+    public void RemoveCreateBeh(StunnedCreateBehavior stunnedCreate) {
+
+    }
+
+    public void RemoveCollectBeh(StunnedCollectBehavior stunnedCollect) {
+
+    }
+
+    public void RemoveStealBeh(StunnedStealBehavior stunnedSteal) {
+
+    }
+
+    public void RemoveDefenseBeh(DefAgentDefBehavior defAgentDef) {
+
+    }
+
+    public void AddDefenseBeh(DefAgentDefBehavior defAgentDef) {
+
+    }
 }
