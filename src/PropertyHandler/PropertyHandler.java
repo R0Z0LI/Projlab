@@ -125,7 +125,7 @@ public class PropertyHandler {
      */
     public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
-
+    }
     public void setMax_material(int n){
         max_material=max_material+n;
 
