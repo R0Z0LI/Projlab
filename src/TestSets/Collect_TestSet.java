@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Collect_TestSet {
 
     private Virologist virologist;
-    Collectible c;
+    //Collectible c;
 
 
     public Collect_TestSet() {
@@ -28,7 +28,7 @@ public class Collect_TestSet {
     }
 
     public void test() {
-        virologist.collect(c);
+        //virologist.collect(c);
     }
 
     private void init_test() {
