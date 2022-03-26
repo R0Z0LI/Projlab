@@ -7,6 +7,8 @@ import PropertyHandler.PropertyHandler;
 import agent.Agent;
 import agent.AmnesiaAgent;
 
+import java.util.List;
+
 public class AmnesiaCode extends GenCode{
     public AmnesiaCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
@@ -18,18 +20,6 @@ public class AmnesiaCode extends GenCode{
         return ae;
     }
 
-
-    @Override
-    public boolean PayAminoBill(AminoAcid pa) {
-       //????????????
-        return false;
-    }
-
-    @Override
-    public boolean PayNucleoBill(Nucleotid pn) {
-        //????????????
-        return false;
-    }
 
     @Override
     public void BeCollected(PropertyHandler propertyHandler) {

@@ -28,6 +28,10 @@ public class ParalyseAgent extends Agent {
         super.Step();
     }
 
+    /**+
+     * Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.
+     * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedéseket.
+     */
     @Override
     public void AddBehToStack(Virologist v) {
         v.addMoveBeh(stunnedMove);
@@ -35,8 +39,14 @@ public class ParalyseAgent extends Agent {
         v.addCreateBeh(stunnedCreate);
         v.addCollectBeh(stunnedCollect);
         v.addStealBeh(stunnedSteal);
+        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
+
     }
 
+    /**+
+     * Kitörli a megadott virológus verméből azokat a viselkedéseket, amiket a ParalyseAgent okoz.
+     * @param v  virológus, akinek a verméből törölni kell a viselkedéseket.
+     */
     @Override
     public void RemoveBehFromStack(Virologist v) {
         v.removeMoveBeh(stunnedMove);
@@ -44,5 +54,7 @@ public class ParalyseAgent extends Agent {
         v.removeCreateBeh(stunnedCreate);
         v.removeCollectBeh(stunnedCollect);
         v.removeStealBeh(stunnedSteal);
+        System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitörli a megadott virológus verméből azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
+
     }
 }

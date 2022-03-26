@@ -8,6 +8,8 @@ import agent.Agent;
 import agent.ParalyseAgent;
 import agent.ProtectionAgent;
 
+import java.util.List;
+
 public class ProtecionCode extends GenCode{
     public ProtecionCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
@@ -23,17 +25,6 @@ public class ProtecionCode extends GenCode{
         return pa;
     }
 
-    @Override
-    public boolean PayAminoBill(AminoAcid pa) {
-        return false;
-        //???????????? Ki lehet törölni
-    }
-
-    @Override
-    public boolean PayNucleoBill(Nucleotid pn) {
-        return false;
-        //????????????
-    }
 
     @Override
     public void BeCollected(PropertyHandler propertyHandler) {

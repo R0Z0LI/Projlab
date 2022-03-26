@@ -7,6 +7,8 @@ import PropertyHandler.PropertyHandler;
 import agent.Agent;
 import agent.ParalyseAgent;
 
+import java.util.List;
+
 public class ParalyseCode extends GenCode{
     public ParalyseCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
@@ -18,17 +20,6 @@ public class ParalyseCode extends GenCode{
         return pa;
     }
 
-    @Override
-    public boolean PayAminoBill(AminoAcid pa) {
-        return false;
-        //????????????
-    }
-
-    @Override
-    public boolean PayNucleoBill(Nucleotid pn) {
-        return false;
-        //????????????
-    }
 
     @Override
     public void BeCollected(PropertyHandler propertyHandler) {

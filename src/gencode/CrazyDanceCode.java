@@ -8,6 +8,8 @@ import agent.Agent;
 import agent.AmnesiaAgent;
 import agent.CrazyDanceAgent;
 
+import java.util.List;
+
 public class CrazyDanceCode extends GenCode{
     public CrazyDanceCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
@@ -19,17 +21,6 @@ public class CrazyDanceCode extends GenCode{
         return cda;
     }
 
-    @Override
-    public boolean PayAminoBill(AminoAcid pa) {
-        return false;
-        //????????????
-    }
-
-    @Override
-    public boolean PayNucleoBill(Nucleotid pn) {
-        return false;
-        //????????????
-    }
 
     @Override
     public void BeCollected(PropertyHandler propertyHandler) {

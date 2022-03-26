@@ -3,6 +3,9 @@ package agent;
 import PropertyHandler.PropertyHandler;
 import virologist.Virologist;
 
+/**+
+ * Amnézia ágenst reprezentáló osztály.
+ */
 public class AmnesiaAgent extends Agent{
     public AmnesiaAgent(int timeleft) {
         super(timeleft);
@@ -17,9 +20,15 @@ public class AmnesiaAgent extends Agent{
 
     }
 
+    /**+
+     * Törli a virológus által megismert összes genetikai kódot.
+     * @param v  virológus, akinek a PropertyHandleréből törölni kell a genetikai kódokat.
+     */
     @Override
     public void AddBehToStack(Virologist v) {
         v.getPropertyHandler().DeleteGenCodes();
+        System.out.println("-> AddBehToStack(Virologist v)\n! Törli a virológus által megismert összes genetikai kódot.\n\n");
+
     }
 
     @Override

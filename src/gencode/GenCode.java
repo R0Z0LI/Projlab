@@ -6,6 +6,8 @@ import Materials.AminoAcid;
 import Materials.Nucleotid;
 import agent.Agent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public abstract class GenCode implements Collectible {
@@ -14,15 +16,15 @@ public abstract class GenCode implements Collectible {
     private int nucleo_needed;
     private String uid;
     private Field currPosition;
-    private AminoAcid[] aminoBill;
-    private Nucleotid[] nucleoBill;
+    private List<AminoAcid> aminoBill;
+    private List<Nucleotid> nucleoBill;
 
     public GenCode(int aminoneeded, int nucleoneeded, Field field){
         amino_needed = aminoneeded;
         nucleo_needed = nucleoneeded;
         currPosition = field;
-        aminoBill = new AminoAcid[amino_needed];
-        nucleoBill = new Nucleotid[nucleo_needed];
+        aminoBill = new ArrayList<>();
+        nucleoBill = new ArrayList<>();
         uid = UUID.randomUUID().toString();
     }
 
@@ -42,11 +44,11 @@ public abstract class GenCode implements Collectible {
         return currPosition;
     }
 
-    public AminoAcid[] getAminoBill() {
+    public List<AminoAcid> getAminoBill() {
         return aminoBill;
     }
 
-    public Nucleotid[] getNucleoBill() {
+    public List<Nucleotid> getNucleoBill() {
         return nucleoBill;
     }
 
@@ -56,8 +58,8 @@ public abstract class GenCode implements Collectible {
 
     public abstract Agent RevealAgent();
 
-    public abstract boolean PayAminoBill(AminoAcid pa);
 
-    public abstract boolean PayNucleoBill(Nucleotid pn);
+
+
 
 }
