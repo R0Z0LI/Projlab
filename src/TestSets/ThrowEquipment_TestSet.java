@@ -4,12 +4,11 @@ import PropertyHandler.PropertyHandler;
 import equipments.*;
 import virologist.Virologist;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class ThrowEquipment_TestSet {
 
-    private List<Equipment> equip;
+    private Equipment equip;
     private Virologist viro;
 
     // constructor
@@ -19,7 +18,7 @@ public class ThrowEquipment_TestSet {
 
     // testing use case
     public void test() {
-        viro.destroyEquipment(equip.get(0));
+        viro.destroyEquipment(equip);
     }
 
     // initializing everything we need for this test
@@ -32,20 +31,19 @@ public class ThrowEquipment_TestSet {
         System.out.print("Melyik védőfelszerelést dobja el? [v/k/z] ");
         switch (sc.next()) {
             case "v":
-                equip.add(new Cape());
+                equip = new Cape();
                 break;
             case "k":
-                equip.add(new Gloves());
+                equip = new Gloves();
                 break;
             case "z":
-                equip.add(new Sack());
+                equip = new Sack();
                 break;
             default:
-                System.err.println("You used a wrong Equipment type! WE are gonna choose cape for you!");
-                equip.add(new Cape());
+                System.err.println("You used a wrong Equipment type!");
         }
 
-        viro.getPropertyHandler().setEquipments(equip);
+        viro.getPropertyHandler().AddEquipment(equip);
     }
 
 }
