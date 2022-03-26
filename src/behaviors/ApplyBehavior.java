@@ -24,7 +24,7 @@ public class ApplyBehavior {
         if(affected==virologist)
             agent.AddBehToStack(virologist);
         else {
-            affected.BeInfected(agent, virologist);
+            affected.beInfected(agent, virologist);
         }
 
     }

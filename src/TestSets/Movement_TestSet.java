@@ -29,9 +29,15 @@ public class Movement_TestSet {
         Virologist virologist = new Virologist();
         Field jelenlegi = new Field();
 
+        ArrayList<Field> neighbours = jelenlegi.getNeighbours();
+
+        Field cel = new Field();
+        jelenlegi.addNeighbour(cel);
+        cel = neighbours.get(0);
+
         MovementBehavior movementBehavior = new MovementBehavior(virologist);
-        ArrayList neighbours = jelenlegi.getNeighbours();
-        Field cél = (Field)neighbours.get(0);
+
+
 
         try {
             Scanner sc = new Scanner(System.in);
@@ -41,35 +47,34 @@ public class Movement_TestSet {
             switch (MovementType) {
                 case "Sima":
 
-                    movementBehavior.move(jelenlegi, cél);
+                    movementBehavior.Move(jelenlegi, cel);
 
-                    virologist.setCurrField(cél);
+                    virologist.setCurrField(cel);
                     jelenlegi.RemoveVirologist(virologist);
-                    cél.AddVirologist(virologist);
+                    cel.addVirologist(virologist);
                     break;
 
                 case "Crazy":
                     CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
-                    crazyMoveBehavior.move(jelenlegi, cél);
+                    crazyMoveBehavior.Move(jelenlegi, cel);
 
-                    virologist.AddCrazyMoveBeh(crazyMoveBehavior);
-                    virologist.setCurrField(cél);
+                    virologist.addCrazyMoveBeh(crazyMoveBehavior);
+                    virologist.setCurrField(cel);
                     jelenlegi.RemoveVirologist(virologist);
-                    cél.AddVirologist(virologist);
+                    cel.addVirologist(virologist);
                     break;
 
                 case "Stunned":
                     StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
-                    virologist.AddMoveBeh(stunnedMoveBehavior);
-                    stunnedMoveBehavior.move(jelenlegi, cél);
+                    virologist.addMoveBeh(stunnedMoveBehavior);
+                    stunnedMoveBehavior.Move(jelenlegi, cel);
                     break;
 
                 default:
-                    System.err.println("Wrong input! We choose Sima 4 u");
-                    MovementType = "Sima";
+                    System.err.println("Wrong input!");
                     break;
 
-        }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

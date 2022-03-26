@@ -7,6 +7,7 @@ import Materials.AminoAcid;
 import Materials.Nucleotid;
 import virologist.Virologist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,25 +18,22 @@ public class PropertyHandler {
     private int max_equipment;
     private int max_gencode;
     private Virologist viro;
-    private List<GenCode> gencodes;
-    private List<AminoAcid> aminos;
-    private List<Nucleotid> nucleos;
-    private List<Agent> agents;
+    private List<GenCode> gencodes = new ArrayList<>();
+    private List<AminoAcid> aminos = new ArrayList<>();
+    private List<Nucleotid> nucleos = new ArrayList<>();
+    private List<Agent> agents = new ArrayList<>();
+    private List<Equipment> equipments  =new ArrayList<>();
 
-
-    private List<Equipment> equipments;
-
-    public PropertyHandler(int max_equipment, int max_gencode, int max_material, Virologist viro, List<GenCode> gencodes, List<AminoAcid> aminos,
-                           List<Nucleotid> nucleos, List<Agent> agents, List<Equipment> equipments){
+    public PropertyHandler(int max_equipment, int max_gencode, int max_material, Virologist viro){
         this.max_equipment = max_equipment;
         this.max_gencode = max_gencode;
         this.max_material = max_material;
         this.viro = viro;
-        this.gencodes = gencodes;
-        this.aminos = aminos;
-        this.nucleos = nucleos;
-        this.agents = agents;
-        this.equipments = equipments;
+        this.gencodes = null;
+        this.aminos = null;
+        this.nucleos = null;
+        this.agents = null;
+        this.equipments = null;
     }
 
     public PropertyHandler() {
@@ -139,6 +137,15 @@ public class PropertyHandler {
     }
 
     /**
+     * agents setterje
+     * @param agents            Erre állítja be az ágenseket
+     */
+    public void setAgents(List<Agent> agents) {
+        System.out.println("-> setAgents(List<Agent> agents)\n! agents setterje");
+        this.agents = agents;
+    }
+
+    /**
      * max_material setterje
      * @param n                     Erre az értékre állítja be
      */
@@ -148,9 +155,7 @@ public class PropertyHandler {
 
     }
 
-    public void setAgents(Agent usedAgent) {
 
-    }
 
     public List<Equipment> getEquipments() {
         return equipments;

@@ -18,12 +18,12 @@ public class ProtectionAgent extends Agent{
 
     @Override
     public void RemoveBehFromStack(Virologist v) {
-        v.RemoveDefenseBeh(defAgentDef);
+        v.removeDefenseBeh(defAgentDef);
     }
 
     @Override
     public void AddBehToStack(Virologist v) {
-        v.AddDefenseBeh(defAgentDef);
+        v.addDefenseBeh(defAgentDef);
     }
 
     @Override
