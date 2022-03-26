@@ -31,7 +31,7 @@ public class Steal_TestSet {
 
         PropertyHandler ph = new PropertyHandler(3, 10, 10, stealingViro, null, null, null, null, null);
         stealingViro = new Virologist(2, ph, null, null, null, null, null, null, null);
-        stealingViro.setStealBeh(new StealBehavior(stealingViro));
+        stealingViro.setStealBehaviors(new StealBehavior(stealingViro));
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Mit szeretnél lopni? [amino, nukleo, kesztyu, zsak, vedokopeny]");
