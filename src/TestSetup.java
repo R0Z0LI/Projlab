@@ -1,4 +1,5 @@
 import TestSets.ApplyAgent_TestSet;
+import TestSets.Collect_TestSet;
 
 import java.util.Scanner;
 
@@ -22,6 +23,8 @@ public class TestSetup {
             case "1":
                 break;
             case "2":
+                Collect_TestSet test2 = new Collect_TestSet();
+                test2.test();
                 break;
             case "3":
                 break;
