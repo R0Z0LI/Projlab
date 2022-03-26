@@ -22,7 +22,7 @@ public class MovementBehavior {
      * @param before a virológus eredeti pozíciója
      * @param after  a mező, amelyre léptetni kell
      */
-    public void Move(Field before, Field after) {
+    public void move(Field before, Field after) {
         before.RemoveVirologist(virologist);
         after.AddVirologist(virologist);
         virologist.setCurrField(after);

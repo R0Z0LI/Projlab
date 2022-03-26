@@ -41,7 +41,7 @@ public class Movement_TestSet {
             switch (MovementType) {
                 case "Sima":
 
-                    movementBehavior.Move(jelenlegi, cél);
+                    movementBehavior.move(jelenlegi, cél);
 
                     virologist.setCurrField(cél);
                     jelenlegi.RemoveVirologist(virologist);
@@ -50,7 +50,7 @@ public class Movement_TestSet {
 
                 case "Crazy":
                     CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
-                    crazyMoveBehavior.Move(jelenlegi, cél);
+                    crazyMoveBehavior.move(jelenlegi, cél);
 
                     virologist.AddCrazyMoveBeh(crazyMoveBehavior);
                     virologist.setCurrField(cél);
@@ -61,7 +61,7 @@ public class Movement_TestSet {
                 case "Stunned":
                     StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
                     virologist.AddMoveBeh(stunnedMoveBehavior);
-                    stunnedMoveBehavior.Move(jelenlegi, cél);
+                    stunnedMoveBehavior.move(jelenlegi, cél);
                     break;
 
                 default:

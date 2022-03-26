@@ -20,7 +20,7 @@ public class CollectBehavior {
      * @param c         a begyűjtendő tárgy
      * @param handler   egy virológus tárolója, amelybe bele kell tenni a tárgyat
      */
-    public void Collect(Collectible c, PropertyHandler handler){
+    public void collect(Collectible c, PropertyHandler handler){
         c.BeCollected(handler);
     }
 }

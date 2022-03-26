@@ -5,7 +5,7 @@ import virologist.Virologist;
 
 public class DefenseBehavior {
     private Virologist virologist;
-    private int priority=1;
+    protected int priority=1;
 
     public DefenseBehavior(Virologist v){
         virologist=v;
@@ -20,7 +20,7 @@ public class DefenseBehavior {
      * a felhasználásáról dönthet.
      * @return  prioritás
      */
-    public int GetPriority(){
+    public int getPriority(){
         return priority;
     }
 
@@ -29,7 +29,7 @@ public class DefenseBehavior {
      * @param agent     ágens, ami hatni fog a virológusra
      * @param attacker  a virológus, aki az ágenst keni
      */
-    public void Defend(Agent agent, Virologist attacker){
+    public void defend(Agent agent, Virologist attacker){
         agent.AddBehToStack(virologist);
     }
 }

@@ -15,9 +15,9 @@ public class CrazyMoveBehavior extends MovementBehavior {
      * @param after     a mező, amelyre léptetni kell
      */
     @Override
-    public void Move(Field before, Field after) {
+    public void move(Field before, Field after) {
         ArrayList<Field> neighbours = before.getNeighbours();
         int index = (int) Math.round(Math.random()* neighbours.size());
-        super.Move(before, neighbours.get(index));
+        super.move(before, neighbours.get(index));
     }
 }

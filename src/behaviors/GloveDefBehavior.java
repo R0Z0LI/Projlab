@@ -1,9 +1,20 @@
 package behaviors;
 
+import agent.Agent;
 import virologist.Virologist;
 
 public class GloveDefBehavior extends DefenseBehavior{
     public GloveDefBehavior(Virologist v){
         super(v);
+        priority=4;
+    }
+    /**
+     * A kesztyű a kenést kezdeményező (támadó) virológusra visszadobja az ágenst.
+     * @param agent     ágens, amit a virológusra kell kenni
+     * @param attacker  a virológus, aki az ágenst keni
+     */
+    @Override
+    public void defend(Agent agent, Virologist attacker) {
+        attacker.BeInfected(agent, attacker);
     }
 }

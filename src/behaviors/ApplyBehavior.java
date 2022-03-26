@@ -20,7 +20,7 @@ public class ApplyBehavior {
      * @param agent     ágens, amit kenni kell
      * @param affected  virológus, akire kenni kell
      */
-    public void Apply(Agent agent, Virologist affected){
+    public void apply(Agent agent, Virologist affected){
         if(affected==virologist)
             agent.AddBehToStack(virologist);
         else {
