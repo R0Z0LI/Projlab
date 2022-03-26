@@ -15,9 +15,7 @@ import java.util.Scanner;
 
 public class Movement_TestSet {
 
-    private Agent usedAgent;
-    private Virologist applyingViro;
-    private Virologist affectedViro;
+
 
     // constructor
     public Movement_TestSet() {
@@ -34,6 +32,7 @@ public class Movement_TestSet {
 
         Virologist virologist = new Virologist();
         Field jelenlegi = new Field();
+
         MovementBehavior movementBehavior = new MovementBehavior(virologist);
         ArrayList neighbours = jelenlegi.getNeighbours();
         Field cél = (Field)neighbours.get(0);
@@ -45,6 +44,7 @@ public class Movement_TestSet {
             String MovementType = sc.next();
             switch (MovementType) {
                 case "Sima":
+
                     movementBehavior.Move(jelenlegi, cél);
 
                     virologist.setCurrField(cél);
@@ -56,6 +56,7 @@ public class Movement_TestSet {
                     CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
                     crazyMoveBehavior.Move(jelenlegi, cél);
 
+                    virologist.AddCrazyMoveBeh(crazyMoveBehavior);
                     virologist.setCurrField(cél);
                     jelenlegi.RemoveVirologist(virologist);
                     cél.AddVirologist(virologist);
@@ -63,6 +64,7 @@ public class Movement_TestSet {
 
                 case "Stunned":
                     StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
+                    virologist.AddMoveBeh(stunnedMoveBehavior);
                     stunnedMoveBehavior.Move(jelenlegi, cél);
                     break;
 
