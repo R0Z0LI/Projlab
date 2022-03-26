@@ -20,6 +20,11 @@ public class PropertyHandler {
     private List<GenCode> gencodes;
     private List<AminoAcid> aminos;
     private List<Nucleotid> nucleos;
+
+    public void setAgents(List<Agent> agents) {
+        this.agents = agents;
+    }
+
     private List<Agent> agents;
 
 
@@ -148,9 +153,7 @@ public class PropertyHandler {
 
     }
 
-    public void setAgents(Agent usedAgent) {
 
-    }
 
     public List<Equipment> getEquipments() {
         return equipments;
