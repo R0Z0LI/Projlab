@@ -22,7 +22,9 @@ public class MovementBehavior {
      * @param before a virológus eredeti pozíciója
      * @param after  a mező, amelyre léptetni kell
      */
-    public void Move(Field before, Field after) {
+    public void move(Field before, Field after) {
+        System.out.println("->MovementBehavior.move(Field before, Field after)");
+        System.out.println("! A virológus lép egy szomszédos mezőre.");
         before.RemoveVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrField(after);

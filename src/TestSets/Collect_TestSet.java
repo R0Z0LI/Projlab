@@ -46,7 +46,7 @@ public class Collect_TestSet {
                 Gloves glove = new Gloves();
                 Shelter shelter = new Shelter();
                 virologist.collect(glove);
-                collectBehavior.Collect(glove, ph);
+                collectBehavior.collect(glove, ph);
                 glove.BeCollected(ph);
                 glove.AddBehToStack(virologist);
 
@@ -59,7 +59,7 @@ public class Collect_TestSet {
                 Shelter shelter1 = new Shelter();
 
                 virologist.collect(cape);
-                collectBehavior.Collect(cape, ph);
+                collectBehavior.collect(cape, ph);
                 cape.BeCollected(ph);
                 cape.AddBehToStack(virologist);
 
@@ -71,7 +71,7 @@ public class Collect_TestSet {
                 Shelter shelter2 = new Shelter();
 
                 virologist.collect(sack);
-                collectBehavior.Collect(sack, ph);
+                collectBehavior.collect(sack, ph);
                 ph.setMax_material(5);      //tfh 5re növeljük 3ról
                 sack.BeCollected(ph);
                 ph.AddEquipment(sack);
@@ -83,7 +83,7 @@ public class Collect_TestSet {
                 AminoAcid amino = new AminoAcid();
 
                 virologist.collect(amino);
-                collectBehavior.Collect(amino,ph);
+                collectBehavior.collect(amino,ph);
                 amino.BeCollected(ph);
 
                 ph.AddAmino(amino);
@@ -95,7 +95,7 @@ public class Collect_TestSet {
 
 
                 virologist.collect(nucleo);
-                collectBehavior.Collect(nucleo,ph);
+                collectBehavior.collect(nucleo,ph);
                 nucleo.BeCollected(ph);
 
                 ph.AddNucleo(nucleo);
@@ -108,7 +108,7 @@ public class Collect_TestSet {
                 GenCode gencode = new AmnesiaCode(4,5, lab);
 
                 virologist.collect(gencode);
-                collectBehavior.Collect(gencode, ph);
+                collectBehavior.collect(gencode, ph);
                 gencode.BeCollected(ph);
 
                 ph.AddGenCode(gencode);

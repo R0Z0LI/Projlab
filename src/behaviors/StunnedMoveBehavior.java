@@ -19,7 +19,9 @@ public class StunnedMoveBehavior extends MovementBehavior{
      * @param after     a mező, amelyre léptetni kell
      */
     @Override
-    public void Move(Field before, Field after) {
+    public void move(Field before, Field after) {
+        System.out.println("-> StunnedMoveBehavior.move(Field before, Field after)");
+        System.out.println("! Lebénulva a mozgás nem sikerül.");
         return;
     }
 }
