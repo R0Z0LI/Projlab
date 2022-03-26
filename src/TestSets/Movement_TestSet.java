@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public class Movement_TestSet {
 
-
-
     // constructor
     public Movement_TestSet() {
         init_test();
