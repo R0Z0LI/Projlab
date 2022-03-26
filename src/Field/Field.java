@@ -37,7 +37,7 @@ public class Field {
      * Hozzáadja a paraméterként megadott virológust a mezőn lévő virológusokhoz
      * @param virologsit        Ezt adja hozzá
      */
-    public void AddVirologist(Virologist virologsit){
+    public void addVirologist(Virologist virologsit){
         System.out.println("-> AddVirologist(Virologist virologsit)\n! Hozzáadja a paraméterként megadott virológust a mezőn lévő virológusokhoz\n\n");
         virologists.add(virologsit);
     }
@@ -49,5 +49,9 @@ public class Field {
     public ArrayList<Field> getNeighbours() {
         System.out.println("-> getNeighbours()\n! Visszaadja a szomszédos mezőket\n <- neighbours\n\n");
         return neighbours;
+    }
+
+    public void addNeighbour(Field f){
+        neighbours.add(f);
     }
 }

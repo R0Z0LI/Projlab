@@ -23,7 +23,6 @@ public class Collect_TestSet {
     Collectible c;
 
 
-
     public Collect_TestSet() {
         init_test();
     }
@@ -55,7 +54,7 @@ public class Collect_TestSet {
                 glove.AddBehToStack(virologist);
 
                 ph.AddEquipment(glove);
-                //shelter.RemoveEquipment(glove);
+                shelter.RemoveEquipment(glove);
                 break;
 
             case "köpeny":
@@ -68,7 +67,7 @@ public class Collect_TestSet {
                 cape.AddBehToStack(virologist);
 
                 ph.AddEquipment(cape);
-                //shelter2.RemoveEquipment(cape);
+                shelter1.RemoveEquipment(cape);
                 break;
             case "zsák":
                 Sack sack = new Sack();
@@ -80,7 +79,7 @@ public class Collect_TestSet {
                 sack.BeCollected(ph);
                 ph.AddEquipment(sack);
 
-                //shelter2.RemoveEquipment(sack);
+                shelter2.RemoveEquipment(sack);
                 break;
             case "Amino":
                 Warehouse wh = new Warehouse();
@@ -122,8 +121,8 @@ public class Collect_TestSet {
 
 
             default:
-                System.err.println("Wrong input! We choose Nucleo 4 u");
-                CollectType = "Nucleo";
+                System.err.println("Wrong input!");
+
                 break;
         }
 

@@ -24,7 +24,7 @@ public class MovementBehavior {
      */
     public void Move(Field before, Field after) {
         before.RemoveVirologist(virologist);
-        after.AddVirologist(virologist);
+        after.addVirologist(virologist);
         virologist.setCurrField(after);
     }
 }
