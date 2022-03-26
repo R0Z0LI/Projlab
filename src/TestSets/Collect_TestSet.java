@@ -1,24 +1,16 @@
 package TestSets;
 
-import Field.Laboratory;
-import Field.Shelter;
-import Field.Warehouse;
-import Materials.AminoAcid;
-import Materials.Nucleotid;
+import Field.*;
+import Materials.*;
 import PropertyHandler.PropertyHandler;
 import behaviors.CollectBehavior;
-import equipments.Cape;
-import equipments.Gloves;
-import equipments.Sack;
-import gencode.AmnesiaCode;
-import gencode.GenCode;
+import equipments.*;
+import gencode.*;
 import virologist.Virologist;
 
 import java.util.Scanner;
 
 public class Collect_TestSet {
-
-
 
     public Collect_TestSet() {
         init_test();
@@ -36,7 +28,6 @@ public class Collect_TestSet {
         CollectBehavior collectBehavior = new CollectBehavior(virologist);
 
         Scanner sc = new Scanner(System.in);
-
 
         System.out.print("Mit vennél fel? [kesztyű, köpeny, zsák, Amino, Nucleo] ");
         String CollectType = sc.next();
