@@ -1,5 +1,6 @@
 package Materials;
 
+import Collectible.Collectible;
 import PropertyHandler.PropertyHandler;
 
 /**
