@@ -1,7 +1,7 @@
 package PropertyHandler;
 
-import Collectible.Equipment;
-import Collectible.GenCode;
+import equipments.Equipment;
+import gencode.GenCode;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
 import Steppable.Agent;
@@ -71,5 +71,9 @@ public class PropertyHandler {
 
     public void RemoveAgent(Agent agent){
 
+    }
+
+    public void setMax_material(int n){
+        max_material=max_material+n;
     }
 }

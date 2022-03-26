@@ -1,6 +1,5 @@
 package behaviors;
 
-import Steppable.Agent;
 import virologist.Virologist;
 
 public class DefenseBehavior {

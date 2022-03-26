@@ -3,10 +3,10 @@ package virologist;
 import Collectible.Collectible;
 import Field.Field;
 import PropertyHandler.PropertyHandler;
-import Steppable.Agent;
+import agent.Agent;
 import behaviors.*;
-import Collectible.GenCode;
-import Collectible.Equipment;
+import equipments.Equipment;
+import gencode.GenCode;
 
 import java.util.Stack;
 
