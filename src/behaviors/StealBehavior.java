@@ -1,5 +1,6 @@
 package behaviors;
 
+import PropertyHandler.PropertyHandler;
 import virologist.Virologist;
 
 public class StealBehavior {

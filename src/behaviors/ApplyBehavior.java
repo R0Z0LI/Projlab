@@ -1,5 +1,6 @@
 package behaviors;
 
+import Steppable.Agent;
 import virologist.Virologist;
 
 public class ApplyBehavior {
@@ -19,7 +20,7 @@ public class ApplyBehavior {
         if(affected==virologist)
             agent.AddBehToStack(virologist);
         else {
-            affected.Beinfected(agent, virologist);
+            affected.BeInfected(agent, virologist);
         }
 
     }

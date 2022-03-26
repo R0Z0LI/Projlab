@@ -1,5 +1,7 @@
 package behaviors;
 
+import Collectible.Collectible;
+import PropertyHandler.PropertyHandler;
 import virologist.Virologist;
 
 public class CollectBehavior {
