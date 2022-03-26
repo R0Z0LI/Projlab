@@ -11,6 +11,10 @@ public abstract class Agent implements Steppable {
         time_left=timeleft;
     }
 
+    public Agent() {
+
+    }
+
     public void setTime_left(int time_left) {
         this.time_left = time_left;
     }

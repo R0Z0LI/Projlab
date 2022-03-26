@@ -11,6 +11,10 @@ public class StealBehavior {
         virologist=v;
     }
 
+    public StealBehavior() {
+
+    }
+
     /**+
      *Végrehajtja egy tárgy ellopását.
      * @param c         ellopandó tárgy
@@ -19,7 +23,9 @@ public class StealBehavior {
      */
     public void Steal(Collectible c, Virologist affected, PropertyHandler ph){
         PropertyHandler ph2 = affected.getPropertyHandler();
-        if(c.BeCollected(ph))
+        if(ph2.getEquipments().contains(c)) {
+            c.BeCollected(ph);
             c.BeRemoved(ph2);
+        }
     }
 }

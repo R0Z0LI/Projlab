@@ -26,6 +26,10 @@ public abstract class GenCode implements Collectible {
         uid = UUID.randomUUID().toString();
     }
 
+    public GenCode() {
+
+    }
+
     public int getAmino_needed(){
         return amino_needed;
     }

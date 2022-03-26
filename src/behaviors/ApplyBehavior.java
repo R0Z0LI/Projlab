@@ -10,6 +10,10 @@ public class ApplyBehavior {
         virologist=v;
     }
 
+    public ApplyBehavior() {
+
+    }
+
     /**+
      * Végrehajtja egy ágens kenését. (Nem feltétlenül lesz sikeres, hiszen
      * az áldozat kivédheti.)

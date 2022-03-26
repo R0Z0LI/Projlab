@@ -11,6 +11,10 @@ public class DefenseBehavior {
         virologist=v;
     }
 
+    public DefenseBehavior() {
+
+    }
+
     /**+
      * Megadja a védekező viselkedés prioritását, amely alapján a virológus
      * a felhasználásáról dönthet.

@@ -11,6 +11,10 @@ public class CollectBehavior {
         virologist=v;
     }
 
+    public CollectBehavior() {
+
+    }
+
     /**+
      * Kezdeményezi egy tárgy begyűjtését.
      * @param c         a begyűjtendő tárgy

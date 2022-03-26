@@ -3,6 +3,7 @@ package gencode;
 import Field.Field;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
+import PropertyHandler.PropertyHandler;
 import agent.Agent;
 import agent.AmnesiaAgent;
 
@@ -30,4 +31,13 @@ public class AmnesiaCode extends GenCode{
         return false;
     }
 
+    @Override
+    public void BeCollected(PropertyHandler propertyHandler) {
+
+    }
+
+    @Override
+    public void BeRemoved(PropertyHandler propertyHandler) {
+
+    }
 }

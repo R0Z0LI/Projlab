@@ -8,6 +8,10 @@ public class AmnesiaAgent extends Agent{
         super(timeleft);
     }
 
+    public AmnesiaAgent() {
+
+    }
+
     @Override
     public void RemoveBehFromStack(Virologist v) {
 

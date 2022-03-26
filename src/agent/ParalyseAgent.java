@@ -3,7 +3,7 @@ package agent;
 import behaviors.*;
 import virologist.Virologist;
 
-public class ParalyseAgent extends Agent{
+public class ParalyseAgent extends Agent {
     private StunnedMoveBehavior stunnedMove;
     private StunnedApplyBehavior stunnedApply;
     private StunnedCreateBehavior stunnedCreate;
@@ -12,11 +12,15 @@ public class ParalyseAgent extends Agent{
 
     public ParalyseAgent(int timeleft) {
         super(timeleft);
-        stunnedMove=new StunnedMoveBehavior();
-        stunnedApply=new StunnedApplyBehavior();
-        stunnedCreate=new StunnedCreateBehavior();
-        stunnedCollect=new StunnedCollectBehavior();
-        stunnedSteal=new StunnedStealBehavior();
+        stunnedMove = new StunnedMoveBehavior();
+        stunnedApply = new StunnedApplyBehavior();
+        stunnedCreate = new StunnedCreateBehavior();
+        stunnedCollect = new StunnedCollectBehavior();
+        stunnedSteal = new StunnedStealBehavior();
+    }
+
+    public ParalyseAgent() {
+
     }
 
     @Override
