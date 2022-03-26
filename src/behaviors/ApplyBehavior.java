@@ -9,8 +9,7 @@ public class ApplyBehavior {
     public ApplyBehavior(Virologist v){
         virologist=v;
     }
-
-    public ApplyBehavior() {
+    public ApplyBehavior(){
 
     }
 
@@ -23,7 +22,7 @@ public class ApplyBehavior {
     public void apply(Agent agent, Virologist affected){
         System.out.println("->ApplyBehavior.apply(agent, affected)");
         if(affected==virologist) {
-            System.out.println("! A virológusra rákeni magára az ágenst.");
+            System.out.println("! A virológus rákeni magára az ágenst.");
             agent.AddBehToStack(virologist);
         }
         else {

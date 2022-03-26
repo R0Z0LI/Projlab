@@ -36,6 +36,9 @@ public class PropertyHandler {
         this.equipments = null;
     }
 
+    public PropertyHandler(Virologist v) {
+        this.viro=v;
+    }
     public PropertyHandler() {
 
     }

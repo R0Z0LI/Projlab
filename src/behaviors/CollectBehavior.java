@@ -10,8 +10,7 @@ public class CollectBehavior {
     public CollectBehavior(Virologist v){
         virologist=v;
     }
-
-    public CollectBehavior() {
+    public CollectBehavior(){
 
     }
 
