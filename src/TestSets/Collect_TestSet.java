@@ -33,8 +33,9 @@ public class Collect_TestSet {
 
     private void init_test() {
 
-        virologist = new Virologist();
-        PropertyHandler ph = virologist.getPropertyHandler();
+        PropertyHandler ph = new PropertyHandler();
+        Laboratory laboratory = new Laboratory();
+        virologist = new Virologist(2, ph, laboratory);
         CollectBehavior collectBehavior = new CollectBehavior(virologist);
 
         Scanner sc = new Scanner(System.in);
@@ -47,7 +48,6 @@ public class Collect_TestSet {
             case "kesztyű":
                 Gloves glove = new Gloves();
                 Shelter shelter = new Shelter();
-
                 virologist.Collect(glove);
                 collectBehavior.Collect(glove, ph);
                 glove.BeCollected(ph);

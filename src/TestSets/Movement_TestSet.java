@@ -1,23 +1,17 @@
 package TestSets;
 
-import agent.*;
-import behaviors.*;
-import virologist.Virologist;
 import Field.Field;
-import java.util.ArrayList;
-import java.util.Random;
+import behaviors.CrazyMoveBehavior;
+import behaviors.MovementBehavior;
+import behaviors.StunnedMoveBehavior;
+import virologist.Virologist;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Movement_TestSet {
 
-    private Agent usedAgent;
-    private Virologist applyingViro;
-    private Virologist affectedViro;
+
 
     // constructor
     public Movement_TestSet() {
@@ -34,8 +28,8 @@ public class Movement_TestSet {
 
         Virologist virologist = new Virologist();
         Field jelenlegi = new Field();
-        MovementBehavior movementBehavior = new MovementBehavior(virologist);
 
+        MovementBehavior movementBehavior = new MovementBehavior(virologist);
         ArrayList neighbours = jelenlegi.getNeighbours();
         Field cél = (Field)neighbours.get(0);
 
@@ -46,6 +40,7 @@ public class Movement_TestSet {
             String MovementType = sc.next();
             switch (MovementType) {
                 case "Sima":
+
                     movementBehavior.Move(jelenlegi, cél);
 
                     virologist.setCurrField(cél);
@@ -54,15 +49,19 @@ public class Movement_TestSet {
                     break;
 
                 case "Crazy":
-                    CrazyMoveBehavior.Move(jelenlegi, cél);
+                    CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
+                    crazyMoveBehavior.Move(jelenlegi, cél);
 
+                    virologist.AddCrazyMoveBeh(crazyMoveBehavior);
                     virologist.setCurrField(cél);
                     jelenlegi.RemoveVirologist(virologist);
                     cél.AddVirologist(virologist);
                     break;
 
                 case "Stunned":
-                    StunnedMoveBehavior.Move(jelenlegi, cél);
+                    StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
+                    virologist.AddMoveBeh(stunnedMoveBehavior);
+                    stunnedMoveBehavior.Move(jelenlegi, cél);
                     break;
 
                 default:
