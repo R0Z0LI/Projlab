@@ -14,10 +14,9 @@ import java.util.Stack;
  * A virológust reprezentáló osztály
  */
 public class Virologist {
-    private int actionCounter;
     private PropertyHandler myProperties;
     private Field currField;
-    private Stack<MovementBehavior> movementBehaviors = new Stack<>();
+    private final Stack<MovementBehavior> movementBehaviors = new Stack<>();
     private Stack<CreateBehavior> createBehaviors = new Stack<>();
     private Stack<ApplyBehavior> applyBehaviors = new Stack<>();
     private Stack<CollectBehavior> collectBehaviors = new Stack<>();
@@ -29,7 +28,6 @@ public class Virologist {
     }
 
     public Virologist(int actionCounter, PropertyHandler myProperties, Field currField){
-        this.actionCounter = actionCounter;
         this.currField = currField;
         this.myProperties = myProperties;
         CollectBehavior collectBehavior = new CollectBehavior();
