@@ -20,6 +20,8 @@ public class StunnedCollectBehavior extends CollectBehavior{
      */
     @Override
     public void collect(Collectible c, PropertyHandler handler) {
+        System.out.println("-> StunnedCollectBehavior.collect((Collectible c, PropertyHandler handler)");
+        System.out.println("! Lebénulva nem sikerül a begyűjtés.");
         return;
     }
 }

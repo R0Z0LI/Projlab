@@ -21,6 +21,7 @@ public class CollectBehavior {
      * @param handler   egy virológus tárolója, amelybe bele kell tenni a tárgyat
      */
     public void collect(Collectible c, PropertyHandler handler){
+        System.out.println("-> CollectBehavior.collect(Collectible c, PropertyHandler handler)");
         c.BeCollected(handler);
     }
 }

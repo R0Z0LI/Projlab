@@ -1,6 +1,7 @@
 package behaviors;
 
 import agent.Agent;
+import gencode.GenCode;
 import virologist.Virologist;
 
 public class DefAgentDefBehavior extends DefenseBehavior{
@@ -19,6 +20,8 @@ public class DefAgentDefBehavior extends DefenseBehavior{
      */
     @Override
     public void defend(Agent agent, Virologist attacker) {
+        System.out.println("->DefAgentDefBehavior.defend(Agent agent, Virologist attacker)");
+        System.out.println("! A védő ágens megvéd a kenéstől.");
         return;
     }
 }

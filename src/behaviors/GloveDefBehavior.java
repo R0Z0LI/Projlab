@@ -15,6 +15,8 @@ public class GloveDefBehavior extends DefenseBehavior{
      */
     @Override
     public void defend(Agent agent, Virologist attacker) {
-        attacker.BeInfected(agent, attacker);
+        System.out.println("->GloveDefBehavior.defend()");
+        System.out.println("!A kesztyű a kenést kezdeményező (támadó) virológusra visszadobja az ágenst.");
+        attacker.beInfected(agent, attacker);
     }
 }

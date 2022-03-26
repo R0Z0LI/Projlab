@@ -23,6 +23,8 @@ public class MovementBehavior {
      * @param after  a mező, amelyre léptetni kell
      */
     public void move(Field before, Field after) {
+        System.out.println("->MovementBehavior.move(Field before, Field after)");
+        System.out.println("! A virológus lép egy szomszédos mezőre.");
         before.RemoveVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrField(after);

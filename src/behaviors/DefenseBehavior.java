@@ -21,6 +21,7 @@ public class DefenseBehavior {
      * @return  prioritás
      */
     public int getPriority(){
+        System.out.println("<- priority");
         return priority;
     }
 
@@ -30,6 +31,7 @@ public class DefenseBehavior {
      * @param attacker  a virológus, aki az ágenst keni
      */
     public void defend(Agent agent, Virologist attacker){
+        System.out.println("->DefenseBehavior.defend(Agent agent, Virologist attacker)");
         agent.AddBehToStack(virologist);
     }
 }

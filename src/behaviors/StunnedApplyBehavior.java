@@ -18,6 +18,9 @@ public class StunnedApplyBehavior extends ApplyBehavior{
      */
     @Override
     public void apply(Agent agent, Virologist affected) {
+        System.out.println("-> StunnedApplyBehavior.apply(Agent agent, Virologist affected)");
+        System.out.println("! Lebénulva nem sikerül a kenés.");
+
         return;
     }
 }

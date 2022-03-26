@@ -15,10 +15,15 @@ public class CapeDefBehavior extends DefenseBehavior{
          * @param attacker  a virológus, aki az ágenst keni
          */
         public void defend(Agent agent, Virologist attacker) {
+            System.out.println("-> CapeDefBehavior.defend(Agent agent, Virologist attacker)");
             double chance= Math.random()*100;
-            if(chance>82.3)
-                super.defend(agent,attacker);
-            else
+            if(chance>82.3) {
+                System.out.println("! A köpeny védése nem jött össze.");
+                super.defend(agent, attacker);
+            }
+            else {
+                System.out.println("! A köpeny most megvédett.");
                 return;
+            }
         }
 }

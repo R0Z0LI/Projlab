@@ -20,6 +20,8 @@ public class StunnedStealBehavior extends StealBehavior{
      */
     @Override
     public void steal(Collectible c, Virologist affected, PropertyHandler ph) {
+        System.out.println("-> StunnedStealBehavior.steal(Collectible c, Virologist affected, PropertyHandler ph)");
+        System.out.println("! Lebénulva a lopás nem sikerül.");
         return;
     }
 }
