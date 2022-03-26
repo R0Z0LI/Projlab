@@ -38,6 +38,10 @@ public class PropertyHandler {
         this.equipments = equipments;
     }
 
+    public PropertyHandler() {
+
+    }
+
     /**
      * Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz
      * @param genCode               Ezt adja hozzá
