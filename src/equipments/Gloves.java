@@ -29,6 +29,6 @@ public class Gloves extends Equipment{
 
     @Override
     public void BeRemoved(PropertyHandler ph) {
-        ph.RemoveEqupment(this);
+        ph.RemoveEquipment(this);
     }
 }

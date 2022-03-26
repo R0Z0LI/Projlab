@@ -23,6 +23,7 @@ public class TestSetup {
 
         switch (sc.next()) {
             case "1":
+                // move viro
                 break;
             case "2":
                 Collect_TestSet test2 = new Collect_TestSet();

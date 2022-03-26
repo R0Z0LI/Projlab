@@ -80,6 +80,14 @@ public class PropertyHandler {
     }
 
     /**
+     * Hozzáadja a paraméterként kapott ágenst a saját ágenseihez.
+     * @param agent             Ezt az ágenst adja hozzá
+     */
+    public void AddAgent(Agent agent){
+        System.out.println("-> AddAgent(Agent agent)\n ! Hozzáadja a paraméterként kapott ágenst a saját ágenseihez\n\n");
+    }
+
+    /**
      * Elkészít egy ágenst, megnézi van e elég aminósav és nukleotid, majd kivonja a tárolóiból ha van, és létrehozza az ágenst
      * @param genCode               Ez a genetikai kód alapján hozza létre az ágenst
      */
@@ -122,7 +130,7 @@ public class PropertyHandler {
      * Eltávolítja a paraméterként kapott felszerelést a saját felszerelést
      * @param equipment             Ezt a felszerelést tővolítja el
      */
-    public void RemoveEqupment(Equipment equipment){
+    public void RemoveEquipment(Equipment equipment){
         System.out.println("-> RemoveEqupment(Equipment equipment)\n! Eltávolítja a paraméterként kapott felszerelést a saját felszerelést\n\n");
     }
 
@@ -132,24 +140,6 @@ public class PropertyHandler {
      */
     public void RemoveAgent(Agent agent){
         System.out.println("-> RemoveAgent(Agent agent)\n! Eltávolítja a paraméterként kapott ágenst a saját ágenseiből\n\n");
-    }
-
-    /**
-     * equipments setterje
-     * @param equipments            Erre állítja be a felszerelést
-     */
-    public void setEquipments(List<Equipment> equipments) {
-        System.out.println("-> setEquipments(List<Equipment> equipments)\n! equipments setterje");
-        this.equipments = equipments;
-    }
-
-    /**
-     * agents setterje
-     * @param agents            Erre állítja be az ágenseket
-     */
-    public void setAgents(List<Agent> agents) {
-        System.out.println("-> setAgents(List<Agent> agents)\n! agents setterje");
-        this.agents = agents;
     }
 
     /**

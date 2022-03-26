@@ -26,6 +26,6 @@ public class Sack extends Equipment{
 
     @Override
     public void BeRemoved(PropertyHandler ph) {
-        ph.RemoveEqupment(this);
+        ph.RemoveEquipment(this);
     }
 }
