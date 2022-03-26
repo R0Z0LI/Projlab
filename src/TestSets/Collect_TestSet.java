@@ -1,6 +1,5 @@
 package TestSets;
 
-import Collectible.Collectible;
 import Field.Laboratory;
 import Field.Shelter;
 import Field.Warehouse;
@@ -19,7 +18,6 @@ import java.util.Scanner;
 
 public class Collect_TestSet {
 
-    private Virologist virologist;
     //Collectible c;
 
 
@@ -35,7 +33,7 @@ public class Collect_TestSet {
 
         PropertyHandler ph = new PropertyHandler();
         Laboratory laboratory = new Laboratory();
-        virologist = new Virologist(2, ph, laboratory);
+        Virologist virologist = new Virologist(2, ph, laboratory);
         CollectBehavior collectBehavior = new CollectBehavior(virologist);
 
         Scanner sc = new Scanner(System.in);
