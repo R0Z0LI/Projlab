@@ -51,7 +51,7 @@ public class Virologist {
      * a Collect metódusát, ezzel elindítva a begyűjtés folyamatát
      * @param collectible     Amit összegyűjt
      */
-    public void Collect(Collectible collectible){
+    public void collect(Collectible collectible){
         System.out.print("-> Collect(Collectible collectible)\n! A collectBeh első elemétől függően meghívja a CollectBehavior objekt leszármazottjának\n" +
                 " a Collect metódusát, ezzel elindítva a begyűjtés folyamatát\n\n");
         collectBehaviors.firstElement().Collect(collectible, myProperties);
@@ -62,7 +62,7 @@ public class Virologist {
      * a Step metódusát, ezzel elindítva a mozgás folyamatát
      * @param field             A mező ahova lépni szeretne a virológus
      */
-    public void Step(Field field){
+    public void step(Field field){
         System.out.println("-> Step(Field field)\n! A MovementBeh első elemétől függően meghívja a MovementBehavior objekt leszármazottjának\n" +
                 " a Step metódusát, ezzel elindítva a mozgás folyamatát\n\n");
         movementBehaviors.firstElement().Move(this.currField, field);
@@ -74,7 +74,7 @@ public class Virologist {
      * @param collectibel       A tárgy amit el akar lopni
      * @param affected          A virológus akitől el akarja lopni
      */
-    public void Steal(Collectible collectibel, Virologist affected){
+    public void steal(Collectible collectibel, Virologist affected){
         System.out.print("-> Steal(Collectible collectibel, Virologist affected)\n! A StealBeh első elemétől függően meghívja a StealBehavior objekt leszármazottjának\n" +
                 " Steal metódusát, ezzel elindítva a lopás folyamatát\n\n");
         stealBehaviors.firstElement().Steal(collectibel, affected, myProperties);
@@ -85,7 +85,7 @@ public class Virologist {
      * CreateAgent metódusát, ezzel elindítva a lopás folyamatát
      * @param genCode           A genetikai kód amiből létre akarja hozni az ágenst
      */
-    public void CreateAgent(GenCode genCode){
+    public void createAgent(GenCode genCode){
         System.out.println("-> CreateAgent(GenCode genCode)\n! A CreateBeh első elemétől függően meghívja a CreateBehavior objekt leszármazottjának\n" +
                 " CreateAgent metódusát, ezzel elindítva a lopás folyamatát\n\n");
         createBehaviors.firstElement().Create(genCode);
@@ -97,7 +97,7 @@ public class Virologist {
      * @param agent             Amit rá akar kenni
      * @param affected          Akire rá akarja kenni
      */
-    public void ApplyAgent(Agent agent, Virologist affected){
+    public void applyAgent(Agent agent, Virologist affected){
         System.out.println("-> ApplyAgent(Agent agent, Virologist affected)\n! Az ApplyBeh első elemétől függően meghívja az ApplyBehavior objekt leszármazottjának\n" +
                 " ApplyAgent metódusát, ezzel elindítva a lopás folyamatát\n\n");
         applyBehaviors.firstElement().Apply(agent, affected);
@@ -106,7 +106,7 @@ public class Virologist {
     /**
      * Elindítja a virológus körét
      */
-    public void YourTurn(){
+    public void yourTurn(){
         System.out.println("-> YourTurn()\n! Elindítja a virológus körét\n\n");
     }
 
@@ -116,7 +116,7 @@ public class Virologist {
      * @param agent             Az ágens amit rákentek
      * @param attacker          Aki rákente
      */
-    public void BeInfected(Agent agent, Virologist attacker){
+    public void beInfected(Agent agent, Virologist attacker){
         System.out.println("-> BeInfected(Agent agent, Virologist attacker)\n! A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának\n" +
                 " Defend metódusát, ezzel elindítva a lopás folyamatát\n\n");
         defenseBehaviors.firstElement().Defend(agent, attacker);
@@ -126,7 +126,7 @@ public class Virologist {
      * Elpusztítja a virológus egyik, a játékos által választott felszerelését
      * @param e                 Ezt a felszerelést pusztítja el
      */
-    public void DestroyEquipment(Equipment e){
+    public void destroyEquipment(Equipment e){
         System.out.println("-> DestroyEquipment(Equipment e)\n! Elpusztítja a virológus egyik, a játékos által választott felszerelését\n\n");
     }
 
@@ -179,59 +179,59 @@ public class Virologist {
      *
      * @param stunnedMove
      */
-    public void AddMoveBeh(StunnedMoveBehavior stunnedMove) {
-
+    public void addMoveBeh(StunnedMoveBehavior stunnedMove) {
+        this.movementBehaviors.add(stunnedMove);
     }
 
-    public void AddCrazyMoveBeh(CrazyMoveBehavior crazyMoveBehavior){
-
+    public void addCrazyMoveBeh(CrazyMoveBehavior crazyMoveBehavior){
+        this.movementBehaviors.add(crazyMoveBehavior);
     }
 
-    public void AddApplyBeh(StunnedApplyBehavior stunnedApply) {
-
+    public void addApplyBeh(StunnedApplyBehavior stunnedApply) {
+        this.applyBehaviors.add(stunnedApply);
     }
 
-    public void AddCreateBeh(StunnedCreateBehavior stunnedCreate) {
-
+    public void addCreateBeh(StunnedCreateBehavior stunnedCreate) {
+        this.createBehaviors.add(stunnedCreate);
     }
 
-    public void AddCollectBeh(StunnedCollectBehavior stunnedCollect) {
-
+    public void addCollectBeh(StunnedCollectBehavior stunnedCollect) {
+        this.collectBehaviors.add(stunnedCollect);
     }
 
-    public void AddStealBeh(StunnedStealBehavior stunnedSteal) {
-
+    public void addStealBeh(StunnedStealBehavior stunnedSteal) {
+        this.stealBehaviors.add(stunnedSteal);
     }
 
-    public void RemoveMoveBeh(StunnedMoveBehavior stunnedMove) {
-
+    public void removeMoveBeh(StunnedMoveBehavior stunnedMove) {
+        this.movementBehaviors.remove(stunnedMove);
     }
 
-    public void RemoveCrazyMoveBeh(CrazyMoveBehavior crazyMoveBehavior){
-
+    public void removeCrazyMoveBeh(CrazyMoveBehavior crazyMoveBehavior){
+        this.movementBehaviors.remove(crazyMoveBehavior);
     }
 
-    public void RemoveApplyBeh(StunnedApplyBehavior stunnedApply) {
-
+    public void removeApplyBeh(StunnedApplyBehavior stunnedApply) {
+        this.applyBehaviors.remove(stunnedApply);
     }
 
-    public void RemoveCreateBeh(StunnedCreateBehavior stunnedCreate) {
-
+    public void removeCreateBeh(StunnedCreateBehavior stunnedCreate) {
+        this.createBehaviors.remove(stunnedCreate);
     }
 
-    public void RemoveCollectBeh(StunnedCollectBehavior stunnedCollect) {
-
+    public void removeCollectBeh(StunnedCollectBehavior stunnedCollect) {
+        this.collectBehaviors.remove(stunnedCollect);
     }
 
-    public void RemoveStealBeh(StunnedStealBehavior stunnedSteal) {
-
+    public void removeStealBeh(StunnedStealBehavior stunnedSteal) {
+        this.stealBehaviors.remove(stunnedSteal);
     }
 
-    public void RemoveDefenseBeh(DefAgentDefBehavior defAgentDef) {
-
+    public void removeDefenseBeh(DefAgentDefBehavior defAgentDef) {
+        this.defenseBehaviors.remove(defAgentDef);
     }
 
-    public void AddDefenseBeh(DefAgentDefBehavior defAgentDef) {
-
+    public void addDefenseBeh(DefAgentDefBehavior defAgentDef) {
+        this.defenseBehaviors.add(defAgentDef);
     }
 }

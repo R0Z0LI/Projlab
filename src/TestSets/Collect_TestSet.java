@@ -28,7 +28,7 @@ public class Collect_TestSet {
     }
 
     public void test() {
-        virologist.Collect(c);
+        virologist.collect(c);
     }
 
     private void init_test() {
@@ -48,7 +48,7 @@ public class Collect_TestSet {
             case "kesztyű":
                 Gloves glove = new Gloves();
                 Shelter shelter = new Shelter();
-                virologist.Collect(glove);
+                virologist.collect(glove);
                 collectBehavior.Collect(glove, ph);
                 glove.BeCollected(ph);
                 glove.AddBehToStack(virologist);
@@ -61,7 +61,7 @@ public class Collect_TestSet {
                 Cape cape = new Cape();
                 Shelter shelter1 = new Shelter();
 
-                virologist.Collect(cape);
+                virologist.collect(cape);
                 collectBehavior.Collect(cape, ph);
                 cape.BeCollected(ph);
                 cape.AddBehToStack(virologist);
@@ -73,7 +73,7 @@ public class Collect_TestSet {
                 Sack sack = new Sack();
                 Shelter shelter2 = new Shelter();
 
-                virologist.Collect(sack);
+                virologist.collect(sack);
                 collectBehavior.Collect(sack, ph);
                 ph.setMax_material(5);      //tfh 5re növeljük 3ról
                 sack.BeCollected(ph);
@@ -85,7 +85,7 @@ public class Collect_TestSet {
                 Warehouse wh = new Warehouse();
                 AminoAcid amino = new AminoAcid();
 
-                virologist.Collect(amino);
+                virologist.collect(amino);
                 collectBehavior.Collect(amino,ph);
                 amino.BeCollected(ph);
 
@@ -97,7 +97,7 @@ public class Collect_TestSet {
                 Nucleotid nucleo = new Nucleotid();
 
 
-                virologist.Collect(nucleo);
+                virologist.collect(nucleo);
                 collectBehavior.Collect(nucleo,ph);
                 nucleo.BeCollected(ph);
 
@@ -110,7 +110,7 @@ public class Collect_TestSet {
                 Laboratory lab = new Laboratory();
                 GenCode gencode = new AmnesiaCode(4,5, lab);
 
-                virologist.Collect(gencode);
+                virologist.collect(gencode);
                 collectBehavior.Collect(gencode, ph);
                 gencode.BeCollected(ph);
 

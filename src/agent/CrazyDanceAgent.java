@@ -18,12 +18,12 @@ public class CrazyDanceAgent extends Agent {
 
     @Override
     public void RemoveBehFromStack(Virologist v) {
-        v.RemoveCrazyMoveBeh(crazyMove);
+        v.removeCrazyMoveBeh(crazyMove);
     }
 
     @Override
     public void AddBehToStack(Virologist v) {
-        v.AddCrazyMoveBeh(crazyMove);
+        v.addCrazyMoveBeh(crazyMove);
     }
 
     @Override

@@ -26,7 +26,11 @@ public class ApplyAgent_TestSet {
 
     // testing use case
     public void test() {
-        applyingViro.ApplyAgent(usedAgent.get(0), affectedViro);
+<<<<<<< HEAD
+        applyingViro.applyAgent(usedAgent, affectedViro);
+=======
+        applyingViro.applyAgent(usedAgent.get(0), affectedViro);
+>>>>>>> 3086a5ef49a63451f1d54e9a153f678d0d9aa979
     }
 
     // initializing everything we need for this test
@@ -61,7 +65,7 @@ public class ApplyAgent_TestSet {
                 System.err.println("You used a wrong Agent type! WE are gonna choose CrazyAgent for you!");
                 usedAgent.add(new CrazyDanceAgent(30));
         }
-        applyingViro.getPropertyHandler().setAgents(usedAgent);
+
 
         System.out.print("Egy másik virológusra kenje? [i/n] ");
         if (sc.next() == "i") {

@@ -58,7 +58,7 @@ public class Movement_TestSet {
                     CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
                     crazyMoveBehavior.Move(jelenlegi, cel);
 
-                    virologist.AddCrazyMoveBeh(crazyMoveBehavior);
+                    virologist.addCrazyMoveBeh(crazyMoveBehavior);
                     virologist.setCurrField(cel);
                     jelenlegi.RemoveVirologist(virologist);
                     cel.addVirologist(virologist);
@@ -66,7 +66,7 @@ public class Movement_TestSet {
 
                 case "Stunned":
                     StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
-                    virologist.AddMoveBeh(stunnedMoveBehavior);
+                    virologist.addMoveBeh(stunnedMoveBehavior);
                     stunnedMoveBehavior.Move(jelenlegi, cel);
                     break;
 
