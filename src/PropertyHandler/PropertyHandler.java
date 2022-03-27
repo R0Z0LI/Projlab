@@ -30,11 +30,6 @@ public class PropertyHandler {
         this.max_gencode = max_gencode;
         this.max_material = max_material;
         this.viro = viro;
-        this.gencodes = null;
-        this.aminos = null;
-        this.nucleos = null;
-        this.agents = null;
-        this.equipments = null;
     }
 
     public PropertyHandler(Virologist v) {
