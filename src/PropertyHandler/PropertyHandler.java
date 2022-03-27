@@ -1,11 +1,11 @@
 package PropertyHandler;
 
-import agent.Agent;
-import equipments.Equipment;
-import gencode.GenCode;
+import Agent.Agent;
+import Equipments.Equipment;
+import Gencode.GenCode;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
-import virologist.Virologist;
+import Virologist.Virologist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +96,7 @@ public class PropertyHandler {
      * Elkészít egy ágenst, megnézi van e elég aminósav és nukleotid, majd kivonja a tárolóiból ha van, és létrehozza az ágenst
      * @param genCode               Ez a genetikai kód alapján hozza létre az ágenst
      */
-    public void MakeAgent(GenCode genCode){
+    public void makeAgent(GenCode genCode){
         System.out.println("-> MakeAgent(GenCode genCode)\n ! Megpróbálja elkészíteni az ágenst.");
         int a=genCode.getAmino_needed();
         int n=genCode.getNucleo_needed();
