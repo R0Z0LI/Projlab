@@ -35,11 +35,11 @@ public abstract class Agent implements Steppable {
      * Kitörli a megadott virológus verméből azt a viselkedést, amit az aktuális ágens okozna.
      * @param v  virológus, akinek a verméből törölni kell a viselkedést.
      */
-    public abstract void RemoveBehFromStack(Virologist v);
+    public abstract void removeBehFromStack(Virologist v);
 
     /**+
      * Hozzáadja a megadott virológus verméhez azt a viselkedést, amit az aktuális ágens okozna.
      * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedést.
      */
-    public abstract void AddBehToStack(Virologist v);
+    public abstract void addBehToStack(Virologist v);
 }

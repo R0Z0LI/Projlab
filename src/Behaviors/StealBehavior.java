@@ -10,12 +10,11 @@ public class StealBehavior {
     public StealBehavior(Virologist v){
         virologist=v;
     }
+    public StealBehavior() { }
 
-    public StealBehavior() {
-
-    }
-    public void setVirologist(Virologist v){
-        virologist=v;
+    public void setVirologist(Virologist v){ virologist=v; }
+    public Virologist getVirologist(){
+        return virologist;
     }
 
     /**+

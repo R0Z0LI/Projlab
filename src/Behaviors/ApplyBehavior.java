@@ -9,11 +9,13 @@ public class ApplyBehavior {
     public ApplyBehavior(Virologist v){
         virologist=v;
     }
-    public ApplyBehavior(){
+    public ApplyBehavior(){}
 
-    }
     public void setVirologist(Virologist v){
         virologist=v;
+    }
+    public Virologist getVirologist(){
+        return virologist;
     }
 
     /**+
@@ -26,7 +28,7 @@ public class ApplyBehavior {
         System.out.println("->ApplyBehavior.apply(Agent, affected)");
         if(affected==virologist) {
             System.out.println("! A virológus rákeni magára az ágenst.\n");
-            agent.AddBehToStack(virologist);
+            agent.addBehToStack(virologist);
         }
         else {
             System.out.println("! A  másik virológusra rákenik az ágenst.");

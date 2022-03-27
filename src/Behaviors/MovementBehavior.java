@@ -9,14 +9,14 @@ public class MovementBehavior {
     public MovementBehavior(Virologist v) {
         virologist = v;
     }
+    public MovementBehavior() { }
 
-    public MovementBehavior() {
-
-    }
     public void setVirologist(Virologist v){
         virologist=v;
     }
-
+    public Virologist getVirologist(){
+        return virologist;
+    }
 
     /**
      * +

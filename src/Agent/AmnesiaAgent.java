@@ -10,12 +10,8 @@ public class AmnesiaAgent extends Agent{
         super(timeleft);
     }
 
-    public AmnesiaAgent() {
-
-    }
-
     @Override
-    public void RemoveBehFromStack(Virologist v) {
+    public void removeBehFromStack(Virologist v) {
 
     }
 
@@ -24,7 +20,7 @@ public class AmnesiaAgent extends Agent{
      * @param v  virológus, akinek a PropertyHandleréből törölni kell a genetikai kódokat.
      */
     @Override
-    public void AddBehToStack(Virologist v) {
+    public void addBehToStack(Virologist v) {
         System.out.println("-> AddBehToStack(Virologist v)\n! A felejtő ágens hatni fog.\n\n");
         v.getPropertyHandler().deleteGenCodes();
 

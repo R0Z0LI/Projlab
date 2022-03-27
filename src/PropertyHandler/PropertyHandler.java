@@ -177,6 +177,7 @@ public class PropertyHandler {
     // getterek teszteléshez
     public List<AminoAcid> getAminos() { return aminos; }
     public List<Nucleotid> getNucleos() { return nucleos; }
+    public List<Agent> getAgents() { return agents; }
 
     public void setViro(Virologist viro) {
         this.viro = viro;

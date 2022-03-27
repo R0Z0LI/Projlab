@@ -26,6 +26,11 @@ public class ParalyseAgent extends Agent {
     @Override
     public void Step() {
         super.Step();
+
+        // we are gonna remove the agent from the virologist
+        if (getTime_left() == 0) {
+            removeBehFromStack(stunnedMove.getVirologist());
+        }
     }
 
     /**+
@@ -33,7 +38,7 @@ public class ParalyseAgent extends Agent {
      * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedéseket.
      */
     @Override
-    public void AddBehToStack(Virologist v) {
+    public void addBehToStack(Virologist v) {
         stunnedMove.setVirologist(v);
         stunnedApply.setVirologist(v);
         stunnedCreate.setVirologist(v);
@@ -53,7 +58,7 @@ public class ParalyseAgent extends Agent {
      * @param v  virológus, akinek a verméből törölni kell a viselkedéseket.
      */
     @Override
-    public void RemoveBehFromStack(Virologist v) {
+    public void removeBehFromStack(Virologist v) {
         v.removeMoveBeh(stunnedMove);
         v.removeApplyBeh(stunnedApply);
         v.removeCreateBeh(stunnedCreate);

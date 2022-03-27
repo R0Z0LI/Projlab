@@ -9,12 +9,13 @@ public class CreateBehavior {
     public CreateBehavior(Virologist v){
         virologist=v;
     }
+    public CreateBehavior() { }
 
-    public CreateBehavior() {
-
-    }
     public void setVirologist(Virologist v){
         virologist=v;
+    }
+    public Virologist getVirologist(){
+        return virologist;
     }
 
     /**+

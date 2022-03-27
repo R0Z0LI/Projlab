@@ -10,9 +10,10 @@ public class DefenseBehavior {
     public DefenseBehavior(Virologist v){
         virologist=v;
     }
+    public DefenseBehavior() { }
 
-    public DefenseBehavior() {
-
+    public Virologist getVirologist(){
+        return virologist;
     }
 
     /**+
@@ -36,6 +37,6 @@ public class DefenseBehavior {
     public void defend(Agent agent, Virologist attacker){
         System.out.println("->DefenseBehavior.defend(Agent agent, Virologist attacker)");
         System.out.println("! A kenés sikeres.\n");
-        agent.AddBehToStack(virologist);
+        agent.addBehToStack(virologist);
     }
 }

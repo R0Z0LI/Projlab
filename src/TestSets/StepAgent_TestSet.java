@@ -1,6 +1,5 @@
 package TestSets;
 
-import Game.*;
 import PropertyHandler.PropertyHandler;
 import Agent.*;
 import Virologist.Virologist;
@@ -12,7 +11,6 @@ import java.util.Scanner;
  */
 public class StepAgent_TestSet {
 
-    private Game game = new Game();
     private int time = 5;
     private Virologist viro;
     private Agent usedAgent;
@@ -29,12 +27,16 @@ public class StepAgent_TestSet {
      */
     public void test() {
         System.out.println("Testing Agent stepping and removal ...");
-        for (int i = 0; i < time; i++) {
-            game.StepSteabbles();
-        }
+
+        viro.applyAgent(usedAgent, viro);
+        usedAgent.Step(); // time should reach 0, and be removed from viro
 
         // checking
         System.out.println("Testing has ended. Time left for the used Agent: " + usedAgent.getTime_left());
+        if (viro.getPropertyHandler().getAgents().size() == 0)
+            System.out.println("The agent has been successfully removed from the virologist! OK");
+        else
+            System.out.println("The agent hasn't been removed!!!!");
     }
 
     /**
@@ -47,25 +49,36 @@ public class StepAgent_TestSet {
         PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
         viro = new Virologist(2, ph, null);
 
-        System.out.print("Melyik ágenst használja? [v/b/t] ");
+        System.out.print("Melyik ágens legyen léptetve? [v/b/t] ");
         Scanner sc = new Scanner(System.in);
         String agentType = sc.next();
         switch (agentType) {
             case "v":
+                System.out.print("Lejárt az ágens hatásának ideje? [i/n] ");
+                if (sc.next().equals("i"))
+                    time = 1;
                 usedAgent = new ProtectionAgent(time);
                 break;
+
             case "b":
+                System.out.print("Lejárt az ágens hatásának ideje? [i/n] ");
+                if (sc.next().equals("i"))
+                    time = 1;
                 usedAgent = new ParalyseAgent(time);
                 break;
+
             case "t":
+                System.out.print("Lejárt az ágens hatásának ideje? [i/n] ");
+                if (sc.next().equals("i"))
+                    time = 1;
                 usedAgent = new CrazyDanceAgent(time);
                 break;
+
             default:
-                System.err.println("You used a wrong Agent type! WE are gonna choose CrazyAgent for you!");
-                usedAgent = new CrazyDanceAgent(time);
+                System.err.println("You used a wrong Agent type!");
         }
 
-        ph.addAgent(usedAgent);
+        //ph.addAgent(usedAgent);
         // PROBLEM: agent-et nem lehet megadni, mert steppable-t vár
         // SOLUTION: az egész steppable interfészt kidobjuk és agent-et használunk helyette
         // game.AddSteppable((Steppable) usedAgent);
