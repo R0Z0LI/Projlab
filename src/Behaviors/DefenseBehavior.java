@@ -31,8 +31,8 @@ public class DefenseBehavior {
      * @param attacker  a virológus, aki az ágenst keni
      */
     public void defend(Agent agent, Virologist attacker){
-        System.out.println("->DefenseBehavior.defend(Agent Agent, Virologist attacker)");
-        System.out.println("! A kenés sikeres.");
+        System.out.println("->DefenseBehavior.defend(Agent agent, Virologist attacker)");
+        System.out.println("! A kenés sikeres.\n");
         agent.AddBehToStack(virologist);
     }
 }

@@ -25,8 +25,8 @@ public class AmnesiaAgent extends Agent{
      */
     @Override
     public void AddBehToStack(Virologist v) {
+        System.out.println("-> AddBehToStack(Virologist v)\n! A felejtő ágens hatni fog.\n\n");
         v.getPropertyHandler().deleteGenCodes();
-        System.out.println("-> AddBehToStack(Virologist v)\n! Törli a virológus által megismert összes genetikai kódot.\n\n");
 
     }
 

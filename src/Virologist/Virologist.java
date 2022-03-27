@@ -68,8 +68,7 @@ public class Virologist {
          * @param collectible Amit összegyűjt
          */
         public void collect (Collectible collectible){
-            System.out.print("-> Collect(Collectible collectible)\n! A collectBeh első elemétől függően meghívja a CollectBehavior objekt leszármazottjának\n" +
-                    " a Collect metódusát, ezzel elindítva a begyűjtés folyamatát\n\n");
+            System.out.print("-> Collect(Collectible collectible)\n! A virológus elindítja a begyűjtés folyamatát.\n\n");
             collectBehaviors.firstElement().collect(collectible, myProperties);
         }
 
@@ -80,8 +79,7 @@ public class Virologist {
          * @param field A mező ahova lépni szeretne a virológus
          */
         public void step (Field field){
-            System.out.println("-> Step(Field field)\n! A MovementBeh első elemétől függően meghívja a MovementBehavior objekt leszármazottjának\n" +
-                    " a Step metódusát, ezzel elindítva a mozgás folyamatát\n\n");
+            System.out.println("-> Step(Field field)\n! A virológus elindítja a mozgás folyamatát.\n\n");
             movementBehaviors.firstElement().move(this.currField, field);
         }
 
@@ -93,8 +91,7 @@ public class Virologist {
          * @param affected    A virológus akitől el akarja lopni
          */
         public void steal (Collectible collectibel, Virologist affected) {
-            System.out.print("-> Steal(Collectible collectibel, Virologist affected)\n! A StealBeh első elemétől függően meghívja a StealBehavior objekt leszármazottjának\n" +
-                    " Steal metódusát, ezzel elindítva a lopás folyamatát\n\n");
+            System.out.print("-> Steal(Collectible collectibel, Virologist affected)\n! A virológus elindítja a lopás folyamatát\n\n");
             stealBehaviors.firstElement().steal(collectibel, affected, myProperties);
         }
 
@@ -105,8 +102,7 @@ public class Virologist {
          * @param genCode A genetikai kód amiből létre akarja hozni az ágenst
          */
         public void createAgent (GenCode genCode){
-            System.out.println("-> CreateAgent(GenCode genCode)\n! A CreateBeh első elemétől függően meghívja a CreateBehavior objekt leszármazottjának\n" +
-                    " CreateAgent metódusát, ezzel elindítva a lopás folyamatát\n\n");
+            System.out.println("-> CreateAgent(GenCode genCode)\n! A virológus elindítja az ágens előállításának folyamatát.\n\n");
             createBehaviors.firstElement().create(genCode);
         }
 
@@ -118,8 +114,7 @@ public class Virologist {
          * @param affected Akire rá akarja kenni
          */
         public void applyAgent (Agent agent, Virologist affected){
-            System.out.println("-> ApplyAgent(Agent Agent, Virologist affected)\n! Az ApplyBeh első elemétől függően meghívja az ApplyBehavior objekt leszármazottjának\n" +
-                    " ApplyAgent metódusát, ezzel elindítva a kenés folyamatát\n\n");
+            System.out.println("-> ApplyAgent(Agent agent, Virologist affected)\n! A virológus elindítja a kenés folyamatát\n\n");
             applyBehaviors.firstElement().apply(agent, affected);
         }
 
@@ -127,7 +122,7 @@ public class Virologist {
          * Elindítja a virológus körét
          */
         public void yourTurn () {
-            System.out.println("-> YourTurn()\n! Elindítja a virológus körét\n\n");
+            System.out.println("-> YourTurn()\n! Elindítja a virológus körét.\n\n");
         }
 
         /**
@@ -138,8 +133,7 @@ public class Virologist {
          * @param attacker Aki rákente
          */
         public void beInfected (Agent agent, Virologist attacker){
-            System.out.println("-> BeInfected(Agent Agent, Virologist attacker)\n! A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának\n" +
-                    " Defend metódusát\n\n");
+            System.out.println("-> BeInfected(Agent agent, Virologist attacker)\n! A virológus megpróbálja kivédeni a kenést\n\n");
             defenseBehaviors.firstElement().defend(agent, attacker);
         }
 
@@ -149,7 +143,8 @@ public class Virologist {
          * @param e Ezt a felszerelést pusztítja el
          */
         public void destroyEquipment (Equipment e){
-            System.out.println("-> DestroyEquipment(Equipment e)\n! Elpusztítja a virológus egyik, a játékos által választott felszerelését\n\n");
+            System.out.println("-> DestroyEquipment(Equipment e)\n! Elpusztítja a virológus egyik, a játékos által választott felszerelését.\n\n");
+            myProperties.removeEquipment(e);
         }
 
         /**
@@ -158,7 +153,7 @@ public class Virologist {
          * @param after Erre változtatja meg
          */
         public void setCurrField (Field after){
-            System.out.println("-> setCurrField(Field after)\n! currField settere\n\n");
+            System.out.println("-> setCurrField(Field field)\n! Beállítja a virológus pozícióját.\n\n");
             this.currField = after;
         }
 
@@ -181,6 +176,7 @@ public class Virologist {
             System.out.println("-> setDefenseBeh(DefenseBehavior defenseBehavior)\n! defenseBeh settere\n\n");
             this.defenseBehaviors.add(defenseBehavior);
             defenseBehaviors.sort((d1, d2)->{return d2.getPriority() - d1.getPriority();});
+            System.out.println("! A védő stratégiák prioritás szerint sorba lettek rendezve. Az első lesz alkalmazva.\n\n");
         }
 
         /**
@@ -199,7 +195,7 @@ public class Virologist {
          * @return A myProperties-el tér vissza
          */
         public PropertyHandler getPropertyHandler () {
-            System.out.println("-> getPropertyHandler()\n! Visszaadja a PropertyHandlerét a virológusnak\n\n");
+            System.out.println("-> getPropertyHandler()\n");
             return myProperties;
         }
 
@@ -312,11 +308,11 @@ public class Virologist {
 
         /**
          * Elveszi a stack-ből a paraméterként adott behavior-t
-         * @param defAgentDef           Ezt a behavior-t veszi el
+         * @param defenseBehavior           Ezt a behavior-t veszi el
          *
          */
-        public void removeDefenseBeh (DefAgentDefBehavior defAgentDef){
-            this.defenseBehaviors.remove(defAgentDef);
+        public void removeDefenseBeh (DefenseBehavior defenseBehavior){
+            this.defenseBehaviors.remove(defenseBehavior);
         }
 
         /**
