@@ -45,20 +45,11 @@ public class Movement_TestSet {
                 case "Sima":
 
                     movementBehavior.move(jelenlegi, cel);
-
-                    virologist.setCurrentField(cel);
-                    jelenlegi.RemoveVirologist(virologist);
-                    cel.addVirologist(virologist);
                     break;
 
                 case "Crazy":
                     CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior(virologist);
                     crazyMoveBehavior.move(jelenlegi, cel);
-
-                    virologist.addMoveBehavior(crazyMoveBehavior);
-                    virologist.setCurrentField(crazy);
-                    jelenlegi.RemoveVirologist(virologist);
-                    crazy.addVirologist(virologist);
                     break;
 
                 case "Stunned":

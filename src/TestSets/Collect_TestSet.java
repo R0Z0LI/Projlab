@@ -44,7 +44,7 @@ public class Collect_TestSet {
         System.out.println("Init collecting test ...");
 
         field = new Laboratory();
-        PropertyHandler ph = new PropertyHandler();
+        PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
         viro = new Virologist(2, ph, field);
 
         Scanner sc = new Scanner(System.in);
