@@ -4,10 +4,10 @@ import Collectible.Collectible;
 import Field.*;
 import Materials.*;
 import PropertyHandler.PropertyHandler;
-import behaviors.CollectBehavior;
-import equipments.*;
-import gencode.*;
-import virologist.Virologist;
+import Behaviors.CollectBehavior;
+import Equipments.*;
+import Gencode.*;
+import Virologist.Virologist;
 
 import java.util.Scanner;
 

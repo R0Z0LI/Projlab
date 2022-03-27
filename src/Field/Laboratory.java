@@ -1,6 +1,6 @@
 package Field;
 
-import gencode.GenCode;
+import Gencode.GenCode;
 
 import java.util.List;
 

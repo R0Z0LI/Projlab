@@ -1,10 +1,10 @@
 package TestSets;
 
 import Field.Field;
-import behaviors.CrazyMoveBehavior;
-import behaviors.MovementBehavior;
-import behaviors.StunnedMoveBehavior;
-import virologist.Virologist;
+import Behaviors.CrazyMoveBehavior;
+import Behaviors.MovementBehavior;
+import Behaviors.StunnedMoveBehavior;
+import Virologist.Virologist;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,8 +34,6 @@ public class Movement_TestSet {
         cel = neighbours.get(0);
 
         MovementBehavior movementBehavior = new MovementBehavior(virologist);
-
-
 
         try {
             Scanner sc = new Scanner(System.in);

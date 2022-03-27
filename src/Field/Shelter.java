@@ -1,6 +1,6 @@
 package Field;
 
-import equipments.Equipment;
+import Equipments.Equipment;
 
 import java.util.List;
 

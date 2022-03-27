@@ -1,10 +1,10 @@
 package TestSets;
 
-import agent.*;
-import behaviors.*;
-import equipments.Cape;
-import equipments.Gloves;
-import virologist.Virologist;
+import Agent.*;
+import Behaviors.*;
+import Equipments.Cape;
+import Equipments.Gloves;
+import Virologist.Virologist;
 import Field.Field;
 
 import java.util.Scanner;
@@ -72,25 +72,29 @@ public class ApplyAgent_TestSet {
 
             System.out.print("Van kesztyűje a másik virológusnak? [i/n] ");
             if (sc.next().equals("i")) {
-                affectedViro.getPropertyHandler().AddEquipment(new Gloves());
+                affectedViro.getPropertyHandler().addEquipment(new Gloves());
+                //affectedViro.setDefenseBehaviors(new GloveDefBehavior(affectedViro));
                 affectedViro.addDefenseBehavior(new GloveDefBehavior(affectedViro));
 
                 System.out.print("Van kesztyűje a támadó virológusnak? [i/n] ");
                 if (sc.next().equals("i")) {
-                    applyingViro.getPropertyHandler().AddEquipment(new Gloves());
+                    applyingViro.getPropertyHandler().addEquipment(new Gloves());
+                    //applyingViro.setDefenseBehaviors(new GloveDefBehavior(applyingViro));
                     applyingViro.addDefenseBehavior(new GloveDefBehavior(applyingViro));
                 }
             }
 
             System.out.print("Hat védő ágens  a másik virológusra? [i/n] ");
             if (sc.next().equals("i")) {
-                affectedViro.getPropertyHandler().AddAgent(new ProtectionAgent(30));
+                affectedViro.getPropertyHandler().addAgent(new ProtectionAgent(30));
+                //affectedViro.setDefenseBehaviors(new DefAgentDefBehavior(affectedViro));
                 affectedViro.addDefenseBehavior(new DefAgentDefBehavior(affectedViro));
             }
 
             System.out.print("Van védőköpenye  a másik virológusnak? [i/n] ");
             if (sc.next().equals("i")) {
-                affectedViro.getPropertyHandler().AddEquipment(new Cape());
+                affectedViro.getPropertyHandler().addEquipment(new Cape());
+                //affectedViro.setDefenseBehaviors(new CapeDefBehavior(affectedViro));
                 affectedViro.addDefenseBehavior(new CapeDefBehavior(affectedViro));
             }
 

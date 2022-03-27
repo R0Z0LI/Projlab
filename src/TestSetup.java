@@ -12,11 +12,11 @@ public class TestSetup {
             System.out.println(cyan+"Mit szeretnél tesztelni? Válassz egy számot:");
             System.out.println("1. Move Virologist");
             System.out.println("2. Collect");
-            System.out.println("3. Create agent");
-            System.out.println("4. Apply agent");
+            System.out.println("3. Create Agent");
+            System.out.println("4. Apply Agent");
             System.out.println("5. Steal");
             System.out.println("6. Throw equipment");
-            System.out.println("7. Step agent");
+            System.out.println("7. Step Agent");
             System.out.println("If you want to stop testing, then write anything.");
 
             switch (sc.next()) {
