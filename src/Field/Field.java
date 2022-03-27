@@ -9,8 +9,8 @@ import java.util.List;
  * A játék egy mezőjét reprezentáló osztály
  */
 public class Field {
-    private List<Virologist> virologists;
-    private ArrayList<Field> neighbours;
+    private List<Virologist> virologists = new ArrayList<>();
+    private ArrayList<Field> neighbours = new ArrayList<>();
     public Field(){
 
     }

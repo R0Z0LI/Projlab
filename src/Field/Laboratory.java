@@ -2,14 +2,18 @@ package Field;
 
 import Gencode.GenCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A laboratóriumot reprezentáló osztály
  */
 public class Laboratory extends Field{
-    private List<GenCode> currGenCode;
+    private List<GenCode> currGenCode = new ArrayList<>();
 
+    public Laboratory(){
+
+    }
     /**
      * Hozzáadja a currGenCode-hoz a paraméterként kapott genetikai kódot
      * @param genCode           Ezt adja hozzá

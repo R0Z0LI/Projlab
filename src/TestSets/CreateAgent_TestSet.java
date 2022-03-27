@@ -26,37 +26,37 @@ public class CreateAgent_TestSet {
 
     // initializing everything we need for this test
     private void init_test() {
-        virologist=new Virologist();
+        virologist = new Virologist();
         virologist.setCurrentField(new Field());
         System.out.println("Melyik kódból állítson elő ágenst a virológus? védő/felejtő/bénító/vitustánc [v/f/b/t]");
         Scanner sc = new Scanner(System.in);
-        String code= sc.next();
+        String code = sc.next();
         System.out.println("Van elég anyaga az előállításhoz? [i/n]");
         String material = sc.next();
-        switch (code){
+        switch (code) {
             case "v":
-                genCode=new ProtecionCode();
+                genCode = new ProtecionCode();
                 break;
             case "f":
-                genCode=new AmnesiaCode();
+                genCode = new AmnesiaCode();
                 break;
             case "b":
-                genCode=new ParalyseCode();
+                genCode = new ParalyseCode();
                 break;
             case "t":
-                genCode=new CrazyDanceCode();
+                genCode = new CrazyDanceCode();
                 break;
             default:
                 System.out.println("Nem jó kód, így most felejtő lesz.");
-                genCode=new AmnesiaCode();
+                genCode = new AmnesiaCode();
                 break;
         }
-        if(material.equals("i")){
-            int n= genCode.getNucleo_needed();
-            int a= genCode.getAmino_needed();
-            for(int i=0; i<a; ++i)
+        if (material.equals("i")) {
+            int n = genCode.getNucleo_needed();
+            int a = genCode.getAmino_needed();
+            for (int i = 0; i < a; ++i)
                 virologist.getPropertyHandler().addAmino(new AminoAcid());
-            for(int i=0; i<n; ++i)
+            for (int i = 0; i < n; ++i)
                 virologist.getPropertyHandler().addNucleo(new Nucleotid());
         }
     }

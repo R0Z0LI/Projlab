@@ -2,13 +2,14 @@ package Field;
 
 import Equipments.Equipment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A menedéket reprezentáló osztály
  */
 public class Shelter extends Field{
-    private List<Equipment> currEquipment;
+    private List<Equipment> currEquipment = new ArrayList<>();
 
     /**
      * Hozzáadja a currEquipment-hez a paraméterként kapott felszerelést

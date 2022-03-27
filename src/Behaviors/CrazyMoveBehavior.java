@@ -1,12 +1,16 @@
 package Behaviors;
 
 import Field.Field;
+import Virologist.Virologist;
 
 import java.util.ArrayList;
 
 public class CrazyMoveBehavior extends MovementBehavior {
     public CrazyMoveBehavior(){
 
+    }
+    public CrazyMoveBehavior(Virologist v){
+        super(v);
     }
 
     /**+
@@ -20,6 +24,6 @@ public class CrazyMoveBehavior extends MovementBehavior {
         System.out.println("! A vitustánc most egy másik mezőt sorsol, ahova a virológus lépni fog.");
         ArrayList<Field> neighbours = before.getNeighbours();
         int index = (int) Math.round(Math.random()* neighbours.size());
-        super.move(before, neighbours.get(index));
+        super.move(before, neighbours.get(index - 1));
     }
 }

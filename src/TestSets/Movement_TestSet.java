@@ -1,16 +1,19 @@
 package TestSets;
 
 import Field.Field;
+import Field.Laboratory;
+import Field.Shelter;
 import Behaviors.CrazyMoveBehavior;
 import Behaviors.MovementBehavior;
 import Behaviors.StunnedMoveBehavior;
+import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Movement_TestSet {
-
+    private Virologist virologist;
     // constructor
     public Movement_TestSet() {
         init_test();
@@ -23,16 +26,14 @@ public class Movement_TestSet {
 
     // initializing everything we need for this test
     private void init_test() {
+        PropertyHandler ph = new PropertyHandler(3, 10, 10, virologist);
 
-        Virologist virologist = new Virologist();
-        Field jelenlegi = new Field();
-
-        ArrayList<Field> neighbours = jelenlegi.getNeighbours();
-
-        Field cel = new Field();
+        Laboratory jelenlegi = new Laboratory();
+        Shelter cel = new Shelter();
+        Shelter crazy = new Shelter();
+        virologist = new Virologist(2, ph, jelenlegi);
         jelenlegi.addNeighbour(cel);
-        cel = neighbours.get(0);
-
+        jelenlegi.addNeighbour(crazy);
         MovementBehavior movementBehavior = new MovementBehavior(virologist);
 
         try {
@@ -51,13 +52,13 @@ public class Movement_TestSet {
                     break;
 
                 case "Crazy":
-                    CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
+                    CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior(virologist);
                     crazyMoveBehavior.move(jelenlegi, cel);
 
                     virologist.addMoveBehavior(crazyMoveBehavior);
-                    virologist.setCurrentField(cel);
+                    virologist.setCurrentField(crazy);
                     jelenlegi.RemoveVirologist(virologist);
-                    cel.addVirologist(virologist);
+                    crazy.addVirologist(virologist);
                     break;
 
                 case "Stunned":
