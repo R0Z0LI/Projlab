@@ -27,7 +27,7 @@ public class ThrowEquipment_TestSet {
         viro.destroyEquipment(equip);
 
         // Checking testing result
-        if (viro.getPropertyHandler().getEquipments() == null)
+        if (viro.getPropertyHandler().getEquipments().size() == 0)
             System.out.println("Testing has ended. No equipment in inventory. Nice.");
         else
             System.out.println("Testing has ended, but there is still an equipment in the inventory!");

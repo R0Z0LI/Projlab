@@ -66,7 +66,7 @@ public class StepAgent_TestSet {
         ph.addAgent(usedAgent);
         // PROBLEM: agent-et nem lehet megadni, mert steppable-t vár
         // SOLUTION: az egész steppable interfészt kidobjuk és agent-et használunk helyette
-        //game.AddSteppable(usedAgent);
+        // game.AddSteppable((Steppable) usedAgent);
 
         System.out.println("Init has ended.");
     }

@@ -38,13 +38,9 @@ public class Virologist {
         this.defenseBehaviors.add(defenseBehavior);
         this.movementBehaviors.add(movementBehavior);
         this.stealBehaviors.add(stealBehavior);
-
-
     }
-    
 
-    public Virologist( int actionCounter, PropertyHandler myProperties, Field currField){
-
+    public Virologist(int actionCounter, PropertyHandler myProperties, Field currField){
             this.currentField = currField;
             this.myProperties = myProperties;
             CollectBehavior collectBehavior = new CollectBehavior(this);
