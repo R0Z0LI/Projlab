@@ -21,6 +21,6 @@ public class CollectBehavior {
      */
     public void collect(Collectible c, PropertyHandler handler){
         System.out.println("-> CollectBehavior.collect(Collectible c, PropertyHandler handler)");
-        c.BeCollected(handler);
+        c.beCollected(handler);
     }
 }

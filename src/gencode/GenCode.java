@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**+
+ * Gentikai kódot reprezentáló osztály.
+ */
 public abstract class GenCode implements Collectible {
 
     private int amino_needed;
@@ -56,7 +59,12 @@ public abstract class GenCode implements Collectible {
         return uid;
     }
 
-    public abstract Agent RevealAgent();
+    /**+
+     * Létrehozza a belőle készíthető ágenst.
+     *
+     * @return Agent    a létrehozott ágens
+     */
+    public abstract Agent revealAgent();
 
 
 

@@ -95,9 +95,16 @@ public class PropertyHandler {
                 aminos.remove(i);
                 nucleos.remove(i);
             }
-            genCode.RevealAgent();
+            genCode.revealAgent();
         }
 
+    }
+
+    /**
+     * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
+     */
+    public void DeleteGenCode(GenCode gc){
+        System.out.println("DeleteGenCodes()\n! Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból\n\n");
     }
 
     /**
