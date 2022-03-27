@@ -11,6 +11,7 @@ public class DefAgentDefBehavior extends DefenseBehavior{
 
     public DefAgentDefBehavior() {
         super();
+        priority=4;
     }
     /**+
      * A védő ágens hatása, hogy a kenés nem sikerül.

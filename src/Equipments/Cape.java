@@ -20,9 +20,9 @@ public class Cape extends Equipment{
      */
     @Override
     public void addBehToStack(Virologist v) {
+        System.out.println("-> addBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a Cape-ből adódó viselkedést.\n\n");
         this.capeDefBehavior = new CapeDefBehavior(v);
         v.addDefenseBehavior(capeDefBehavior);
-        System.out.println("-> addBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a Cape-ből adódó viselkedést.\n\n");
 
     }
 

@@ -16,9 +16,8 @@ public class Sack extends Equipment{
      */
     @Override
     public void addBehToStack(Virologist v) {
-        v.getPropertyHandler().setMax_material(1);
         System.out.println("-> addBehToStack(Virologist v)\n! Megnöveli a megadott virológus által felvehető anyagmennyiséget.\n\n");
-
+        v.getPropertyHandler().setMax_material(1);
     }
 
     @Override
