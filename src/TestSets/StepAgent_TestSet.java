@@ -32,6 +32,8 @@ public class StepAgent_TestSet {
         for (int i = 0; i < time; i++) {
             game.StepSteabbles();
         }
+
+        // checking
         System.out.println("Testing has ended. Time left for the used Agent: " + usedAgent.getTime_left());
     }
 

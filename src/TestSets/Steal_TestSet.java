@@ -36,12 +36,10 @@ public class Steal_TestSet {
         for (int i = 0; i < amount; i++)
             stealingViro.steal(valuable, affectedViro);
 
-        /////// EZEN AZ AMOUNT CUCCON MÉG DOLGOZNI FOGOK - DANI (de a legtöbb érsze már működik)
+        /////// EZEN AZ AMOUNT CUCCON MÉG DOLGOZNI FOGOK - DANI (de a legtöbb része már működik)
         // checking if everything is OK
-        if (amount == 0) {
-            System.out.println("Testing has ended. Empty inventory. Nice.");
-        } else if (stealingViro.getPropertyHandler().getEquipments().size() != 0)
-            System.out.println("Testing has ended. Found equipment in inventory. Nice.");
+        if (stealingViro.getPropertyHandler().getEquipments().size() == 3)
+            System.out.println("Testing has ended. Stealing equipment was OK.");
         else if (stealingViro.getPropertyHandler().getAminos().size() == amount) {
             System.out.println("Testing has ended. Found aminos in inventory, and it's the asked amount. Very Nice.");
         } else if (stealingViro.getPropertyHandler().getNucleos().size() == amount) {
@@ -74,52 +72,52 @@ public class Steal_TestSet {
                 System.out.print("Mennyi aminosavat lopjon el? [0…10] ");
                 amount = sc.nextInt();
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                amount -= 10 - sc.nextInt();
+                stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
 
                 for (int i = 0; i < amount; i++) {
                     affectedViro.getPropertyHandler().addAmino((AminoAcid) valuable);
                 }
-
                 break;
+
             case "n":
                 valuable = new Nucleotid();
                 System.out.print("Mennyi nukleotidot lopjon el? [0…10] ");
                 amount = sc.nextInt();
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                amount -= 10 - sc.nextInt();
+                stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
 
                 for (int i = 0; i < amount; i++) {
                     affectedViro.getPropertyHandler().addNucleo((Nucleotid) valuable);
                 }
-
                 break;
+
             case "k":
                 valuable = new Gloves();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
-                if (sc.nextInt() == 0)
-                    amount = 0;
-
+                for (int i = 0; i < 3-sc.nextInt(); i++)
+                    stealingViro.getPropertyHandler().addEquipment(new Gloves());
+                System.out.println("HOLA");
                 affectedViro.getPropertyHandler().addEquipment((Gloves) valuable);
                 break;
 
             case "z":
                 valuable = new Sack();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
-                if (sc.nextInt() == 0)
-                    amount = 0;
-                else
-                affectedViro.getPropertyHandler().addEquipment((Sack) valuable);
+                for (int i = 0; i < 3-sc.nextInt(); i++)
+                    stealingViro.getPropertyHandler().addEquipment(new Sack());
 
+                affectedViro.getPropertyHandler().addEquipment((Sack) valuable);
                 break;
+
             case "v":
                 valuable = new Cape();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
-                if (sc.nextInt() == 0)
-                    amount = 0;
+                for (int i = 0; i < 3-sc.nextInt(); i++)
+                    stealingViro.getPropertyHandler().addEquipment(new Cape());
 
                 affectedViro.getPropertyHandler().addEquipment((Cape) valuable);
-
                 break;
+
             default:
                 System.err.println("You used a wrong type!");
         }

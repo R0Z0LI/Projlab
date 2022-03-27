@@ -4,7 +4,6 @@ import Collectible.Collectible;
 import Field.*;
 import Materials.*;
 import PropertyHandler.PropertyHandler;
-import Behaviors.CollectBehavior;
 import Equipments.*;
 import Gencode.*;
 import Virologist.Virologist;
@@ -22,16 +21,31 @@ public class Collect_TestSet {
     }
 
     public void test() {
+        System.out.println("Testing collecting ...");
+
         viro.collect(collectible);
+
+        // checking
+        if (viro.getPropertyHandler().getNucleos().size() != 0)
+            System.out.println("Testing has ended. Found equipment in inventory. Nice.");
+        else if (viro.getPropertyHandler().getAminos().size() != 0) {
+            System.out.println("Testing has ended. Found aminos in inventory, and it's the asked amount. Very Nice.");
+        } else if (viro.getPropertyHandler().getEquipments().size() != 0) {
+            System.out.println("Testing has ended. Found nucleos in inventory, and it's the asked amount. Very Nice.");
+        } else {
+            System.out.println("Testing has ended, but nothing was found!");
+        }
+
+        System.out.println("Testing has ended.");
     }
 
     private void init_test() {
 
+        System.out.println("Init collecting test ...");
+
         field = new Laboratory();
         PropertyHandler ph = new PropertyHandler();
         viro = new Virologist(2, ph, field);
-
-        CollectBehavior collectBehavior = new CollectBehavior(viro);
 
         Scanner sc = new Scanner(System.in);
 
@@ -86,6 +100,7 @@ public class Collect_TestSet {
                 break;
         }
 
+        System.out.println("Init has ended.");
 
     }
 }
