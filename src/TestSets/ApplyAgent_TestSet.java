@@ -84,7 +84,8 @@ public class ApplyAgent_TestSet {
 
             System.out.print("Hat védő ágens  a másik virológusra? [i/n] ");
             if (sc.next().equals("i")) {
-                affectedViro.getPropertyHandler().addAgent(new ProtectionAgent(30));
+                ProtectionAgent pa = new ProtectionAgent(30);
+                pa.addBehToStack(affectedViro);
                 //affectedViro.setDefenseBehaviors(new DefAgentDefBehavior(affectedViro));
             }
 
