@@ -51,6 +51,9 @@ public class Collect_TestSet {
 
         System.out.print("Mit vennél fel? [kesztyű, köpeny, zsák, Amino, Nucleo, Gencode] ");
         String CollectType = sc.next();
+        if(!(CollectType.equals("kesztyű") || CollectType.equals("zsák")  || CollectType.equals("köpeny") || CollectType.equals("Nucleo") || CollectType.equals("Amino") || CollectType.equals("Gencode"))){
+            CollectType = "kesztyű";
+        }
         switch (CollectType) {
 
             case "kesztyű":
