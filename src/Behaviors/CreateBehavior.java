@@ -20,6 +20,6 @@ public class CreateBehavior {
      */
     public void create(GenCode code){
         System.out.println("->CreateBehavior. create(GenCode code)");
-        virologist.getPropertyHandler().MakeAgent(code);
+        virologist.getPropertyHandler().makeAgent(code);
     }
 }

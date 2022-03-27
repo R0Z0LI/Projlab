@@ -24,7 +24,7 @@ public class StealBehavior {
     public void steal(Collectible c, Virologist affected, PropertyHandler ph){
         System.out.println("-> StealBehavior.steal(Collectible c, Virologist affected, PropertyHandler ph)");
         PropertyHandler ph2 = affected.getPropertyHandler();
-        if(ph2.getEquipments().contains(c)) {
+        if(ph2.getEquipments().contains(c) || ph2.getAminos().contains(c) || ph2.getNucleos().contains(c)) {
             c.beCollected(ph);
             c.beRemoved(ph2);
         }

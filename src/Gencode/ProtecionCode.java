@@ -32,7 +32,7 @@ public class ProtecionCode extends GenCode{
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
-        propertyHandler.AddGenCode(this);
+        propertyHandler.addGenCode(this);
         System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
     }
 
@@ -43,7 +43,7 @@ public class ProtecionCode extends GenCode{
      */
     @Override
     public void beRemoved(PropertyHandler propertyHandler) {
-        propertyHandler.DeleteGenCode(this);
+        propertyHandler.deleteGenCode(this);
         System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltávolíttatja magát a virológus PropertyHandleréből.\n\n");
     }
 }

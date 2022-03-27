@@ -24,11 +24,11 @@ public class Gloves extends Equipment{
 
     @Override
     public void beCollected(PropertyHandler ph) {
-        ph.AddEquipment(this);
+        ph.addEquipment(this);
     }
 
     @Override
     public void beRemoved(PropertyHandler ph) {
-        ph.RemoveEquipment(this);
+        ph.removeEquipment(this);
     }
 }

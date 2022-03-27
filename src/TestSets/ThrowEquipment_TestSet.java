@@ -62,7 +62,7 @@ public class ThrowEquipment_TestSet {
         }
 
         // adding chosen equipment to virologist
-        viro.getPropertyHandler().AddEquipment(equip);
+        viro.getPropertyHandler().addEquipment(equip);
 
         System.out.println("Init has ended.");
     }

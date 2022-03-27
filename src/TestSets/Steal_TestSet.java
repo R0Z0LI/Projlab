@@ -30,16 +30,33 @@ public class Steal_TestSet {
      *  Lefutattja a tesztet, és megnézi az eredményt.
      */
     public void test() {
+
+        System.out.println("Testing stealing ...");
+
         for (int i = 0; i < amount; i++)
             stealingViro.steal(valuable, affectedViro);
-        if (stealingViro.getPropertyHandler().getEquipments() != null)
-            System.out.println("Test");
+
+        /////// EZEN AZ AMOUNT CUCCON MÉG DOLGOZNI FOGOK - DANI (de a legtöbb érsze már működik)
+        // checking if everything is OK
+        if (amount == 0) {
+            System.out.println("Testing has ended. Empty inventory. Nice.");
+        } else if (stealingViro.getPropertyHandler().getEquipments().size() != 0)
+            System.out.println("Testing has ended. Found equipment in inventory. Nice.");
+        else if (stealingViro.getPropertyHandler().getAminos().size() == amount) {
+            System.out.println("Testing has ended. Found aminos in inventory, and it's the asked amount. Very Nice.");
+        } else if (stealingViro.getPropertyHandler().getNucleos().size() == amount) {
+            System.out.println("Testing has ended. Found nucleos in inventory, and it's the asked amount. Very Nice.");
+        } else {
+            System.out.println("Testing has ended, but nothing was found!");
+        }
     }
 
     /**
      * Inicializál mindent szükséges objektumot és tagváltozót, ami kell a teszteléshez.
      */
     private void init_test() {
+
+        System.out.println("Init stealing test ...");
 
         PropertyHandler ph1 = new PropertyHandler(3, 10, 10, stealingViro);
         stealingViro = new Virologist(2, ph1, null);
@@ -50,62 +67,64 @@ public class Steal_TestSet {
         affectedViro.setStealBehaviors(new StealBehavior(affectedViro));
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Mit szeretnél lopni? [amino, nukleo, kesztyu, zsak, vedokopeny]");
+        System.out.println("Mit szeretnél lopni? [a, n, k, z, v]");
         switch (sc.next()) {
-            case "amino":
+            case "a":
+                valuable = new AminoAcid();
                 System.out.print("Mennyi aminosavat lopjon el? [0…10] ");
                 amount = sc.nextInt();
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                amount -= sc.nextInt();
+                amount -= 10 - sc.nextInt();
 
                 for (int i = 0; i < amount; i++) {
-                    affectedViro.getPropertyHandler().AddAmino(new AminoAcid());
+                    affectedViro.getPropertyHandler().addAmino((AminoAcid) valuable);
                 }
 
                 break;
-            case "nukleo":
+            case "n":
+                valuable = new Nucleotid();
                 System.out.print("Mennyi nukleotidot lopjon el? [0…10] ");
                 amount = sc.nextInt();
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                amount -= sc.nextInt();
+                amount -= 10 - sc.nextInt();
 
                 for (int i = 0; i < amount; i++) {
-                    affectedViro.getPropertyHandler().AddNucleo(new Nucleotid());
+                    affectedViro.getPropertyHandler().addNucleo((Nucleotid) valuable);
                 }
 
                 break;
-            case "kesztyu":
+            case "k":
                 valuable = new Gloves();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
                 if (sc.nextInt() == 0)
                     amount = 0;
 
-                affectedViro.getPropertyHandler().AddEquipment(new Gloves());
-
+                affectedViro.getPropertyHandler().addEquipment((Gloves) valuable);
                 break;
-            case "zsak":
+
+            case "z":
                 valuable = new Sack();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
                 if (sc.nextInt() == 0)
                     amount = 0;
-
-                affectedViro.getPropertyHandler().AddEquipment(new Sack());
+                else
+                affectedViro.getPropertyHandler().addEquipment((Sack) valuable);
 
                 break;
-            case "vedokopeny":
+            case "v":
                 valuable = new Cape();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
                 if (sc.nextInt() == 0)
                     amount = 0;
 
-                affectedViro.getPropertyHandler().AddEquipment(new Cape());
+                affectedViro.getPropertyHandler().addEquipment((Cape) valuable);
 
                 break;
             default:
                 System.err.println("You used a wrong type!");
         }
 
-
+        System.out.println("Init has ended.");
 
     }
 }

@@ -92,7 +92,7 @@ public class Virologist {
          * @param collectibel A tárgy amit el akar lopni
          * @param affected    A virológus akitől el akarja lopni
          */
-        public void steal (Collectible collectibel, Virologist affected){
+        public void steal (Collectible collectibel, Virologist affected) {
             System.out.print("-> Steal(Collectible collectibel, Virologist affected)\n! A StealBeh első elemétől függően meghívja a StealBehavior objekt leszármazottjának\n" +
                     " Steal metódusát, ezzel elindítva a lopás folyamatát\n\n");
             stealBehaviors.firstElement().steal(collectibel, affected, myProperties);

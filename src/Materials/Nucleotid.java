@@ -13,6 +13,7 @@ public class Nucleotid implements Collectible{
      */
     public void beCollected(PropertyHandler propertyHandler){
         System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
+        propertyHandler.addNucleo(this);
     }
 
     /**
@@ -21,5 +22,6 @@ public class Nucleotid implements Collectible{
      */
     public void beRemoved(PropertyHandler propertyHandler){
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitörölteti magát a paraméterként megadott propertyHandler-ből\n\n");
+        propertyHandler.removeNucleo(this);
     }
 }

@@ -63,7 +63,7 @@ public class StepAgent_TestSet {
                 usedAgent = new CrazyDanceAgent(time);
         }
 
-        ph.AddAgent(usedAgent);
+        ph.addAgent(usedAgent);
         // PROBLEM: agent-et nem lehet megadni, mert steppable-t vár
         // SOLUTION: az egész steppable interfészt kidobjuk és agent-et használunk helyette
         //game.AddSteppable(usedAgent);
