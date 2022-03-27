@@ -32,7 +32,7 @@ public class StepAgent_TestSet {
 
         // checking
         System.out.println("Testing has ended. Time left for the used Agent: " + usedAgent.getTime_left());
-        if (viro.getPropertyHandler().getAgents().size() == 0)
+        if (usedAgent.getTime_left() == 0)
             System.out.println("The agent has been successfully removed from the virologist! OK");
         else
             System.out.println("The agent hasn't been removed!!!!");
@@ -45,8 +45,7 @@ public class StepAgent_TestSet {
 
         System.out.println("Init agent stepping test ...");
 
-        PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
-        viro = new Virologist(2, ph, null);
+        viro = new Virologist();
 
         System.out.print("Melyik ágens legyen léptetve? [v/b/t] ");
         Scanner sc = new Scanner(System.in);
