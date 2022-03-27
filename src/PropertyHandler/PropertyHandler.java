@@ -104,7 +104,7 @@ public class PropertyHandler {
      * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
      */
     public void DeleteGenCodes(){
-        System.out.println("DeleteGenCodes()\n! Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból\n\n");
+        System.out.println("-> DeleteGenCodes()\n! Eltávolítja az összes genetikai kódot a saját genetikai kód tárolóból\n\n");
     }
 
     /**

@@ -40,7 +40,7 @@ public class ApplyAgent_TestSet {
         Scanner sc = new Scanner(System.in);
 
         // setting up the applied agent
-        System.out.print("Melyik ágenst használja? [v/f/b/t] ");
+        System.out.print("Melyik ágenst használja? védő/felejtő/bénító/vitustánc [v/f/b/t] ");
         String agentType = sc.next();
         switch (agentType) {
             case "v":
@@ -76,7 +76,7 @@ public class ApplyAgent_TestSet {
                 affectedViro.setDefenseBehaviors(new GloveDefBehavior(affectedViro));
 
                 System.out.print("Van kesztyűje a támadó virológusnak? [i/n] ");
-                if (sc.next() == "i") {
+                if (sc.next().equals("i")) {
                     applyingViro.getPropertyHandler().AddEquipment(new Gloves());
                     applyingViro.setDefenseBehaviors(new GloveDefBehavior(applyingViro));
                 }

@@ -32,7 +32,7 @@ public class DefenseBehavior {
      */
     public void defend(Agent agent, Virologist attacker){
         System.out.println("->DefenseBehavior.defend(Agent agent, Virologist attacker)");
-        System.out.println("! A kenés sikeres.");
+        System.out.println("! A kenés sikeres.\n");
         agent.AddBehToStack(virologist);
     }
 }
