@@ -8,6 +8,8 @@ import Behaviors.*;
 import Equipments.Equipment;
 import Gencode.GenCode;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Stack;
 //hali
 /**
@@ -172,7 +174,8 @@ public class Virologist {
         public void addDefenseBehavior(DefenseBehavior defenseBehavior){
             System.out.println("-> addDefenseBehavior(DefenseBehavior defenseBehavior)\n! defenseBehavior beállítva.\n");
             this.defenseBehaviors.add(defenseBehavior);
-            defenseBehaviors.sort((d1, d2)->{return d2.getPriority() - d1.getPriority();});
+            defenseBehaviors.sort(Comparator.comparingInt(DefenseBehavior::getPriority));
+            Collections.reverse(defenseBehaviors);
             System.out.println("! A védő stratégiák prioritás szerint sorba lettek rendezve. Az első lesz alkalmazva.\n\n");
         }
 
