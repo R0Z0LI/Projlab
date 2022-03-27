@@ -294,5 +294,8 @@ public class Virologist {
             this.defenseBehaviors.remove(defenseBehavior);
         }
 
+        public Stack<ApplyBehavior> getApplyBehaviors() {
+            return applyBehaviors;
+        }
 }
 
