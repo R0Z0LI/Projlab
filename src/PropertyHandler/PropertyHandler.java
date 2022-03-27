@@ -58,6 +58,7 @@ public class PropertyHandler {
      */
     public void AddAmino(AminoAcid aminoAcid){
         System.out.println("-> AddAmino(AminoAcid aminoAcid) \n! Hozzáadja a paraméterként kapott aminósavat a saját aminósavjaihoz\n\n");
+        aminos.add(aminoAcid);
     }
 
     /**
@@ -66,6 +67,7 @@ public class PropertyHandler {
      */
     public void AddNucleo(Nucleotid nucleotid){
         System.out.println("-> AddNucleo(Nucleotid nucleotid)\n! Hozzáadja a paraméterként kapott nukleotidot a saját nukleotidjaihoz\n\n");
+        nucleos.add(nucleotid);
     }
 
     /**
@@ -89,15 +91,19 @@ public class PropertyHandler {
      * @param genCode               Ez a genetikai kód alapján hozza létre az ágenst
      */
     public void MakeAgent(GenCode genCode){
-        System.out.println("-> MakeAgent(GenCode genCode)\n ! Elkészít egy ágenst, megnézi van e elég aminósav és nukleotid, majd kivonja a tárolóiból ha van, és létrehozza az ágenst\n\n");
-        if(aminos.size() == genCode.getAmino_needed() && nucleos.size() == genCode.getNucleo_needed()){
-            for(int i = 0; i < genCode.getNucleo_needed(); i++){
-                aminos.remove(i);
-                nucleos.remove(i);
-            }
+        System.out.println("-> MakeAgent(GenCode genCode)\n ! Megpróbálja elkészíteni az ágenst.");
+        int a=genCode.getAmino_needed();
+        int n=genCode.getNucleo_needed();
+        if(aminos.size() >= a && nucleos.size() >= n){
+            System.out.println("Van elég anyag az elkészítéshez.\n");
+            for(int i = 0; i < n; i++)
+                nucleos.remove(0);
+            for(int i = 0; i < a; i++)
+                aminos.remove(0);
             genCode.revealAgent();
         }
-
+        else
+            System.out.println("Nincs elég anyag az elkészítéshez.\n");
     }
 
     /**

@@ -31,8 +31,12 @@ public abstract class GenCode implements Collectible {
         uid = UUID.randomUUID().toString();
     }
 
-    public GenCode() {
-
+    public GenCode(int aminoneeded, int nucleoneeded) {
+        amino_needed=aminoneeded;
+        nucleo_needed=nucleoneeded;
+    }
+    public void setField(Field lab){
+        currPosition=lab;
     }
 
     public int getAmino_needed(){

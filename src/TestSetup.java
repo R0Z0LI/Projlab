@@ -29,6 +29,8 @@ public class TestSetup {
                     test2.test();
                     break;
                 case "3":
+                    CreateAgent_TestSet test3 =new CreateAgent_TestSet();
+                    test3.test();
                     break;
                 case "4":
                     ApplyAgent_TestSet test6 = new ApplyAgent_TestSet();

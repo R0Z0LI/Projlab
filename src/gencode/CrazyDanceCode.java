@@ -17,6 +17,9 @@ public class CrazyDanceCode extends GenCode{
     public CrazyDanceCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
     }
+    public CrazyDanceCode(){
+        super(2,3);
+    }
 
     /**+
      * Létrehozza a belőle készíthető CrazyDanceAgent ágenst.
@@ -25,6 +28,8 @@ public class CrazyDanceCode extends GenCode{
      */
     @Override
     public Agent revealAgent() {
+        System.out.println("-> CrazyDanceCode.revealAgent()");
+        System.out.println("! Elkészült egy vitustánc ágens\n");
         CrazyDanceAgent cda=new CrazyDanceAgent(30);
         return cda;
     }

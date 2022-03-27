@@ -16,7 +16,7 @@ public class ProtecionCode extends GenCode{
     }
 
     public ProtecionCode() {
-        super();
+        super(1,3);
     }
 
     /**+
@@ -26,6 +26,8 @@ public class ProtecionCode extends GenCode{
      */
     @Override
     public Agent revealAgent() {
+        System.out.println("-> ProtectionCode.revealAgent()");
+        System.out.println("! Elkészült egy védő ágens\n");
         ProtectionAgent pa=new ProtectionAgent(30);
         return pa;
     }

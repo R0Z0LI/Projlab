@@ -13,6 +13,9 @@ public class AmnesiaCode extends GenCode{
     public AmnesiaCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
     }
+    public AmnesiaCode(){
+        super(2,2);
+    }
 
     /**+
      * Létrehozza a belőle készíthető AmnesiaAgent ágenst.
@@ -21,6 +24,8 @@ public class AmnesiaCode extends GenCode{
      */
     @Override
     public Agent revealAgent() {
+        System.out.println("-> AmnesiaCode.revealAgent()");
+        System.out.println("! Elkészült egy felejtő ágens\n");
         AmnesiaAgent ae=new AmnesiaAgent(30);
         return ae;
     }

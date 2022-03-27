@@ -13,6 +13,9 @@ public class ParalyseCode extends GenCode{
     public ParalyseCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
     }
+    public ParalyseCode(){
+        super(4,0);
+    }
 
     /**+
      * Létrehozza a belőle készíthető ParalyseAgent ágenst.
@@ -21,6 +24,8 @@ public class ParalyseCode extends GenCode{
      */
     @Override
     public Agent revealAgent() {
+        System.out.println("-> ParalyseCode.revealAgent()");
+        System.out.println("! Elkészült egy bénító ágens\n");
         ParalyseAgent pa=new ParalyseAgent(30);
         return pa;
     }
