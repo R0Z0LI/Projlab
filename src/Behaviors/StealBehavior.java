@@ -25,8 +25,8 @@ public class StealBehavior {
         System.out.println("-> StealBehavior.steal(Collectible c, Virologist affected, PropertyHandler ph)");
         PropertyHandler ph2 = affected.getPropertyHandler();
         if(ph2.getEquipments().contains(c)) {
-            c.BeCollected(ph);
-            c.BeRemoved(ph2);
+            c.beCollected(ph);
+            c.beRemoved(ph2);
         }
     }
 }

@@ -12,7 +12,7 @@ public class AminoAcid implements Collectible {
      * @param propertyHandler           Ehhez adja hozzá magát
      */
     @Override
-    public void BeCollected(PropertyHandler propertyHandler){
+    public void beCollected(PropertyHandler propertyHandler){
         System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
     }
 
@@ -21,7 +21,7 @@ public class AminoAcid implements Collectible {
      * @param propertyHandler           Ebből törlődik ki
      */
     @Override
-    public void BeRemoved(PropertyHandler propertyHandler){
+    public void beRemoved(PropertyHandler propertyHandler){
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitörölteti magát a paraméterként megadott propertyHandler-ből\n\n");
     }
 }

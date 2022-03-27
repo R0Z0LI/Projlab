@@ -18,7 +18,7 @@ public abstract class Equipment implements Collectible {
 
     public abstract void RemoveBehFromStack();
 
-    public abstract void BeCollected(PropertyHandler ph);
+    public abstract void beCollected(PropertyHandler ph);
 
-    public abstract void BeRemoved(PropertyHandler ph);
+    public abstract void beRemoved(PropertyHandler ph);
 }

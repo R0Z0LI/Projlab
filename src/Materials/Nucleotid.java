@@ -11,7 +11,7 @@ public class Nucleotid implements Collectible{
      * Összegyűjteti magát a paraméterként megadott propertyHandler-rel
      * @param propertyHandler           Ehhez adja hozzá magát
      */
-    public void BeCollected(PropertyHandler propertyHandler){
+    public void beCollected(PropertyHandler propertyHandler){
         System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
     }
 
@@ -19,7 +19,7 @@ public class Nucleotid implements Collectible{
      * Kitörölteti magát a paraméterként megadott propertyHandler-ből
      * @param propertyHandler           Ebből törlődik ki
      */
-    public void BeRemoved(PropertyHandler propertyHandler){
+    public void beRemoved(PropertyHandler propertyHandler){
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitörölteti magát a paraméterként megadott propertyHandler-ből\n\n");
     }
 }
