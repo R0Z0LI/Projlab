@@ -312,11 +312,11 @@ public class Virologist {
 
         /**
          * Elveszi a stack-ből a paraméterként adott behavior-t
-         * @param defAgentDef           Ezt a behavior-t veszi el
+         * @param defenseBehavior           Ezt a behavior-t veszi el
          *
          */
-        public void removeDefenseBeh (DefAgentDefBehavior defAgentDef){
-            this.defenseBehaviors.remove(defAgentDef);
+        public void removeDefenseBeh (DefenseBehavior defenseBehavior){
+            this.defenseBehaviors.remove(defenseBehavior);
         }
 
         /**
