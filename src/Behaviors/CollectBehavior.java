@@ -13,6 +13,9 @@ public class CollectBehavior {
     public CollectBehavior(){
 
     }
+    public void setVirologist(Virologist v){
+        virologist=v;
+    }
 
     /**+
      * Kezdeményezi egy tárgy begyűjtését.

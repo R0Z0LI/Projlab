@@ -4,7 +4,7 @@ import Agent.Agent;
 import Virologist.Virologist;
 
 public class DefenseBehavior {
-    private Virologist virologist;
+    protected Virologist virologist;
     protected int priority=1;
 
     public DefenseBehavior(Virologist v){
@@ -23,6 +23,9 @@ public class DefenseBehavior {
     public int getPriority(){
         System.out.println("<- priority");
         return priority;
+    }
+    public void setVirologist(Virologist v){
+        virologist=v;
     }
 
     /**

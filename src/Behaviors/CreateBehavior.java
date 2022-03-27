@@ -13,6 +13,9 @@ public class CreateBehavior {
     public CreateBehavior() {
 
     }
+    public void setVirologist(Virologist v){
+        virologist=v;
+    }
 
     /**+
      * Kezdeményezi egy ágens előállítását genetikai kódból.

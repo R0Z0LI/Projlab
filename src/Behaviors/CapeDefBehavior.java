@@ -19,7 +19,9 @@ public class CapeDefBehavior extends DefenseBehavior{
             double chance= Math.random()*100;
             if(chance>82.3) {
                 System.out.println("! A köpeny védése nem jött össze.");
-                super.defend(agent, attacker);
+                priority--;
+                virologist.resortDefenseBehaviors();
+                virologist.beInfected(agent, attacker);
             }
             else {
                 System.out.println("! A köpeny most megvédett.");

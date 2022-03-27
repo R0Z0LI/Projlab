@@ -25,6 +25,7 @@ public class ProtectionAgent extends Agent{
      */
     @Override
     public void RemoveBehFromStack(Virologist v) {
+        defAgentDef.setVirologist(v);
         v.removeDefenseBeh(defAgentDef);
         System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitörli a megadott virológus verméből a defAgentDef viselkedést.\n\n");
 
@@ -36,8 +37,8 @@ public class ProtectionAgent extends Agent{
      */
     @Override
     public void AddBehToStack(Virologist v) {
-        v.addDefenseBeh(defAgentDef);
-        System.out.println("-> RemoveBehFromStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a defAgentDef viselkedést.\n\n");
+        v.addDefenseBehavior(defAgentDef);
+        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a defAgentDef viselkedést.\n\n");
     }
 
     @Override

@@ -34,7 +34,8 @@ public class CrazyDanceAgent extends Agent {
      */
     @Override
     public void AddBehToStack(Virologist v) {
-        v.addCrazyMoveBeh(crazyMove);
+        crazyMove.setVirologist(v);
+        v.addMoveBehavior(crazyMove);
         System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a crazyMove viselkedést.\n\n");
     }
 

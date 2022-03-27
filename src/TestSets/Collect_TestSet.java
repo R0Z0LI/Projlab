@@ -35,7 +35,7 @@ public class Collect_TestSet {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Mit vennél fel? [kesztyű, köpeny, zsák, Amino, Nucleo] ");
+        System.out.print("Mit vennél fel? [kesztyű, köpeny, zsák, Amino, Nucleo, Gencode] ");
         String CollectType = sc.next();
         switch (CollectType) {
 
@@ -43,42 +43,42 @@ public class Collect_TestSet {
                 collectible = new Gloves();
                 field = new Shelter();
                 ((Shelter) field).AddEquipment((Equipment) collectible);
-                viro.setCurrField(field);
+                viro.setCurrentField(field);
                 break;
 
             case "köpeny":
                 collectible = new Cape();
                 field = new Shelter();
                 ((Shelter) field).AddEquipment((Equipment) collectible);
-                viro.setCurrField(field);
+                viro.setCurrentField(field);
                 break;
 
             case "zsák":
                 collectible = new Sack();
                 field = new Shelter();
                 ((Shelter) field).AddEquipment((Equipment) collectible);
-                viro.setCurrField(field);
+                viro.setCurrentField(field);
                 break;
 
             case "Amino":
                 collectible = new AminoAcid();
                 field = new Warehouse();
                 ((Warehouse) field).AddAmino((AminoAcid) collectible);
-                viro.setCurrField(field);
+                viro.setCurrentField(field);
                 break;
 
             case "Nucleo":
                 field = new Warehouse();
                 collectible = new Nucleotid();
                 ((Warehouse) field).AddNucleo((Nucleotid) collectible);
-                viro.setCurrField(field);
+                viro.setCurrentField(field);
                 break;
 
             case "Gencode":
                 field = new Laboratory();
                 collectible = new AmnesiaCode(4,5, field);
                 ((Laboratory) field).AddGenCode((GenCode) collectible);
-                viro.setCurrField(field);
+                viro.setCurrentField(field);
                 break;
 
             default:

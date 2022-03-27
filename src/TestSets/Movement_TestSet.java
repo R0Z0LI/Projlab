@@ -45,7 +45,7 @@ public class Movement_TestSet {
 
                     movementBehavior.move(jelenlegi, cel);
 
-                    virologist.setCurrField(cel);
+                    virologist.setCurrentField(cel);
                     jelenlegi.RemoveVirologist(virologist);
                     cel.addVirologist(virologist);
                     break;
@@ -54,15 +54,15 @@ public class Movement_TestSet {
                     CrazyMoveBehavior crazyMoveBehavior= new CrazyMoveBehavior();
                     crazyMoveBehavior.move(jelenlegi, cel);
 
-                    virologist.addCrazyMoveBeh(crazyMoveBehavior);
-                    virologist.setCurrField(cel);
+                    virologist.addMoveBehavior(crazyMoveBehavior);
+                    virologist.setCurrentField(cel);
                     jelenlegi.RemoveVirologist(virologist);
                     cel.addVirologist(virologist);
                     break;
 
                 case "Stunned":
                     StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
-                    virologist.addMoveBeh(stunnedMoveBehavior);
+                    virologist.addMoveBehavior(stunnedMoveBehavior);
                     stunnedMoveBehavior.move(jelenlegi, cel);
                     break;
 

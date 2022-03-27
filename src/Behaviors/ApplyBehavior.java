@@ -12,6 +12,9 @@ public class ApplyBehavior {
     public ApplyBehavior(){
 
     }
+    public void setVirologist(Virologist v){
+        virologist=v;
+    }
 
     /**+
      * Végrehajtja egy ágens kenését. (Nem feltétlenül lesz sikeres, hiszen
@@ -22,7 +25,7 @@ public class ApplyBehavior {
     public void apply(Agent agent, Virologist affected){
         System.out.println("->ApplyBehavior.apply(Agent, affected)");
         if(affected==virologist) {
-            System.out.println("! A virológus rákeni magára az ágenst.");
+            System.out.println("! A virológus rákeni magára az ágenst.\n");
             agent.AddBehToStack(virologist);
         }
         else {
