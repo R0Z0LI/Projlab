@@ -19,20 +19,36 @@ public class ProtecionCode extends GenCode{
         super();
     }
 
+    /**+
+     * Létrehozza a belőle készíthető ProtectionAgent ágenst.
+     *
+     * @return Agent    a létrehozott ProtectionAgent
+     */
     @Override
-    public Agent RevealAgent() {
+    public Agent revealAgent() {
         ProtectionAgent pa=new ProtectionAgent(30);
         return pa;
     }
 
-
+    /**+
+     * Begyűjteti magát a virológus PropertyHandlerével.
+     *
+     * @param propertyHandler   amihez hozzá kell adni a felvett ProtecionCode-t
+     */
     @Override
-    public void BeCollected(PropertyHandler propertyHandler) {
-
+    public void beCollected(PropertyHandler propertyHandler) {
+        propertyHandler.AddGenCode(this);
+        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
     }
 
+    /**+
+     * Eltávolíttatja magát a virológus PropertyHandleréből.
+     *
+     * @param propertyHandler   amiből ki kell törölni a törlendő ProtecionCode-t
+     */
     @Override
-    public void BeRemoved(PropertyHandler propertyHandler) {
-
+    public void beRemoved(PropertyHandler propertyHandler) {
+        propertyHandler.DeleteGenCode(this);
+        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltávolíttatja magát a virológus PropertyHandleréből.\n\n");
     }
 }
