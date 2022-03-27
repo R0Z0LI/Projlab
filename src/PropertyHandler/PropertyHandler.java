@@ -75,6 +75,7 @@ public class PropertyHandler {
         System.out.println("-> AddEquipment(Equipment equipment)\n ! Hozzáadja a paraméterként kapott felszerelést a saját felszerelést\n\n");
         if (max_equipment > equipments.size()) {
             equipments.add(equipment);
+            equipment.addBehToStack(viro);
         }
     }
 
@@ -96,12 +97,14 @@ public class PropertyHandler {
         int a=genCode.getAmino_needed();
         int n=genCode.getNucleo_needed();
         if(aminos.size() >= a && nucleos.size() >= n){
-            System.out.println("Van elég anyag az elkészítéshez.\n");
+            System.out.println("! Van elég anyag az elkészítéshez.\n");
             for(int i = 0; i < n; i++)
                 nucleos.remove(0);
             for(int i = 0; i < a; i++)
                 aminos.remove(0);
             genCode.revealAgent();
+        } else {
+            System.out.println("! Nince elég nyersanyag az elkészítéshez.\n");
         }
 
     }

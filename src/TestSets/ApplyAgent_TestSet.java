@@ -74,13 +74,11 @@ public class ApplyAgent_TestSet {
             if (sc.next().equals("i")) {
                 affectedViro.getPropertyHandler().addEquipment(new Gloves());
                 //affectedViro.setDefenseBehaviors(new GloveDefBehavior(affectedViro));
-                affectedViro.addDefenseBehavior(new GloveDefBehavior(affectedViro));
 
                 System.out.print("Van kesztyűje a támadó virológusnak? [i/n] ");
                 if (sc.next().equals("i")) {
                     applyingViro.getPropertyHandler().addEquipment(new Gloves());
                     //applyingViro.setDefenseBehaviors(new GloveDefBehavior(applyingViro));
-                    applyingViro.addDefenseBehavior(new GloveDefBehavior(applyingViro));
                 }
             }
 
@@ -88,14 +86,12 @@ public class ApplyAgent_TestSet {
             if (sc.next().equals("i")) {
                 affectedViro.getPropertyHandler().addAgent(new ProtectionAgent(30));
                 //affectedViro.setDefenseBehaviors(new DefAgentDefBehavior(affectedViro));
-                affectedViro.addDefenseBehavior(new DefAgentDefBehavior(affectedViro));
             }
 
             System.out.print("Van védőköpenye  a másik virológusnak? [i/n] ");
             if (sc.next().equals("i")) {
                 affectedViro.getPropertyHandler().addEquipment(new Cape());
                 //affectedViro.setDefenseBehaviors(new CapeDefBehavior(affectedViro));
-                affectedViro.addDefenseBehavior(new CapeDefBehavior(affectedViro));
             }
 
         } else {

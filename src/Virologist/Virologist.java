@@ -25,6 +25,7 @@ public class Virologist {
     private Stack<DefenseBehavior> defenseBehaviors = new Stack<>();
 
     public Virologist() {
+        this.actionCounter = 2;
         this.myProperties = new PropertyHandler(this);
         CollectBehavior collectBehavior = new CollectBehavior(this);
         ApplyBehavior applyBehavior = new ApplyBehavior(this);
