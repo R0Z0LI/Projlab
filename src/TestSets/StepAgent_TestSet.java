@@ -31,7 +31,7 @@ public class StepAgent_TestSet {
 
         // checking
         System.out.println("Testing has ended. Time left for the used Agent: " + usedAgent.getTime_left());
-        if (viro.getPropertyHandler().getAgents().size() == 0)
+        if (usedAgent.getTime_left() == 0)
             System.out.println("The agent has been successfully removed from the virologist! OK");
         else
             System.out.println("The agent hasn't been removed!!!!");

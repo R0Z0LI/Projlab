@@ -33,8 +33,8 @@ public class AmnesiaCode extends GenCode{
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
-        propertyHandler.addGenCode(this);
         System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
+        propertyHandler.addGenCode(this);
     }
 
     /**+

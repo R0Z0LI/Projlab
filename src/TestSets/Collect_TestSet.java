@@ -44,13 +44,15 @@ public class Collect_TestSet {
         System.out.println("Init collecting test ...");
 
         field = new Laboratory();
-        PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
-        viro = new Virologist(2, ph, field);
+        viro = new Virologist();
 
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Mit vennél fel? [kesztyű, köpeny, zsák, Amino, Nucleo, Gencode] ");
         String CollectType = sc.next();
+        if(!(CollectType.equals("kesztyű") || CollectType.equals("zsák")  || CollectType.equals("köpeny") || CollectType.equals("Nucleo") || CollectType.equals("Amino") || CollectType.equals("Gencode"))){
+            CollectType = "kesztyű";
+        }
         switch (CollectType) {
 
             case "kesztyű":

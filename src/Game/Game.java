@@ -19,6 +19,6 @@ public class Game {
             s.Step();
     }
     public void EndGame(){
-        System.out.println("A játék véget ért.");
+        System.out.println("! A játék véget ért.");
     }
 }

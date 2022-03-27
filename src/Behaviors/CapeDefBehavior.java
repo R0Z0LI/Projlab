@@ -24,7 +24,7 @@ public class CapeDefBehavior extends DefenseBehavior{
                 virologist.beInfected(agent, attacker);
             }
             else {
-                System.out.println("! A köpeny most megvédett.");
+                System.out.println("! A köpeny most megvédett.\n");
                 return;
             }
         }

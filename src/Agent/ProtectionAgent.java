@@ -33,9 +33,10 @@ public class ProtectionAgent extends Agent{
      */
     @Override
     public void addBehToStack(Virologist v) {
+        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a defAgentDef viselkedést.\n\n");
         defAgentDef.setVirologist(v);
         v.addDefenseBehavior(defAgentDef);
-        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a defAgentDef viselkedést.\n\n");
+
     }
 
     @Override

@@ -9,6 +9,7 @@ import Virologist.Virologist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * A virológus felszerelését, nyersanyagait, genetikai kódjait, és ágenseit tároló osztály
@@ -45,6 +46,11 @@ public class PropertyHandler {
      */
     public void addGenCode(GenCode genCode){
         System.out.println("-> AddGenCode(GenCode genCode) \n! Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz \n\n");
+        gencodes.add(genCode);
+        System.out.println("Ezzel összegyűlt az összes genetikai kód? [i/n]");
+        Scanner sc = new Scanner(System.in);
+        if(sc.next().equals("i"))
+            System.out.println("! Játék vége.\n\n");
     }
 
     /**
@@ -75,6 +81,7 @@ public class PropertyHandler {
         System.out.println("-> AddEquipment(Equipment equipment)\n ! Hozzáadja a paraméterként kapott felszerelést a saját felszerelést\n\n");
         if (max_equipment > equipments.size()) {
             equipments.add(equipment);
+            equipment.addBehToStack(viro);
         }
     }
 
@@ -96,12 +103,14 @@ public class PropertyHandler {
         int a=genCode.getAmino_needed();
         int n=genCode.getNucleo_needed();
         if(aminos.size() >= a && nucleos.size() >= n){
-            System.out.println("Van elég anyag az elkészítéshez.\n");
+            System.out.println("! Van elég anyag az elkészítéshez.\n");
             for(int i = 0; i < n; i++)
                 nucleos.remove(0);
             for(int i = 0; i < a; i++)
                 aminos.remove(0);
             genCode.revealAgent();
+        } else {
+            System.out.println("! Nince elég nyersanyag az elkészítéshez.\n");
         }
 
     }

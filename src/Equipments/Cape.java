@@ -1,12 +1,13 @@
 package Equipments;
 
+import Behaviors.CapeDefBehavior;
 import PropertyHandler.PropertyHandler;
 import Behaviors.GloveDefBehavior;
 import Virologist.Virologist;
 
 public class Cape extends Equipment{
 
-    private GloveDefBehavior gloveDef;
+    private CapeDefBehavior capeDefBehavior;
 
     public Cape() {
         super();
@@ -19,9 +20,9 @@ public class Cape extends Equipment{
      */
     @Override
     public void addBehToStack(Virologist v) {
-        this.gloveDef=new GloveDefBehavior(v);
-        v.addDefenseBehavior(gloveDef);
         System.out.println("-> addBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a Cape-ből adódó viselkedést.\n\n");
+        this.capeDefBehavior = new CapeDefBehavior(v);
+        v.addDefenseBehavior(capeDefBehavior);
 
     }
 
@@ -32,7 +33,7 @@ public class Cape extends Equipment{
      */
     @Override
     public void removeBehFromStack(Virologist v) {
-        v.removeDefenseBeh(gloveDef);
+        v.removeDefenseBeh(capeDefBehavior);
         System.out.println("-> removeBehFromStack(Virologist v)\n! Törli a megadott virológus verméből a Cape-ből adódó viselkedést.\n\n");
     }
 
