@@ -34,11 +34,16 @@ public class ParalyseAgent extends Agent {
      */
     @Override
     public void AddBehToStack(Virologist v) {
-        v.addMoveBeh(stunnedMove);
-        v.addApplyBeh(stunnedApply);
-        v.addCreateBeh(stunnedCreate);
-        v.addCollectBeh(stunnedCollect);
-        v.addStealBeh(stunnedSteal);
+        stunnedMove.setVirologist(v);
+        stunnedApply.setVirologist(v);
+        stunnedCreate.setVirologist(v);
+        stunnedCollect.setVirologist(v);
+        stunnedSteal.setVirologist(v);
+        v.addMoveBehavior(stunnedMove);
+        v.addApplyBehavior(stunnedApply);
+        v.addCreateBehavior(stunnedCreate);
+        v.addCollectBehavior(stunnedCollect);
+        v.addStealBehavior(stunnedSteal);
         System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
 
     }

@@ -14,6 +14,9 @@ public class StealBehavior {
     public StealBehavior() {
 
     }
+    public void setVirologist(Virologist v){
+        virologist=v;
+    }
 
     /**+
      *Végrehajtja egy tárgy ellopását.

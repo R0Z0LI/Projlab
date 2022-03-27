@@ -13,6 +13,9 @@ public class MovementBehavior {
     public MovementBehavior() {
 
     }
+    public void setVirologist(Virologist v){
+        virologist=v;
+    }
 
 
     /**
@@ -27,6 +30,6 @@ public class MovementBehavior {
         System.out.println("! A virológus lép egy szomszédos mezőre.");
         before.RemoveVirologist(virologist);
         after.addVirologist(virologist);
-        virologist.setCurrField(after);
+        virologist.setCurrentField(after);
     }
 }

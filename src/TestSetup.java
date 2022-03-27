@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class TestSetup {
 
     public static void main(String[] args) {
-
+        String cyan="\u001B[36m";
         boolean run = true;
         while (run) {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Mit szeretnél tesztelni? Válassz egy számot:");
+            System.out.println(cyan+"Mit szeretnél tesztelni? Válassz egy számot:");
             System.out.println("1. Move Virologist");
             System.out.println("2. Collect");
             System.out.println("3. Create agent");

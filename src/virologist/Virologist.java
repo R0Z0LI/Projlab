@@ -16,7 +16,7 @@ import java.util.Stack;
 public class Virologist {
     private int actionCounter;
     private PropertyHandler myProperties;
-    private Field currField;
+    private Field currentField;
     private Stack<MovementBehavior> movementBehaviors = new Stack<>();
     private Stack<CreateBehavior> createBehaviors = new Stack<>();
     private Stack<ApplyBehavior> applyBehaviors = new Stack<>();
@@ -45,7 +45,7 @@ public class Virologist {
 
     public Virologist( int actionCounter, PropertyHandler myProperties, Field currField){
 
-            this.currField = currField;
+            this.currentField = currField;
             this.myProperties = myProperties;
             CollectBehavior collectBehavior = new CollectBehavior(this);
             ApplyBehavior applyBehavior = new ApplyBehavior(this);
@@ -80,7 +80,7 @@ public class Virologist {
          */
         public void step (Field field){
             System.out.println("-> Step(Field field)\n! A virológus elindítja a mozgás folyamatát.\n\n");
-            movementBehaviors.firstElement().move(this.currField, field);
+            movementBehaviors.firstElement().move(this.currentField, field);
         }
 
         /**
@@ -148,13 +148,13 @@ public class Virologist {
         }
 
         /**
-         * currField settere
+         * currentField settere
          *
-         * @param after Erre változtatja meg
+         * @param field Erre változtatja meg
          */
-        public void setCurrField (Field after){
+        public void setCurrentField(Field field){
             System.out.println("-> setCurrField(Field field)\n! Beállítja a virológus pozícióját.\n\n");
-            this.currField = after;
+            this.currentField = field;
         }
 
         /**
@@ -162,8 +162,8 @@ public class Virologist {
          *
          * @param applyBehavior Ezt az elemet adja hozzá
          */
-        public void setApplyBehaviors (ApplyBehavior applyBehavior){
-            System.out.println("-> setApplyBeh(ApplyBehavior applyBehavior)\n! applyBeh settere\n\n");
+        public void addApplyBehavior(ApplyBehavior applyBehavior){
+            System.out.println("-> setApplyBeh(ApplyBehavior applyBehavior)\n! applyBehavior beállítva.\n\n");
             this.applyBehaviors.add(applyBehavior);
         }
 
@@ -172,8 +172,8 @@ public class Virologist {
          *
          * @param defenseBehavior Ezt az elemet adja hozzá
          */
-        public void setDefenseBehaviors (DefenseBehavior defenseBehavior){
-            System.out.println("-> setDefenseBeh(DefenseBehavior defenseBehavior)\n! defenseBeh settere\n\n");
+        public void addDefenseBehavior(DefenseBehavior defenseBehavior){
+            System.out.println("-> addDefenseBehavior(DefenseBehavior defenseBehavior)\n! defenseBehavior beállítva.\n");
             this.defenseBehaviors.add(defenseBehavior);
             defenseBehaviors.sort((d1, d2)->{return d2.getPriority() - d1.getPriority();});
             System.out.println("! A védő stratégiák prioritás szerint sorba lettek rendezve. Az első lesz alkalmazva.\n\n");
@@ -184,10 +184,45 @@ public class Virologist {
          *
          * @param stealBehavior Ezt az elemet adja hozzá
          */
-        public void setStealBehaviors (StealBehavior stealBehavior){
-            System.out.println("-> setStealBeh(StealBehavior stealBehavior)\n! stealBeh settere\n\n");
+        public void addStealBehavior(StealBehavior stealBehavior){
+            System.out.println("->  addStealBehavior(StealBehavior stealBehavior)\n! stealBehavior beállítva.\n\n");
             this.stealBehaviors.add(stealBehavior);
         }
+        /**
+         * collectBehavior settere
+         *
+         * @param cBehavior Ezt az elemet adja hozzá
+         */
+        public void addCollectBehavior(CollectBehavior cBehavior){
+            System.out.println("-> addCollectBehavior(CollectBehavior collectBehavior)\n! collectBehavior beállítva.\n\n");
+            this.collectBehaviors.add(cBehavior);
+        }
+        /**
+         * createBehavior settere
+         *
+         * @param cBehavior Ezt az elemet adja hozzá
+         */
+        public void addCreateBehavior(CreateBehavior cBehavior){
+            System.out.println("-> addCreateBehavior(CreateBehavior createBehavior)\n! createBehavior beállítva.\n\n");
+            this.createBehaviors.add(cBehavior);
+        }
+        /**
+         * movementBehavior settere
+         *
+         * @param movementBehavior Ezt az elemet adja hozzá
+         */
+        public void addMoveBehavior(MovementBehavior movementBehavior){
+            System.out.println("-> addMoveBehavior(MovementBehavior movementBehavior)\n! moveBehavior beállítva.\n\n");
+            this.movementBehaviors.add(movementBehavior);
+        }
+
+    /**+
+     * Újra sorba állítja a defense Behavior gyűjteményét prioritás szerint.
+     */
+    public void resortDefenseBehaviors(){
+            defenseBehaviors.sort((d1, d2)->{return d2.getPriority() - d1.getPriority();});
+        }
+
 
         /**
          * Visszaadja a PropertyHandlerét a virológusnak
@@ -197,59 +232,6 @@ public class Virologist {
         public PropertyHandler getPropertyHandler () {
             System.out.println("-> getPropertyHandler()\n");
             return myProperties;
-        }
-
-        /**
-         * Hozzáadja a paraméterként kapott behavior-t a virológus stack-jéhez
-         * @param stunnedMove           Ezt a behavior-t adja hozzá
-         */
-        public void addMoveBeh (StunnedMoveBehavior stunnedMove){
-            this.movementBehaviors.add(stunnedMove);
-        }
-
-        /**
-         * Hozzáadja a paraméterként kapott behavior-t a virológus stack-jéhez
-         * @param crazyMoveBehavior     Ezt a behavior-t adja hozzá
-         *
-         */
-        public void addCrazyMoveBeh (CrazyMoveBehavior crazyMoveBehavior){
-            this.movementBehaviors.add(crazyMoveBehavior);
-        }
-
-        /**
-         * Hozzáadja a paraméterként kapott behavior-t a virológus stack-jéhez
-         * @param stunnedApply          Ezt a behavior-t adja hozzá
-         *
-         */
-        public void addApplyBeh (StunnedApplyBehavior stunnedApply){
-            this.applyBehaviors.add(stunnedApply);
-        }
-
-        /**
-         * Hozzáadja a paraméterként kapott behavior-t a virológus stack-jéhez
-         * @param stunnedCreate         Ezt a behavior-t adja hozzá
-         *
-         */
-        public void addCreateBeh (StunnedCreateBehavior stunnedCreate){
-            this.createBehaviors.add(stunnedCreate);
-        }
-
-        /**
-         * Hozzáadja a paraméterként kapott behavior-t a virológus stack-jéhez
-         * @param stunnedCollect        Ezt a behavior-t adja hozzá
-         *
-         */
-        public void addCollectBeh (StunnedCollectBehavior stunnedCollect){
-            this.collectBehaviors.add(stunnedCollect);
-        }
-
-        /**
-         * Hozzáadja a paraméterként kapott behavior-t a virológus stack-jéhez
-         * @param stunnedSteal          Ezt a behavior-t adja hozzá
-         *
-         */
-        public void addStealBeh (StunnedStealBehavior stunnedSteal){
-            this.stealBehaviors.add(stunnedSteal);
         }
 
         /**
@@ -313,15 +295,6 @@ public class Virologist {
          */
         public void removeDefenseBeh (DefenseBehavior defenseBehavior){
             this.defenseBehaviors.remove(defenseBehavior);
-        }
-
-        /**
-         * Hozzáadja a paraméterként kapott behavior-t a virológus stack-jéhez
-         * @param defAgentDef           Ezt a behavior-t adja hozzá
-         *
-         */
-        public void addDefenseBeh (DefAgentDefBehavior defAgentDef){
-            this.defenseBehaviors.add(defAgentDef);
         }
 
 }
