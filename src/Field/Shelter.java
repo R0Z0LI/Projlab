@@ -17,6 +17,7 @@ public class Shelter extends Field{
      */
     public void AddEquipment(Equipment equipment){
         System.out.println("-> AddEquipment(Equipment equipment)\n! Hozzáadja a currEquipment-hez a paraméterként kapott felszerelést\n\n");
+        currEquipment.add(equipment);
     }
 
     /**

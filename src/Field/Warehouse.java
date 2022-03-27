@@ -3,14 +3,15 @@ package Field;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A raktárat reprezentáló osztály
  */
 public class Warehouse extends Field{
-    private List<Nucleotid> currNucleotid;
-    private List<AminoAcid> currAmino;
+    private List<Nucleotid> currNucleotid = new ArrayList<>();
+    private List<AminoAcid> currAmino = new ArrayList<>();
 
     /**
      * Hozzáadja a praméterként kapott aminósavat a currAmino-hoz
@@ -18,6 +19,7 @@ public class Warehouse extends Field{
      */
     public void AddAmino(AminoAcid aminoAcid){
         System.out.println("-> AddAmino(AminoAcid aminoAcid)\n! Hozzáadja a praméterként kapott aminósavat a currAmino-hoz\n\n");
+        currAmino.add(aminoAcid);
     }
 
     /**
@@ -26,6 +28,7 @@ public class Warehouse extends Field{
      */
     public void AddNucleo(Nucleotid nucleotid){
         System.out.println("-> AddNucleo(Nucleotid nucleotid)\n! Hozzáadja a praméterként kapott nukletidot a currNucleotid-hez\n\n");
+        currNucleotid.add(nucleotid);
     }
 
     /**

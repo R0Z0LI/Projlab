@@ -20,6 +20,7 @@ public class Laboratory extends Field{
      */
     public void AddGenCode(GenCode genCode){
         System.out.println("-> AddGenCode(GenCode genCode)\n! Hozzáadja a currGenCode-hoz a paraméterként kapott genetikai kódot\n\n");
+        currGenCode.add(genCode);
     }
 
     /**

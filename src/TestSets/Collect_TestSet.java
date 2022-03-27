@@ -3,7 +3,6 @@ package TestSets;
 import Collectible.Collectible;
 import Field.*;
 import Materials.*;
-import PropertyHandler.PropertyHandler;
 import Equipments.*;
 import Gencode.*;
 import Virologist.Virologist;
@@ -26,11 +25,11 @@ public class Collect_TestSet {
         viro.collect(collectible);
 
         // checking
-        if (viro.getPropertyHandler().getNucleos().size() != 0)
+        if (viro.getPropertyHandler().getEquipments().size() != 0)
             System.out.println("Testing has ended. Found equipment in inventory. Nice.");
         else if (viro.getPropertyHandler().getAminos().size() != 0) {
             System.out.println("Testing has ended. Found aminos in inventory, and it's the asked amount. Very Nice.");
-        } else if (viro.getPropertyHandler().getEquipments().size() != 0) {
+        } else if (viro.getPropertyHandler().getNucleos().size() != 0) {
             System.out.println("Testing has ended. Found nucleos in inventory, and it's the asked amount. Very Nice.");
         } else {
             System.out.println("Testing has ended, but nothing was found!");

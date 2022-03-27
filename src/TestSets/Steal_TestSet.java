@@ -39,7 +39,6 @@ public class Steal_TestSet {
             stealingViro.steal(valuable, affectedViro);
 
         // checking if everything is OK
-        System.out.println(valuables.size() + currFullness);
         if (stealingViro.getPropertyHandler().getAminos().size() == amount || stealingViro.getPropertyHandler().getNucleos().size() == amount) {
             System.out.println("Testing has ended. Found material in inventory, and it's the asked amount. Very Nice.");
         } else if (stealingViro.getPropertyHandler().getEquipments().size() == valuables.size() + currFullness) {
