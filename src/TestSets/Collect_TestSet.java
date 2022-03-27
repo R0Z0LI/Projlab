@@ -28,7 +28,7 @@ public class Collect_TestSet {
     private void init_test() {
 
         field = new Laboratory();
-        PropertyHandler ph = new PropertyHandler();
+        PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
         viro = new Virologist(2, ph, field);
 
         CollectBehavior collectBehavior = new CollectBehavior(viro);
