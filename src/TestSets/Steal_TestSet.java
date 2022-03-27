@@ -7,6 +7,8 @@ import Behaviors.StealBehavior;
 import Equipments.*;
 import Virologist.Virologist;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -14,8 +16,9 @@ import java.util.Scanner;
  */
 public class Steal_TestSet {
 
-    private Collectible valuable;
+    private List<Collectible> valuables = new ArrayList<>();
     private int amount = 1;
+    private int freeSpace = 1;
     private Virologist stealingViro;
     private Virologist affectedViro;
 
@@ -33,17 +36,16 @@ public class Steal_TestSet {
 
         System.out.println("Testing stealing ...");
 
-        for (int i = 0; i < amount; i++)
+        // steal the things we want to steal
+        for (Collectible valuable: valuables) {
             stealingViro.steal(valuable, affectedViro);
+        }
 
-        /////// EZEN AZ AMOUNT CUCCON MÉG DOLGOZNI FOGOK - DANI (de a legtöbb része már működik)
         // checking if everything is OK
-        if (stealingViro.getPropertyHandler().getEquipments().size() == 3)
+        if (stealingViro.getPropertyHandler().getAminos().size() == amount || stealingViro.getPropertyHandler().getNucleos().size() == amount) {
+            System.out.println("Testing has ended. Found material in inventory, and it's the asked amount. Very Nice.");
+        } else if (stealingViro.getPropertyHandler().getEquipments().size() == valuables.size()) {
             System.out.println("Testing has ended. Stealing equipment was OK.");
-        else if (stealingViro.getPropertyHandler().getAminos().size() == amount) {
-            System.out.println("Testing has ended. Found aminos in inventory, and it's the asked amount. Very Nice.");
-        } else if (stealingViro.getPropertyHandler().getNucleos().size() == amount) {
-            System.out.println("Testing has ended. Found nucleos in inventory, and it's the asked amount. Very Nice.");
         } else {
             System.out.println("Testing has ended, but nothing was found!");
         }
@@ -68,54 +70,71 @@ public class Steal_TestSet {
         System.out.println("Mit szeretnél lopni? [a, n, k, z, v]");
         switch (sc.next()) {
             case "a":
-                valuable = new AminoAcid();
                 System.out.print("Mennyi aminosavat lopjon el? [0…10] ");
                 amount = sc.nextInt();
+                for (int i = 0; i < amount; i++)
+                    valuables.add(new AminoAcid());
+
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
                 stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
 
-                for (int i = 0; i < amount; i++) {
-                    affectedViro.getPropertyHandler().addAmino((AminoAcid) valuable);
-                }
+                for (int i = 0; i < amount; i++)
+                    affectedViro.getPropertyHandler().addAmino((AminoAcid) valuables.get(i));
                 break;
 
             case "n":
-                valuable = new Nucleotid();
                 System.out.print("Mennyi nukleotidot lopjon el? [0…10] ");
                 amount = sc.nextInt();
+                for (int i = 0; i < amount; i++)
+                    valuables.add(new Nucleotid());
+
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
                 stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
 
-                for (int i = 0; i < amount; i++) {
-                    affectedViro.getPropertyHandler().addNucleo((Nucleotid) valuable);
-                }
+                for (int i = 0; i < amount; i++)
+                    affectedViro.getPropertyHandler().addNucleo((Nucleotid) valuables.get(i));
                 break;
 
             case "k":
-                valuable = new Gloves();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
-                for (int i = 0; i < 3-sc.nextInt(); i++)
-                    stealingViro.getPropertyHandler().addEquipment(new Gloves());
-                System.out.println("HOLA");
-                affectedViro.getPropertyHandler().addEquipment((Gloves) valuable);
+                freeSpace = sc.nextInt();
+                for (int i = 0; i < 3-freeSpace; i++) {
+                    valuables.add(new Gloves());
+                    stealingViro.getPropertyHandler().addEquipment((Gloves) valuables.get(valuables.size()-1));
+                }
+
+                if (freeSpace > 0) {
+                    valuables.add(new Gloves());
+                    affectedViro.getPropertyHandler().addEquipment((Gloves) valuables.get(valuables.size()-1));
+                }
                 break;
 
             case "z":
-                valuable = new Sack();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
-                for (int i = 0; i < 3-sc.nextInt(); i++)
-                    stealingViro.getPropertyHandler().addEquipment(new Sack());
+                freeSpace = sc.nextInt();
+                for (int i = 0; i < 3-freeSpace; i++) {
+                    valuables.add(new Sack());
+                    stealingViro.getPropertyHandler().addEquipment((Sack) valuables.get(valuables.size()-1));
+                }
 
-                affectedViro.getPropertyHandler().addEquipment((Sack) valuable);
+                if (freeSpace > 0) {
+                    valuables.add(new Sack());
+                    affectedViro.getPropertyHandler().addEquipment((Sack) valuables.get(valuables.size()-1));
+                }
                 break;
 
             case "v":
-                valuable = new Cape();
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
-                for (int i = 0; i < 3-sc.nextInt(); i++)
-                    stealingViro.getPropertyHandler().addEquipment(new Cape());
+                freeSpace = sc.nextInt();
+                for (int i = 0; i < 3-freeSpace; i++) {
+                    valuables.add(new Cape());
+                    stealingViro.getPropertyHandler().addEquipment((Cape) valuables.get(valuables.size()-1));
+                }
 
-                affectedViro.getPropertyHandler().addEquipment((Cape) valuable);
+                if (freeSpace > 0) {
+                    valuables.add(new Cape());
+                    affectedViro.getPropertyHandler().addEquipment((Cape) valuables.get(valuables.size()-1));
+                }
                 break;
 
             default:

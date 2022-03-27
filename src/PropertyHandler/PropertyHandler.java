@@ -73,8 +73,9 @@ public class PropertyHandler {
      */
     public void addEquipment(Equipment equipment){
         System.out.println("-> AddEquipment(Equipment equipment)\n ! Hozzáadja a paraméterként kapott felszerelést a saját felszerelést\n\n");
-        if (max_equipment > equipments.size())
+        if (max_equipment > equipments.size()) {
             equipments.add(equipment);
+        }
     }
 
     /**
