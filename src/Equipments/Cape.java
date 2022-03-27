@@ -43,9 +43,10 @@ public class Cape extends Equipment{
      */
     @Override
     public void beCollected(PropertyHandler ph) {
-        ph.addEquipment(this);
-        System.out.println("-> beCollected(PropertyHandler ph)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
-
+        if(ph.getEquipments().size() < ph.getMax_equipment()) {
+            ph.addEquipment(this);
+            System.out.println("-> beCollected(PropertyHandler ph)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
+        }
     }
 
     /**+

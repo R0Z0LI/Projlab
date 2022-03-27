@@ -1,6 +1,5 @@
 package TestSets;
 
-import PropertyHandler.PropertyHandler;
 import Agent.*;
 import Virologist.Virologist;
 
@@ -45,8 +44,7 @@ public class StepAgent_TestSet {
 
         System.out.println("Init agent stepping test ...");
 
-        PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
-        viro = new Virologist(2, ph, null);
+        viro = new Virologist();
 
         System.out.print("Melyik ágens legyen léptetve? [v/b/t] ");
         Scanner sc = new Scanner(System.in);
@@ -78,11 +76,6 @@ public class StepAgent_TestSet {
         }
 
         viro.applyAgent(usedAgent, viro);
-
-        //ph.addAgent(usedAgent);
-        // PROBLEM: agent-et nem lehet megadni, mert steppable-t vár
-        // SOLUTION: az egész steppable interfészt kidobjuk és agent-et használunk helyette
-        // game.AddSteppable((Steppable) usedAgent);
 
         System.out.println("Init has ended.");
     }

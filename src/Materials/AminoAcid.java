@@ -13,8 +13,10 @@ public class AminoAcid implements Collectible {
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler){
-        System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
-        propertyHandler.addAmino(this);
+        if(propertyHandler.getEquipments().size() < propertyHandler.getMax_material()) {
+            System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
+            propertyHandler.addAmino(this);
+        }
     }
 
     /**

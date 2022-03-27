@@ -1,6 +1,5 @@
 package TestSets;
 
-import PropertyHandler.PropertyHandler;
 import Equipments.*;
 import Virologist.Virologist;
 
@@ -41,8 +40,7 @@ public class ThrowEquipment_TestSet {
         System.out.println("Init equipment throwing test ...");
 
         // constructing a virologist
-        PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
-        viro = new Virologist(2, ph, null);
+        viro = new Virologist();
 
         // reading in the equipment that we want to throw away
         Scanner sc = new Scanner(System.in);

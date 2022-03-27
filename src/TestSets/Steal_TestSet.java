@@ -2,8 +2,6 @@ package TestSets;
 
 import Collectible.Collectible;
 import Materials.*;
-import PropertyHandler.PropertyHandler;
-import Behaviors.StealBehavior;
 import Equipments.*;
 import Virologist.Virologist;
 
@@ -16,9 +14,9 @@ import java.util.Scanner;
  */
 public class Steal_TestSet {
 
-    private List<Collectible> valuables = new ArrayList<>();
-    private int amount = 1;
-    private int freeSpace = 1;
+    private List<Collectible> valuables = new ArrayList<>(); // the things that we are stealing
+    private int amount = 1; // the amount that we are trying to steal
+    private int currFullness = 0;
     private Virologist stealingViro;
     private Virologist affectedViro;
 
@@ -37,16 +35,16 @@ public class Steal_TestSet {
         System.out.println("Testing stealing ...");
 
         // steal the things we want to steal
-        for (Collectible valuable: valuables) {
+        for (Collectible valuable: valuables)
             stealingViro.steal(valuable, affectedViro);
-        }
 
         // checking if everything is OK
         if (stealingViro.getPropertyHandler().getAminos().size() == amount || stealingViro.getPropertyHandler().getNucleos().size() == amount) {
             System.out.println("Testing has ended. Found material in inventory, and it's the asked amount. Very Nice.");
-        } else if (stealingViro.getPropertyHandler().getEquipments().size() == valuables.size()) {
+        } else if (stealingViro.getPropertyHandler().getEquipments().size() == valuables.size() + currFullness) {
             System.out.println("Testing has ended. Stealing equipment was OK.");
         } else {
+            // for some reason we weren't able to steal anything, this should NOT occur
             System.out.println("Testing has ended, but nothing was found!");
         }
     }
@@ -58,83 +56,90 @@ public class Steal_TestSet {
 
         System.out.println("Init stealing test ...");
 
-        PropertyHandler ph1 = new PropertyHandler(3, 10, 10, stealingViro);
-        stealingViro = new Virologist(2, ph1, null);
-        stealingViro.addStealBehavior(new StealBehavior(stealingViro));
+        // creating virologists
+        stealingViro = new Virologist();
+        affectedViro = new Virologist();
 
-        PropertyHandler ph2 = new PropertyHandler(3, 10, 10, affectedViro);
-        affectedViro = new Virologist(2, ph2, null);
-        affectedViro.addStealBehavior(new StealBehavior(affectedViro));
+        // space that is available in the stealing virologist's inventory
+        int freeSpace;
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Mit szeretnél lopni? [a, n, k, z, v]");
         switch (sc.next()) {
+            // if we want to steal aminoacid
             case "a":
+                // creating the things that we are gonna steal
                 System.out.print("Mennyi aminosavat lopjon el? [0…10] ");
                 amount = sc.nextInt();
                 for (int i = 0; i < amount; i++)
                     valuables.add(new AminoAcid());
 
+                // changing available space
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
                 stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
 
+                // putting the valuables in the other virologist
                 for (int i = 0; i < amount; i++)
                     affectedViro.getPropertyHandler().addAmino((AminoAcid) valuables.get(i));
                 break;
 
+            // if we want to steal nucleotid
             case "n":
+                // creating the things that we are gonna steal
                 System.out.print("Mennyi nukleotidot lopjon el? [0…10] ");
                 amount = sc.nextInt();
                 for (int i = 0; i < amount; i++)
                     valuables.add(new Nucleotid());
 
+                // changing available space
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
                 stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
 
+                // putting the valuables in the other virologist
                 for (int i = 0; i < amount; i++)
                     affectedViro.getPropertyHandler().addNucleo((Nucleotid) valuables.get(i));
                 break;
 
+            // if we want to steal gloves
             case "k":
+                // creating, and adding the other stuff to our inventory
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
                 freeSpace = sc.nextInt();
-                for (int i = 0; i < 3-freeSpace; i++) {
-                    valuables.add(new Gloves());
-                    stealingViro.getPropertyHandler().addEquipment((Gloves) valuables.get(valuables.size()-1));
-                }
+                currFullness = 3-freeSpace;
+                for (int i = 0; i < currFullness; i++)
+                    stealingViro.getPropertyHandler().addEquipment(new Gloves());
 
-                if (freeSpace > 0) {
-                    valuables.add(new Gloves());
-                    affectedViro.getPropertyHandler().addEquipment((Gloves) valuables.get(valuables.size()-1));
-                }
+                // creating and putting the valuables in the other virologist
+                valuables.add(new Gloves());
+                affectedViro.getPropertyHandler().addEquipment((Gloves) valuables.get(valuables.size()-1));
                 break;
 
+            // if we want to steal a sack
             case "z":
+                // creating, and adding the other stuff to our inventory
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
                 freeSpace = sc.nextInt();
-                for (int i = 0; i < 3-freeSpace; i++) {
-                    valuables.add(new Sack());
-                    stealingViro.getPropertyHandler().addEquipment((Sack) valuables.get(valuables.size()-1));
-                }
+                currFullness = 3-freeSpace;
+                for (int i = 0; i < currFullness; i++)
+                    stealingViro.getPropertyHandler().addEquipment(new Sack());
 
-                if (freeSpace > 0) {
-                    valuables.add(new Sack());
-                    affectedViro.getPropertyHandler().addEquipment((Sack) valuables.get(valuables.size()-1));
-                }
+                // creating and putting the valuables in the other virologist
+                valuables.add(new Sack());
+                affectedViro.getPropertyHandler().addEquipment((Sack) valuables.get(valuables.size()-1));
                 break;
 
+            // if we want to steal cape
             case "v":
+                // creating, and adding the other stuff to our inventory
                 System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
                 freeSpace = sc.nextInt();
-                for (int i = 0; i < 3-freeSpace; i++) {
-                    valuables.add(new Cape());
-                    stealingViro.getPropertyHandler().addEquipment((Cape) valuables.get(valuables.size()-1));
-                }
+                currFullness = 3-freeSpace;
+                for (int i = 0; i < currFullness; i++)
+                    stealingViro.getPropertyHandler().addEquipment(new Cape());
 
-                if (freeSpace > 0) {
-                    valuables.add(new Cape());
-                    affectedViro.getPropertyHandler().addEquipment((Cape) valuables.get(valuables.size()-1));
-                }
+                // creating and putting the valuables in the other virologist
+                valuables.add(new Cape());
+                affectedViro.getPropertyHandler().addEquipment((Cape) valuables.get(valuables.size()-1));
                 break;
 
             default:

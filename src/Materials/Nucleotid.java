@@ -12,8 +12,10 @@ public class Nucleotid implements Collectible{
      * @param propertyHandler           Ehhez adja hozzá magát
      */
     public void beCollected(PropertyHandler propertyHandler){
-        System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
-        propertyHandler.addNucleo(this);
+        if(propertyHandler.getEquipments().size() < propertyHandler.getMax_material()) {
+            System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
+            propertyHandler.addNucleo(this);
+        }
     }
 
     /**

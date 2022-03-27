@@ -162,7 +162,7 @@ public class PropertyHandler {
 
     /**
      * max_material setterje
-     * @param n                     Erre az értékre állítja be
+     * @param n     Erre az értékre állítja be
      */
     public void setMax_material(int n){
         System.out.println("-> setMax_material(int n)\n! max_material setterje");
@@ -170,7 +170,8 @@ public class PropertyHandler {
 
     }
 
-
+    public int getMax_equipment() { return max_equipment; }
+    public int getMax_material() { return max_material; }
 
     public List<Equipment> getEquipments() { return equipments; }
 

@@ -32,8 +32,8 @@ public abstract class GenCode implements Collectible {
     }
 
     public GenCode(int aminoneeded, int nucleoneeded) {
-        amino_needed=aminoneeded;
-        nucleo_needed=nucleoneeded;
+        amino_needed = aminoneeded;
+        nucleo_needed = nucleoneeded;
     }
     public void setField(Field lab){
         currPosition=lab;
@@ -69,9 +69,5 @@ public abstract class GenCode implements Collectible {
      * @return Agent    a létrehozott ágens
      */
     public abstract Agent revealAgent();
-
-
-
-
 
 }

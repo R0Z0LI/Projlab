@@ -24,20 +24,20 @@ public abstract class Agent implements Steppable {
         return time_left;
     }
 
-    /**+
+    /**
      * Lépteti az ágens visszalévő idejét.
      */
     public void Step(){
         time_left--;
     }
 
-    /**+
+    /**
      * Kitörli a megadott virológus verméből azt a viselkedést, amit az aktuális ágens okozna.
      * @param v  virológus, akinek a verméből törölni kell a viselkedést.
      */
     public abstract void removeBehFromStack(Virologist v);
 
-    /**+
+    /**
      * Hozzáadja a megadott virológus verméhez azt a viselkedést, amit az aktuális ágens okozna.
      * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedést.
      */

@@ -9,7 +9,7 @@ import Equipments.Equipment;
 import Gencode.GenCode;
 
 import java.util.Stack;
-//hali
+
 /**
  * A virológust reprezentáló osztály
  */
@@ -218,7 +218,6 @@ public class Virologist {
     public void resortDefenseBehaviors(){
             defenseBehaviors.sort((d1, d2)->{return d2.getPriority() - d1.getPriority();});
         }
-
 
         /**
          * Visszaadja a PropertyHandlerét a virológusnak

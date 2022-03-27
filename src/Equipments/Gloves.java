@@ -43,8 +43,10 @@ public class Gloves extends Equipment{
      */
     @Override
     public void beCollected(PropertyHandler ph) {
-        System.out.println("-> beCollected(PropertyHandler ph)\n! A kesztyű be lesz gyűjtve.\n\n");
-        ph.addEquipment(this);
+        if(ph.getEquipments().size() < ph.getMax_equipment()) {
+            System.out.println("-> beCollected(PropertyHandler ph)\n! A kesztyű be lesz gyűjtve.\n\n");
+            ph.addEquipment(this);
+        }
     }
 
     /**+
