@@ -1,10 +1,10 @@
 package TestSets;
 
-import agent.*;
-import behaviors.*;
-import equipments.Cape;
-import equipments.Gloves;
-import virologist.Virologist;
+import Agent.*;
+import Behaviors.*;
+import Equipments.Cape;
+import Equipments.Gloves;
+import Virologist.Virologist;
 import Field.Field;
 
 import java.util.Scanner;
@@ -32,14 +32,14 @@ public class ApplyAgent_TestSet {
 
         Field field = new Field();
 
-        // setting up applying virologist
+        // setting up applying Virologist
         applyingViro = new Virologist();
         applyingViro.setApplyBehaviors(new ApplyBehavior(applyingViro));
         applyingViro.setCurrField(field);
 
         Scanner sc = new Scanner(System.in);
 
-        // setting up the applied agent
+        // setting up the applied Agent
         System.out.print("Melyik ágenst használja? [v/f/b/t] ");
         String agentType = sc.next();
         switch (agentType) {
@@ -63,7 +63,7 @@ public class ApplyAgent_TestSet {
 
         System.out.print("Egy másik virológusra kenje? [i/n] ");
         if (sc.next().equals( "i")) {
-            // setting up affected virologist
+            // setting up affected Virologist
             affectedViro = new Virologist();
             affectedViro.setDefenseBehaviors(new DefenseBehavior(affectedViro));
             affectedViro.setCurrField(field);

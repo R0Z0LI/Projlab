@@ -1,32 +1,50 @@
 package TestSets;
 
 import PropertyHandler.PropertyHandler;
-import equipments.*;
-import virologist.Virologist;
+import Equipments.*;
+import Virologist.Virologist;
 
 import java.util.Scanner;
 
+/**
+ * Teszt eset, ami a felszerelés eldobását teszteli.
+ */
 public class ThrowEquipment_TestSet {
 
     private Equipment equip;
     private Virologist viro;
 
-    // constructor
-    public ThrowEquipment_TestSet() {
-        init_test();
-    }
+    /**
+     * Konstruktor, ami meghívja a teszt inicializálását.
+     */
+    public ThrowEquipment_TestSet() { init_test(); }
 
-    // testing use case
+    /**
+     *  Lefutattja a tesztet, és megnézi az eredményt.
+     */
     public void test() {
+        System.out.println("Testing Equipment throwing ...");
         viro.destroyEquipment(equip);
+
+        // Checking testing result
+        if (viro.getPropertyHandler().getEquipments() == null)
+            System.out.println("Testing has ended. No equipment in inventory. Nice.");
+        else
+            System.out.println("Testing has ended, but there is still an equipment in the inventory!");
     }
 
-    // initializing everything we need for this test
+    /**
+     * Inicializál mindent szükséges objektumot és tagváltozót, ami kell a teszteléshez.
+     */
     private void init_test() {
 
+        System.out.println("Init equipment throwing test ...");
+
+        // constructing a virologist
         PropertyHandler ph = new PropertyHandler(3, 10, 10, viro);
         viro = new Virologist(2, ph, null);
 
+        // reading in the equipment that we want to throw away
         Scanner sc = new Scanner(System.in);
         System.out.print("Melyik védőfelszerelést dobja el? [v/k/z] ");
         switch (sc.next()) {
@@ -43,7 +61,9 @@ public class ThrowEquipment_TestSet {
                 System.err.println("You used a wrong Equipment type!");
         }
 
+        // adding chosen equipment to virologist
         viro.getPropertyHandler().AddEquipment(equip);
-    }
 
+        System.out.println("Init has ended.");
+    }
 }

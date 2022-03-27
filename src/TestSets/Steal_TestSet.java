@@ -1,15 +1,17 @@
 package TestSets;
 
 import Collectible.Collectible;
-import Materials.AminoAcid;
-import Materials.Nucleotid;
+import Materials.*;
 import PropertyHandler.PropertyHandler;
-import behaviors.StealBehavior;
-import equipments.*;
-import virologist.Virologist;
+import Behaviors.StealBehavior;
+import Equipments.*;
+import Virologist.Virologist;
 
 import java.util.Scanner;
 
+/**
+ * Teszt eset, ami az ágens idejének telését és az ágens eltávolítását teszteli.
+ */
 public class Steal_TestSet {
 
     private Collectible valuable;
@@ -17,18 +19,26 @@ public class Steal_TestSet {
     private Virologist stealingViro;
     private Virologist affectedViro;
 
-    // constructor
+    /**
+     * Konstruktor, ami meghívja a teszt inicializálását.
+     */
     public Steal_TestSet() {
         init_test();
     }
 
-    // testing use case
+    /**
+     *  Lefutattja a tesztet, és megnézi az eredményt.
+     */
     public void test() {
         for (int i = 0; i < amount; i++)
             stealingViro.steal(valuable, affectedViro);
+        if (stealingViro.getPropertyHandler().getEquipments() != null)
+            System.out.println("Test");
     }
 
-    // initializing everything we need for this test
+    /**
+     * Inicializál mindent szükséges objektumot és tagváltozót, ami kell a teszteléshez.
+     */
     private void init_test() {
 
         PropertyHandler ph1 = new PropertyHandler(3, 10, 10, stealingViro);

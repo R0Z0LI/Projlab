@@ -1,6 +1,6 @@
 package Field;
 
-import virologist.Virologist;
+import Virologist.Virologist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Field {
      * @param virologist        Ezt a virológust törli ki
      */
     public void RemoveVirologist(Virologist virologist) {
-        System.out.println("-> RemoveVirologist(Virologist virologist)\n! Kitörli a paraméterként megadott virológust a mezőn lévő virológusok közül\n\n");
+        System.out.println("-> RemoveVirologist(Virologist Virologist)\n! Kitörli a paraméterként megadott virológust a mezőn lévő virológusok közül\n\n");
         virologists.remove(virologist);
     }
 

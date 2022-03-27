@@ -1,11 +1,11 @@
 package PropertyHandler;
 
-import agent.Agent;
-import equipments.Equipment;
-import gencode.GenCode;
+import Agent.Agent;
+import Equipments.Equipment;
+import Gencode.GenCode;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
-import virologist.Virologist;
+import Virologist.Virologist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +81,7 @@ public class PropertyHandler {
      * @param agent             Ezt az ágenst adja hozzá
      */
     public void AddAgent(Agent agent){
-        System.out.println("-> AddAgent(Agent agent)\n ! Hozzáadja a paraméterként kapott ágenst a saját ágenseihez\n\n");
+        System.out.println("-> AddAgent(Agent Agent)\n ! Hozzáadja a paraméterként kapott ágenst a saját ágenseihez\n\n");
     }
 
     /**
@@ -136,7 +136,7 @@ public class PropertyHandler {
      * @param agent                 Ezt az ágenst tővolítja el
      */
     public void RemoveAgent(Agent agent){
-        System.out.println("-> RemoveAgent(Agent agent)\n! Eltávolítja a paraméterként kapott ágenst a saját ágenseiből\n\n");
+        System.out.println("-> RemoveAgent(Agent Agent)\n! Eltávolítja a paraméterként kapott ágenst a saját ágenseiből\n\n");
     }
 
     /**
