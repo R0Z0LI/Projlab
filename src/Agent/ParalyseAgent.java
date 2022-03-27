@@ -50,7 +50,6 @@ public class ParalyseAgent extends Agent {
         v.addCollectBehavior(stunnedCollect);
         v.addStealBehavior(stunnedSteal);
         System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
-
     }
 
     /**+

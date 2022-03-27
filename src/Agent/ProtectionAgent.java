@@ -12,12 +12,9 @@ public class ProtectionAgent extends Agent{
 
     public ProtectionAgent(int timeleft) {
         super(timeleft);
-        defAgentDef=new DefAgentDefBehavior();
+        defAgentDef = new DefAgentDefBehavior();
     }
 
-    public ProtectionAgent() {
-
-    }
 
     /**+
      * Kitörli a megadott virológus verméből a defAgentDef viselkedést, amit az aktuális ágens okoz.
@@ -28,7 +25,6 @@ public class ProtectionAgent extends Agent{
         defAgentDef.setVirologist(v);
         v.removeDefenseBeh(defAgentDef);
         System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitörli a megadott virológus verméből a defAgentDef viselkedést.\n\n");
-
     }
 
     /**+
@@ -37,6 +33,7 @@ public class ProtectionAgent extends Agent{
      */
     @Override
     public void addBehToStack(Virologist v) {
+        defAgentDef.setVirologist(v);
         v.addDefenseBehavior(defAgentDef);
         System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a defAgentDef viselkedést.\n\n");
     }

@@ -28,7 +28,6 @@ public class StepAgent_TestSet {
     public void test() {
         System.out.println("Testing Agent stepping and removal ...");
 
-        viro.applyAgent(usedAgent, viro);
         usedAgent.Step(); // time should reach 0, and be removed from viro
 
         // checking
@@ -77,6 +76,8 @@ public class StepAgent_TestSet {
             default:
                 System.err.println("You used a wrong Agent type!");
         }
+
+        viro.applyAgent(usedAgent, viro);
 
         //ph.addAgent(usedAgent);
         // PROBLEM: agent-et nem lehet megadni, mert steppable-t vár
