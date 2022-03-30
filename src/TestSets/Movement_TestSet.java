@@ -1,6 +1,5 @@
 package TestSets;
 
-import Field.Field;
 import Field.Laboratory;
 import Field.Shelter;
 import Behaviors.CrazyMoveBehavior;
@@ -9,7 +8,6 @@ import Behaviors.StunnedMoveBehavior;
 import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Movement_TestSet {
@@ -31,7 +29,7 @@ public class Movement_TestSet {
         Laboratory jelenlegi = new Laboratory();
         Shelter cel = new Shelter();
         Shelter crazy = new Shelter();
-        virologist = new Virologist(2, ph, jelenlegi);
+        virologist = new Virologist(ph, jelenlegi);
         jelenlegi.addNeighbour(cel);
         jelenlegi.addNeighbour(crazy);
         MovementBehavior movementBehavior = new MovementBehavior(virologist);
@@ -54,7 +52,7 @@ public class Movement_TestSet {
 
                 case "Stunned":
                     StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
-                    virologist.addMoveBehavior(stunnedMoveBehavior);
+                    virologist.add(stunnedMoveBehavior);
                     stunnedMoveBehavior.move(jelenlegi, cel);
                     break;
 

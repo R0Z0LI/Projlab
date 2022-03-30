@@ -9,12 +9,15 @@ public class MovementBehavior {
     public MovementBehavior(Virologist v) {
         virologist = v;
     }
-    public MovementBehavior() { }
 
-    public void setVirologist(Virologist v){
-        virologist=v;
+    public MovementBehavior() {
     }
-    public Virologist getVirologist(){
+
+    public void setVirologist(Virologist v) {
+        virologist = v;
+    }
+
+    public Virologist getVirologist() {
         return virologist;
     }
 
@@ -28,7 +31,9 @@ public class MovementBehavior {
     public void move(Field before, Field after) {
         System.out.println("->MovementBehavior.move(Field before, Field after)");
         System.out.println("! A virológus lép egy szomszédos mezőre.");
-        before.RemoveVirologist(virologist);
+
+        //TODO kiszervezni egy metódusba
+        before.removeVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrentField(after);
     }

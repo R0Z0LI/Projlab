@@ -27,9 +27,9 @@ public class Collect_TestSet {
         // checking
         if (viro.getPropertyHandler().getEquipments().size() != 0)
             System.out.println("Testing has ended. Found equipment in inventory. Nice.");
-        else if (viro.getPropertyHandler().getAminos().size() != 0) {
+        else if (viro.getPropertyHandler().getAminoAcids().size() != 0) {
             System.out.println("Testing has ended. Found aminos in inventory, and it's the asked amount. Very Nice.");
-        } else if (viro.getPropertyHandler().getNucleos().size() != 0) {
+        } else if (viro.getPropertyHandler().getNucleotids().size() != 0) {
             System.out.println("Testing has ended. Found nucleos in inventory, and it's the asked amount. Very Nice.");
         } else {
             System.out.println("Testing has ended, but nothing was found!");
@@ -57,42 +57,42 @@ public class Collect_TestSet {
             case "kesztyű":
                 collectible = new Gloves();
                 field = new Shelter();
-                ((Shelter) field).AddEquipment((Equipment) collectible);
+                ((Shelter) field).add((Equipment) collectible);
                 viro.setCurrentField(field);
                 break;
 
             case "köpeny":
                 collectible = new Cape();
                 field = new Shelter();
-                ((Shelter) field).AddEquipment((Equipment) collectible);
+                ((Shelter) field).add((Equipment) collectible);
                 viro.setCurrentField(field);
                 break;
 
             case "zsák":
                 collectible = new Sack();
                 field = new Shelter();
-                ((Shelter) field).AddEquipment((Equipment) collectible);
+                ((Shelter) field).add((Equipment) collectible);
                 viro.setCurrentField(field);
                 break;
 
             case "Amino":
                 collectible = new AminoAcid();
                 field = new Warehouse();
-                ((Warehouse) field).AddAmino((AminoAcid) collectible);
+                ((Warehouse) field).add((AminoAcid) collectible);
                 viro.setCurrentField(field);
                 break;
 
             case "Nucleo":
                 field = new Warehouse();
                 collectible = new Nucleotid();
-                ((Warehouse) field).AddNucleo((Nucleotid) collectible);
+                ((Warehouse) field).add((Nucleotid) collectible);
                 viro.setCurrentField(field);
                 break;
 
             case "Gencode":
                 field = new Laboratory();
                 collectible = new AmnesiaCode(4,5, field);
-                ((Laboratory) field).AddGenCode((GenCode) collectible);
+                ((Laboratory) field).add((GenCode) collectible);
                 viro.setCurrentField(field);
                 break;
 

@@ -8,6 +8,7 @@ import Virologist.Virologist;
 /**+
  * Felszerelést reprezentáló osztály.
  */
+//TODO érdemes-e egy közös inteface-be kiszervezni az addBehavior()
 public abstract class Equipment implements Collectible {
     private Shelter currPosition;
 
@@ -22,14 +23,14 @@ public abstract class Equipment implements Collectible {
      *
      * @param v   virológus, akinek a vermébe bele fog kerülni az adott Equipmentből adódó viselkedés
      */
-    public abstract void addBehToStack(Virologist v);
+    public abstract void addBehaviour(Virologist v);
 
     /**+
      * Törli a megadott virológus verméből az adott Equipmentből adódó viselkedést.
      *
      * @param v   virológus, akinek a verméből törlődni fog az adott Equipmentből adódó viselkedés
      */
-    public abstract void removeBehFromStack(Virologist v);
+    public abstract void removeBehavior(Virologist v);
 
     /**+
      * Begyűjteti magát a virológus PropertyHandlerével.

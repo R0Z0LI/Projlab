@@ -23,7 +23,7 @@ public class ThrowEquipment_TestSet {
      */
     public void test() {
         System.out.println("Testing Equipment throwing ...");
-        viro.destroyEquipment(equip);
+        viro.destroy(equip);
 
         // Checking testing result
         if (viro.getPropertyHandler().getEquipments().size() == 0)
@@ -60,7 +60,7 @@ public class ThrowEquipment_TestSet {
         }
 
         // adding chosen equipment to virologist
-        viro.getPropertyHandler().addEquipment(equip);
+        viro.getPropertyHandler().add(equip);
 
         System.out.println("Init has ended.");
     }

@@ -36,7 +36,7 @@ public class CrazyDanceCode extends GenCode{
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
-        propertyHandler.addGenCode(this);
+        propertyHandler.add(this);
         System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
     }
 

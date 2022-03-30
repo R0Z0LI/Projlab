@@ -15,99 +15,115 @@ import java.util.Scanner;
  * A virológus felszerelését, nyersanyagait, genetikai kódjait, és ágenseit tároló osztály
  */
 public class PropertyHandler {
-    private int max_material;
-    private int max_equipment;
-    private int max_gencode;
+    private int maxMaterial;
+    private int maxEquipment;
+    private int maxGencode;
 
-    private Virologist viro;
-    private List<GenCode> gencodes = new ArrayList<>();
-    private List<AminoAcid> aminos = new ArrayList<>();
-    private List<Nucleotid> nucleos = new ArrayList<>();
+    private Virologist virologist;
+    private List<GenCode> genCodes = new ArrayList<>();
+    private List<AminoAcid> aminoAcids = new ArrayList<>();
+    private List<Nucleotid> nucleotids = new ArrayList<>();
     private List<Agent> agents = new ArrayList<>();
     private List<Equipment> equipments = new ArrayList<>();
 
-    public PropertyHandler(int max_equipment, int max_gencode, int max_material, Virologist viro){
-        this.max_equipment = max_equipment;
-        this.max_gencode = max_gencode;
-        this.max_material = max_material;
-        this.viro = viro;
+    public PropertyHandler(int maxEquipment, int maxGencode, int maxMaterial, Virologist virologist) {
+        this.maxEquipment = maxEquipment;
+        this.maxGencode = maxGencode;
+        this.maxMaterial = maxMaterial;
+        this.virologist = virologist;
     }
 
     public PropertyHandler(Virologist v) {
-        this.viro=v;
-        this.max_equipment=3;
-        this.max_material=10;
+        this.virologist = v;
+        this.maxEquipment = 3;
+        this.maxMaterial = 10;
     }
-    public PropertyHandler() {}
+
+    public PropertyHandler() {
+    }
 
     /**
      * Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz
-     * @param genCode               Ezt adja hozzá
+     *
+     * @param genCode Ezt adja hozzá
      */
-    public void addGenCode(GenCode genCode){
-        System.out.println("-> AddGenCode(GenCode genCode) \n! Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz \n\n");
-        gencodes.add(genCode);
+    public void add(GenCode genCode) {
+        System.out.println("-> Add(GenCode genCode) \n! Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz \n\n");
+        genCodes.add(genCode);
         System.out.println("Ezzel összegyűlt az összes genetikai kód? [i/n]");
         Scanner sc = new Scanner(System.in);
-        if(sc.next().equals("i"))
+        //TODO lehet automatikus
+        if (sc.next().equals("i")) {
             System.out.println("! Játék vége.\n\n");
+        }
     }
 
     /**
      * Hozzáadja a paraméterként kapott aminósavat a saját aminósavjaihoz
-     * @param aminoAcid             Ezt az aminósavat adja hozzá
+     *
+     * @param aminoAcid Ezt az aminósavat adja hozzá
      */
-    public void addAmino(AminoAcid aminoAcid){
+    public void add(AminoAcid aminoAcid) {
         System.out.println("-> AddAmino(AminoAcid aminoAcid) \n! Hozzáadja a paraméterként kapott aminósavat a saját aminósavjaihoz\n\n");
-        if (max_material > aminos.size())
-            aminos.add(aminoAcid);
+        //TODO összes lista size-ra kell ellenőrizni
+        if (maxMaterial > aminoAcids.size()) {
+            aminoAcids.add(aminoAcid);
+        }
     }
 
     /**
      * Hozzáadja a paraméterként kapott nukleotidot a saját nukleotidjaihoz
-     * @param nucleotid             Ezt a nukleotidot adja hozzá
+     *
+     * @param nucleotid Ezt a nukleotidot adja hozzá
      */
-    public void addNucleo(Nucleotid nucleotid){
+    public void add(Nucleotid nucleotid) {
         System.out.println("-> AddNucleo(Nucleotid nucleotid)\n! Hozzáadja a paraméterként kapott nukleotidot a saját nukleotidjaihoz\n\n");
-        if (max_material > nucleos.size())
-            nucleos.add(nucleotid);
+        //TODO összes lista size-ra kell ellenőrizni
+        if (maxMaterial > nucleotids.size()) {
+            nucleotids.add(nucleotid);
+        }
     }
 
     /**
      * Hozzáadja a paraméterként kapott felszerelést a saját felszerelést
-     * @param equipment             Ezt a felszerelést adja hozzá
+     *
+     * @param equipment Ezt a felszerelést adja hozzá
      */
-    public void addEquipment(Equipment equipment){
+    public void add(Equipment equipment) {
         System.out.println("-> AddEquipment(Equipment equipment)\n ! Hozzáadja a paraméterként kapott felszerelést a saját felszerelést\n\n");
-        if (max_equipment > equipments.size()) {
+        if (maxEquipment > equipments.size()) {
             equipments.add(equipment);
-            equipment.addBehToStack(viro);
+            equipment.addBehaviour(virologist);
         }
     }
 
     /**
      * Hozzáadja a paraméterként kapott ágenst a saját ágenseihez.
-     * @param agent             Ezt az ágenst adja hozzá
+     *
+     * @param agent Ezt az ágenst adja hozzá
      */
-    public void addAgent(Agent agent){
+    public void add(Agent agent) {
         System.out.println("-> AddAgent(Agent Agent)\n ! Hozzáadja a paraméterként kapott ágenst a saját ágenseihez\n\n");
         agents.add(agent);
     }
 
     /**
      * Elkészít egy ágenst, megnézi van e elég aminósav és nukleotid, majd kivonja a tárolóiból ha van, és létrehozza az ágenst
-     * @param genCode               Ez a genetikai kód alapján hozza létre az ágenst
+     *
+     * @param genCode Ez a genetikai kód alapján hozza létre az ágenst
      */
-    public void makeAgent(GenCode genCode){
+    public void makeAgent(GenCode genCode) {
         System.out.println("-> MakeAgent(GenCode genCode)\n ! Megpróbálja elkészíteni az ágenst.");
-        int a=genCode.getAmino_needed();
-        int n=genCode.getNucleo_needed();
-        if(aminos.size() >= a && nucleos.size() >= n){
+        int aminoNeeded = genCode.getAminoNeeded();
+        int nucleoNeeded = genCode.getNucleoNeeded();
+        if (aminoAcids.size() >= aminoNeeded && nucleotids.size() >= nucleoNeeded) {
             System.out.println("! Van elég anyag az elkészítéshez.\n");
-            for(int i = 0; i < n; i++)
-                nucleos.remove(0);
-            for(int i = 0; i < a; i++)
-                aminos.remove(0);
+            for (int i = 0; i < nucleoNeeded; i++) {
+                nucleotids.remove(0);
+            }
+            for (int i = 0; i < aminoNeeded; i++) {
+                aminoAcids.remove(0);
+            }
             genCode.revealAgent();
         } else {
             System.out.println("! Nince elég nyersanyag az elkészítéshez.\n");
@@ -118,78 +134,102 @@ public class PropertyHandler {
     /**
      * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
      */
-    public void deleteGenCode(GenCode gc){
+    public void deleteGenCode(GenCode genCode) {
         System.out.println("DeleteGenCodes()\n! Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból\n\n");
     }
 
     /**
      * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
      */
-    public void deleteGenCodes(){
+    public void deleteGenCodes() {
         System.out.println("DeleteGenCodes()\n! Eltávolítja az összes genetikai kódot a saját genetikai kódjaiból\n\n");
     }
 
     /**
      * Eltávolítja a paraméterként kapott aminósavat a saját aminósavjaiból
-     * @param aminoAcid             Ezt az aminósavat tővolítja el
+     *
+     * @param aminoAcid Ezt az aminósavat tővolítja el
      */
-    public void removeAmino(AminoAcid aminoAcid){
+    public void remove(AminoAcid aminoAcid) {
         System.out.println("-> RemoveAmino(AminoAcid aminoAcid)\n! Eltávolítja a paraméterként kapott aminósavat a saját aminósavjaiból\n\n");
-        if (aminos.size() != 0)
-            aminos.remove(aminoAcid);
+        if (aminoAcids.size() != 0) {
+            aminoAcids.remove(aminoAcid);
+        }
     }
 
     /**
      * Eltávolítja a paraméterként kapott nukleotidot a saját nukleotidjaiból
-     * @param nucleotid             Ezt a nukleotidot tővolítja el
+     *
+     * @param nucleotid Ezt a nukleotidot tővolítja el
      */
-    public void removeNucleo(Nucleotid nucleotid){
+    public void remove(Nucleotid nucleotid) {
         System.out.println("-> RemoveNucleo(Nucleotid nucleotid)\n! Eltávolítja a paraméterként kapott nukleotidot a saját nukleotidjaiból\n\n");
-        if (nucleos.size() != 0)
-            nucleos.remove(nucleotid);
+        if (nucleotids.size() != 0) {
+            nucleotids.remove(nucleotid);
+        }
     }
 
     /**
      * Eltávolítja a paraméterként kapott felszerelést a saját felszerelést
-     * @param equipment             Ezt a felszerelést tővolítja el
+     *
+     * @param equipment Ezt a felszerelést tővolítja el
      */
-    public void removeEquipment(Equipment equipment){
+    public void remove(Equipment equipment) {
         System.out.println("-> RemoveEquipment(Equipment equipment)\n! Eltávolítja a paraméterként kapott felszerelést a saját felszerelést\n\n");
-        if (equipments.size() != 0)
+        if (equipments.size() != 0) {
             equipments.remove(equipment);
+        }
     }
 
     /**
      * Eltávolítja a paraméterként kapott ágenst a saját ágenseiből
-     * @param agent                 Ezt az ágenst tővolítja el
+     *
+     * @param agent Ezt az ágenst tővolítja el
      */
-    public void removeAgent(Agent agent){
+    public void remove(Agent agent) {
         System.out.println("-> RemoveAgent(Agent Agent)\n! Eltávolítja a paraméterként kapott ágenst a saját ágenseiből\n\n");
-        if (agents.size() != 0)
+        if (agents.size() != 0) {
             agents.remove(agent);
+        }
     }
 
     /**
      * max_material setterje
-     * @param n     Erre az értékre állítja be
+     *
+     * @param n Erre az értékre állítja be
      */
-    public void setMax_material(int n){
+    public void setMaxMaterial(int n) {
         System.out.println("-> setMax_material(int n)\n! max_material setterje");
-        max_material=max_material+n;
+        maxMaterial = maxMaterial + n;
 
     }
 
-    public int getMax_equipment() { return max_equipment; }
-    public int getMax_material() { return max_material; }
+    public int getMaxEquipment() {
+        return maxEquipment;
+    }
 
-    public List<Equipment> getEquipments() { return equipments; }
+    public int getMaxMaterial() {
+        return maxMaterial;
+    }
+
+    public List<Equipment> getEquipments() {
+        return equipments;
+    }
 
     // getterek teszteléshez
-    public List<AminoAcid> getAminos() { return aminos; }
-    public List<Nucleotid> getNucleos() { return nucleos; }
-    public List<Agent> getAgents() { return agents; }
+    public List<AminoAcid> getAminoAcids() {
+        return aminoAcids;
+    }
 
-    public void setViro(Virologist viro) {
-        this.viro = viro;
+    public List<Nucleotid> getNucleotids() {
+        return nucleotids;
+    }
+
+    public List<Agent> getAgents() {
+        return agents;
+    }
+
+    public void setVirologist(Virologist virologist) {
+        this.virologist = virologist;
     }
 }

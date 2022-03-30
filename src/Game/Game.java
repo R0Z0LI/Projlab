@@ -5,20 +5,25 @@ import java.util.ArrayList;
 public class Game {
     private ArrayList<Steppable> steppables;
 
-    public Game(){
+    public Game() {
         steppables = new ArrayList<>();
     }
-    public void AddSteppable(Steppable s){
+
+    public void addSteppable(Steppable s) {
         steppables.add(s);
     }
-    public void RemoveSteppable(Steppable s){
+
+    public void removeSteppable(Steppable s) {
         steppables.remove(s);
     }
-    public void StepSteabbles(){
-        for(Steppable s : steppables)
-            s.Step();
+
+    public void stepSteppabbles() {
+        for (Steppable s : steppables) {
+            s.step();
+        }
     }
-    public void EndGame(){
+
+    public void endGame() {
         System.out.println("! A játék véget ért.");
     }
 }

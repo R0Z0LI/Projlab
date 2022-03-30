@@ -27,10 +27,10 @@ public class StepAgent_TestSet {
     public void test() {
         System.out.println("Testing Agent stepping and removal ...");
 
-        usedAgent.Step(); // time should reach 0, and be removed from viro
+        usedAgent.step(); // time should reach 0, and be removed from viro
 
         // checking
-        System.out.println("Testing has ended. Time left for the used Agent: " + usedAgent.getTime_left());
+        System.out.println("Testing has ended. Time left for the used Agent: " + usedAgent.getTimeLeft());
     }
 
     /**

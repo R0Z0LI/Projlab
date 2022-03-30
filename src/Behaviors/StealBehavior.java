@@ -7,28 +7,35 @@ import Virologist.Virologist;
 public class StealBehavior {
     private Virologist virologist;
 
-    public StealBehavior(Virologist v){
-        virologist=v;
+    public StealBehavior(Virologist v) {
+        virologist = v;
     }
-    public StealBehavior() { }
 
-    public void setVirologist(Virologist v){ virologist=v; }
-    public Virologist getVirologist(){
+    public StealBehavior() {
+    }
+
+    public void setVirologist(Virologist v) {
+        virologist = v;
+    }
+
+    public Virologist getVirologist() {
         return virologist;
     }
 
-    /**+
-     *Végrehajtja egy tárgy ellopását.
-     * @param c         ellopandó tárgy
-     * @param affected  virológus, akitől lop
-     * @param ph        annak virológusnak a tárolója, aki lop
+    /**
+     * +
+     * Végrehajtja egy tárgy ellopását.
+     *
+     * @param collectible        ellopandó tárgy
+     * @param affected virológus, akitől lop
+     * @param propertyHandler       annak virológusnak a tárolója, aki lop
      */
-    public void steal(Collectible c, Virologist affected, PropertyHandler ph){
-        System.out.println("-> StealBehavior.steal(Collectible c, Virologist affected, PropertyHandler ph)");
+    public void steal(Collectible collectible, Virologist affected, PropertyHandler propertyHandler) {
+        System.out.println("-> StealBehavior.steal(Collectible collectible, Virologist affected, PropertyHandler propertyHandler)");
         PropertyHandler ph2 = affected.getPropertyHandler();
-        if(ph2.getEquipments().contains(c) || ph2.getAminos().contains(c) || ph2.getNucleos().contains(c)) {
-            c.beCollected(ph);
-            c.beRemoved(ph2);
+        if (ph2.getEquipments().contains(collectible) || ph2.getAminoAcids().contains(collectible) || ph2.getNucleotids().contains(collectible)) {
+            collectible.beCollected(propertyHandler);
+            collectible.beRemoved(ph2);
         }
     }
 }

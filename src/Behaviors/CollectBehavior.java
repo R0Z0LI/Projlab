@@ -7,25 +7,30 @@ import Virologist.Virologist;
 public class CollectBehavior {
     private Virologist virologist;
 
-    public CollectBehavior(Virologist v){
-        virologist=v;
+    public CollectBehavior(Virologist v) {
+        virologist = v;
     }
-    public CollectBehavior(){}
 
-    public void setVirologist(Virologist v){
-        virologist=v;
+    public CollectBehavior() {
     }
-    public Virologist getVirologist(){
+
+    public void setVirologist(Virologist v) {
+        virologist = v;
+    }
+
+    public Virologist getVirologist() {
         return virologist;
     }
 
-    /**+
+    /**
+     * +
      * Kezdeményezi egy tárgy begyűjtését.
-     * @param c         a begyűjtendő tárgy
-     * @param handler   egy virológus tárolója, amelybe bele kell tenni a tárgyat
+     *
+     * @param collectible a begyűjtendő tárgy
+     * @param handler     egy virológus tárolója, amelybe bele kell tenni a tárgyat
      */
-    public void collect(Collectible c, PropertyHandler handler){
-        System.out.println("-> CollectBehavior.collect(Collectible c, PropertyHandler handler)");
-        c.beCollected(handler);
+    public void collect(Collectible collectible, PropertyHandler handler) {
+        System.out.println("-> CollectBehavior.collect(Collectible collectible, PropertyHandler handler)");
+        collectible.beCollected(handler);
     }
 }

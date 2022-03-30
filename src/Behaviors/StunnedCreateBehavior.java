@@ -19,6 +19,5 @@ public class StunnedCreateBehavior extends CreateBehavior{
     public void create(GenCode code) {
         System.out.println("-> StunnedCreateBehavior.create(GenCode code)");
         System.out.println("! Lebénulva az ágens előállítása nem sikerül.");
-        return;
     }
 }

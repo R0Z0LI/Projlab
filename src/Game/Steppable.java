@@ -1,5 +1,5 @@
 package Game;
 
 public interface Steppable {
-    public void Step();
+    public void step();
 }

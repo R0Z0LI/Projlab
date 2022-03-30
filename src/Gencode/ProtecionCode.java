@@ -5,16 +5,17 @@ import PropertyHandler.PropertyHandler;
 import Agent.Agent;
 import Agent.ProtectionAgent;
 
-public class ProtecionCode extends GenCode{
-    public ProtecionCode(int aminoneeded, int nucleoneeded, Field field) {
-        super(aminoneeded, nucleoneeded, field);
+public class ProtecionCode extends GenCode {
+    public ProtecionCode(int aminoNeeded, int nucleoNeeded, Field field) {
+        super(aminoNeeded, nucleoNeeded, field);
     }
 
     public ProtecionCode() {
-        super(1,3);
+        super(1, 3);
     }
 
-    /**+
+    /**
+     * +
      * Létrehozza a belőle készíthető ProtectionAgent ágenst.
      *
      * @return Agent    a létrehozott ProtectionAgent
@@ -23,25 +24,27 @@ public class ProtecionCode extends GenCode{
     public Agent revealAgent() {
         System.out.println("-> ProtectionCode.revealAgent()");
         System.out.println("! Elkészült egy védő ágens\n");
-        ProtectionAgent pa=new ProtectionAgent(30);
+        ProtectionAgent pa = new ProtectionAgent(30);
         return pa;
     }
 
-    /**+
+    /**
+     * +
      * Begyűjteti magát a virológus PropertyHandlerével.
      *
-     * @param propertyHandler   amihez hozzá kell adni a felvett ProtecionCode-t
+     * @param propertyHandler amihez hozzá kell adni a felvett ProtecionCode-t
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
-        propertyHandler.addGenCode(this);
+        propertyHandler.add(this);
         System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
     }
 
-    /**+
+    /**
+     * +
      * Eltávolíttatja magát a virológus PropertyHandleréből.
      *
-     * @param propertyHandler   amiből ki kell törölni a törlendő ProtecionCode-t
+     * @param propertyHandler amiből ki kell törölni a törlendő ProtecionCode-t
      */
     @Override
     public void beRemoved(PropertyHandler propertyHandler) {

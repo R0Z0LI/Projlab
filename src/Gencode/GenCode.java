@@ -10,45 +10,49 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**+
+/**
+ * +
  * Gentikai kódot reprezentáló osztály.
  */
 public abstract class GenCode implements Collectible {
 
-    private int amino_needed;
-    private int nucleo_needed;
+    private int aminoNeeded;
+    private int nucleoNeeded;
+    //TODO lehet-e .equals függvénnyel helyyesttesíteni?
     private String uid;
-    private Field currPosition;
+    private Field currentPosition;
     private List<AminoAcid> aminoBill;
     private List<Nucleotid> nucleoBill;
 
-    public GenCode(int aminoneeded, int nucleoneeded, Field field){
-        amino_needed = aminoneeded;
-        nucleo_needed = nucleoneeded;
-        currPosition = field;
+    public GenCode(int aminoNeeded, int nucleoNeeded, Field field) {
+        this.aminoNeeded = aminoNeeded;
+        this.nucleoNeeded = nucleoNeeded;
+        currentPosition = field;
         aminoBill = new ArrayList<>();
         nucleoBill = new ArrayList<>();
         uid = UUID.randomUUID().toString();
     }
 
     public GenCode(int aminoneeded, int nucleoneeded) {
-        amino_needed = aminoneeded;
-        nucleo_needed = nucleoneeded;
-    }
-    public void setField(Field lab){
-        currPosition=lab;
+        aminoNeeded = aminoneeded;
+        nucleoNeeded = nucleoneeded;
     }
 
-    public int getAmino_needed(){
-        return amino_needed;
+
+    public void setField(Field lab) {
+        currentPosition = lab;
     }
 
-    public int getNucleo_needed() {
-        return nucleo_needed;
+    public int getAminoNeeded() {
+        return aminoNeeded;
     }
 
-    public Field getCurrPosition(){
-        return currPosition;
+    public int getNucleoNeeded() {
+        return nucleoNeeded;
+    }
+
+    public Field getCurrentPosition() {
+        return currentPosition;
     }
 
     public List<AminoAcid> getAminoBill() {
@@ -59,11 +63,12 @@ public abstract class GenCode implements Collectible {
         return nucleoBill;
     }
 
-    public String getUid(){
+    public String getUid() {
         return uid;
     }
 
-    /**+
+    /**
+     * +
      * Létrehozza a belőle készíthető ágenst.
      *
      * @return Agent    a létrehozott ágens

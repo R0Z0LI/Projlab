@@ -52,12 +52,12 @@ public class CreateAgent_TestSet {
                 break;
         }
         if (material.equals("i")) {
-            int n = genCode.getNucleo_needed();
-            int a = genCode.getAmino_needed();
+            int n = genCode.getNucleoNeeded();
+            int a = genCode.getAminoNeeded();
             for (int i = 0; i < a; ++i)
-                virologist.getPropertyHandler().addAmino(new AminoAcid());
+                virologist.getPropertyHandler().add(new AminoAcid());
             for (int i = 0; i < n; ++i)
-                virologist.getPropertyHandler().addNucleo(new Nucleotid());
+                virologist.getPropertyHandler().add(new Nucleotid());
         }
     }
 }

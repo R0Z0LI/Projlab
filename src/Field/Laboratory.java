@@ -8,35 +8,39 @@ import java.util.List;
 /**
  * A laboratóriumot reprezentáló osztály
  */
-public class Laboratory extends Field{
-    private List<GenCode> currGenCode = new ArrayList<>();
+public class Laboratory extends Field {
+    private List<GenCode> genCodes = new ArrayList<>();
 
-    public Laboratory(){
+    public Laboratory() {
 
     }
+
     /**
      * Hozzáadja a currGenCode-hoz a paraméterként kapott genetikai kódot
-     * @param genCode           Ezt adja hozzá
+     *
+     * @param genCode Ezt adja hozzá
      */
-    public void AddGenCode(GenCode genCode){
+    public void add(GenCode genCode) {
         System.out.println("-> AddGenCode(GenCode genCode)\n! Hozzáadja a currGenCode-hoz a paraméterként kapott genetikai kódot\n\n");
-        currGenCode.add(genCode);
+        genCodes.add(genCode);
     }
 
     /**
      * Elveszi a currGenCode-ból a paraméterként kapott genetikai kódot
-     * @param genCode           Ezt törli ki
+     *
+     * @param genCode Ezt törli ki
      */
-    public void RemoveGenCode(GenCode genCode){
+    public void remove(GenCode genCode) {
         System.out.println("-> RemoveGenCode(GenCode genCode)\n! Elveszi a currGenCode-ból a paraméterként kapott genetikai kódot\n\n");
     }
 
     /**
      * currGenCode getterje
-     * @return                  Visszaadja a currGenCode-ot
+     *
+     * @return Visszaadja a currGenCode-ot
      */
-    public List<GenCode> getGenCode(){
+    public List<GenCode> getGenCode() {
         System.out.println("-> getGenCode\n! currGenCode getterje\n<- currGenCode");
-        return currGenCode;
+        return genCodes;
     }
 }

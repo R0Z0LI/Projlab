@@ -24,12 +24,12 @@ public class ParalyseAgent extends Agent {
     }
 
     @Override
-    public void Step() {
-        super.Step();
+    public void step() {
+        super.step();
 
         // we are gonna remove the agent from the virologist
-        if (getTime_left() == 0) {
-            removeBehFromStack(stunnedMove.getVirologist());
+        if (getTimeLeft() == 0) {
+            removeBehavior(stunnedMove.getVirologist());
         }
     }
 
@@ -38,17 +38,17 @@ public class ParalyseAgent extends Agent {
      * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedéseket.
      */
     @Override
-    public void addBehToStack(Virologist v) {
+    public void addBehavior(Virologist v) {
         stunnedMove.setVirologist(v);
         stunnedApply.setVirologist(v);
         stunnedCreate.setVirologist(v);
         stunnedCollect.setVirologist(v);
         stunnedSteal.setVirologist(v);
-        v.addMoveBehavior(stunnedMove);
-        v.addApplyBehavior(stunnedApply);
-        v.addCreateBehavior(stunnedCreate);
-        v.addCollectBehavior(stunnedCollect);
-        v.addStealBehavior(stunnedSteal);
+        v.add(stunnedMove);
+        v.add(stunnedApply);
+        v.add(stunnedCreate);
+        v.add(stunnedCollect);
+        v.add(stunnedSteal);
         System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
     }
 
@@ -57,7 +57,7 @@ public class ParalyseAgent extends Agent {
      * @param v  virológus, akinek a verméből törölni kell a viselkedéseket.
      */
     @Override
-    public void removeBehFromStack(Virologist v) {
+    public void removeBehavior(Virologist v) {
         v.removeMoveBeh(stunnedMove);
         v.removeApplyBeh(stunnedApply);
         v.removeCreateBeh(stunnedCreate);

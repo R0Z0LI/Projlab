@@ -9,23 +9,25 @@ import PropertyHandler.PropertyHandler;
 public class AminoAcid implements Collectible {
     /**
      * Összegyűjteti magát a paraméterként megadott propertyHandler-rel
-     * @param propertyHandler           Ehhez adja hozzá magát
+     *
+     * @param propertyHandler Ehhez adja hozzá magát
      */
     @Override
-    public void beCollected(PropertyHandler propertyHandler){
-        if(propertyHandler.getEquipments().size() < propertyHandler.getMax_material()) {
+    public void beCollected(PropertyHandler propertyHandler) {
+        if (propertyHandler.getEquipments().size() < propertyHandler.getMaxMaterial()) {
             System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! Összegyűjteti magát a paraméterként megadott propertyHandler-rel\n\n");
-            propertyHandler.addAmino(this);
+            propertyHandler.add(this);
         }
     }
 
     /**
      * Kitörölteti magát a paraméterként megadott propertyHandler-ből
-     * @param propertyHandler           Ebből törlődik ki
+     *
+     * @param propertyHandler Ebből törlődik ki
      */
     @Override
-    public void beRemoved(PropertyHandler propertyHandler){
+    public void beRemoved(PropertyHandler propertyHandler) {
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitörölteti magát a paraméterként megadott propertyHandler-ből\n\n");
-        propertyHandler.removeAmino(this);
+        propertyHandler.remove(this);
     }
 }

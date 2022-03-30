@@ -8,39 +8,42 @@ import Virologist.Virologist;
  */
 public abstract class Agent implements Steppable {
 
-    private int time_left;
+    private int timeLeft;
 
-    public Agent(int timeleft){
-        time_left=timeleft;
+    public Agent(int timeLeft) {
+        this.timeLeft = timeLeft;
     }
 
-    public Agent() {}
-
-    public void setTime_left(int time_left) {
-        this.time_left = time_left;
+    public Agent() {
     }
 
-    public int getTime_left() {
-        return time_left;
+    public void setTimeLeft(int timeLeft) {
+        this.timeLeft = timeLeft;
+    }
+
+    public int getTimeLeft() {
+        return timeLeft;
     }
 
     /**
      * Lépteti az ágens visszalévő idejét.
      */
-    public void Step(){
+    public void step() {
         System.out.println("! Csökkent az ideje az ágensnek\n");
-        time_left--;
+        timeLeft--;
     }
 
     /**
      * Kitörli a megadott virológus verméből azt a viselkedést, amit az aktuális ágens okozna.
-     * @param v  virológus, akinek a verméből törölni kell a viselkedést.
+     *
+     * @param v virológus, akinek a verméből törölni kell a viselkedést.
      */
-    public abstract void removeBehFromStack(Virologist v);
+    public abstract void removeBehavior(Virologist v);
 
     /**
      * Hozzáadja a megadott virológus verméhez azt a viselkedést, amit az aktuális ágens okozna.
-     * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedést.
+     *
+     * @param v virológus, akinek a verméhez hozzá kell adni a viselkedést.
      */
-    public abstract void addBehToStack(Virologist v);
+    public abstract void addBehavior(Virologist v);
 }

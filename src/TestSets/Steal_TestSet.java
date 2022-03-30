@@ -39,7 +39,7 @@ public class Steal_TestSet {
             stealingViro.steal(valuable, affectedViro);
 
         // checking if everything is OK
-        if (stealingViro.getPropertyHandler().getAminos().size() == amount || stealingViro.getPropertyHandler().getNucleos().size() == amount) {
+        if (stealingViro.getPropertyHandler().getAminoAcids().size() == amount || stealingViro.getPropertyHandler().getNucleotids().size() == amount) {
             System.out.println("Testing has ended. Found material in inventory, and it's the asked amount. Very Nice.");
         } else if (stealingViro.getPropertyHandler().getEquipments().size() == valuables.size() + currFullness) {
             System.out.println("Testing has ended. Stealing equipment was OK.");
@@ -76,11 +76,11 @@ public class Steal_TestSet {
 
                 // changing available space
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
+                stealingViro.getPropertyHandler().setMaxMaterial(sc.nextInt());
 
                 // putting the valuables in the other virologist
                 for (int i = 0; i < amount; i++)
-                    affectedViro.getPropertyHandler().addAmino((AminoAcid) valuables.get(i));
+                    affectedViro.getPropertyHandler().add((AminoAcid) valuables.get(i));
                 break;
 
             // if we want to steal nucleotid
@@ -93,11 +93,11 @@ public class Steal_TestSet {
 
                 // changing available space
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                stealingViro.getPropertyHandler().setMax_material(sc.nextInt());
+                stealingViro.getPropertyHandler().setMaxMaterial(sc.nextInt());
 
                 // putting the valuables in the other virologist
                 for (int i = 0; i < amount; i++)
-                    affectedViro.getPropertyHandler().addNucleo((Nucleotid) valuables.get(i));
+                    affectedViro.getPropertyHandler().add((Nucleotid) valuables.get(i));
                 break;
 
             // if we want to steal gloves
@@ -107,12 +107,12 @@ public class Steal_TestSet {
                 freeSpace = sc.nextInt();
                 currFullness = 3-freeSpace;
                 for (int i = 0; i < currFullness; i++)
-                    stealingViro.getPropertyHandler().addEquipment(new Gloves());
+                    stealingViro.getPropertyHandler().add(new Gloves());
 
                 // creating and putting the valuables in the other virologist
                 if (currFullness < 3) {
                     valuables.add(new Gloves());
-                    affectedViro.getPropertyHandler().addEquipment((Gloves) valuables.get(valuables.size()-1));
+                    affectedViro.getPropertyHandler().add((Gloves) valuables.get(valuables.size()-1));
                 }
                 break;
 
@@ -123,12 +123,12 @@ public class Steal_TestSet {
                 freeSpace = sc.nextInt();
                 currFullness = 3-freeSpace;
                 for (int i = 0; i < currFullness; i++)
-                    stealingViro.getPropertyHandler().addEquipment(new Sack());
+                    stealingViro.getPropertyHandler().add(new Sack());
 
                 // creating and putting the valuables in the other virologist
                 if (currFullness < 3) {
                     valuables.add(new Sack());
-                    affectedViro.getPropertyHandler().addEquipment((Sack) valuables.get(valuables.size() - 1));
+                    affectedViro.getPropertyHandler().add((Sack) valuables.get(valuables.size() - 1));
                 }
                 break;
 
@@ -139,12 +139,12 @@ public class Steal_TestSet {
                 freeSpace = sc.nextInt();
                 currFullness = 3-freeSpace;
                 for (int i = 0; i < currFullness; i++)
-                    stealingViro.getPropertyHandler().addEquipment(new Cape());
+                    stealingViro.getPropertyHandler().add(new Cape());
 
                 // creating and putting the valuables in the other virologist
                 if (currFullness < 3) {
                     valuables.add(new Cape());
-                    affectedViro.getPropertyHandler().addEquipment((Cape) valuables.get(valuables.size() - 1));
+                    affectedViro.getPropertyHandler().add((Cape) valuables.get(valuables.size() - 1));
                 }
                 break;
 
