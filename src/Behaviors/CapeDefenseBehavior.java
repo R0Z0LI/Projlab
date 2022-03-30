@@ -5,7 +5,7 @@ import Virologist.Virologist;
 
 public class CapeDefenseBehavior extends DefenseBehavior {
 
-    public static final double DEFENSE_CHANCE_PERCENT = 82.3;
+    private static final double DEFENSE_CHANCE_PERCENT = 82.3;
 
     public CapeDefenseBehavior(Virologist v) {
         super(v);
@@ -29,7 +29,6 @@ public class CapeDefenseBehavior extends DefenseBehavior {
             virologist.beInfected(agent, attacker);
         } else {
             System.out.println("! A köpeny most megvédett.\n");
-            return;
         }
     }
 }
