@@ -21,7 +21,7 @@ public class CrazyDanceAgent extends Agent {
     @Override
     public void removeBehavior(Virologist v) {
         v.removeCrazyMoveBeh(crazyMove);
-        System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitörli a megadott virológus verméből a crazyMove viselkedést.\n\n");
+        System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitorli a megadott virologus vermebol a crazyMove viselkedest.\n\n");
     }
 
     /**
@@ -32,7 +32,7 @@ public class CrazyDanceAgent extends Agent {
     public void addBehavior(Virologist v) {
         crazyMove.setVirologist(v);
         v.add(crazyMove);
-        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a crazyMove viselkedést.\n\n");
+        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzaadja a megadott virologus vermehez a crazyMove viselkedest.\n\n");
     }
 
     @Override

@@ -37,7 +37,7 @@ public class Movement_TestSet {
         try {
             Scanner sc = new Scanner(System.in);
 
-            System.out.print("Melyik mozgást teszteljük? Sima / Crazy / Stunned");
+            System.out.print("Melyik mozgast teszteljuk? Sima / Crazy / Stunned");
             String MovementType = sc.next();
             switch (MovementType) {
                 case "Sima":

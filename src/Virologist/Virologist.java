@@ -70,7 +70,7 @@ public class Virologist {
      * @param collectible Amit összegyűjt
      */
     public void collect(Collectible collectible) {
-        System.out.print("-> Collect(Collectible collectible)\n! A virológus elindítja a begyűjtés folyamatát.\n\n");
+        System.out.print("-> Collect(Collectible collectible)\n! A virológus elinditja a begyujtés folyamatát.\n\n");
         collectBehaviors.firstElement().collect(collectible, myProperties);
     }
 
@@ -81,7 +81,7 @@ public class Virologist {
      * @param field A mező ahova lépni szeretne a virológus
      */
     public void step(Field field) {
-        System.out.println("-> Step(Field field)\n! A virológus elindítja a mozgás folyamatát.\n\n");
+        System.out.println("-> Step(Field field)\n! A virológus elinditja a mozgás folyamatát.\n\n");
         movementBehaviors.firstElement().move(this.currentField, field);
     }
 
@@ -93,7 +93,7 @@ public class Virologist {
      * @param affected    A virológus akitől el akarja lopni
      */
     public void steal(Collectible collectible, Virologist affected) {
-        System.out.print("-> Steal(Collectible collectible, Virologist affected)\n! A virológus elindítja a lopás folyamatát\n\n");
+        System.out.print("-> Steal(Collectible collectible, Virologist affected)\n! A virológus elinditja a lopás folyamatát\n\n");
         stealBehaviors.firstElement().steal(collectible, affected, myProperties);
     }
 
@@ -104,7 +104,7 @@ public class Virologist {
      * @param genCode A genetikai kód amiből létre akarja hozni az ágenst
      */
     public void createAgent(GenCode genCode) {
-        System.out.println("-> CreateAgent(GenCode genCode)\n! A virológus elindítja az ágens előállításának folyamatát.\n\n");
+        System.out.println("-> CreateAgent(GenCode genCode)\n! A virológus elinditja az ágens előállitásának folyamatát.\n\n");
         createBehaviors.firstElement().create(genCode);
     }
 
@@ -116,7 +116,7 @@ public class Virologist {
      * @param affected Akire rá akarja kenni
      */
     public void applyAgent(Agent agent, Virologist affected) {
-        System.out.println("-> ApplyAgent(Agent agent, Virologist affected)\n! A virológus elindítja a kenés folyamatát\n\n");
+        System.out.println("-> ApplyAgent(Agent agent, Virologist affected)\n! A virológus elinditja a kenés folyamatát\n\n");
         applyBehaviors.firstElement().apply(agent, affected);
     }
 
@@ -124,7 +124,7 @@ public class Virologist {
      * Elindítja a virológus körét
      */
     public void yourTurn() {
-        System.out.println("-> YourTurn()\n! Elindítja a virológus körét.\n\n");
+        System.out.println("-> YourTurn()\n! Elinditja a virológus korét.\n\n");
     }
 
     /**
@@ -145,7 +145,7 @@ public class Virologist {
      * @param equipment Ezt a felszerelést pusztítja el
      */
     public void destroy(Equipment equipment) {
-        System.out.println("-> DestroyEquipment(Equipment equipment)\n! Elpusztítja a virológus egyik, a játékos által választott felszerelését.\n\n");
+        System.out.println("-> DestroyEquipment(Equipment equipment)\n! Elpusztitja a virológus egyik, a játékos által választott felszerelését.\n\n");
         myProperties.remove(equipment);
     }
 
@@ -155,7 +155,7 @@ public class Virologist {
      * @param field Erre változtatja meg
      */
     public void setCurrentField(Field field) {
-        System.out.println("-> setCurrField(Field field)\n! Beállítja a virológus pozícióját.\n\n");
+        System.out.println("-> setCurrField(Field field)\n! Beállitja a virológus pozicióját.\n\n");
         this.currentField = field;
     }
 
@@ -165,7 +165,7 @@ public class Virologist {
      * @param applyBehavior Ezt az elemet adja hozzá
      */
     public void add(ApplyBehavior applyBehavior) {
-        System.out.println("-> setApplyBeh(ApplyBehavior applyBehavior)\n! applyBehavior beállítva.\n\n");
+        System.out.println("-> setApplyBeh(ApplyBehavior applyBehavior)\n! applyBehavior beállitva.\n\n");
         this.applyBehaviors.add(applyBehavior);
     }
 
@@ -175,7 +175,7 @@ public class Virologist {
      * @param defenseBehavior Ezt az elemet adja hozzá
      */
     public void add(DefenseBehavior defenseBehavior) {
-        System.out.println("-> addDefenseBehavior(DefenseBehavior defenseBehavior)\n! defenseBehavior beállítva.\n");
+        System.out.println("-> addDefenseBehavior(DefenseBehavior defenseBehavior)\n! defenseBehavior beállitva.\n");
         this.defenseBehaviors.add(defenseBehavior);
         defenseBehaviors.sort(Comparator.comparingInt(DefenseBehavior::getPriority));
         Collections.reverse(defenseBehaviors);
@@ -188,7 +188,7 @@ public class Virologist {
      * @param stealBehavior Ezt az elemet adja hozzá
      */
     public void add(StealBehavior stealBehavior) {
-        System.out.println("->  addStealBehavior(StealBehavior stealBehavior)\n! stealBehavior beállítva.\n\n");
+        System.out.println("->  addStealBehavior(StealBehavior stealBehavior)\n! stealBehavior beállitva.\n\n");
         this.stealBehaviors.add(stealBehavior);
     }
 
@@ -198,7 +198,7 @@ public class Virologist {
      * @param cBehavior Ezt az elemet adja hozzá
      */
     public void add(CollectBehavior cBehavior) {
-        System.out.println("-> addCollectBehavior(CollectBehavior collectBehavior)\n! collectBehavior beállítva.\n\n");
+        System.out.println("-> addCollectBehavior(CollectBehavior collectBehavior)\n! collectBehavior beállitva.\n\n");
         this.collectBehaviors.add(cBehavior);
     }
 
@@ -208,7 +208,7 @@ public class Virologist {
      * @param cBehavior Ezt az elemet adja hozzá
      */
     public void add(CreateBehavior cBehavior) {
-        System.out.println("-> addCreateBehavior(CreateBehavior createBehavior)\n! createBehavior beállítva.\n\n");
+        System.out.println("-> addCreateBehavior(CreateBehavior createBehavior)\n! createBehavior beállitva.\n\n");
         this.createBehaviors.add(cBehavior);
     }
 
@@ -218,7 +218,7 @@ public class Virologist {
      * @param movementBehavior Ezt az elemet adja hozzá
      */
     public void add(MovementBehavior movementBehavior) {
-        System.out.println("-> addMoveBehavior(MovementBehavior movementBehavior)\n! moveBehavior beállítva.\n\n");
+        System.out.println("-> addMoveBehavior(MovementBehavior movementBehavior)\n! moveBehavior beállitva.\n\n");
         this.movementBehaviors.add(movementBehavior);
     }
 

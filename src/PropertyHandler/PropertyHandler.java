@@ -50,7 +50,7 @@ public class PropertyHandler {
     public void add(GenCode genCode) {
         System.out.println("-> Add(GenCode genCode) \n! Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz \n\n");
         genCodes.add(genCode);
-        System.out.println("Ezzel összegyűlt az összes genetikai kód? [i/n]");
+        System.out.println("Ezzel osszegyult az osszes genetikai kód? [i/n]");
         Scanner sc = new Scanner(System.in);
         //TODO lehet automatikus
         if (sc.next().equals("i")) {
@@ -113,11 +113,11 @@ public class PropertyHandler {
      * @param genCode Ez a genetikai kód alapján hozza létre az ágenst
      */
     public void makeAgent(GenCode genCode) {
-        System.out.println("-> MakeAgent(GenCode genCode)\n ! Megpróbálja elkészíteni az ágenst.");
+        System.out.println("-> MakeAgent(GenCode genCode)\n ! Megpróbálja elkésziteni az ágenst.");
         int aminoNeeded = genCode.getAminoNeeded();
         int nucleoNeeded = genCode.getNucleoNeeded();
         if (aminoAcids.size() >= aminoNeeded && nucleotids.size() >= nucleoNeeded) {
-            System.out.println("! Van elég anyag az elkészítéshez.\n");
+            System.out.println("! Van elég anyag az elkészitéshez.\n");
             for (int i = 0; i < nucleoNeeded; i++) {
                 nucleotids.remove(0);
             }
@@ -126,7 +126,7 @@ public class PropertyHandler {
             }
             genCode.revealAgent();
         } else {
-            System.out.println("! Nince elég nyersanyag az elkészítéshez.\n");
+            System.out.println("! Nince elég nyersanyag az elkészitéshez.\n");
         }
 
     }
@@ -135,14 +135,14 @@ public class PropertyHandler {
      * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
      */
     public void deleteGenCode(GenCode genCode) {
-        System.out.println("DeleteGenCodes()\n! Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból\n\n");
+        System.out.println("DeleteGenCodes()\n! Eltávolitja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból\n\n");
     }
 
     /**
      * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
      */
     public void deleteGenCodes() {
-        System.out.println("DeleteGenCodes()\n! Eltávolítja az összes genetikai kódot a saját genetikai kódjaiból\n\n");
+        System.out.println("DeleteGenCodes()\n! Eltávolitja az összes genetikai kódot a saját genetikai kódjaiból\n\n");
     }
 
     /**
@@ -151,7 +151,7 @@ public class PropertyHandler {
      * @param aminoAcid Ezt az aminósavat tővolítja el
      */
     public void remove(AminoAcid aminoAcid) {
-        System.out.println("-> RemoveAmino(AminoAcid aminoAcid)\n! Eltávolítja a paraméterként kapott aminósavat a saját aminósavjaiból\n\n");
+        System.out.println("-> RemoveAmino(AminoAcid aminoAcid)\n! Eltávolitja a paraméterként kapott aminósavat a saját aminósavjaiból\n\n");
         if (aminoAcids.size() != 0) {
             aminoAcids.remove(aminoAcid);
         }
@@ -163,7 +163,7 @@ public class PropertyHandler {
      * @param nucleotid Ezt a nukleotidot tővolítja el
      */
     public void remove(Nucleotid nucleotid) {
-        System.out.println("-> RemoveNucleo(Nucleotid nucleotid)\n! Eltávolítja a paraméterként kapott nukleotidot a saját nukleotidjaiból\n\n");
+        System.out.println("-> RemoveNucleo(Nucleotid nucleotid)\n! Eltávolitja a paraméterként kapott nukleotidot a saját nukleotidjaiból\n\n");
         if (nucleotids.size() != 0) {
             nucleotids.remove(nucleotid);
         }
@@ -175,7 +175,7 @@ public class PropertyHandler {
      * @param equipment Ezt a felszerelést tővolítja el
      */
     public void remove(Equipment equipment) {
-        System.out.println("-> RemoveEquipment(Equipment equipment)\n! Eltávolítja a paraméterként kapott felszerelést a saját felszerelést\n\n");
+        System.out.println("-> RemoveEquipment(Equipment equipment)\n! Eltávolitja a paraméterként kapott felszerelést a saját felszerelést\n\n");
         if (equipments.size() != 0) {
             equipments.remove(equipment);
         }
@@ -187,7 +187,7 @@ public class PropertyHandler {
      * @param agent Ezt az ágenst tővolítja el
      */
     public void remove(Agent agent) {
-        System.out.println("-> RemoveAgent(Agent Agent)\n! Eltávolítja a paraméterként kapott ágenst a saját ágenseiből\n\n");
+        System.out.println("-> RemoveAgent(Agent Agent)\n! Eltávolitja a paraméterként kapott ágenst a saját ágenseiből\n\n");
         if (agents.size() != 0) {
             agents.remove(agent);
         }

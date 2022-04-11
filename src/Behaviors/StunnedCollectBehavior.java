@@ -23,6 +23,6 @@ public class StunnedCollectBehavior extends CollectBehavior {
     @Override
     public void collect(Collectible collectible, PropertyHandler handler) {
         System.out.println("-> StunnedCollectBehavior.collect((Collectible c, PropertyHandler handler)");
-        System.out.println("! Lebénulva nem sikerül a begyűjtés.");
+        System.out.println("! Lebénulva nem sikerul a begyujtés.");
     }
 }

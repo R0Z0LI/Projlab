@@ -23,6 +23,6 @@ public class StunnedMoveBehavior extends MovementBehavior {
     @Override
     public void move(Field before, Field after) {
         System.out.println("-> StunnedMoveBehavior.move(Field before, Field after)");
-        System.out.println("! Lebénulva a mozgás nem sikerül.");
+        System.out.println("! Lebénulva a mozgás nem sikerul.");
     }
 }

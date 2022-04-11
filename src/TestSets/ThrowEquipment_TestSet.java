@@ -44,7 +44,7 @@ public class ThrowEquipment_TestSet {
 
         // reading in the equipment that we want to throw away
         Scanner sc = new Scanner(System.in);
-        System.out.print("Melyik védőfelszerelést dobja el? [v/k/z] ");
+        System.out.print("Melyik védofelszerelést dobja el? [v/k/z] ");
         switch (sc.next()) {
             case "v":
                 equip = new Cape();

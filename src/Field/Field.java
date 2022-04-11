@@ -35,7 +35,7 @@ public class Field {
      * @param virologist Ezt a virológust törli ki
      */
     public void removeVirologist(Virologist virologist) {
-        System.out.println("-> RemoveVirologist(Virologist Virologist)\n! Kitörli a paraméterként megadott virológust a mezőn lévő virológusok közül\n\n");
+        System.out.println("-> RemoveVirologist(Virologist Virologist)\n! Kitorli a parameterkent megadott virologust a mezon levo virologusok kozul\n\n");
         virologists.remove(virologist);
     }
 
@@ -45,7 +45,7 @@ public class Field {
      * @param virologsit Ezt adja hozzá
      */
     public void addVirologist(Virologist virologsit) {
-        System.out.println("-> AddVirologist(Virologist virologsit)\n! Hozzáadja a paraméterként megadott virológust a mezőn lévő virológusokhoz\n\n");
+        System.out.println("-> AddVirologist(Virologist virologsit)\n! Hozzaadja a parameterkent megadott virologust a mezon levo virologusokhoz\n\n");
         virologists.add(virologsit);
     }
 
@@ -55,7 +55,7 @@ public class Field {
      * @return A szomszédos mezők listáját adja vissza
      */
     public ArrayList<Field> getNeighbours() {
-        System.out.println("-> getNeighbours()\n! Visszaadja a szomszédos mezőket\n <- neighbours\n\n");
+        System.out.println("-> getNeighbours()\n! Visszaadja a szomszedos mezoket\n <- neighbours\n\n");
         return neighbours;
     }
 

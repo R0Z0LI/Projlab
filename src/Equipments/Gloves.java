@@ -23,7 +23,7 @@ public class Gloves extends Equipment {
         this.gloveDef = new GloveDefBehavior(v);
         //v.setDefenseBehaviors(gloveDef);
         v.add(gloveDef);
-        System.out.println("-> addBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a Cape-ből adódó viselkedést.\n\n");
+        System.out.println("-> addBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a Cape-bol adódó viselkedést.\n\n");
     }
 
     /**
@@ -35,7 +35,7 @@ public class Gloves extends Equipment {
     @Override
     public void removeBehavior(Virologist v) {
         v.removeDefenseBeh(gloveDef);
-        System.out.println("-> removeBehFromStack(Virologist v)\n! Törli a megadott virológus verméből a Cape-ből adódó viselkedést.\n\n");
+        System.out.println("-> removeBehFromStack(Virologist v)\n! Torli a megadott virológus vermébol a Cape-bol adódó viselkedést.\n\n");
 
     }
 
@@ -48,7 +48,7 @@ public class Gloves extends Equipment {
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
         if (propertyHandler.getEquipments().size() < propertyHandler.getMaxEquipment()) {
-            System.out.println("-> beCollected(PropertyHandler propertyHandler)\n! A kesztyű be lesz gyűjtve.\n\n");
+            System.out.println("-> beCollected(PropertyHandler propertyHandler)\n! A kesztyu be lesz gyujtve.\n\n");
             propertyHandler.add(this);
         }
     }

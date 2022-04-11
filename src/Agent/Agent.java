@@ -29,7 +29,7 @@ public abstract class Agent implements Steppable {
      * Lépteti az ágens visszalévő idejét.
      */
     public void step() {
-        System.out.println("! Csökkent az ideje az ágensnek\n");
+        System.out.println("! Csokkent az ideje az agensnek\n");
         timeLeft--;
     }
 

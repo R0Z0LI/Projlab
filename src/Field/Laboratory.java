@@ -21,7 +21,7 @@ public class Laboratory extends Field {
      * @param genCode Ezt adja hozzá
      */
     public void add(GenCode genCode) {
-        System.out.println("-> AddGenCode(GenCode genCode)\n! Hozzáadja a currGenCode-hoz a paraméterként kapott genetikai kódot\n\n");
+        System.out.println("-> AddGenCode(GenCode genCode)\n! Hozzaadja a currGenCode-hoz a parameterkent kapott genetikai kodot\n\n");
         genCodes.add(genCode);
     }
 
@@ -31,7 +31,7 @@ public class Laboratory extends Field {
      * @param genCode Ezt törli ki
      */
     public void remove(GenCode genCode) {
-        System.out.println("-> RemoveGenCode(GenCode genCode)\n! Elveszi a currGenCode-ból a paraméterként kapott genetikai kódot\n\n");
+        System.out.println("-> RemoveGenCode(GenCode genCode)\n! Elveszi a currGenCode-bol a parameterkent kapott genetikai kodot\n\n");
     }
 
     /**

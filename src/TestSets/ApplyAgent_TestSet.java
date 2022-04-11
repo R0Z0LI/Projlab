@@ -38,7 +38,7 @@ public class ApplyAgent_TestSet {
         Scanner sc = new Scanner(System.in);
 
         // setting up the applied agent
-        System.out.print("Melyik ágenst használja? védő/felejtő/bénító/vitustánc [v/f/b/t] ");
+        System.out.print("Melyik agenst hasznalja? vedo/felejto/benito/vitustanc [v/f/b/t] ");
         String agentType = sc.next();
         switch (agentType) {
             case "v":
@@ -59,7 +59,7 @@ public class ApplyAgent_TestSet {
         }
 
 
-        System.out.print("Egy másik virológusra kenje? [i/n] ");
+        System.out.print("Egy masik virologusra kenje? [i/n] ");
         if (sc.next().equals( "i")) {
             // setting up affected virologist
             affectedViro = new Virologist();
@@ -67,26 +67,26 @@ public class ApplyAgent_TestSet {
 
             // setting up defenses for both virologists
 
-            System.out.print("Van kesztyűje a másik virológusnak? [i/n] ");
+            System.out.print("Van kesztyuje a masik virologusnak? [i/n] ");
             if (sc.next().equals("i")) {
                 affectedViro.getPropertyHandler().add(new Gloves());
                 //affectedViro.setDefenseBehaviors(new GloveDefBehavior(affectedViro));
 
-                System.out.print("Van kesztyűje a támadó virológusnak? [i/n] ");
+                System.out.print("Van kesztyuje a tamado virologusnak? [i/n] ");
                 if (sc.next().equals("i")) {
                     applyingViro.getPropertyHandler().add(new Gloves());
                     //applyingViro.setDefenseBehaviors(new GloveDefBehavior(applyingViro));
                 }
             }
 
-            System.out.print("Hat védő ágens  a másik virológusra? [i/n] ");
+            System.out.print("Hat védo agens  a másik virologusra? [i/n] ");
             if (sc.next().equals("i")) {
                 ProtectionAgent pa = new ProtectionAgent(30);
                 pa.addBehavior(affectedViro);
                 //affectedViro.setDefenseBehaviors(new DefAgentDefBehavior(affectedViro));
             }
 
-            System.out.print("Van védőköpenye  a másik virológusnak? [i/n] ");
+            System.out.print("Van védokopenye  a másik virologusnak? [i/n] ");
             if (sc.next().equals("i")) {
                 affectedViro.getPropertyHandler().add(new Cape());
                 //affectedViro.setDefenseBehaviors(new CapeDefBehavior(affectedViro));

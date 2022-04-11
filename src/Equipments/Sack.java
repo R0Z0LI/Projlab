@@ -17,7 +17,7 @@ public class Sack extends Equipment {
      */
     @Override
     public void addBehaviour(Virologist v) {
-        System.out.println("-> addBehToStack(Virologist v)\n! Megnöveli a megadott virológus által felvehető anyagmennyiséget.\n\n");
+        System.out.println("-> addBehToStack(Virologist v)\n! Megnoveli a megadott virológus által felveheto anyagmennyiséget.\n\n");
         v.getPropertyHandler().setMaxMaterial(1);
     }
 
@@ -36,7 +36,7 @@ public class Sack extends Equipment {
     public void beCollected(PropertyHandler propertyHandler) {
         if (propertyHandler.getEquipments().size() < propertyHandler.getMaxEquipment()) {
             propertyHandler.add(this);
-            System.out.println("-> beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
+            System.out.println("-> beCollected(PropertyHandler propertyHandler)\n! Begyujteti magát a virológus PropertyHandlerével.\n\n");
         }
     }
 
@@ -49,7 +49,7 @@ public class Sack extends Equipment {
     @Override
     public void beRemoved(PropertyHandler propertyHandler) {
         propertyHandler.remove(this);
-        System.out.println("-> beRemoved(PropertyHandler propertyHandler)\n! Törli magát a virológus PropertyHandleréből.\n\n");
+        System.out.println("-> beRemoved(PropertyHandler propertyHandler)\n! Torli magát a virológus PropertyHandlerébol.\n\n");
 
     }
 }

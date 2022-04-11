@@ -24,6 +24,6 @@ public class Game {
     }
 
     public void endGame() {
-        System.out.println("! A játék véget ért.");
+        System.out.println("! A jatek veget ert.");
     }
 }

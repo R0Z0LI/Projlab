@@ -49,7 +49,7 @@ public class ParalyseAgent extends Agent {
         v.add(stunnedCreate);
         v.add(stunnedCollect);
         v.add(stunnedSteal);
-        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
+        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzaadja a megadott virologus vermehez azokat a viselkedeseket, amiket a ParalyseAgent okoz.\n\n");
     }
 
     /**+
@@ -63,7 +63,7 @@ public class ParalyseAgent extends Agent {
         v.removeCreateBeh(stunnedCreate);
         v.removeCollectBeh(stunnedCollect);
         v.removeStealBeh(stunnedSteal);
-        System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitörli a megadott virológus verméből azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
+        System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitorli a megadott virologus vermebol azokat a viselkedeseket, amiket a ParalyseAgent okoz.\n\n");
 
     }
 }

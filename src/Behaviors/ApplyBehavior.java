@@ -32,10 +32,10 @@ public class ApplyBehavior {
     public void apply(Agent agent, Virologist affected) {
         System.out.println("->ApplyBehavior.apply(Agent, affected)");
         if (affected == virologist) {
-            System.out.println("! A virológus rákeni magára az ágenst.\n");
+            System.out.println("! A virologus rakeni magara az agenst.\n");
             agent.addBehavior(virologist);
         } else {
-            System.out.println("! A  másik virológusra rákenik az ágenst.");
+            System.out.println("! A  masik virologusra rakenik az agenst.");
             affected.beInfected(agent, virologist);
         }
 

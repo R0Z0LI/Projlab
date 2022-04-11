@@ -9,7 +9,7 @@ public class TestSetup {
         boolean run = true;
         while (run) {
             Scanner sc = new Scanner(System.in);
-            System.out.println(cyan+"Mit szeretnél tesztelni? Válassz egy számot:");
+            System.out.println(cyan+"Mit szeretnel tesztelni? Valassz egy szamot:");
             System.out.println("1. Move Virologist");
             System.out.println("2. Collect");
             System.out.println("3. Create Agent");

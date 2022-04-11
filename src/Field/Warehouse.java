@@ -19,7 +19,7 @@ public class Warehouse extends Field {
      * @param aminoAcid Ezt adja hozzá
      */
     public void add(AminoAcid aminoAcid) {
-        System.out.println("-> AddAmino(AminoAcid aminoAcid)\n! Hozzáadja a praméterként kapott aminósavat a currAmino-hoz\n\n");
+        System.out.println("-> AddAmino(AminoAcid aminoAcid)\n! Hozzaadja a prameterkent kapott aminosavat a currAmino-hoz\n\n");
         aminoAcids.add(aminoAcid);
     }
 
@@ -29,7 +29,7 @@ public class Warehouse extends Field {
      * @param nucleotid Ezt adja hozzá
      */
     public void add(Nucleotid nucleotid) {
-        System.out.println("-> AddNucleo(Nucleotid nucleotid)\n! Hozzáadja a praméterként kapott nukletidot a currNucleotid-hez\n\n");
+        System.out.println("-> AddNucleo(Nucleotid nucleotid)\n! Hozzaadja a prameterkent kapott nukletidot a currNucleotid-hez\n\n");
         nucleotids.add(nucleotid);
     }
 
@@ -39,7 +39,7 @@ public class Warehouse extends Field {
      * @param aminoAcid Ezt veszi el
      */
     public void remove(AminoAcid aminoAcid) {
-        System.out.println("-> RemoveAmino(AminoAcid aminoAcid)\n! Elveszi a paraméterként kapott aminósavat a currAmino-ból\n\n");
+        System.out.println("-> RemoveAmino(AminoAcid aminoAcid)\n! Elveszi a parameterkent kapott aminosavat a currAmino-bol\n\n");
     }
 
     /**
@@ -48,7 +48,7 @@ public class Warehouse extends Field {
      * @param nucleotid Ezt veszi el
      */
     public void remove(Nucleotid nucleotid) {
-        System.out.println("-> RemoveNucleo(Nucleotid nucleotid)\n! Elveszi a paraméterként kapott nukleotidet a currNucleotid-ból\n\n");
+        System.out.println("-> RemoveNucleo(Nucleotid nucleotid)\n! Elveszi a parameterkent kapott nukleotidet a currNucleotid-bol\n\n");
     }
 
     /**

@@ -23,7 +23,7 @@ public class ProtecionCode extends GenCode {
     @Override
     public Agent revealAgent() {
         System.out.println("-> ProtectionCode.revealAgent()");
-        System.out.println("! Elkészült egy védő ágens\n");
+        System.out.println("! Elkeszult egy védo agens\n");
         ProtectionAgent pa = new ProtectionAgent(30);
         return pa;
     }
@@ -37,7 +37,7 @@ public class ProtecionCode extends GenCode {
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
         propertyHandler.add(this);
-        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
+        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyujteti magat a virologus PropertyHandlerével.\n\n");
     }
 
     /**
@@ -49,6 +49,6 @@ public class ProtecionCode extends GenCode {
     @Override
     public void beRemoved(PropertyHandler propertyHandler) {
         propertyHandler.deleteGenCode(this);
-        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltávolíttatja magát a virológus PropertyHandleréből.\n\n");
+        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltavolittatja magat a virologus PropertyHandlerébol.\n\n");
     }
 }
