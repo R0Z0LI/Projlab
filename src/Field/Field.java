@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * A játék egy mezőjét reprezentáló osztály
  */
 public class Field {
-    private ArrayList<Virologist> virologists = new ArrayList<>();
+    protected ArrayList<Virologist> virologists = new ArrayList<>();
     private ArrayList<Field> neighbours = new ArrayList<>();
 
     // empty constructor
@@ -36,7 +36,7 @@ public class Field {
     public void addVirologist(Virologist virologist) {
         //System.out.println("-> AddVirologist(Virologist virologsit)\n! Hozzaadja a parameterkent megadott virologust a mezon levo virologusokhoz\n\n");
         virologists.add(virologist);
-        System.out.println("\tA new virologist has been given.");
+        System.out.println("\tA virologist has stepped on the field.");
     }
 
     /**
@@ -47,7 +47,7 @@ public class Field {
     public void removeVirologist(Virologist virologist) {
         //System.out.println("-> RemoveVirologist(Virologist Virologist)\n! Kitorli a parameterkent megadott virologust a mezon levo virologusok kozul\n\n");
         virologists.remove(virologist);
-        System.out.println("\tThe virologist stepped off from this field.");
+        System.out.println("\tA virologist stepped off from this field.");
     }
 
     /**
@@ -65,7 +65,7 @@ public class Field {
      */
     public void rampage() {
         //
-        System.out.println("\tThe virologist tried to rampage on a normal field.");
+        System.out.println("\tA virologist tried to rampage on a non-warehouse. Nothing happened.");
     }
 
     /**
