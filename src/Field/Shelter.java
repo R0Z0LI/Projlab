@@ -8,9 +8,14 @@ import java.util.ArrayList;
  * A menedéket reprezentáló osztály
  */
 public class Shelter extends Field{
+    private static int id = 0;
     private ArrayList<Equipment> equipments = new ArrayList<>();
+    private String name;
 
 
+    public Shelter(){
+        this.name = "shl" + id++;
+    }
 
     /**
      * Hozzáadja a currEquipment-hez a paraméterként kapott felszerelést

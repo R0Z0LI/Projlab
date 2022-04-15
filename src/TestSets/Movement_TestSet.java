@@ -24,12 +24,11 @@ public class Movement_TestSet {
 
     // initializing everything we need for this test
     private void init_test() {
-        PropertyHandler ph = new PropertyHandler(3, 10, 10, virologist);
 
         Laboratory jelenlegi = new Laboratory();
         Shelter cel = new Shelter();
         Shelter crazy = new Shelter();
-        virologist = new Virologist(ph, jelenlegi);
+        virologist = new Virologist( jelenlegi);
         jelenlegi.addNeighbour(cel);
         jelenlegi.addNeighbour(crazy);
         MovementBehavior movementBehavior = new MovementBehavior(virologist);

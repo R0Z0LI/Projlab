@@ -3,17 +3,31 @@ package Field;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A játék egy mezőjét reprezentáló osztály
  */
 public class Field {
+    private static int id = 0;
+    protected static List<Field> fields = new ArrayList<>();
     protected ArrayList<Virologist> virologists = new ArrayList<>();
     private ArrayList<Field> neighbours = new ArrayList<>();
+    private String name;
 
-    // empty constructor
+
+
     public Field() {
-        //
+        name = "fid" + id++;
+        fields.add(this);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static List<Field> getFields() {
+        return fields;
     }
 
     // TODO more complex constructor? (maybe)

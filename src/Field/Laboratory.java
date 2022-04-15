@@ -10,12 +10,15 @@ import java.util.ArrayList;
  * A laboratóriumot reprezentáló osztály
  */
 public class Laboratory extends Field {
+    private static int id = 0;
     private ArrayList<GenCode> genCodes = new ArrayList<>();
     private BearAgent bearAgent = null;
+    private String name;
 
-    // empty constructor
+
     public Laboratory() {
-        //
+        this.name = "lab" + id++;
+        fields.add(this);
     }
 
     /**

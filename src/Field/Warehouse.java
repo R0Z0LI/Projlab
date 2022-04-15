@@ -8,9 +8,14 @@ import java.util.ArrayList;
  * A raktárat reprezentáló osztály
  */
 public class Warehouse extends Field {
+    private static int id = 0;
     private ArrayList<Nucleotid> nucleotids = new ArrayList<>();
     private ArrayList<AminoAcid> aminoAcids = new ArrayList<>();
+    private String name;
 
+    public Warehouse(){
+        this.name = "who" + id++;
+    }
     /**
      * Anyagot pusztít a mezőn.
      */

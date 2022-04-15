@@ -16,6 +16,8 @@ import java.util.Stack;
  * A virológust reprezentáló osztály
  */
 public class Virologist {
+    private String name;
+    private static int id = 0;
     private int actionCounter;
     private PropertyHandler myProperties;
     private Field currentField;
@@ -44,11 +46,12 @@ public class Virologist {
     }
 
     //TODO szükség van erre
-    public Virologist(PropertyHandler myProperties, Field currentField) {
+    public Virologist(Field currentField) {
+        this.name = "vir" + id++;
         this.currentField = currentField;
         currentField.addVirologist(this);
 
-        this.myProperties = myProperties;
+        this.myProperties = new PropertyHandler();
         MovementBehavior movementBehavior = new MovementBehavior(this);
         this.movementBehaviors.add(movementBehavior);
         CreateBehavior createBehavior = new CreateBehavior(this);
@@ -62,6 +65,7 @@ public class Virologist {
         DefenseBehavior defenseBehavior = new DefenseBehavior(this);
         this.defenseBehaviors.add(defenseBehavior);
     }
+
 
     /**
      * A collectBeh első elemétől függően meghívja a CollectBehavior objekt leszármazottjának
