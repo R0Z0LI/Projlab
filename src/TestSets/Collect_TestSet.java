@@ -47,28 +47,28 @@ public class Collect_TestSet {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Mit vennél fel? [kesztyű, köpeny, zsák, Amino, Nucleo, Gencode] ");
+        System.out.print("Mit vennel fel? [kesztyu, kopeny, zsak, Amino, Nucleo, Gencode] ");
         String CollectType = sc.next();
-        if(!(CollectType.equals("kesztyű") || CollectType.equals("zsák")  || CollectType.equals("köpeny") || CollectType.equals("Nucleo") || CollectType.equals("Amino") || CollectType.equals("Gencode"))){
-            CollectType = "kesztyű";
+        if(!(CollectType.equals("kesztyu") || CollectType.equals("zsak")  || CollectType.equals("kopeny") || CollectType.equals("Nucleo") || CollectType.equals("Amino") || CollectType.equals("Gencode"))){
+            CollectType = "kesztyu";
         }
         switch (CollectType) {
 
-            case "kesztyű":
+            case "kesztyu":
                 collectible = new Gloves();
                 field = new Shelter();
                 ((Shelter) field).add((Equipment) collectible);
                 viro.setCurrentField(field);
                 break;
 
-            case "köpeny":
+            case "kopeny":
                 collectible = new Cape();
                 field = new Shelter();
                 ((Shelter) field).add((Equipment) collectible);
                 viro.setCurrentField(field);
                 break;
 
-            case "zsák":
+            case "zsak":
                 collectible = new Sack();
                 field = new Shelter();
                 ((Shelter) field).add((Equipment) collectible);

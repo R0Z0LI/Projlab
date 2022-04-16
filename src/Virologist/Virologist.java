@@ -15,6 +15,7 @@ import java.util.*;
  */
 public class Virologist {
     private String name;
+    private static int id = 0;
     private int actionCounter;
     private PropertyHandler myProperties;
     private Field currentField;

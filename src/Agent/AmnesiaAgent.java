@@ -21,7 +21,7 @@ public class AmnesiaAgent extends Agent{
      */
     @Override
     public void addBehavior(Virologist virologist) {
-        System.out.println("-> AddBehToStack(Virologist virologist)\n! A felejtő ágens hatni fog.\n\n");
+        System.out.println("-> AddBehToStack(Virologist virologist)\n! A felejto agens hatni fog.\n\n");
         virologist.getPropertyHandler().deleteGenCodes();
 
     }

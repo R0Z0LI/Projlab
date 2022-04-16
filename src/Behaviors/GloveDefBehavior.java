@@ -24,13 +24,13 @@ public class GloveDefBehavior extends DefenseBehavior {
             priority = 4;
             virologist.resortDefenseBehaviors();
             System.out.println("->GloveDefBehavior.defend()");
-            System.out.println("!A kesztyű a kenést kezdeményező (támadó) virológusra visszadobja az ágenst.");
+            System.out.println("!A kesztyu a kenést kezdeményezo (támado) virologusra visszadobja az ágenst.");
             usability = 1;
             attacker.beInfected(agent, virologist);
         }
         if (usability == 0) {
             System.out.println("->GloveDefBehavior.defend()");
-            System.out.println("!A kesztyű elhasználódott, egy körig nem véd.");
+            System.out.println("!A kesztyu elhasználodott, egy korig nem véd.");
             priority = 0;
             virologist.resortDefenseBehaviors();
             usability--;
@@ -40,7 +40,7 @@ public class GloveDefBehavior extends DefenseBehavior {
             priority = 4;
             virologist.resortDefenseBehaviors();
             System.out.println("->GloveDefBehavior.defend()");
-            System.out.println("!A kesztyű a kenést kezdeményező (támadó) virológusra visszadobja az ágenst.");
+            System.out.println("!A kesztyu a kenést kezdeményezo (támado) virologusra visszadobja az ágenst.");
             usability--;
             attacker.beInfected(agent, virologist);
         }

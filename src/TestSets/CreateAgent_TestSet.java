@@ -28,10 +28,10 @@ public class CreateAgent_TestSet {
     private void init_test() {
         virologist = new Virologist();
         virologist.setCurrentField(new Field());
-        System.out.println("Melyik kódból állítson elő ágenst a virológus? védő/felejtő/bénító/vitustánc [v/f/b/t]");
+        System.out.println("Melyik kodbol allitson elo agenst a virologus? vedo/felejto/bénito/vitustánc [v/f/b/t]");
         Scanner sc = new Scanner(System.in);
         String code = sc.next();
-        System.out.println("Van elég anyaga az előállításhoz? [i/n]");
+        System.out.println("Van elég anyaga az eloállitáshoz? [i/n]");
         String material = sc.next();
         switch (code) {
             case "v":
@@ -47,7 +47,7 @@ public class CreateAgent_TestSet {
                 genCode = new CrazyDanceCode();
                 break;
             default:
-                System.out.println("Nem jó kód, így most felejtő lesz.");
+                System.out.println("Nem jo kod, igy most felejto lesz.");
                 genCode = new AmnesiaCode();
                 break;
         }

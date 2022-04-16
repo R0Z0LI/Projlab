@@ -24,7 +24,7 @@ public class CrazyDanceCode extends GenCode{
     @Override
     public Agent revealAgent() {
         System.out.println("-> CrazyDanceCode.revealAgent()");
-        System.out.println("! Elkészült egy vitustánc ágens\n");
+        System.out.println("! Elkeszult egy vitustánc ágens\n");
         CrazyDanceAgent cda=new CrazyDanceAgent(30);
         return cda;
     }
@@ -37,7 +37,7 @@ public class CrazyDanceCode extends GenCode{
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
         propertyHandler.add(this);
-        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
+        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyujteti magát a virologus PropertyHandlerével.\n\n");
     }
 
     /**+
@@ -48,6 +48,6 @@ public class CrazyDanceCode extends GenCode{
     @Override
     public void beRemoved(PropertyHandler propertyHandler) {
         propertyHandler.deleteGenCode(this);
-        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltávolíttatja magát a virológus PropertyHandleréből.\n\n");
+        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltávolittatja magát a virologus PropertyHandlerébol.\n\n");
     }
 }

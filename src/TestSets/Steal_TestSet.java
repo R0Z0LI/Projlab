@@ -103,7 +103,7 @@ public class Steal_TestSet {
             // if we want to steal gloves
             case "k":
                 // creating, and adding the other stuff to our inventory
-                System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
+                System.out.print("Mennyi védoeszkozt tud még eltárolni? [0…3] ");
                 freeSpace = sc.nextInt();
                 currFullness = 3-freeSpace;
                 for (int i = 0; i < currFullness; i++)
@@ -119,7 +119,7 @@ public class Steal_TestSet {
             // if we want to steal a sack
             case "z":
                 // creating, and adding the other stuff to our inventory
-                System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
+                System.out.print("Mennyi védoeszkozt tud még eltárolni? [0…3] ");
                 freeSpace = sc.nextInt();
                 currFullness = 3-freeSpace;
                 for (int i = 0; i < currFullness; i++)
@@ -135,7 +135,7 @@ public class Steal_TestSet {
             // if we want to steal cape
             case "v":
                 // creating, and adding the other stuff to our inventory
-                System.out.print("Mennyi védőeszközt tud még eltárolni? [0…3] ");
+                System.out.print("Mennyi védoeszkozt tud még eltárolni? [0…3] ");
                 freeSpace = sc.nextInt();
                 currFullness = 3-freeSpace;
                 for (int i = 0; i < currFullness; i++)

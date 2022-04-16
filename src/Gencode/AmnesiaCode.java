@@ -23,7 +23,7 @@ public class AmnesiaCode extends GenCode {
     @Override
     public Agent revealAgent() {
         System.out.println("-> AmnesiaCode.revealAgent()");
-        System.out.println("! Elkészült egy felejtő ágens\n");
+        System.out.println("! Elkeszult egy felejto agens\n");
         AmnesiaAgent ae = new AmnesiaAgent(30);
         return ae;
     }
@@ -36,7 +36,7 @@ public class AmnesiaCode extends GenCode {
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
-        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyűjteti magát a virológus PropertyHandlerével.\n\n");
+        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyujteti magat a virologus PropertyHandlerevel.\n\n");
         propertyHandler.add(this);
     }
 
@@ -49,6 +49,6 @@ public class AmnesiaCode extends GenCode {
     @Override
     public void beRemoved(PropertyHandler propertyHandler) {
         propertyHandler.deleteGenCode(this);
-        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltávolíttatja magát a virológus PropertyHandleréből.\n\n");
+        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltavolittatja magat a virologus PropertyHandlerebol.\n\n");
     }
 }

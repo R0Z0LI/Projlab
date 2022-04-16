@@ -24,6 +24,6 @@ public class DefAgentDefBehavior extends DefenseBehavior {
     @Override
     public void defend(Agent agent, Virologist attacker) {
         System.out.println("->DefAgentDefBehavior.defend(Agent Agent, Virologist attacker)");
-        System.out.println("! A védő ágens megvéd a kenéstől.");
+        System.out.println("! A védo ágens megvéd a kenéstol.");
     }
 }

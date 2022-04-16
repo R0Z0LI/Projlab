@@ -23,12 +23,12 @@ public class CapeDefenseBehavior extends DefenseBehavior {
         System.out.println("-> CapeDefBehavior.defend(Agent Agent, Virologist attacker)");
         double chance = Math.random() * 100;
         if (chance > DEFENSE_CHANCE_PERCENT) {
-            System.out.println("! A köpeny védése nem jött össze.");
+            System.out.println("! A kopeny védése nem jott ossze.");
             priority--;
             virologist.resortDefenseBehaviors();
             virologist.beInfected(agent, attacker);
         } else {
-            System.out.println("! A köpeny most megvédett.\n");
+            System.out.println("! A kopeny most megvédett.\n");
         }
     }
 }
