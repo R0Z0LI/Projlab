@@ -4,7 +4,6 @@ import Field.Laboratory;
 import Field.Shelter;
 import Behaviors.CrazyMoveBehavior;
 import Behaviors.MovementBehavior;
-import Behaviors.StunnedMoveBehavior;
 import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 

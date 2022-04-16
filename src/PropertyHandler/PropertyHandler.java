@@ -228,6 +228,9 @@ public class PropertyHandler {
     public List<Agent> getAgents() {
         return agents;
     }
+    public List<GenCode> getGenCodes() {
+        return genCodes;
+    }
 
     public void setVirologist(Virologist virologist) {
         this.virologist = virologist;

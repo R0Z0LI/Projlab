@@ -8,14 +8,13 @@ import Behaviors.*;
 import Equipments.Equipment;
 import Gencode.GenCode;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * A virológust reprezentáló osztály
  */
 public class Virologist {
+    private String name;
     private int actionCounter;
     private PropertyHandler myProperties;
     private Field currentField;
@@ -25,8 +24,11 @@ public class Virologist {
     private Stack<CollectBehavior> collectBehaviors = new Stack<>();
     private Stack<StealBehavior> stealBehaviors = new Stack<>();
     private Stack<DefenseBehavior> defenseBehaviors = new Stack<>();
+    private Stack<AutomaticBehavior> automaticBehaviors = new Stack<>();
+    private Stack<AttackBehavior> attackBehaviors = new Stack<>();
 
-    public Virologist() {
+    public Virologist(String name) {
+        this.name=name;
         this.actionCounter = 2;
         this.myProperties = new PropertyHandler(this);
         MovementBehavior movementBehavior = new MovementBehavior(this);
@@ -42,27 +44,10 @@ public class Virologist {
         DefenseBehavior defenseBehavior = new DefenseBehavior(this);
         this.defenseBehaviors.add(defenseBehavior);
     }
-
-    //TODO szükség van erre
-    public Virologist(PropertyHandler myProperties, Field currentField) {
-        this.currentField = currentField;
-        currentField.addVirologist(this);
-
-        this.myProperties = myProperties;
-        MovementBehavior movementBehavior = new MovementBehavior(this);
-        this.movementBehaviors.add(movementBehavior);
-        CreateBehavior createBehavior = new CreateBehavior(this);
-        this.createBehaviors.add(createBehavior);
-        ApplyBehavior applyBehavior = new ApplyBehavior(this);
-        this.applyBehaviors.add(applyBehavior);
-        CollectBehavior collectBehavior = new CollectBehavior(this);
-        this.collectBehaviors.add(collectBehavior);
-        StealBehavior stealBehavior = new StealBehavior(this);
-        this.stealBehaviors.add(stealBehavior);
-        DefenseBehavior defenseBehavior = new DefenseBehavior(this);
-        this.defenseBehaviors.add(defenseBehavior);
+    @Override
+    public String toString(){
+        return name;
     }
-
     /**
      * A collectBeh első elemétől függően meghívja a CollectBehavior objekt leszármazottjának
      * a Collect metódusát, ezzel elindítva a begyűjtés folyamatát
@@ -70,7 +55,10 @@ public class Virologist {
      * @param collectible Amit összegyűjt
      */
     public void collect(Collectible collectible) {
-        System.out.print("-> Collect(Collectible collectible)\n! A virológus elindítja a begyűjtés folyamatát.\n\n");
+        if(collectible==null){
+            System.out.println("There is no such thing on this field.");
+            return;
+        }
         collectBehaviors.firstElement().collect(collectible, myProperties);
     }
 
@@ -81,7 +69,10 @@ public class Virologist {
      * @param field A mező ahova lépni szeretne a virológus
      */
     public void step(Field field) {
-        System.out.println("-> Step(Field field)\n! A virológus elindítja a mozgás folyamatát.\n\n");
+        if(field==null){
+            System.out.println("You can't move there, it's not your neighbor. \n");
+            return;
+        }
         movementBehaviors.firstElement().move(this.currentField, field);
     }
 
@@ -92,9 +83,15 @@ public class Virologist {
      * @param collectible A tárgy amit el akar lopni
      * @param affected    A virológus akitől el akarja lopni
      */
-    public void steal(Collectible collectible, Virologist affected) {
-        System.out.print("-> Steal(Collectible collectible, Virologist affected)\n! A virológus elindítja a lopás folyamatát\n\n");
-        stealBehaviors.firstElement().steal(collectible, affected, myProperties);
+    public void steal(Collectible collectible, Virologist affected)  {
+        if(affected.getStealableThings() == null) {
+            System.out.println("This virologist is not paralysed.");
+            return;
+        }
+        if(affected.getStealableThings().contains(collectible))
+            stealBehaviors.firstElement().steal(collectible, affected, myProperties);
+        else
+            System.out.println("The virologist does not have that equipment.");
     }
 
     /**
@@ -104,7 +101,10 @@ public class Virologist {
      * @param genCode A genetikai kód amiből létre akarja hozni az ágenst
      */
     public void createAgent(GenCode genCode) {
-        System.out.println("-> CreateAgent(GenCode genCode)\n! A virológus elindítja az ágens előállításának folyamatát.\n\n");
+        if(genCode==null){
+            System.out.println("You don't own this code.");
+            return;
+        }
         createBehaviors.firstElement().create(genCode);
     }
 
@@ -116,15 +116,142 @@ public class Virologist {
      * @param affected Akire rá akarja kenni
      */
     public void applyAgent(Agent agent, Virologist affected) {
-        System.out.println("-> ApplyAgent(Agent agent, Virologist affected)\n! A virológus elindítja a kenés folyamatát\n\n");
+        if(agent==null){
+            System.out.println("You don't own this agent.");
+            return;
+        }
+        if(affected==null){
+            System.out.println("You can't see that virologist.");
+            return;
+        }
         applyBehaviors.firstElement().apply(agent, affected);
     }
-
+    /**+
+     * megpróbálja megölni a másik virológust
+     * @param victim akit meg kell ölni
+     */
+    public void attack(Virologist victim){
+        if(victim==null){
+            System.out.println("You can't see that virologist.");
+            return;
+        }
+        attackBehaviors.firstElement().attack(victim);
+    }
+    /**
+     * Elpusztítja a virológus egyik, a játékos által választott felszerelését
+     *
+     * @param equipment Ezt a felszerelést pusztítja el
+     */
+    public void destroy(Equipment equipment) {
+        if(equipment==null){
+            System.out.println("You don’t own this equipment.");
+            return;
+        }
+        myProperties.remove(equipment);
+    }
+    //TODO toString metódus a tárgyaknak, virologusnak, mezoknek... minednnek
     /**
      * Elindítja a virológus körét
+     * A játékos parancsait beolvassa, értelmezi
      */
     public void yourTurn() {
-        System.out.println("-> YourTurn()\n! Elindítja a virológus körét.\n\n");
+        //meghívja az automatikus viselkedést
+        automaticBehaviors.firstElement().execute();
+        //amíg van akció, várja a játékos utasításait
+        while(actionCounter>0){
+            ArrayList<Virologist> viros = new ArrayList<>();
+            viros.addAll(currentField.GetTouchableVirologists());
+            System.out.println("Elerheto virologusok a mezon:");
+            //kiírja az összes elérhető virológust
+            for(Virologist v : viros){
+                System.out.println(v.toString());
+                //kiírja a virológusok lopható cuccait
+               for(Collectible c : v.getStealableThings()) {
+                   System.out.println(c.toString());
+               }
+            }
+            //beolvassa a játékos parancsát
+            Scanner scanner = new Scanner(System.in);
+            String[] command = scanner.next().split(" ");
+            switch(command[0]){
+                case "Apply":
+                    //megkeresi, kire kell kenni
+                    Virologist affected=null;
+                    for(Virologist v : viros)
+                        if(v.toString().equals(command[2])) {
+                            affected = v;
+                            break;
+                        }
+                    //megkeresi, melyik ágenst kell kenni
+                    Agent agent=null;
+                    for(Agent a : myProperties.getAgents())
+                        if(a.toString().equals(command[3])) {
+                            agent=a;
+                            break;
+                        }
+                    applyAgent(agent, affected);
+                    break;
+                case "Collect":
+
+                    break;
+                case "Create":
+                    GenCode code=null;
+                    //megkeresi, melyik kódról van szó
+                    for(GenCode g : myProperties.getGenCodes())
+                        if(g.toString().equals(command[2])){
+                           code=g;
+                           break;
+                        }
+                    createAgent(code);
+                    break;
+                case "Kill":
+                    //megkeresi, kit kell megölni
+                    Virologist victim=null;
+                    for(Virologist v : viros)
+                        if(v.toString().equals(command[2])) {
+                            victim = v;
+                            break;
+                        }
+                    attack(victim);
+                    break;
+                case "Move":
+                    //megkeresi, hova kell menni
+                    Field nextField = null;
+                    for(Field f : currentField.getNeighbours())
+                        if(f.toString().equals(command[2])){
+                            nextField=f;
+                            break;
+                        }
+                    step(nextField);
+                    break;
+                case "Steal":
+                    //megkeresi, hogy kitől kell lopni
+                    Virologist stealVictim=null;
+                    for(Virologist v : viros)
+                        if(v.toString().equals(command[2])) {
+                            stealVictim = v;
+                            break;
+                        }
+                    //megkeresi, hogy mit kell lopni
+                    Collectible stealable=null;
+                    for(Collectible c: stealVictim.getStealableThings())
+                        if(c.toString().equals(command[3])){
+                            stealable=c;
+                            break;
+                        }
+                    steal(stealable, stealVictim);
+                    break;
+                case "Throw":
+                    //megkeresi, hogy mit kell eldobni
+                    Equipment equipment=null;
+                    for(Equipment e: myProperties.getEquipments())
+                        if(e.toString().equals(command[2])){
+                            equipment=e;
+                        }
+                    destroy(equipment);
+                    break;
+            }
+        }
     }
 
     /**
@@ -135,178 +262,202 @@ public class Virologist {
      * @param attacker Aki rákente
      */
     public void beInfected(Agent agent, Virologist attacker) {
-        System.out.println("-> BeInfected(Agent agent, Virologist attacker)\n! A virológus megpróbálja kivédeni a kenést\n\n");
         defenseBehaviors.firstElement().defend(agent, attacker);
     }
-
-    /**
-     * Elpusztítja a virológus egyik, a játékos által választott felszerelését
-     *
-     * @param equipment Ezt a felszerelést pusztítja el
-     */
-    public void destroy(Equipment equipment) {
-        System.out.println("-> DestroyEquipment(Equipment equipment)\n! Elpusztítja a virológus egyik, a játékos által választott felszerelését.\n\n");
-        myProperties.remove(equipment);
-    }
-
+    //TODO beKilled()
+    public void beKilled(){}
     /**
      * currentField settere
      *
      * @param field Erre változtatja meg
      */
     public void setCurrentField(Field field) {
-        System.out.println("-> setCurrField(Field field)\n! Beállítja a virológus pozícióját.\n\n");
+        System.out.println(name+" stepped on "+field.toString());
         this.currentField = field;
     }
 
-    /**
-     * applyBeh settere
+    /**+
      *
-     * @param applyBehavior Ezt az elemet adja hozzá
+     * @return pozíció
      */
-    public void add(ApplyBehavior applyBehavior) {
-        System.out.println("-> setApplyBeh(ApplyBehavior applyBehavior)\n! applyBehavior beállítva.\n\n");
-        this.applyBehaviors.add(applyBehavior);
-    }
-
-    /**
-     * defenseBeh settere
-     *
-     * @param defenseBehavior Ezt az elemet adja hozzá
-     */
-    public void add(DefenseBehavior defenseBehavior) {
-        System.out.println("-> addDefenseBehavior(DefenseBehavior defenseBehavior)\n! defenseBehavior beállítva.\n");
-        this.defenseBehaviors.add(defenseBehavior);
-        defenseBehaviors.sort(Comparator.comparingInt(DefenseBehavior::getPriority));
-        Collections.reverse(defenseBehaviors);
-        System.out.println("! A védő stratégiák prioritás szerint sorba lettek rendezve. Az első lesz alkalmazva.\n\n");
-    }
-
-    /**
-     * stealBeh settere
-     *
-     * @param stealBehavior Ezt az elemet adja hozzá
-     */
-    public void add(StealBehavior stealBehavior) {
-        System.out.println("->  addStealBehavior(StealBehavior stealBehavior)\n! stealBehavior beállítva.\n\n");
-        this.stealBehaviors.add(stealBehavior);
-    }
-
-    /**
-     * collectBehavior settere
-     *
-     * @param cBehavior Ezt az elemet adja hozzá
-     */
-    public void add(CollectBehavior cBehavior) {
-        System.out.println("-> addCollectBehavior(CollectBehavior collectBehavior)\n! collectBehavior beállítva.\n\n");
-        this.collectBehaviors.add(cBehavior);
-    }
-
-    /**
-     * createBehavior settere
-     *
-     * @param cBehavior Ezt az elemet adja hozzá
-     */
-    public void add(CreateBehavior cBehavior) {
-        System.out.println("-> addCreateBehavior(CreateBehavior createBehavior)\n! createBehavior beállítva.\n\n");
-        this.createBehaviors.add(cBehavior);
-    }
-
-    /**
-     * movementBehavior settere
-     *
-     * @param movementBehavior Ezt az elemet adja hozzá
-     */
-    public void add(MovementBehavior movementBehavior) {
-        System.out.println("-> addMoveBehavior(MovementBehavior movementBehavior)\n! moveBehavior beállítva.\n\n");
-        this.movementBehaviors.add(movementBehavior);
-    }
-
-    /**
-     * +
-     * Újra sorba állítja a defense Behavior gyűjteményét prioritás szerint.
-     */
-    public void resortDefenseBehaviors() {
-        defenseBehaviors.sort((d1, d2) -> {
-            return d2.getPriority() - d1.getPriority();
-        });
-    }
-
+    public Field getCurrentField(){return currentField;}
     /**
      * Visszaadja a PropertyHandlerét a virológusnak
      *
      * @return A myProperties-el tér vissza
      */
     public PropertyHandler getPropertyHandler() {
-        System.out.println("-> getPropertyHandler()\n");
         return myProperties;
+    }
+    /**+
+     * beállítja az actionCounter értékét
+     * @param actionCount az új érték
+     */
+    public void setActionCounter(int actionCount){actionCounter=actionCount;}
+
+    /**+
+     * A megadott számmal csökkenti at actionCounter értékét
+     * @param number csökkentés
+     */
+    public void decreaseActionCounter(int number){
+        actionCounter-=number;
+    }
+
+    /**+
+     * visszaadja a virológustól ellopható dolgokat
+     * @return ellopható dolgok
+     */
+    public ArrayList<Collectible> getStealableThings(){
+        ArrayList<Collectible> stealables = automaticBehaviors.firstElement().getStealables(myProperties);
+        return stealables;
+    }
+    /**
+     * applyBeh settere
+     *
+     * @param beh Ezt az elemet adja hozzá
+     */
+    public void add(ApplyBehavior beh) {
+        this.applyBehaviors.add(beh);
+    }
+
+    /**+
+     * automatikus behavior hozzáadása
+     * @param beh
+     */
+    public void add(AutomaticBehavior beh){
+        this.automaticBehaviors.add(beh);
+    }
+
+    /**+
+     * támadási viselkedés hozzáadása
+     * @param beh
+     */
+    public void add(AttackBehavior beh){
+        this.attackBehaviors.add(beh);
+    }
+    /**
+     * defenseBeh settere
+     *
+     * @param beh Ezt az elemet adja hozzá
+     */
+    public void add(DefenseBehavior beh) {
+        this.defenseBehaviors.add(beh);
+        defenseBehaviors.sort(Comparator.comparingInt(DefenseBehavior::getPriority));
+        Collections.reverse(defenseBehaviors);
+    }
+
+    /**
+     * stealBeh settere
+     *
+     * @param beh Ezt az elemet adja hozzá
+     */
+    public void add(StealBehavior beh) {
+        this.stealBehaviors.add(beh);
+    }
+
+    /**
+     * collectBehavior settere
+     *
+     * @param beh Ezt az elemet adja hozzá
+     */
+    public void add(CollectBehavior beh) {
+        this.collectBehaviors.add(beh);
+    }
+
+    /**
+     * createBehavior settere
+     *
+     * @param beh Ezt az elemet adja hozzá
+     */
+    public void add(CreateBehavior beh) {
+        this.createBehaviors.add(beh);
+    }
+
+    /**
+     * movementBehavior settere
+     *
+     * @param beh Ezt az elemet adja hozzá
+     */
+    public void add(MovementBehavior beh) {
+        this.movementBehaviors.add(beh);
+    }
+    //TODO kell-e még most is
+    /**
+     * +
+     * Újra sorba állítja a defense Behavior gyűjteményét prioritás szerint.
+     */
+    public void resortDefenseBehaviors() {
+        defenseBehaviors.sort((d1, d2) -> d2.getPriority() - d1.getPriority());
     }
 
     /**
      * lveszi a stack-ből a paraméterként adott behavior-t
      *
-     * @param stunnedMove Ezt a behavior-t veszi el
+     * @param beh Ezt a behavior-t veszi el
      */
-    public void removeMoveBeh(StunnedMoveBehavior stunnedMove) {
-        this.movementBehaviors.remove(stunnedMove);
+    public void remove(MovementBehavior beh) {
+        this.movementBehaviors.remove(beh);
+    }
+
+    /**+
+     * eltávolítja az automatikus viselkedést
+     * @param beh
+     */
+    public void remove(AutomaticBehavior beh){
+        automaticBehaviors.remove(beh);
+    }
+
+    /**+
+     * eltávolítja a támadási viselkedést
+     * @param beh
+     */
+    public void remove(AttackBehavior beh){
+        attackBehaviors.remove(beh);
+    }
+    //TODO kell?
+    /**
+     * Elveszi a stack-ből a paraméterként adott behavior-t
+     *
+     * @param beh Ezt a behavior-t veszi el
+     */
+    public void remove(ApplyBehavior beh) {
+        this.applyBehaviors.remove(beh);
+    }
+    //TODO kell?
+    /**
+     * Elveszi a stack-ből a paraméterként adott behavior-t
+     *
+     * @param beh Ezt a behavior-t veszi el
+     */
+    public void remove(CreateBehavior beh) {
+        this.createBehaviors.remove(beh);
+    }
+    //TODO kell?
+    /**
+     * Elveszi a stack-ből a paraméterként adott behavior-t
+     *
+     * @param beh Ezt a behavior-t veszi el
+     */
+    public void remove(CollectBehavior beh) {
+        this.collectBehaviors.remove(beh);
+    }
+    //TODO kell?
+    /**
+     * Elveszi a stack-ből a paraméterként adott behavior-t
+     *
+     * @param beh Ezt a behavior-t veszi el
+     */
+    public void remove(StealBehavior beh) {
+        this.stealBehaviors.remove(beh);
     }
 
     /**
      * Elveszi a stack-ből a paraméterként adott behavior-t
      *
-     * @param crazyMoveBehavior Ezt a behavior-t veszi el
+     * @param beh Ezt a behavior-t veszi el
      */
-    public void removeCrazyMoveBeh(CrazyMoveBehavior crazyMoveBehavior) {
-        this.movementBehaviors.remove(crazyMoveBehavior);
-    }
-
-    /**
-     * Elveszi a stack-ből a paraméterként adott behavior-t
-     *
-     * @param stunnedApply Ezt a behavior-t veszi el
-     */
-    public void removeApplyBeh(StunnedApplyBehavior stunnedApply) {
-        this.applyBehaviors.remove(stunnedApply);
-    }
-
-    /**
-     * Elveszi a stack-ből a paraméterként adott behavior-t
-     *
-     * @param stunnedCreate Ezt a behavior-t veszi el
-     */
-    public void removeCreateBeh(StunnedCreateBehavior stunnedCreate) {
-        this.createBehaviors.remove(stunnedCreate);
-    }
-
-    /**
-     * Elveszi a stack-ből a paraméterként adott behavior-t
-     *
-     * @param stunnedCollect Ezt a behavior-t veszi el
-     */
-    public void removeCollectBeh(StunnedCollectBehavior stunnedCollect) {
-        this.collectBehaviors.remove(stunnedCollect);
-    }
-
-    /**
-     * Elveszi a stack-ből a paraméterként adott behavior-t
-     *
-     * @param stunnedSteal Ezt a behavior-t veszi el
-     */
-    public void removeStealBeh(StunnedStealBehavior stunnedSteal) {
-        this.stealBehaviors.remove(stunnedSteal);
-    }
-
-    /**
-     * Elveszi a stack-ből a paraméterként adott behavior-t
-     *
-     * @param defenseBehavior Ezt a behavior-t veszi el
-     */
-    public void removeDefenseBeh(DefenseBehavior defenseBehavior) {
-        this.defenseBehaviors.remove(defenseBehavior);
-    }
-
-    public Stack<ApplyBehavior> getApplyBehaviors() {
-        return applyBehaviors;
+    public void remove(DefenseBehavior beh) {
+        this.defenseBehaviors.remove(beh);
     }
 }
 
