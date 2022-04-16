@@ -312,5 +312,9 @@ public class Virologist {
     public Stack<ApplyBehavior> getApplyBehaviors() {
         return applyBehaviors;
     }
+
+    public String getName() {
+        return name;
+    }
 }
 

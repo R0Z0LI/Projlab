@@ -1,6 +1,5 @@
 package Game;
 
-import Exceptions.FieldNotFoundException;
 import Field.Field;
 import Virologist.Virologist;
 
@@ -10,6 +9,7 @@ import java.util.Scanner;
 public class Game {
     private final ArrayList<Steppable> steppables;
     private boolean testingFinished = false;
+
     public Game() {
         steppables = new ArrayList<>();
     }
@@ -18,9 +18,9 @@ public class Game {
         steppables.add(s);
     }
 
-    public void startGame(){
+    public void startGame() {
         initTest();
-        while(true){
+        while (true) {
 
         }
     }
@@ -28,62 +28,55 @@ public class Game {
     private void initTest() {
         System.out.println("Give your commands fella");
         Scanner scan = new Scanner(System.in);
-        while(!testingFinished){
-            String commands = scan.nextLine();
-            if(commands.contains("CreateVirologist")){
-                String[] splitStrings = commands.split("s+");
-                String second = splitStrings[1];
-                if(second.contains("lab")){
-                    creatVirologistOnField(second);
-                } else if(second.contains("who")){
-                    creatVirologistOnField(second);
-                }else if(second.contains("shl")){
-                    creatVirologistOnField(second);
-                }else if(second.contains("fid")){
-                    creatVirologistOnField(second);
+        while (!testingFinished) {
+            String input = scan.nextLine();
+            if (input.contains("CreateVirologist")) {
+                String[] split = input.split(" ");
+                String parameter = split[1];
+                if (parameter.contains("lab") || parameter.contains("who") || parameter.contains("shl") || parameter.contains("fid")) {
+                    createVirologistOnField(parameter);
                 } else {
-                    System.out.println("Wrong command");
+                    System.out.println("'" + parameter + "' is not a valid parameter");
                 }
-            }else if(commands.contains("CreateField")){
-                String[] splitStrings = commands.split("s+");
+            } else if (input.contains("CreateField")) {
+                String[] parameters = input.split(" ");
                 Field field = new Field();
-                for(int i = 1; i < splitStrings.length - 1; i++){
-                    String splitString = splitStrings[i];
-                    if(splitString.contains("lab")){
-                        field.addNeighbour(findFieldByName(splitString));
-                    } else if(splitString.contains("fid")){
-                        field.addNeighbour(findFieldByName(splitString));
-                    } else if(splitString.contains("shl")){
-                        field.addNeighbour(findFieldByName(splitString));
-                    } else if(splitString.contains("who")){
-                        field.addNeighbour(findFieldByName(splitString));
+                for (int i = 1; i < parameters.length; i++) {
+                    String parameter = parameters[i];
+                    if (parameter.contains("lab") || parameter.contains("fid") || parameter.contains("shl") || parameter.contains("who")) {
+                        Field neighbour = findFieldByName(parameter);
+                        if (neighbour != null) {
+                            field.addNeighbour(neighbour);
+                        } else {
+                            System.out.println("Field does not exist with this name: " + parameter);
+                        }
+                    } else if (!parameter.equals("")) {
+                        System.out.println("'" + parameter + "' is not a valid parameter.");
                     }
                 }
+                System.out.println("Created Field: " + field.toString());
             }
-            for(Field field : Field.getFields()) {
-                System.out.println(field.getName() + " " + field.getNeighbours());
-            }
-
         }
     }
 
-    private void creatVirologistOnField(String nextString) {
-        try {
-            Field field = findFieldByName(nextString);
+    private void createVirologistOnField(String fieldName) {
+        Field field = findFieldByName(fieldName);
+        if (field != null) {
             Virologist virologist = new Virologist(field);
-        } catch(FieldNotFoundException e){
-            System.out.println("Field not found with this name: " + nextString);
+            System.out.println("Created virologist with name " + virologist.getName() + ", on field: " + field.getName());
+        } else {
+            System.out.println("Field does not exist with this name: " + fieldName);
         }
     }
 
 
     private Field findFieldByName(String nextString) {
-        for(Field field : Field.getFields()){
-            if(field.getName().equals(nextString)) {
+        for (Field field : Field.getFields()) {
+            if (field.getName().equals(nextString)) {
                 return field;
             }
         }
-        throw new FieldNotFoundException();
+        return null;
     }
 
     public void removeSteppable(Steppable s) {

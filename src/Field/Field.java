@@ -15,8 +15,6 @@ public class Field {
     private ArrayList<Field> neighbours = new ArrayList<>();
     private String name;
 
-
-
     public Field() {
         name = "fid" + id++;
         fields.add(this);
@@ -50,7 +48,6 @@ public class Field {
     public void addVirologist(Virologist virologist) {
         //System.out.println("-> AddVirologist(Virologist virologsit)\n! Hozzaadja a parameterkent megadott virologust a mezon levo virologusokhoz\n\n");
         virologists.add(virologist);
-        System.out.println("\tA virologist has stepped on the field.");
     }
 
     /**
@@ -61,7 +58,6 @@ public class Field {
     public void removeVirologist(Virologist virologist) {
         //System.out.println("-> RemoveVirologist(Virologist Virologist)\n! Kitorli a parameterkent megadott virologust a mezon levo virologusok kozul\n\n");
         virologists.remove(virologist);
-        System.out.println("\tA virologist stepped off from this field.");
     }
 
     /**
@@ -71,7 +67,6 @@ public class Field {
      */
     public void addNeighbour(Field field) {
         neighbours.add(field);
-        System.out.println("\tA new neighbour has been given.");
     }
 
     /**
@@ -90,6 +85,16 @@ public class Field {
     public ArrayList<Field> getNeighbours() {
         //System.out.println("-> getNeighbours()\n! Visszaadja a szomszedos mezoket\n <- neighbours\n\n");
         return neighbours;
+    }
+
+    @Override
+    public String toString() {
+        String name = this.name;
+        String neighbours = " ";
+        for (Field neighbour : this.neighbours) {
+            neighbours += neighbour.name + " ";
+        }
+        return name + ", [" + neighbours + "]";
     }
 
 }
