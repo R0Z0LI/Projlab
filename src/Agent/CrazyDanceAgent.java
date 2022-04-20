@@ -20,7 +20,7 @@ public class CrazyDanceAgent extends Agent {
      */
     @Override
     public void removeBehavior(Virologist v) {
-        v.removeCrazyMoveBeh(crazyMove);
+        v.remove(crazyMove);
         System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitorli a megadott virologus vermebol a crazyMove viselkedest.\n\n");
     }
 

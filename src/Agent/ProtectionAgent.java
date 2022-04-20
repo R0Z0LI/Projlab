@@ -23,7 +23,7 @@ public class ProtectionAgent extends Agent{
     @Override
     public void removeBehavior(Virologist v) {
         defAgentDef.setVirologist(v);
-        v.removeDefenseBeh(defAgentDef);
+        v.remove(defAgentDef);
         System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitorli a megadott virologus vermebol a defAgentDef viselkedest.\n\n");
     }
 

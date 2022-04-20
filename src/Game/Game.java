@@ -169,7 +169,7 @@ public class Game {
             //TODO pontos értékek az amino, nucleonak
             ProtecionCode protecionCode = new ProtecionCode(4, 1, laboratory);
             laboratory.add(protecionCode);
-            System.out.println("Created ProtectionCode with name " + protecionCode.getName() + ", on field: " + laboratory.getName());
+            System.out.println("Created ProtectionCode with name " + protecionCode.toString() + ", on field: " + laboratory.toString());
         } else {
             System.out.println("Field does not exist with this name: " + parameter);
         }
@@ -181,7 +181,7 @@ public class Game {
             //TODO pontos értékek az amino, nucleonak
             CrazyDanceCode crazyDanceCode = new CrazyDanceCode(4, 1, laboratory);
             laboratory.add(crazyDanceCode);
-            System.out.println("Created CrazyDanceCode with name " + crazyDanceCode.getName() + ", on field: " + laboratory.getName());
+            System.out.println("Created CrazyDanceCode with name " + crazyDanceCode.toString() + ", on field: " + laboratory.toString());
         } else {
             System.out.println("Field does not exist with this name: " + parameter);
         }
@@ -193,7 +193,7 @@ public class Game {
             //TODO pontos értékek az amino, nucleonak
             AmnesiaCode amnesiaCode = new AmnesiaCode(4, 1, laboratory);
             laboratory.add(amnesiaCode);
-            System.out.println("Created AmnesiaCode with name " + amnesiaCode.getName() + ", on field: " + laboratory.getName());
+            System.out.println("Created AmnesiaCode with name " + amnesiaCode.toString() + ", on field: " + laboratory.toString());
         } else {
             System.out.println("Field does not exist with this name: " + parameter);
         }
@@ -205,7 +205,7 @@ public class Game {
             //TODO pontos értékek az amino, nucleonak
             ParalyseCode paralyseCode = new ParalyseCode(4, 1, laboratory);
             laboratory.add(paralyseCode);
-            System.out.println("Created ParalyseCode with name " + paralyseCode.getName() + ", on field: " + laboratory.getName());
+            System.out.println("Created ParalyseCode with name " + paralyseCode.toString() + ", on field: " + laboratory.toString());
         } else {
             System.out.println("Field does not exist with this name: " + parameter);
         }
@@ -216,7 +216,7 @@ public class Game {
         if (shelter != null) {
             Sack sack = new Sack(shelter);
             shelter.add(sack);
-            System.out.println("Created Sack with name " + sack.getName() + ", on field: " + shelter.getName());
+            System.out.println("Created Sack with name " + sack.toString() + ", on field: " + shelter.toString());
         } else {
             System.out.println("Field does not exist with this name: " + parameter);
         }
@@ -227,7 +227,7 @@ public class Game {
         if (shelter != null) {
             Cape cape = new Cape(shelter);
             shelter.add(cape);
-            System.out.println("Created Cape with name " + cape.getName() + ", on field: " + shelter.getName());
+            System.out.println("Created Cape with name " + cape.toString() + ", on field: " + shelter.toString());
         } else {
             System.out.println("Field does not exist with this name: " + parameter);
         }
@@ -238,7 +238,7 @@ public class Game {
         if (shelter != null) {
             Gloves glove = new Gloves(shelter);
             shelter.add(glove);
-            System.out.println("Created Glove with name " + glove.getName() + ", on field: " + shelter.getName());
+            System.out.println("Created Glove with name " + glove.toString() + ", on field: " + shelter.toString());
         } else {
             System.out.println("Field does not exist with this name: " + parameter);
         }
@@ -249,7 +249,7 @@ public class Game {
         if (warehouse != null) {
             Nucleotid nucleotid = new Nucleotid(warehouse);
             warehouse.add(nucleotid);
-            System.out.println("Created Nucleotid with name " + nucleotid.getName() + ", on field: " + warehouse.getName());
+            System.out.println("Created Nucleotid with name " + nucleotid.toString() + ", on field: " + warehouse.toString());
         } else {
             System.out.println("Field does not exist with this name: " + fieldName);
         }
@@ -260,7 +260,7 @@ public class Game {
         if (warehouse != null) {
             AminoAcid aminoAcid = new AminoAcid(warehouse);
             warehouse.add(aminoAcid);
-            System.out.println("Created AminoAcid with name " + aminoAcid.getName() + ", on field: " + warehouse.getName());
+            System.out.println("Created AminoAcid with name " + aminoAcid.toString() + ", on field: " + warehouse.toString());
         } else {
             System.out.println("Field does not exist with this name: " + fieldName);
         }
@@ -284,7 +284,7 @@ public class Game {
         Field field = findFieldByName(fieldName);
         if (field != null) {
             Virologist virologist = new Virologist(field);
-            System.out.println("Created virologist with name " + virologist.getName() + ", on field: " + field.getName());
+            System.out.println("Created virologist with name " + virologist.getName() + ", on field: " + field.toString());
         } else {
             System.out.println("Field does not exist with this name: " + fieldName);
         }
@@ -293,7 +293,7 @@ public class Game {
 
     private Field findFieldByName(String nextString) {
         for (Field field : Field.getFields()) {
-            if (field.getName().equals(nextString)) {
+            if (field.toString().equals(nextString)) {
                 return field;
             }
         }

@@ -43,7 +43,7 @@ public class Collect_TestSet {
         System.out.println("Init collecting test ...");
 
         field = new Laboratory();
-        viro = new Virologist();
+        viro = new Virologist(field);
 
         Scanner sc = new Scanner(System.in);
 

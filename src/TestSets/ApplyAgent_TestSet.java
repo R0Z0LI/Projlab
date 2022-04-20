@@ -32,8 +32,7 @@ public class ApplyAgent_TestSet {
         Field field = new Field();
 
         // setting up applying virologist
-        applyingViro = new Virologist();
-        applyingViro.setCurrentField(field);
+        applyingViro = new Virologist(field);
 
         Scanner sc = new Scanner(System.in);
 
@@ -48,7 +47,7 @@ public class ApplyAgent_TestSet {
                 usedAgent = new AmnesiaAgent(30);
                 break;
             case "b":
-                usedAgent = new ParalyseAgent(30);
+                usedAgent = new ParalyseAgent();
                 break;
             case "t":
                 usedAgent = new CrazyDanceAgent(30);
@@ -62,8 +61,7 @@ public class ApplyAgent_TestSet {
         System.out.print("Egy masik virologusra kenje? [i/n] ");
         if (sc.next().equals( "i")) {
             // setting up affected virologist
-            affectedViro = new Virologist();
-            affectedViro.setCurrentField(field);
+            affectedViro = new Virologist(field);
 
             // setting up defenses for both virologists
 

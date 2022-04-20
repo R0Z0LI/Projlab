@@ -12,7 +12,9 @@ public class Shelter extends Field{
     private ArrayList<Equipment> equipments = new ArrayList<>();
     private String name;
 
-
+    /**
+     * Shelter constructor
+     */
     public Shelter(){
         this.name = "shl" + id++;
     }

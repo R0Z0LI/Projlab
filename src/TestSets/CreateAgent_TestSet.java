@@ -26,8 +26,8 @@ public class CreateAgent_TestSet {
 
     // initializing everything we need for this test
     private void init_test() {
-        virologist = new Virologist();
-        virologist.setCurrentField(new Field());
+        Field field = new Field();
+        virologist = new Virologist(field);
         System.out.println("Melyik kodbol allitson elo agenst a virologus? vedo/felejto/bénito/vitustánc [v/f/b/t]");
         Scanner sc = new Scanner(System.in);
         String code = sc.next();

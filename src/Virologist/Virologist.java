@@ -32,6 +32,7 @@ public class Virologist {
         this.name = "vir" + id++;
         this.actionCounter = 2;
         this.myProperties = new PropertyHandler(this);
+        currentField = field;
         MovementBehavior movementBehavior = new MovementBehavior(this);
         this.movementBehaviors.add(movementBehavior);
         CreateBehavior createBehavior = new CreateBehavior(this);

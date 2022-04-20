@@ -1,6 +1,7 @@
 package TestSets;
 
 import Equipments.*;
+import Field.Field;
 import Virologist.Virologist;
 
 import java.util.Scanner;
@@ -39,8 +40,10 @@ public class ThrowEquipment_TestSet {
 
         System.out.println("Init equipment throwing test ...");
 
+        Field field = new Field();
+
         // constructing a virologist
-        viro = new Virologist();
+        viro = new Virologist(field);
 
         // reading in the equipment that we want to throw away
         Scanner sc = new Scanner(System.in);

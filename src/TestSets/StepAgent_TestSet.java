@@ -1,6 +1,7 @@
 package TestSets;
 
 import Agent.*;
+import Field.Field;
 import Virologist.Virologist;
 
 import java.util.Scanner;
@@ -40,7 +41,8 @@ public class StepAgent_TestSet {
 
         System.out.println("Init agent stepping test ...");
 
-        viro = new Virologist();
+        Field field = new Field();
+        viro = new Virologist(field);
 
         System.out.print("Melyik ágens legyen léptetve? [v/b/t] ");
         Scanner sc = new Scanner(System.in);
@@ -57,7 +59,7 @@ public class StepAgent_TestSet {
                 System.out.print("Lejárt az ágens hatásának ideje? [i/n] ");
                 if (sc.next().equals("i"))
                     time = 1;
-                usedAgent = new ParalyseAgent(time);
+                usedAgent = new ParalyseAgent();
                 break;
 
             case "t":

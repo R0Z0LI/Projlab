@@ -49,9 +49,9 @@ public class Movement_TestSet {
                     break;
 
                 case "Stunned":
-                    StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
-                    virologist.add(stunnedMoveBehavior);
-                    stunnedMoveBehavior.move(jelenlegi, cel);
+                    //StunnedMoveBehavior stunnedMoveBehavior = new StunnedMoveBehavior();
+                    //virologist.add(stunnedMoveBehavior);
+                    //stunnedMoveBehavior.move(jelenlegi, cel);
                     break;
 
                 default:

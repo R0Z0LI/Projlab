@@ -13,6 +13,9 @@ public class Warehouse extends Field {
     private ArrayList<AminoAcid> aminoAcids = new ArrayList<>();
     private String name;
 
+    /**
+     * Warehouse constructor
+     */
     public Warehouse(){
         this.name = "who" + id++;
     }

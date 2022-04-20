@@ -15,7 +15,9 @@ public class Laboratory extends Field {
     private BearAgent bearAgent = null;
     private String name;
 
-
+    /**
+     * Laboratory constructor
+     */
     public Laboratory() {
         this.name = "lab" + id++;
         fields.add(this);

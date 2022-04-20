@@ -1,6 +1,7 @@
 package TestSets;
 
 import Collectible.Collectible;
+import Field.Field;
 import Materials.*;
 import Equipments.*;
 import Virologist.Virologist;
@@ -56,9 +57,12 @@ public class Steal_TestSet {
 
         System.out.println("Init stealing test ...");
 
+        // creating field
+        Field field = new Field();
+
         // creating virologists
-        stealingViro = new Virologist();
-        affectedViro = new Virologist();
+        stealingViro = new Virologist(field);
+        affectedViro = new Virologist(field);
 
         // space that is available in the stealing virologist's inventory
         int freeSpace;

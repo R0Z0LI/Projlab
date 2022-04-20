@@ -10,25 +10,28 @@ import java.util.List;
  */
 public class Field {
     private static int id = 0;
-    protected static List<Field> fields = new ArrayList<>();
+    protected static ArrayList<Field> fields = new ArrayList<>();    // TODO ez itt így mi? mármint ez a neighbours vagy valami más?
     protected ArrayList<Virologist> virologists = new ArrayList<>();
     private ArrayList<Field> neighbours = new ArrayList<>();
     private String name;
 
+    /**
+     * Field constructor
+     */
     public Field() {
         name = "fid" + id++;
         fields.add(this);
     }
 
-    public String getName() {
+    // gets name/id of this object
+    @Override
+    public String toString() {
         return name;
     }
 
     public static List<Field> getFields() {
         return fields;
     }
-
-    // TODO more complex constructor? (maybe)
 
     /**
      * virologists getterje
@@ -87,6 +90,7 @@ public class Field {
         return neighbours;
     }
 
+    /*
     @Override
     public String toString() {
         String name = this.name;
@@ -96,5 +100,5 @@ public class Field {
         }
         return name + ", [" + neighbours + "]";
     }
-
+    */
 }
