@@ -1,45 +1,56 @@
 package Gencode;
 
 import Collectible.Collectible;
-import Field.Field;
-import Materials.AminoAcid;
-import Materials.Nucleotid;
+import Field.Laboratory;
 import Agent.Agent;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 /**
- * +
  * Gentikai kódot reprezentáló osztály.
  */
 public abstract class GenCode implements Collectible {
+    private String uid; // special, unique identifier
+    protected Laboratory currentPosition = null;
+    protected String name;
 
+    // needed materials for the agent creation
     private int aminoNeeded;
     private int nucleoNeeded;
-    //TODO lehet-e .equals függvénnyel helyyesttesíteni?
-    private String uid;
-    private Field currentPosition;
-    private List<AminoAcid> aminoBill;
-    private List<Nucleotid> nucleoBill;
 
-    public GenCode(int aminoNeeded, int nucleoNeeded, Field field) {
+    /**
+     * GenCode constructor
+     * @param aminoNeeded The needed amoniacid amount.
+     * @param nucleoNeeded The needed nucletid amount.
+     * @param field The current laboratory the gencode is on.
+     */
+    public GenCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         this.aminoNeeded = aminoNeeded;
         this.nucleoNeeded = nucleoNeeded;
         currentPosition = field;
-        aminoBill = new ArrayList<>();
-        nucleoBill = new ArrayList<>();
         uid = UUID.randomUUID().toString();
     }
 
-    public GenCode(int aminoneeded, int nucleoneeded) {
-        aminoNeeded = aminoneeded;
-        nucleoNeeded = nucleoneeded;
+    /**
+     * GenCode constructor without any parameters.
+     * Should be used when adding to the inventory directly.
+     * @param aminoNeeded The needed amoniacid amount.
+     * @param nucleoNeeded The needed nucletid amount.
+     */
+    public GenCode(int aminoNeeded, int nucleoNeeded) {
+        this.aminoNeeded = aminoNeeded;
+        this.nucleoNeeded = nucleoNeeded;
+        currentPosition = null;
+        uid = UUID.randomUUID().toString();
     }
 
+    // gets name/id of this object
+    @Override
+    public String toString() {
+        return name;
+    }
 
-    public void setField(Field lab) {
+    public void setField(Laboratory lab) {
         currentPosition = lab;
     }
 
@@ -51,16 +62,8 @@ public abstract class GenCode implements Collectible {
         return nucleoNeeded;
     }
 
-    public Field getCurrentPosition() {
+    public Laboratory getCurrentPosition() {
         return currentPosition;
-    }
-
-    public List<AminoAcid> getAminoBill() {
-        return aminoBill;
-    }
-
-    public List<Nucleotid> getNucleoBill() {
-        return nucleoBill;
     }
 
     public String getUid() {
@@ -68,11 +71,9 @@ public abstract class GenCode implements Collectible {
     }
 
     /**
-     * +
      * Létrehozza a belőle készíthető ágenst.
      *
      * @return Agent    a létrehozott ágens
      */
     public abstract Agent revealAgent();
-
 }

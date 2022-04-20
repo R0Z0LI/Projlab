@@ -1,7 +1,7 @@
 package Materials;
 
 import Collectible.Collectible;
-import Field.Field;
+import Field.Warehouse;
 import PropertyHandler.PropertyHandler;
 
 /**
@@ -10,10 +10,30 @@ import PropertyHandler.PropertyHandler;
 public class Nucleotid implements Collectible {
     private static int id = 0;
     private String name;
-    private Field field;
-    public Nucleotid(Field field) {
+    private Warehouse field;
+
+    /**
+     * Nucleotid constructor
+     * @param field This the field (warehouse), that the nucleotid is on.
+     */
+    public Nucleotid(Warehouse field) {
         this.name = "ncd" + id++;
         this.field = field;
+    }
+
+    /**
+     * Nucleotid constructor without any parameters.
+     * Should be used when adding to the inventory directly.
+     */
+    public Nucleotid() {
+        this.name = "ncd" + id++;
+        this.field = null;
+    }
+
+    // gets name/id of this object
+    @Override
+    public String toString() {
+        return name;
     }
 
     /**
@@ -36,9 +56,5 @@ public class Nucleotid implements Collectible {
     public void beRemoved(PropertyHandler propertyHandler) {
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitorolteti magat a paraméterként megadott propertyHandler-bol\n\n");
         propertyHandler.remove(this);
-    }
-
-    public String getName() {
-        return this.name;
     }
 }

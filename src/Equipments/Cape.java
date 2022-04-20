@@ -1,22 +1,36 @@
 package Equipments;
 
 import Behaviors.CapeDefenseBehavior;
-import Field.Field;
+import Field.Shelter;
 import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
+/**
+ * Köpenyt reprezentáló osztály
+ */
 public class Cape extends Equipment {
     private static int id = 0;
     private CapeDefenseBehavior capeDefenseBehavior;
-    private String name;
-    private Field field;
-    public Cape(Field field) {
+
+    /**
+     * Cape constructor
+     * @param field This is the field (shelter), that the cape is on.
+     */
+    public Cape(Shelter field) {
         this.name = "cpe" + id++;
-        this.field = field;
+        this.currPosition = field;
     }
 
     /**
-     * +
+     * Cape constructor without any parameters.
+     * Should be used when adding to the inventory directly.
+     */
+    public Cape() {
+        this.name = "cpe" + id++;
+        this.currPosition = null;
+    }
+
+    /**
      * Hozzáadja a megadott virológus verméhez a Cape-ből adódó viselkedést.
      *
      * @param v virológus, akinek a vermébe bele fog kerülni a Cape-ből adódó viselkedés
@@ -26,23 +40,20 @@ public class Cape extends Equipment {
         System.out.println("-> addBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a Cape-bol adódó viselkedést.\n\n");
         this.capeDefenseBehavior = new CapeDefenseBehavior(v);
         v.add(capeDefenseBehavior);
-
     }
 
     /**
-     * +
      * Törli a megadott virológus verméből a Cape-ből adódó viselkedést.
      *
      * @param v virológus, akinek a verméből törlődni fog a Cape-ből adódó viselkedés
      */
     @Override
     public void removeBehavior(Virologist v) {
-        v.removeDefenseBeh(capeDefenseBehavior);
+        v.remove(capeDefenseBehavior);
         System.out.println("-> removeBehFromStack(Virologist v)\n! Torli a megadott virológus verméből a Cape-ből adódó viselkedést.\n\n");
     }
 
     /**
-     * +
      * Begyűjteti magát a virológus PropertyHandlerével.
      *
      * @param ph amihez hozzá kell adni a felvett Cape-t
@@ -56,7 +67,6 @@ public class Cape extends Equipment {
     }
 
     /**
-     * +
      * Törli magát a virológus PropertyHandleréből.
      *
      * @param ph amiből törölni kell a törlendő Cape-t
@@ -65,9 +75,5 @@ public class Cape extends Equipment {
     public void beRemoved(PropertyHandler ph) {
         ph.remove(this);
         System.out.println("-> beRemoved(PropertyHandler ph)\n! Torli magát a virológus PropertyHandleréből.\n\n");
-    }
-
-    public String getName() {
-
     }
 }

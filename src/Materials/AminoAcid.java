@@ -1,7 +1,7 @@
 package Materials;
 
 import Collectible.Collectible;
-import Field.Field;
+import Field.Warehouse;
 import PropertyHandler.PropertyHandler;
 
 /**
@@ -10,12 +10,32 @@ import PropertyHandler.PropertyHandler;
 public class AminoAcid implements Collectible {
     private String name;
     private static int id = 0;
-    private Field field;
+    private Warehouse field;
 
-    public AminoAcid(Field field){
+    /**
+     * Aminoacid constructor
+     * @param field This the field (warehouse), that the Aminoacid is on.
+     */
+    public AminoAcid(Warehouse field){
         this.name = "aac" + id++;
         this.field = field;
     }
+
+    /**
+     * Aminoacid constructor without any parameters.
+     * Should be used when adding to the inventory directly.
+     */
+    public AminoAcid(){
+        this.name = "aac" + id++;
+        this.field = null;
+    }
+
+    // gets name/id of this object
+    @Override
+    public String toString() {
+        return name;
+    }
+
     /**
      * Összegyűjteti magát a paraméterként megadott propertyHandler-rel
      *
@@ -38,9 +58,5 @@ public class AminoAcid implements Collectible {
     public void beRemoved(PropertyHandler propertyHandler) {
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitorolteti magat a paraméterként megadott propertyHandler-bol\n\n");
         propertyHandler.remove(this);
-    }
-
-    public String getName() {
-        return this.name;
     }
 }

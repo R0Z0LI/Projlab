@@ -69,12 +69,12 @@ public class ApplyAgent_TestSet {
 
             System.out.print("Van kesztyuje a masik virologusnak? [i/n] ");
             if (sc.next().equals("i")) {
-                affectedViro.getPropertyHandler().add(new Gloves(field));
+                affectedViro.getPropertyHandler().add(new Gloves());
                 //affectedViro.setDefenseBehaviors(new GloveDefBehavior(affectedViro));
 
                 System.out.print("Van kesztyuje a tamado virologusnak? [i/n] ");
                 if (sc.next().equals("i")) {
-                    applyingViro.getPropertyHandler().add(new Gloves(field));
+                    applyingViro.getPropertyHandler().add(new Gloves());
                     //applyingViro.setDefenseBehaviors(new GloveDefBehavior(applyingViro));
                 }
             }

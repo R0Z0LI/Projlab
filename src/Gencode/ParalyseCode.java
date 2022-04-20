@@ -1,30 +1,35 @@
 package Gencode;
 
-import Field.Field;
+import Field.Laboratory;
 import PropertyHandler.PropertyHandler;
 import Agent.Agent;
 import Agent.ParalyseAgent;
 
+/**
+ * Bénuló ágens kódját reprezentáló osztály.
+ */
 public class ParalyseCode extends GenCode {
     private static int id = 0;
 
-
-    private String name;
-
-    public ParalyseCode(int aminoneeded, int nucleoneeded, Field field) {
-        super(aminoneeded, nucleoneeded, field);
+    /**
+     * ParalyseCode constructor
+     * @param aminoNeeded The needed amoniacid amount.
+     * @param nucleoNeeded The needed nucletid amount.
+     * @param field The current laboratory the gencode is on.
+     */
+    public ParalyseCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
+        super(aminoNeeded, nucleoNeeded, field);
         this.name = "pac" + id++;
     }
 
-    public String getName() {
-        return name;
-    }
+    /**
+     * Empty ParalyseCode constructor
+     */
     public ParalyseCode() {
         super(4, 0);
     }
 
     /**
-     * +
      * Létrehozza a belőle készíthető ParalyseAgent ágenst.
      *
      * @return Agent    a létrehozott ParalyseAgent
@@ -33,12 +38,10 @@ public class ParalyseCode extends GenCode {
     public Agent revealAgent() {
         System.out.println("-> ParalyseCode.revealAgent()");
         System.out.println("! Elkeszult egy benito agens\n");
-        ParalyseAgent pa = new ParalyseAgent(30);
-        return pa;
+        return new ParalyseAgent();
     }
 
     /**
-     * +
      * Begyűjteti magát a virológus PropertyHandlerével.
      *
      * @param propertyHandler amihez hozzá kell adni a felvett ParalyseCode-t
@@ -50,7 +53,6 @@ public class ParalyseCode extends GenCode {
     }
 
     /**
-     * +
      * Eltávolíttatja magát a virológus PropertyHandleréből.
      *
      * @param propertyHandler amiből ki kell törölni a törlendő ParalyseCode-t

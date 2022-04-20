@@ -107,11 +107,11 @@ public class Steal_TestSet {
                 freeSpace = sc.nextInt();
                 currFullness = 3-freeSpace;
                 for (int i = 0; i < currFullness; i++)
-                    stealingViro.getPropertyHandler().add(new Gloves(field));
+                    stealingViro.getPropertyHandler().add(new Gloves());
 
                 // creating and putting the valuables in the other virologist
                 if (currFullness < 3) {
-                    valuables.add(new Gloves(field));
+                    valuables.add(new Gloves());
                     affectedViro.getPropertyHandler().add((Gloves) valuables.get(valuables.size()-1));
                 }
                 break;

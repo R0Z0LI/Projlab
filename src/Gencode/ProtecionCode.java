@@ -1,30 +1,35 @@
 package Gencode;
 
-import Field.Field;
+import Field.Laboratory;
 import PropertyHandler.PropertyHandler;
 import Agent.Agent;
 import Agent.ProtectionAgent;
 
+/**
+ * Védő ágens kódját reprezentáló osztály.
+ */
 public class ProtecionCode extends GenCode {
     private static int id = 0;
 
-
-    private String name;
-
-    public ProtecionCode(int aminoNeeded, int nucleoNeeded, Field field) {
+    /**
+     * ProtecionCode constructor
+     * @param aminoNeeded The needed amoniacid amount.
+     * @param nucleoNeeded The needed nucletid amount.
+     * @param field The current laboratory the gencode is on.
+     */
+    public ProtecionCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "prc" + id++;
     }
 
+    /**
+     * Empty ProtecionCode constructor
+     */
     public ProtecionCode() {
         super(1, 3);
     }
 
-    public String getName() {
-        return name;
-    }
     /**
-     * +
      * Létrehozza a belőle készíthető ProtectionAgent ágenst.
      *
      * @return Agent    a létrehozott ProtectionAgent
@@ -33,12 +38,10 @@ public class ProtecionCode extends GenCode {
     public Agent revealAgent() {
         System.out.println("-> ProtectionCode.revealAgent()");
         System.out.println("! Elkeszult egy védo agens\n");
-        ProtectionAgent pa = new ProtectionAgent(30);
-        return pa;
+        return new ProtectionAgent(30);
     }
 
     /**
-     * +
      * Begyűjteti magát a virológus PropertyHandlerével.
      *
      * @param propertyHandler amihez hozzá kell adni a felvett ProtecionCode-t
@@ -50,7 +53,6 @@ public class ProtecionCode extends GenCode {
     }
 
     /**
-     * +
      * Eltávolíttatja magát a virológus PropertyHandleréből.
      *
      * @param propertyHandler amiből ki kell törölni a törlendő ProtecionCode-t

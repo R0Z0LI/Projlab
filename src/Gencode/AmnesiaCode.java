@@ -1,29 +1,35 @@
 package Gencode;
 
-import Field.Field;
+import Field.Laboratory;
 import PropertyHandler.PropertyHandler;
 import Agent.Agent;
 import Agent.AmnesiaAgent;
 
+/**
+ * Felejtő ágens kódját reprezentáló osztály.
+ */
 public class AmnesiaCode extends GenCode {
     private static int id = 0;
 
-
-    private String name;
-    public AmnesiaCode(int aminoNeeded, int nucleoNeeded, Field field) {
+    /**
+     * AmnesiaCode constructor
+     * @param aminoNeeded The needed amoniacid amount.
+     * @param nucleoNeeded The needed nucletid amount.
+     * @param field The current laboratory the gencode is on.
+     */
+    public AmnesiaCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "amc" + id++;
     }
 
-    public String getName() {
-        return name;
-    }
+    /**
+     * Empty AmnesiaCode constructor
+     */
     public AmnesiaCode() {
         super(2, 2);
     }
 
     /**
-     * +
      * Létrehozza a belőle készíthető AmnesiaAgent ágenst.
      *
      * @return Agent    a létrehozott AmnesiaAgent
@@ -32,12 +38,10 @@ public class AmnesiaCode extends GenCode {
     public Agent revealAgent() {
         System.out.println("-> AmnesiaCode.revealAgent()");
         System.out.println("! Elkeszult egy felejto agens\n");
-        AmnesiaAgent ae = new AmnesiaAgent(30);
-        return ae;
+        return new AmnesiaAgent(30);
     }
 
     /**
-     * +
      * Begyűjteti magát a virológus PropertyHandlerével.
      *
      * @param propertyHandler amihez hozzá kell adni a felvett AmnesiaCode-t
@@ -49,7 +53,6 @@ public class AmnesiaCode extends GenCode {
     }
 
     /**
-     * +
      * Eltávolíttatja magát a virológus PropertyHandleréből.
      *
      * @param propertyHandler amiből ki kell törölni a törlendő AmnesiaCode-t
