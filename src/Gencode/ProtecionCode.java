@@ -6,14 +6,23 @@ import Agent.Agent;
 import Agent.ProtectionAgent;
 
 public class ProtecionCode extends GenCode {
+    private static int id = 0;
+
+
+    private String name;
+
     public ProtecionCode(int aminoNeeded, int nucleoNeeded, Field field) {
         super(aminoNeeded, nucleoNeeded, field);
+        this.name = "prc" + id++;
     }
 
     public ProtecionCode() {
         super(1, 3);
     }
 
+    public String getName() {
+        return name;
+    }
     /**
      * +
      * Létrehozza a belőle készíthető ProtectionAgent ágenst.

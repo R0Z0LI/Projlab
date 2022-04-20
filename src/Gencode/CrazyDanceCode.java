@@ -9,8 +9,16 @@ import Agent.CrazyDanceAgent;
  * Vitustáncot okozó ágens létrehozásához szükséges genetikai kódot reprezentáló osztály.
  */
 public class CrazyDanceCode extends GenCode{
+    private static int id = 0;
+
+
+    private String name;
     public CrazyDanceCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
+        this.name = "cdc" + id++;
+    }
+    public String getName() {
+        return name;
     }
     public CrazyDanceCode(){
         super(2,3);

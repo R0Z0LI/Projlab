@@ -28,8 +28,8 @@ public class Virologist {
     private Stack<AutomaticBehavior> automaticBehaviors = new Stack<>();
     private Stack<AttackBehavior> attackBehaviors = new Stack<>();
 
-    public Virologist(String name) {
-        this.name=name;
+    public Virologist(Field field) {
+        this.name = "vir" + id++;
         this.actionCounter = 2;
         this.myProperties = new PropertyHandler(this);
         MovementBehavior movementBehavior = new MovementBehavior(this);
@@ -49,6 +49,10 @@ public class Virologist {
     public String toString(){
         return name;
     }
+    public String getName() {
+        return name;
+    }
+
     /**
      * A collectBeh első elemétől függően meghívja a CollectBehavior objekt leszármazottjának
      * a Collect metódusát, ezzel elindítva a begyűjtés folyamatát

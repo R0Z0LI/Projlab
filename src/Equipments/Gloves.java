@@ -1,15 +1,19 @@
 package Equipments;
 
+import Field.Field;
 import PropertyHandler.PropertyHandler;
 import Behaviors.GloveDefBehavior;
 import Virologist.Virologist;
 
 public class Gloves extends Equipment {
+    private static int id = 0;
     private int usability;
     private GloveDefBehavior gloveDef;
-
-    public Gloves() {
-        super();
+    private String name;
+    private Field field;
+    public Gloves(Field field) {
+        this.name = "glv" + id++;
+        this.field = field;
     }
 
     /**
@@ -63,5 +67,9 @@ public class Gloves extends Equipment {
     public void beRemoved(PropertyHandler ph) {
         ph.remove(this);
         System.out.println("-> beRemoved(PropertyHandler ph)\n! Törli magát a virológus PropertyHandleréből.\n\n");
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

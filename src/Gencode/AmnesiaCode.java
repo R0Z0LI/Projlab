@@ -6,10 +6,18 @@ import Agent.Agent;
 import Agent.AmnesiaAgent;
 
 public class AmnesiaCode extends GenCode {
+    private static int id = 0;
+
+
+    private String name;
     public AmnesiaCode(int aminoNeeded, int nucleoNeeded, Field field) {
         super(aminoNeeded, nucleoNeeded, field);
+        this.name = "amc" + id++;
     }
 
+    public String getName() {
+        return name;
+    }
     public AmnesiaCode() {
         super(2, 2);
     }

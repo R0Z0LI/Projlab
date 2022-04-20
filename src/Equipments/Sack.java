@@ -1,14 +1,22 @@
 package Equipments;
 
+import Field.Field;
 import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
 public class Sack extends Equipment {
+    private static int id = 0;
+    private String name;
+    private Field field;
 
-    public Sack() {
-        super();
+    public Sack(Field field) {
+        this.name = "sck" + id++;
+        this.field = field;
     }
 
+    public String getName() {
+        return name;
+    }
     /**
      * +
      * Megnöveli a megadott virológus által felvehető anyagmennyiséget.

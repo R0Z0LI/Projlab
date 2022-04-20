@@ -1,15 +1,18 @@
 package Equipments;
 
 import Behaviors.CapeDefenseBehavior;
+import Field.Field;
 import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
 public class Cape extends Equipment {
-
+    private static int id = 0;
     private CapeDefenseBehavior capeDefenseBehavior;
-
-    public Cape() {
-        super();
+    private String name;
+    private Field field;
+    public Cape(Field field) {
+        this.name = "cpe" + id++;
+        this.field = field;
     }
 
     /**
@@ -62,5 +65,9 @@ public class Cape extends Equipment {
     public void beRemoved(PropertyHandler ph) {
         ph.remove(this);
         System.out.println("-> beRemoved(PropertyHandler ph)\n! Torli magát a virológus PropertyHandleréből.\n\n");
+    }
+
+    public String getName() {
+
     }
 }

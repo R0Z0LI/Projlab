@@ -55,7 +55,7 @@ public class Collect_TestSet {
         switch (CollectType) {
 
             case "kesztyu":
-                collectible = new Gloves();
+                collectible = new Gloves(field);
                 field = new Shelter();
                 ((Shelter) field).add((Equipment) collectible);
                 viro.setCurrentField(field);

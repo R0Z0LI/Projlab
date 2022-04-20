@@ -1,12 +1,21 @@
 package Materials;
 
 import Collectible.Collectible;
+import Field.Field;
 import PropertyHandler.PropertyHandler;
 
 /**
  * A nukleotid-ot reprezentáló osztály
  */
 public class Nucleotid implements Collectible {
+    private static int id = 0;
+    private String name;
+    private Field field;
+    public Nucleotid(Field field) {
+        this.name = "ncd" + id++;
+        this.field = field;
+    }
+
     /**
      * Összegyűjteti magát a paraméterként megadott propertyHandler-rel
      *
@@ -27,5 +36,9 @@ public class Nucleotid implements Collectible {
     public void beRemoved(PropertyHandler propertyHandler) {
         System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitorolteti magat a paraméterként megadott propertyHandler-bol\n\n");
         propertyHandler.remove(this);
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

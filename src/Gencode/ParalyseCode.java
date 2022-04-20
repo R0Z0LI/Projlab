@@ -6,10 +6,19 @@ import Agent.Agent;
 import Agent.ParalyseAgent;
 
 public class ParalyseCode extends GenCode {
+    private static int id = 0;
+
+
+    private String name;
+
     public ParalyseCode(int aminoneeded, int nucleoneeded, Field field) {
         super(aminoneeded, nucleoneeded, field);
+        this.name = "pac" + id++;
     }
 
+    public String getName() {
+        return name;
+    }
     public ParalyseCode() {
         super(4, 0);
     }

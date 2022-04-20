@@ -50,7 +50,7 @@ public class ThrowEquipment_TestSet {
                 equip = new Cape();
                 break;
             case "k":
-                equip = new Gloves();
+                equip = new Gloves(field);
                 break;
             case "z":
                 equip = new Sack();
