@@ -70,6 +70,7 @@ public class Field {
      */
     public void addNeighbour(Field field) {
         neighbours.add(field);
+        field.getNeighbours().add(this);
     }
 
     /**

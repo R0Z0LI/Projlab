@@ -7,6 +7,7 @@ import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BearBehavior extends AutomaticBehavior{
     public BearBehavior(){super();}
@@ -18,7 +19,7 @@ public class BearBehavior extends AutomaticBehavior{
     public void execute(){
         //véletlen mezőre lép
         ArrayList<Field> neighbours = viro.getCurrentField().getNeighbours();
-        int index = (int) Math.round(Math.random() * neighbours.size());
+        int index = (int) Math.round(Math.random() * neighbours.size() - 1);
         viro.step(neighbours.get(index));
         //mindenkit megfertőz
         Field field =viro.getCurrentField();

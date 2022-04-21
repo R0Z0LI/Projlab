@@ -28,7 +28,7 @@ public class Game {
         steppables.add(s);
     }
 
-    public void startGame() {
+    public void start() {
         initTest();
         while (true) {
 
@@ -271,7 +271,6 @@ public class Game {
             Field neighbour = findFieldByName(parameter);
             if (neighbour != null) {
                 field.addNeighbour(neighbour);
-                neighbour.addNeighbour(field);
             } else {
                 System.out.println("Field does not exist with this name: " + parameter);
             }
