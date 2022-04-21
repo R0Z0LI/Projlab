@@ -11,7 +11,6 @@ public class Warehouse extends Field {
     private static int id = 0;
     private ArrayList<Nucleotid> nucleotids = new ArrayList<>();
     private ArrayList<AminoAcid> aminoAcids = new ArrayList<>();
-    private String name;
 
     /**
      * Warehouse constructor

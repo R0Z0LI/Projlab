@@ -13,14 +13,12 @@ public class Laboratory extends Field {
     private static int id = 0;
     private ArrayList<GenCode> genCodes = new ArrayList<>();
     private BearAgent bearAgent = null;
-    private String name;
 
     /**
      * Laboratory constructor
      */
     public Laboratory() {
         this.name = "lab" + id++;
-        fields.add(this);
     }
 
     /**
@@ -82,5 +80,9 @@ public class Laboratory extends Field {
      */
     public void setBearAgent(BearAgent bearAgent) {
         this.bearAgent = bearAgent;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

@@ -8,10 +8,12 @@ import Virologist.Virologist;
  */
 public class ProtectionAgent extends Agent{
 
+    private static int id = 0;
     private DefAgentDefBehavior defAgentDef;
 
     public ProtectionAgent(int timeleft) {
         super(timeleft);
+        this.name = "pra" + id++;
         defAgentDef = new DefAgentDefBehavior();
     }
 

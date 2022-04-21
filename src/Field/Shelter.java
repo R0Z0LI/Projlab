@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Shelter extends Field{
     private static int id = 0;
     private ArrayList<Equipment> equipments = new ArrayList<>();
-    private String name;
 
     /**
      * Shelter constructor

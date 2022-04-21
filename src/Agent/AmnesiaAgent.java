@@ -6,8 +6,11 @@ import Virologist.Virologist;
  * Amnézia ágenst reprezentáló osztály.
  */
 public class AmnesiaAgent extends Agent{
+    private static int id = 0;
+
     public AmnesiaAgent(int timeleft) {
         super(timeleft);
+        this.name = "ama" + id++;
     }
 
     @Override

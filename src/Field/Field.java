@@ -13,7 +13,7 @@ public class Field {
     protected static ArrayList<Field> fields = new ArrayList<>();    // TODO ez itt így mi? mármint ez a neighbours vagy valami más?
     protected ArrayList<Virologist> virologists = new ArrayList<>();
     private ArrayList<Field> neighbours = new ArrayList<>();
-    private String name;
+    protected String name;
 
     /**
      * Field constructor

@@ -1,5 +1,9 @@
 package Game;
 
+import Agent.AmnesiaAgent;
+import Agent.CrazyDanceAgent;
+import Agent.ParalyseAgent;
+import Agent.ProtectionAgent;
 import Field.Field;
 import Gencode.AmnesiaCode;
 import Gencode.CrazyDanceCode;
@@ -13,6 +17,8 @@ import Field.Shelter;
 import Field.Warehouse;
 import Equipments.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,8 +36,68 @@ public class Game {
 
     public void startGame() {
         initTest();
+        readFromFile();
         while (true) {
 
+        }
+    }
+
+    private void readFromFile() {
+        File file = new File("G:\\projlab\\Projlab\\test.txt");
+        try {
+            Scanner scan = new Scanner(file);
+            while(scan.hasNext()){
+                String input = scan.nextLine();
+                if(input.contains("fid")){
+                    Field field = new Field();
+                    String fieldNeighbors = scan.nextLine();
+                    String[] split = fieldNeighbors.split(" ");
+                    for(int i = 1; i < split.length; i++){
+                        String parameter = split[i];
+                        checkAndAddNeighbors(parameter, field);
+                    }
+                    String viro = scan.nextLine();
+                    if(viro.contains("vir")){
+                        Virologist virologist = new Virologist(field);
+                        String materials = scan.nextLine();
+                        String splitMaterial[] = materials.split(" ");
+                        for(int i = 1; i < splitMaterial.length; i++){
+                            if(splitMaterial[i].contains("aac")){
+                                AminoAcid aminoAcid = new AminoAcid();
+                                virologist.getPropertyHandler().add(aminoAcid);
+                            } else if(splitMaterial[i].contains(("ncd"))){
+                                Nucleotid nucleotid = new Nucleotid();
+                                virologist.getPropertyHandler().add(nucleotid);
+                            }
+                        }
+                        String agents = scan.nextLine();
+                        String splitAgents[] = agents.split(" ");
+                        for(int i = 1; i < splitAgents.length; i++){
+                            if(splitAgents[i].contains("ama")){
+                                AmnesiaAgent amnesiaAgent = new AmnesiaAgent(4);
+                                virologist.getPropertyHandler().add(amnesiaAgent);
+                            } else if(splitAgents[i].contains("paa")){
+                                ParalyseAgent paralyseAgent = new ParalyseAgent();
+                                virologist.getPropertyHandler().add(paralyseAgent);
+                            } else if(splitAgents[i].contains("cda")){
+                                CrazyDanceAgent crazyDanceAgent = new CrazyDanceAgent(5);
+                                virologist.getPropertyHandler().add(crazyDanceAgent);
+                            } else if(splitAgents[i].contains("pra")){
+                                ProtectionAgent protectionAgent = new ProtectionAgent(5);
+                                virologist.getPropertyHandler().add(protectionAgent);
+                            }
+                        }
+                    }
+                } else if(input.contains("lab")){
+                    Laboratory laboratory = new Laboratory();
+                } else if(input.contains("who")){
+                    Laboratory laboratory = new Laboratory();
+                } else if(input.contains("shl")){
+
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -64,6 +130,7 @@ public class Game {
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, laboratory);
                 }
+                System.out.println("Created Labor: " + laboratory.getName() + laboratory.getFields());
             } else if(input.contains("CreateShelter")){
                 String[] parameters = input.split(" ");
                 Shelter shelter = new Shelter();
@@ -71,6 +138,7 @@ public class Game {
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, shelter);
                 }
+                System.out.println("Created Shelter: " + shelter.toString());
             } else if(input.contains("CreateWareHouse")){
                 String[] parameters = input.split(" ");
                 Warehouse warehouse = new Warehouse();
@@ -78,6 +146,7 @@ public class Game {
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, warehouse);
                 }
+                System.out.println("Created WareHouse: " + warehouse.toString());
             } else if(input.contains("CreateAmino")){
                 String[] split = input.split(" ");
                 String parameter = split[1];
@@ -155,6 +224,8 @@ public class Game {
                 String parameter = split[1];
                 if(parameter.contains("lab")){
                     createCrazyDanceCodeOnField(parameter);
+                } else if(input.contains("ListFields")){
+                    System.out.println(Field.getFields());
                 } else {
                     System.out.println("'" + parameter + "' is not a valid parameter");
                 }

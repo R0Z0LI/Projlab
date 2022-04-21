@@ -8,7 +8,9 @@ import Virologist.Virologist;
  */
 public abstract class Agent implements Steppable {
 
+    protected String name;
     private int timeLeft;
+
 
     public Agent(int timeLeft) {
         this.timeLeft = timeLeft;

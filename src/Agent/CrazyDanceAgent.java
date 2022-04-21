@@ -6,11 +6,12 @@ import Virologist.Virologist;
  * Vitustáncot reprezentáló osztály.
  */
 public class CrazyDanceAgent extends Agent {
-
+    private static int id = 0;
     private CrazyMoveBehavior crazyMove;
 
     public CrazyDanceAgent(int timeleft) {
         super(timeleft);
+        this.name = "cda" + id++;
         crazyMove = new CrazyMoveBehavior();
     }
 

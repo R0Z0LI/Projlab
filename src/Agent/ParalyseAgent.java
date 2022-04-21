@@ -4,10 +4,12 @@ import Behaviors.*;
 import Virologist.Virologist;
 
 public class ParalyseAgent extends Agent {
+    private static int id = 0;
     private StunnedBehavior stunnedBeh;
 
     public ParalyseAgent() {
         super(2);
+        this.name = "paa" + id++;
         stunnedBeh = new StunnedBehavior();
     }
 
