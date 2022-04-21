@@ -31,8 +31,6 @@ public class MovementBehavior {
     public void move(Field before, Field after) {
         System.out.println("->MovementBehavior.move(Field before, Field after)");
         System.out.println("! A virologus lép egy szomszédos mezore.");
-
-        //TODO kiszervezni egy metódusba
         before.removeVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrentField(after);
