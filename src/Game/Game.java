@@ -243,9 +243,15 @@ public class Game {
                 }
             }
             String virologistEnd = scan.nextLine();
-            viro = scan.nextLine();
+            String fieldEnd = scan.nextLine();
+            if(fieldEnd.equals(field.getName())) {
+                viro = "0";
+            }
+            else {
+                viro = scan.nextLine();
+            }
         }
-        String fieldEnd = scan.nextLine();
+
     }
 
     private void initTest() {
