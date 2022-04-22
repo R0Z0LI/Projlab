@@ -8,6 +8,7 @@ import Gencode.ParalyseCode;
 import Gencode.ProtecionCode;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 import Field.Laboratory;
 import Field.Shelter;
@@ -25,6 +26,7 @@ public class Game {
     private static boolean gameRunning = false;
     private static ArrayList<Virologist> virologists = new ArrayList<>();
     private ArrayList<Field> fields = new ArrayList<>();
+    TestInOutHandler handler = new TestInOutHandler();
 
     public Game() {
         steppables = new ArrayList<>();
@@ -38,6 +40,7 @@ public class Game {
         gameRunning=true;
         //initTest();
         readFromFile();
+        runGame();
     }
 
     private void readFromFile() {
@@ -521,14 +524,19 @@ public class Game {
     }
 
     /**+
-     * futtatja a játékot, sorban meghívja a virológusok yourTurn függvényét
+     * futtatja a játékot, sorban meghívja a virológusok yourTurn függvényét a fájl input paraméterekkel
      */
     public void runGame(){
+        String filecontent = handler.getInput();
+        String [] allCommands= filecontent.split("\n");
+        int roundCounter=1;
         while(gameRunning){
-            for(int i=0; i<virologists.size(); ++i){
-                virologists.get(i).yourTurn();
+            for(int i=0; i<virologists.size() && allCommands.length>i*roundCounter; ++i){
+                while (allCommands[i*roundCounter].startsWith(virologists.get(i).getName()))
+                    virologists.get(i).yourTurn(allCommands[i*roundCounter]);
             }
             stepSteppabbles();
+            roundCounter++;
         }
     }
     public static void removeSteppable(Steppable s) {
@@ -543,11 +551,13 @@ public class Game {
 
     public void endGame() {
         gameRunning=false;
-        System.out.println("! A jatek veget ert.");
+        System.out.println("A jatek veget ert.");
+        TestInOutHandler.appendToTestOutput("A jatek veget ert.");
     }
     public static void endGame(Virologist v) {
         gameRunning=false;
-        System.out.println("! A jatek veget ert.\nGyoztes: "+v.getName());
+        System.out.println("A jatek veget ert.\tGyoztes: "+v.getName());
+        TestInOutHandler.appendToTestOutput("A jatek veget ert.\tGyoztes: "+v.getName()+"\n");
     }
 
 

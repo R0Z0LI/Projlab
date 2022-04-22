@@ -1,7 +1,7 @@
 package Behaviors;
 
 import Agent.Agent;
-import TestSets.TestOutputWriter;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class DefAgentDefBehavior extends DefenseBehavior {
@@ -25,6 +25,6 @@ public class DefAgentDefBehavior extends DefenseBehavior {
     @Override
     public void defend(Agent agent, Virologist attacker) {
         System.out.println(virologist.getName()+" used protecting agent for defense. Successful defense.");
-        TestOutputWriter.appendToTestOutput(virologist.getName()+" used protecting agent for defense. Successful defense.\n");
+        TestInOutHandler.appendToTestOutput(virologist.getName()+" used protecting agent for defense. Successful defense.\n");
     }
 }

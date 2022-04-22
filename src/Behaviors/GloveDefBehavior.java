@@ -2,7 +2,7 @@ package Behaviors;
 
 import Agent.Agent;
 import Equipments.Gloves;
-import TestSets.TestOutputWriter;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class GloveDefBehavior extends DefenseBehavior {
@@ -26,7 +26,7 @@ public class GloveDefBehavior extends DefenseBehavior {
     public void defend(Agent agent, Virologist attacker) {
         if (usability >0) {
             System.out.println(virologist.getName()+" used gloves for defense. Successful defense and application is returned.");
-            TestOutputWriter.appendToTestOutput(virologist.getName()+" used gloves for defense. Successful defense and application is returned.");
+            TestInOutHandler.appendToTestOutput(virologist.getName()+" used gloves for defense. Successful defense and application is returned.");
             attacker.beInfected(agent, virologist);
         }
         usability--;

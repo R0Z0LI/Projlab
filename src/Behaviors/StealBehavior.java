@@ -2,7 +2,7 @@ package Behaviors;
 
 import Collectible.Collectible;
 import PropertyHandler.PropertyHandler;
-import TestSets.TestOutputWriter;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class StealBehavior {
@@ -38,7 +38,7 @@ public class StealBehavior {
         if(propertyHandler.getEquipments().contains(collectible) || propertyHandler.getAminoAcids().contains(collectible) || propertyHandler.getNucleotids().contains(collectible)){
             collectible.beRemoved(ph2);
             System.out.println("Successful steal, stolen item: "+collectible.getName());
-            TestOutputWriter.appendToTestOutput("Successful steal, stolen item: "+collectible.getName());
+            TestInOutHandler.appendToTestOutput("Successful steal, stolen item: "+collectible.getName());
         }
     }
 }

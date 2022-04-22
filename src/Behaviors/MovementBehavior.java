@@ -1,7 +1,7 @@
 package Behaviors;
 
 import Field.Field;
-import TestSets.TestOutputWriter;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class MovementBehavior {
@@ -31,7 +31,7 @@ public class MovementBehavior {
      */
     public void move(Field before, Field after) {
         System.out.println(virologist.getName()+" stepped on "+after.getName());
-        TestOutputWriter.appendToTestOutput(virologist.getName()+" stepped on "+after.getName());
+        TestInOutHandler.appendToTestOutput(virologist.getName()+" stepped on "+after.getName());
         before.removeVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrentField(after);

@@ -1,7 +1,7 @@
 package Behaviors;
 
 import Agent.Agent;
-import TestSets.TestOutputWriter;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class DefenseBehavior {
@@ -42,7 +42,7 @@ public class DefenseBehavior {
      */
     public void defend(Agent agent, Virologist attacker) {
         System.out.println(virologist.getName()+" used nothing for defense. Defense failed.");
-        TestOutputWriter.appendToTestOutput(virologist.getName()+" used nothing for defense. Defense failed.");
+        TestInOutHandler.appendToTestOutput(virologist.getName()+" used nothing for defense. Defense failed.");
         agent.addBehavior(virologist);
     }
 }

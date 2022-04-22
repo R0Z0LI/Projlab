@@ -5,7 +5,7 @@ import Equipments.Equipment;
 import Gencode.GenCode;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
-import TestSets.TestOutputWriter;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 import Game.Game;
 
@@ -64,7 +64,7 @@ public class PropertyHandler {
         }
         else{
             System.out.println("There is not enough space in your inventory for "+aminoAcid.getName());
-            TestOutputWriter.appendToTestOutput("There is not enough space in your inventory for "+aminoAcid.getName()+"\n");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+aminoAcid.getName()+"\n");
         }
     }
 
@@ -79,7 +79,7 @@ public class PropertyHandler {
         }
         else{
             System.out.println("There is not enough space in your inventory for "+nucleotid.getName());
-            TestOutputWriter.appendToTestOutput("There is not enough space in your inventory for "+nucleotid.getName()+"\n");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+nucleotid.getName()+"\n");
         }
     }
 
@@ -95,7 +95,7 @@ public class PropertyHandler {
         }
         else{
             System.out.println("There is not enough space in your inventory for "+equipment.getName());
-            TestOutputWriter.appendToTestOutput("There is not enough space in your inventory for "+equipment.getName()+"\n");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+equipment.getName()+"\n");
         }
 
     }
