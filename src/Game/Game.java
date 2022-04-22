@@ -538,7 +538,8 @@ public class Game {
         int roundCounter=1;
         while(gameRunning){
             for(int i=0; i<virologists.size() && allCommands.length>i*roundCounter; ++i){
-                while (allCommands[i*roundCounter].startsWith(virologists.get(i).getName()))
+                String[] currCommand= allCommands[i*roundCounter].split(" ");
+                while (currCommand[1].equals(virologists.get(i).getName()))
                     virologists.get(i).yourTurn(allCommands[i*roundCounter]);
             }
             stepSteppabbles();
