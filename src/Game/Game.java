@@ -1,19 +1,12 @@
 package Game;
 
 import Agent.*;
-import Field.Field;
-import Gencode.AmnesiaCode;
-import Gencode.CrazyDanceCode;
-import Gencode.ParalyseCode;
-import Gencode.ProtecionCode;
-import Materials.AminoAcid;
-import Materials.Nucleotid;
+import Gencode.*;
+import Materials.*;
+import Field.*;
+import Equipments.*;
 import TestSets.TestInOutHandler;
 import Virologist.Virologist;
-import Field.Laboratory;
-import Field.Shelter;
-import Field.Warehouse;
-import Equipments.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,7 +41,7 @@ public class Game {
 
     private void readFromFile() {
         try {
-            File file = new File("G:\\projlab\\Projlab\\initTest.txt");
+            File file = new File("moveTest.txt");
             Scanner scan = new Scanner(file);
             while(scan.hasNext()){
                 String input = scan.nextLine();
@@ -167,7 +160,7 @@ public class Game {
         }
     }
 
-    private void readAfterField(Scanner scan, Field field){
+    private void readAfterField(Scanner scan, Field field) {
         String viro = scan.nextLine();
         while(!viro.equals("0")){
             Virologist virologist = new Virologist(field);
