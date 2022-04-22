@@ -236,9 +236,15 @@ public class Game {
                 }
             }
             String virologistEnd = scan.nextLine();
-            viro = scan.nextLine();
+            String fieldEnd = scan.nextLine();
+            if(fieldEnd.equals(field.getName())) {
+                viro = "0";
+            }
+            else {
+                viro = scan.nextLine();
+            }
         }
-        String fieldEnd = scan.nextLine();
+
     }
 
     private void initTest() {
@@ -531,7 +537,8 @@ public class Game {
         int roundCounter=1;
         while(gameRunning){
             for(int i=0; i<virologists.size() && allCommands.length>i*roundCounter; ++i){
-                while (allCommands[i*roundCounter].startsWith(virologists.get(i).getName()))
+                String[] currCommand= allCommands[i*roundCounter].split(" ");
+                while (currCommand[1].equals(virologists.get(i).getName()))
                     virologists.get(i).yourTurn(allCommands[i*roundCounter]);
             }
             stepSteppabbles();

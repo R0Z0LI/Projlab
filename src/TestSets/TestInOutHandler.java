@@ -12,7 +12,7 @@ public class TestInOutHandler {
     /**
      * több példányt is létre lehet hozni, de mindegyik ezt a kimeneti fájlt fogja szerkeszteni
      */
-    private static String fullTestOutput;
+    private static String fullTestOutput= new String();
 
     public void setOutputFile(String fileName){
         outFile = new File(fileName);
@@ -24,8 +24,7 @@ public class TestInOutHandler {
      * @param output ezt kell hozzáfűzni
      */
     public static void appendToTestOutput(String output){
-      // fullTestOutput= output.concat(fullTestOutput);
-        //TODO
+      fullTestOutput= output.concat(fullTestOutput);
     }
 
     /**+
