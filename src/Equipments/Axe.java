@@ -32,6 +32,7 @@ public class Axe extends Equipment{
      */
     @Override
     public void addBehaviour(Virologist v) {
+        System.out.println("The Axe has no behavior to add");
         // TODO
     }
 

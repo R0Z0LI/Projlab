@@ -17,6 +17,7 @@ public class TestSetup {
             System.out.println("5. Steal");
             System.out.println("6. Throw equipment");
             System.out.println("7. Step Agent");
+            System.out.println("8. Kill Virologist");
             System.out.println("If you want to stop testing, then write anything.");
 
             switch (sc.next()) {
@@ -33,20 +34,24 @@ public class TestSetup {
                     test3.test();
                     break;
                 case "4":
-                    ApplyAgent_TestSet test6 = new ApplyAgent_TestSet();
-                    test6.test();
+                    ApplyAgent_TestSet test4 = new ApplyAgent_TestSet();
+                    test4.test();
                     break;
                 case "5":
                     Steal_TestSet test5 = new Steal_TestSet();
                     test5.test();
                     break;
                 case "6":
-                    ThrowEquipment_TestSet test8 = new ThrowEquipment_TestSet();
-                    test8.test();
+                    ThrowEquipment_TestSet test6 = new ThrowEquipment_TestSet();
+                    test6.test();
                     break;
                 case "7":
                     StepAgent_TestSet test7 = new StepAgent_TestSet();
                     test7.test();
+                    break;
+                    case "8":
+                    Kill_TestSet test8 = new Kill_TestSet();
+                    test8.test();
                     break;
                 default:
                     run = false;

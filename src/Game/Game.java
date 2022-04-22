@@ -42,6 +42,9 @@ public class Game {
         readFromFile();
         runGame();
     }
+    public ArrayList<Virologist> getVirologists(){
+        return virologists;
+    }
 
     private void readFromFile() {
         try {
@@ -513,6 +516,9 @@ public class Game {
         } else {
             System.out.println("Field does not exist with this name: " + fieldName);
         }
+    }
+    public void addVirologistManually(Virologist virologist){
+        virologists.add(virologist);
     }
     private Field findFieldByName(String nextString) {
         for (Field field : fields) {
