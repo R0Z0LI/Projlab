@@ -22,6 +22,10 @@ public class ProtecionCode extends GenCode {
         this.name = "prc" + id++;
     }
 
+    public ProtecionCode(int aminoNeeded, int nucleoNeeded){
+        super(aminoNeeded, nucleoNeeded);
+        this.name = "prc" + id++;
+    }
     /**
      * Empty ProtecionCode constructor
      */

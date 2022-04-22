@@ -29,6 +29,11 @@ public class CrazyDanceCode extends GenCode{
         super(2,3);
     }
 
+    public CrazyDanceCode(int aminoNeeded, int nucleoNeeded) {
+        super(aminoNeeded, nucleoNeeded);
+        this.name = "cdc" + id++;
+    }
+
     /**
      * Létrehozza a belőle készíthető CrazyDanceAgent ágenst.
      *

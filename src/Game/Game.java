@@ -25,6 +25,8 @@ import java.util.Scanner;
 public class Game {
     private final ArrayList<Steppable> steppables;
     private boolean testingFinished = false;
+    private ArrayList<Virologist> virologists = new ArrayList<>();
+    private ArrayList<Field> fields = new ArrayList<>();
 
     public Game() {
         steppables = new ArrayList<>();
@@ -35,70 +37,209 @@ public class Game {
     }
 
     public void start() {
-        initTest();
+        //initTest();
         readFromFile();
-        while (true) {
-
-        }
     }
 
     private void readFromFile() {
-        File file = new File("G:\\projlab\\Projlab\\test.txt");
         try {
+            File file = new File("G:\\projlab\\Projlab\\initTest.txt");
             Scanner scan = new Scanner(file);
             while(scan.hasNext()){
                 String input = scan.nextLine();
                 if(input.contains("fid")){
                     Field field = new Field();
+                    fields.add(field);
                     String fieldNeighbors = scan.nextLine();
-                    String[] split = fieldNeighbors.split(" ");
-                    for(int i = 1; i < split.length; i++){
-                        String parameter = split[i];
-                        checkAndAddNeighbors(parameter, field);
-                    }
-                    String viro = scan.nextLine();
-                    if(viro.contains("vir")){
-                        Virologist virologist = new Virologist(field);
-                        String materials = scan.nextLine();
-                        String splitMaterial[] = materials.split(" ");
-                        for(int i = 1; i < splitMaterial.length; i++){
-                            if(splitMaterial[i].contains("aac")){
-                                AminoAcid aminoAcid = new AminoAcid();
-                                virologist.getPropertyHandler().add(aminoAcid);
-                            } else if(splitMaterial[i].contains(("ncd"))){
-                                Nucleotid nucleotid = new Nucleotid();
-                                virologist.getPropertyHandler().add(nucleotid);
-                            }
-                        }
-                        String agents = scan.nextLine();
-                        String splitAgents[] = agents.split(" ");
-                        for(int i = 1; i < splitAgents.length; i++){
-                            if(splitAgents[i].contains("ama")){
-                                AmnesiaAgent amnesiaAgent = new AmnesiaAgent(4);
-                                virologist.getPropertyHandler().add(amnesiaAgent);
-                            } else if(splitAgents[i].contains("paa")){
-                                ParalyseAgent paralyseAgent = new ParalyseAgent();
-                                virologist.getPropertyHandler().add(paralyseAgent);
-                            } else if(splitAgents[i].contains("cda")){
-                                CrazyDanceAgent crazyDanceAgent = new CrazyDanceAgent(5);
-                                virologist.getPropertyHandler().add(crazyDanceAgent);
-                            } else if(splitAgents[i].contains("pra")){
-                                ProtectionAgent protectionAgent = new ProtectionAgent(5);
-                                virologist.getPropertyHandler().add(protectionAgent);
-                            }
+                    if(!fieldNeighbors.equals("0")) {
+                        String[] split = fieldNeighbors.split(" ");
+                        for (int i = 0; i < split.length; i++) {
+                            String parameter = split[i];
+                            checkAndAddNeighbors(parameter, field);
                         }
                     }
+                    readAfterField(scan, field);
                 } else if(input.contains("lab")){
                     Laboratory laboratory = new Laboratory();
-                } else if(input.contains("who")){
-                    Laboratory laboratory = new Laboratory();
-                } else if(input.contains("shl")){
+                    fields.add(laboratory);
+                    String fieldNeighbors = scan.nextLine();
+                    if(!fieldNeighbors.equals("0")) {
+                        String[] split = fieldNeighbors.split(" ");
+                        for (int i = 0; i < split.length; i++) {
+                            String parameter = split[i];
+                            checkAndAddNeighbors(parameter, laboratory);
+                        }
+                    }
+                    String codeOnLabor = scan.nextLine();
+                    if(!codeOnLabor.equals("0")){
+                        if(codeOnLabor.contains("amc")){
+                            AmnesiaCode amnesiaCode = new AmnesiaCode(4, 4, laboratory);
+                            laboratory.add(amnesiaCode);
+                        } else if(codeOnLabor.contains("pac")){
+                            ParalyseCode paralyseCode = new ParalyseCode(4, 4, laboratory);
+                            laboratory.add(paralyseCode);
+                        } else if(codeOnLabor.contains("cdc")){
+                            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(4, 4, laboratory);
+                            laboratory.add(crazyDanceCode);
+                        } else if(codeOnLabor.contains("prc")){
+                            ProtecionCode protecionCode = new ProtecionCode(4, 4, laboratory);
+                            laboratory.add(protecionCode);
+                        }
+                    }
+                    String bearAgentOnLaboratory = scan.nextLine();
+                    if(!bearAgentOnLaboratory.equals("0")){
+                        if(bearAgentOnLaboratory.contains("baa")){
 
+                        }
+                    }
+                    readAfterField(scan, laboratory);
+                } else if(input.contains("who")){
+                    Warehouse warehouse = new Warehouse();
+                    fields.add(warehouse);
+                    String fieldNeighbors = scan.nextLine();
+                    if(!fieldNeighbors.equals("0")){
+                        String[] split = fieldNeighbors.split(" ");
+                        for (int i = 0; i < split.length; i++) {
+                            String parameter = split[i];
+                            checkAndAddNeighbors(parameter, warehouse);
+                        }
+                    }
+                    String materialOnWareHouse = scan.nextLine();
+                    if(!materialOnWareHouse.equals("0")){
+                        if(materialOnWareHouse.contains("aac")){
+                            AminoAcid aminoAcid = new AminoAcid(warehouse);
+                            warehouse.add(aminoAcid);
+                        } else if(materialOnWareHouse.contains("ncd")){
+                            Nucleotid nucleotid = new Nucleotid(warehouse);
+                            warehouse.add(nucleotid);
+                        }
+                    }
+                    readAfterField(scan, warehouse);
+                } else if(input.contains("shl")){
+                    Shelter shelter = new Shelter();
+                    fields.add(shelter);
+                    String fieldNeighbors = scan.nextLine();
+                    if(!fieldNeighbors.equals("0")) {
+                        String[] split = fieldNeighbors.split(" ");
+                        for (int i = 0; i < split.length; i++) {
+                            String parameter = split[i];
+                            checkAndAddNeighbors(parameter, shelter);
+                        }
+                    }
+                    String equipmentOnShelter = scan.nextLine();
+                    if(!equipmentOnShelter.equals("0")){
+                        if(equipmentOnShelter.contains("glv")){
+                            Gloves gloves = new Gloves(shelter);
+                            shelter.add(gloves);
+                        } else if(equipmentOnShelter.contains("sck")){
+                            Sack sack = new Sack(shelter);
+                            shelter.add(sack);
+                        } else if(equipmentOnShelter.contains("axe")){
+                            Axe axe = new Axe(shelter);
+                            shelter.add(axe);
+                        } else if(equipmentOnShelter.contains("cpe")){
+                            Cape cape = new Cape(shelter);
+                            shelter.add(cape);
+                        }
+                    }
+                    readAfterField(scan, shelter);
                 }
             }
+            System.out.println("field0 name: " + fields.get(0).getName() + "\nfield1 name: " + fields.get(1).getName() + "\nfield2 name: " + fields.get(2).getName() + "\nfield3 name: " + fields.get(3).getName()
+                    + "\nfield0 neighbors: " + fields.get(1).getNeighbours().get(0).getName()
+                    + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(1).getName()
+                    + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(2).getName()
+                    + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(3).getName()
+                    + "\nvirologist0 name: " + virologists.get(0).getName() + "\nvirologist0 equipment's name: "
+                    //+ "\nVirologist's equipment 0: " + virologists.get(0).getPropertyHandler().getEquipments().get(0).getName()
+                    //+ "\nVirologist's equipment 1: " + virologists.get(0).getPropertyHandler().getEquipments().get(1).getName()
+                    /*+ "\nviro code0: " + virologists.get(0).getPropertyHandler().getGenCodes().get(0).getName()
+                    + "\nviro code1: " + virologists.get(0).getPropertyHandler().getGenCodes().get(1).getName()
+                    + "\nviro code2: " + virologists.get(0).getPropertyHandler().getGenCodes().get(2).getName()
+                    + "\nviro code3: " + virologists.get(0).getPropertyHandler().getGenCodes().get(3).getName()*/);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void readAfterField(Scanner scan, Field field){
+        String viro = scan.nextLine();
+        if(!viro.equals("0")){
+            Virologist virologist = new Virologist(field);
+            virologists.add(virologist);
+            String materials = scan.nextLine();
+            if(!materials.equals("0")) {
+                String splitMaterial[] = materials.split(" ");
+                for (int i = 0; i < splitMaterial.length; i++) {
+                    if (splitMaterial[i].contains("aac")) {
+                        AminoAcid aminoAcid = new AminoAcid();
+                        virologist.getPropertyHandler().add(aminoAcid);
+                    } else if (splitMaterial[i].contains(("ncd"))) {
+                        Nucleotid nucleotid = new Nucleotid();
+                        virologist.getPropertyHandler().add(nucleotid);
+                    }
+                }
+            }
+            String agents = scan.nextLine();
+            if(!agents.equals("0")) {
+                String splitAgents[] = agents.split(" ");
+                for (int i = 0; i < splitAgents.length; i++) {
+                    if (splitAgents[i].contains("ama")) {
+                        AmnesiaAgent amnesiaAgent = new AmnesiaAgent(4);
+                        virologist.getPropertyHandler().add(amnesiaAgent);
+                    } else if (splitAgents[i].contains("paa")) {
+                        ParalyseAgent paralyseAgent = new ParalyseAgent();
+                        virologist.getPropertyHandler().add(paralyseAgent);
+                    } else if (splitAgents[i].contains("cda")) {
+                        CrazyDanceAgent crazyDanceAgent = new CrazyDanceAgent(5);
+                        virologist.getPropertyHandler().add(crazyDanceAgent);
+                    } else if (splitAgents[i].contains("pra")) {
+                        ProtectionAgent protectionAgent = new ProtectionAgent(5);
+                        virologist.getPropertyHandler().add(protectionAgent);
+                    }
+                }
+            }
+            String equipments = scan.nextLine();
+            if(!equipments.equals("0")) {
+                String splitEquipments[] = equipments.split(" ");
+                for (int i = 0; i < splitEquipments.length; i++) {
+                    if (splitEquipments[i].contains("cpe")) {
+                        Cape cape = new Cape();
+                        virologist.getPropertyHandler().add(cape);
+                    } else if (splitEquipments[i].contains("sck")) {
+                        Sack sack = new Sack();
+                        virologist.getPropertyHandler().add(sack);
+                    } else if (splitEquipments[i].contains("glv")) {
+                        Gloves gloves = new Gloves();
+                        virologist.getPropertyHandler().add(gloves);
+                    } else if (splitEquipments[i].contains("axe")) {
+                        Axe axe = new Axe();
+                        virologist.getPropertyHandler().add(axe);
+                    }
+                }
+            }
+            String codes = scan.nextLine();
+            if(!codes.equals("0")) {
+                String splitCodes[] = codes.split(" ");
+                for (int i = 0; i < splitCodes.length; i++) {
+                    if (splitCodes[i].contains("amc")) {
+                        AmnesiaCode amnesiaCode = new AmnesiaCode(4, 4);
+                        virologist.getPropertyHandler().add(amnesiaCode);
+                    } else if (splitCodes[i].contains("prc")) {
+                        ProtecionCode protecionCode = new ProtecionCode(4, 4);
+                        virologist.getPropertyHandler().add(protecionCode);
+                    } else if (splitCodes[i].contains("cdc")) {
+                        CrazyDanceCode crazyDanceCode = new CrazyDanceCode(4, 4);
+                        virologist.getPropertyHandler().add(crazyDanceCode);
+                    } else if (splitCodes[i].contains("pac")) {
+                        ParalyseCode paralyseCode = new ParalyseCode(4, 4);
+                        virologist.getPropertyHandler().add(paralyseCode);
+                    }
+                }
+            }
+            String virologistEnd = scan.nextLine();
+        }
+        String fieldEnd = scan.nextLine();
     }
 
     private void initTest() {
@@ -117,6 +258,7 @@ public class Game {
             } else if (input.contains("CreateField")) {
                 String[] parameters = input.split(" ");
                 Field field = new Field();
+                fields.add(field);
                 for (int i = 1; i < parameters.length; i++) {
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, field);
@@ -126,6 +268,7 @@ public class Game {
             } else if(input.contains("CreateLabor")){
                 String[] parameters = input.split(" ");
                 Laboratory laboratory = new Laboratory();
+                fields.add(laboratory);
                 for(int i = 1; i < parameters.length; i++){
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, laboratory);
@@ -134,6 +277,7 @@ public class Game {
             } else if(input.contains("CreateShelter")){
                 String[] parameters = input.split(" ");
                 Shelter shelter = new Shelter();
+                fields.add(shelter);
                 for(int i = 1; i < parameters.length; i++){
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, shelter);
@@ -142,6 +286,7 @@ public class Game {
             } else if(input.contains("CreateWareHouse")){
                 String[] parameters = input.split(" ");
                 Warehouse warehouse = new Warehouse();
+                fields.add(warehouse);
                 for(int i = 1; i < parameters.length; i++){
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, warehouse);
@@ -337,13 +482,19 @@ public class Game {
         }
     }
 
-    private void checkAndAddNeighbors(String parameter, Field field){
+    private void checkAndAddNeighbors(String parameter, Field field){ //lab0 lab1
         if (parameter.contains("lab") || parameter.contains("fid") || parameter.contains("shl") || parameter.contains("who")) {
-            Field neighbour = findFieldByName(parameter);
-            if (neighbour != null) {
-                field.addNeighbour(neighbour);
-            } else {
-                System.out.println("Field does not exist with this name: " + parameter);
+            //Field neighbour = findFieldByName(parameter);
+            //if (neighbour != null) {
+                //field.addNeighbour(neighbour);
+                for(int i = 0; i < this.fields.size(); i++){
+                    if(fields.get(i).getName().equals(parameter)) {
+                        field.addNeighbour(fields.get(i));
+                        fields.get(i).addNeighbour(field);
+                    }
+               // }
+            //} else {
+              //  System.out.println("Field does not exist with this name: " + parameter);
             }
         } else if (!parameter.equals("")) {
             System.out.println("'" + parameter + "' is not a valid parameter.");
@@ -354,6 +505,7 @@ public class Game {
         Field field = findFieldByName(fieldName);
         if (field != null) {
             Virologist virologist = new Virologist(field);
+            virologists.add(virologist);
             System.out.println("Created virologist with name " + virologist.getName() + ", on field: " + field.toString());
         } else {
             System.out.println("Field does not exist with this name: " + fieldName);
@@ -362,8 +514,8 @@ public class Game {
 
 
     private Field findFieldByName(String nextString) {
-        for (Field field : Field.getFields()) {
-            if (field.toString().equals(nextString)) {
+        for (Field field : fields) {
+            if (field.getName().equals(nextString)) {
                 return field;
             }
         }

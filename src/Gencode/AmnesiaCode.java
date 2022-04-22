@@ -21,7 +21,10 @@ public class AmnesiaCode extends GenCode {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "amc" + id++;
     }
-
+    public AmnesiaCode(int aminoNeeded, int nucleoNeeded){
+        super(aminoNeeded, nucleoNeeded);
+        this.name = "amc" + id++;
+    }
     /**
      * Empty AmnesiaCode constructor
      */

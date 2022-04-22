@@ -10,8 +10,12 @@ import java.util.UUID;
  * Gentikai kódot reprezentáló osztály.
  */
 public abstract class GenCode implements Collectible {
-    private String uid; // special, unique identifier
     protected Laboratory currentPosition = null;
+
+    public String getName() {
+        return name;
+    }
+
     protected String name;
 
     // needed materials for the agent creation
@@ -28,7 +32,6 @@ public abstract class GenCode implements Collectible {
         this.aminoNeeded = aminoNeeded;
         this.nucleoNeeded = nucleoNeeded;
         currentPosition = field;
-        uid = UUID.randomUUID().toString();
     }
 
     /**
@@ -41,7 +44,6 @@ public abstract class GenCode implements Collectible {
         this.aminoNeeded = aminoNeeded;
         this.nucleoNeeded = nucleoNeeded;
         currentPosition = null;
-        uid = UUID.randomUUID().toString();
     }
 
     // gets name/id of this object
@@ -66,9 +68,6 @@ public abstract class GenCode implements Collectible {
         return currentPosition;
     }
 
-    public String getUid() {
-        return uid;
-    }
 
     /**
      * Létrehozza a belőle készíthető ágenst.

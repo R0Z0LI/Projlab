@@ -16,8 +16,7 @@ public abstract class Equipment implements Collectible {
     public Equipment(){}
 
     // gets name/id of this object
-    @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 

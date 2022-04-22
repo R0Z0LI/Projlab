@@ -24,8 +24,7 @@ public class Field {
     }
 
     // gets name/id of this object
-    @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 

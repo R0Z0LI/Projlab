@@ -50,12 +50,12 @@ public class PropertyHandler {
     public void add(GenCode genCode) {
         System.out.println("-> Add(GenCode genCode) \n! Hozzáadja a paraméterként kapott genetikai kódot a saját genetikai kódjaihoz \n\n");
         genCodes.add(genCode);
-        System.out.println("Ezzel osszegyult az osszes genetikai kód? [i/n]");
+        /*System.out.println("Ezzel osszegyult az osszes genetikai kód? [i/n]");
         Scanner sc = new Scanner(System.in);
         //TODO lehet automatikus
         if (sc.next().equals("i")) {
             System.out.println("! Játék vége.\n\n");
-        }
+        }*/
     }
 
     /**

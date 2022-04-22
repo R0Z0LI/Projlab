@@ -29,6 +29,11 @@ public class ParalyseCode extends GenCode {
         super(4, 0);
     }
 
+    public ParalyseCode(int aminoNeeded, int nucleoNeeded) {
+        super(aminoNeeded, nucleoNeeded);
+        this.name = "pac" + id++;
+    }
+
     /**
      * Létrehozza a belőle készíthető ParalyseAgent ágenst.
      *
