@@ -3,6 +3,7 @@ package Gencode;
 import Collectible.Collectible;
 import Field.Laboratory;
 import Agent.Agent;
+import PropertyHandler.PropertyHandler;
 
 import java.util.UUID;
 
@@ -10,14 +11,10 @@ import java.util.UUID;
  * Gentikai kódot reprezentáló osztály.
  */
 public abstract class GenCode implements Collectible {
-    protected Laboratory currentPosition = null;
+    protected Laboratory currentPosition;
 
-    public String getName() {
-        return name;
-    }
     public abstract int getUid();
     protected String name;
-
     // needed materials for the agent creation
     private int aminoNeeded;
     private int nucleoNeeded;
@@ -34,6 +31,9 @@ public abstract class GenCode implements Collectible {
         currentPosition = field;
     }
 
+    /* Szerintem ilyen ne legyen, mert a genetikai kódnak úgy kellene működnie, hogy laborról soha nem távolítódik el.
+       Mindig a laboron marad, és így mindenki által ugyanaz az objktum lesz felvéve/megtanulva.
+       A labor nélküli létrehozás sérteni ezt.*/
     /**
      * GenCode constructor without any parameters.
      * Should be used when adding to the inventory directly.
@@ -47,19 +47,43 @@ public abstract class GenCode implements Collectible {
     }
 
     // gets name/id of this object
-    @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 
-    public void setField(Laboratory lab) {
-        currentPosition = lab;
+    /**
+     * Begyűjteti magát a virológus PropertyHandlerével.
+     *
+     * @param propertyHandler amihez hozzá kell adni a felvett GenCode-ot
+     */
+    @Override
+    public void beCollected(PropertyHandler propertyHandler) {
+        propertyHandler.add(this);
     }
 
+    /* TODO Ez kell? Mármint csak felejtésnél törlünk, de akkor mindent. */
+    /**
+     * Eltávolíttatja magát a virológus PropertyHandleréből.
+     *
+     * @param propertyHandler amiből ki kell törölni a törlendő GenCode-ot
+     */
+    @Override
+    public void beRemoved(PropertyHandler propertyHandler) {
+        propertyHandler.deleteGenCode(this);
+    }
+
+    /**
+     * Gets the needed amount of amino acid.
+     * @return needed amount of amino acid
+     */
     public int getAminoNeeded() {
         return aminoNeeded;
     }
 
+    /**
+     * Gets the needed amount of nucleotid.
+     * @return needed amount of nucleotid
+     */
     public int getNucleoNeeded() {
         return nucleoNeeded;
     }
@@ -67,7 +91,6 @@ public abstract class GenCode implements Collectible {
     public Laboratory getCurrentPosition() {
         return currentPosition;
     }
-
 
     /**
      * Létrehozza a belőle készíthető ágenst.
