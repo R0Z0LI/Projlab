@@ -465,7 +465,7 @@ public class Game {
         if (warehouse != null) {
             Nucleotid nucleotid = new Nucleotid(warehouse);
             warehouse.add(nucleotid);
-            System.out.println("Created Nucleotid with name " + nucleotid.toString() + ", on field: " + warehouse.toString());
+            System.out.println("Created Nucleotid with name " + nucleotid.getName() + ", on field: " + warehouse.toString());
         } else {
             System.out.println("Field does not exist with this name: " + fieldName);
         }
@@ -476,7 +476,7 @@ public class Game {
         if (warehouse != null) {
             AminoAcid aminoAcid = new AminoAcid(warehouse);
             warehouse.add(aminoAcid);
-            System.out.println("Created AminoAcid with name " + aminoAcid.toString() + ", on field: " + warehouse.toString());
+            System.out.println("Created AminoAcid with name " + aminoAcid.getName() + ", on field: " + warehouse.toString());
         } else {
             System.out.println("Field does not exist with this name: " + fieldName);
         }

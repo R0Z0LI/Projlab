@@ -12,17 +12,16 @@ public abstract class Equipment implements Collectible {
     protected Shelter currPosition;
     protected String name;
 
-    // empty constructor
-    public Equipment(){}
+    /**
+     * Empty Equipment constructor
+     */
+    public Equipment(){
+        //
+    }
 
     // gets name/id of this object
     public String getName() {
         return name;
-    }
-
-    // sets the current position of the equipment
-    public void setCurrPosition(Shelter currPosition) {
-        this.currPosition = currPosition;
     }
 
     /**
@@ -42,14 +41,28 @@ public abstract class Equipment implements Collectible {
     /**
      * Begyűjteti magát a virológus PropertyHandlerével.
      *
-     * @param ph   amihez hozzá kell adni a felvett Equipmentet
+     * @param propertyHandler amihez hozzá kell adni a felvett Equipment-et
      */
-    public abstract void beCollected(PropertyHandler ph);
+    @Override
+    public void beCollected(PropertyHandler propertyHandler) {
+        // only collect, if there is enough space in inventory
+        if (propertyHandler.getEquipments().size() < propertyHandler.getMaxEquipment()) {
+            // adding this to Virologist
+            propertyHandler.add(this);
+            // removing it from the shelter
+            currPosition.remove(this);
+        } else {
+            System.out.println("\tThere is not enough space in your inventory.");
+        }
+    }
 
     /**
      * Törli magát a virológus PropertyHandleréből.
      *
-     * @param ph   amiből törölni kell a törlendő Equipmentet
+     * @param propertyHandler amiből törölni kell a törlendő Axe-t
      */
-    public abstract void beRemoved(PropertyHandler ph);
+    @Override
+    public void beRemoved(PropertyHandler propertyHandler) {
+        propertyHandler.remove(this);
+    }
 }

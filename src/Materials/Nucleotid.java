@@ -10,7 +10,7 @@ import PropertyHandler.PropertyHandler;
 public class Nucleotid implements Collectible {
     private static int id = 0;
     private String name;
-    private Warehouse field;
+    private Warehouse currPosition;
 
     /**
      * Nucleotid constructor
@@ -18,7 +18,7 @@ public class Nucleotid implements Collectible {
      */
     public Nucleotid(Warehouse field) {
         this.name = "ncd" + id++;
-        this.field = field;
+        this.currPosition = field;
     }
 
     /**
@@ -27,12 +27,11 @@ public class Nucleotid implements Collectible {
      */
     public Nucleotid() {
         this.name = "ncd" + id++;
-        this.field = null;
+        this.currPosition = null;
     }
 
     // gets name/id of this object
-    @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 
@@ -41,10 +40,16 @@ public class Nucleotid implements Collectible {
      *
      * @param propertyHandler Ehhez adja hozzá magát
      */
+    @Override
     public void beCollected(PropertyHandler propertyHandler) {
-        if (propertyHandler.getEquipments().size() < propertyHandler.getMaxMaterial()) {
-            System.out.println("-> BeCollected(PropertyHandler propertyHandler)\n! osszegyujteti magat a paraméterként megadott propertyHandler-rel\n\n");
+        // only collect, if there is enough space in inventory
+        if (propertyHandler.getAminoAcids().size() + propertyHandler.getNucleotids().size() < propertyHandler.getMaxMaterial()) {
+            // adding this to Virologist
             propertyHandler.add(this);
+            // removing it from the warehouse
+            currPosition.remove(this);
+        } else {
+            System.out.println("\tThere is not enough space in your inventory.");
         }
     }
 
@@ -53,8 +58,8 @@ public class Nucleotid implements Collectible {
      *
      * @param propertyHandler Ebből törlődik ki
      */
+    @Override
     public void beRemoved(PropertyHandler propertyHandler) {
-        System.out.println("-> BeRemoved(PropertyHandler propertyHandler)\n! Kitorolteti magat a paraméterként megadott propertyHandler-bol\n\n");
         propertyHandler.remove(this);
     }
 }
