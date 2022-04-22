@@ -34,7 +34,6 @@ public class AminoAcid implements Collectible {
     public String getName() {
         return name;
     }
-    public String getName(){return name;}
     /**
      * Összegyűjteti magát a paraméterként megadott propertyHandler-rel
      *
