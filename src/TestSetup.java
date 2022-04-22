@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TestSetup {
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         String cyan="\u001B[36m";
         boolean run = true;
         while (run) {

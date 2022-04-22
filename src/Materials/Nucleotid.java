@@ -20,7 +20,6 @@ public class Nucleotid implements Collectible {
         this.name = "ncd" + id++;
         this.field = field;
     }
-
     /**
      * Nucleotid constructor without any parameters.
      * Should be used when adding to the inventory directly.
@@ -35,7 +34,7 @@ public class Nucleotid implements Collectible {
     public String toString() {
         return name;
     }
-
+    public String getName(){return name;}
     /**
      * Összegyűjteti magát a paraméterként megadott propertyHandler-rel
      *

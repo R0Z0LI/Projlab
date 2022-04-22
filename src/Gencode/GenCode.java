@@ -15,7 +15,7 @@ public abstract class GenCode implements Collectible {
     public String getName() {
         return name;
     }
-
+    public abstract int getUid();
     protected String name;
 
     // needed materials for the agent creation

@@ -1,6 +1,7 @@
 package Behaviors;
 
 import Agent.Agent;
+import TestSets.TestOutputWriter;
 import Virologist.Virologist;
 
 public class DefenseBehavior {
@@ -26,7 +27,6 @@ public class DefenseBehavior {
      * @return prioritás
      */
     public int getPriority() {
-        System.out.println("<- priority");
         return priority;
     }
 
@@ -41,8 +41,8 @@ public class DefenseBehavior {
      * @param attacker a virológus, aki az ágenst keni
      */
     public void defend(Agent agent, Virologist attacker) {
-        System.out.println("->DefenseBehavior.defend(Agent agent, Virologist attacker)");
-        System.out.println("! A kenés sikeres.\n");
+        System.out.println(virologist.getName()+" used nothing for defense. Defense failed.");
+        TestOutputWriter.appendToTestOutput(virologist.getName()+" used nothing for defense. Defense failed.");
         agent.addBehavior(virologist);
     }
 }

@@ -2,6 +2,7 @@ package Agent;
 
 import Behaviors.CrazyMoveBehavior;
 import Virologist.Virologist;
+import Game.Game;
 /**
  * Vitustáncot reprezentáló osztály.
  */
@@ -22,7 +23,7 @@ public class CrazyDanceAgent extends Agent {
     @Override
     public void removeBehavior(Virologist v) {
         v.remove(crazyMove);
-        System.out.println("-> RemoveBehFromStack(Virologist v)\n! Kitorli a megadott virologus vermebol a crazyMove viselkedest.\n\n");
+        Game.removeSteppable(this);
     }
 
     /**
@@ -33,13 +34,12 @@ public class CrazyDanceAgent extends Agent {
     public void addBehavior(Virologist v) {
         crazyMove.setVirologist(v);
         v.add(crazyMove);
-        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzaadja a megadott virologus vermehez a crazyMove viselkedest.\n\n");
+        Game.addSteppable(this);
     }
 
     @Override
     public void step() {
         super.step();
-
         // we are gonna remove the agent from the virologist
         if (getTimeLeft() == 0) {
             removeBehavior(crazyMove.getVirologist());

@@ -10,7 +10,7 @@ import Agent.CrazyDanceAgent;
  */
 public class CrazyDanceCode extends GenCode{
     private static int id = 0;
-
+    public int getUid(){return id;}
     /**
      * CrazyDanceCode constructor
      * @param aminoNeeded The needed amoniacid amount.

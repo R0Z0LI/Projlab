@@ -2,6 +2,7 @@ package Behaviors;
 
 import Collectible.Collectible;
 import PropertyHandler.PropertyHandler;
+import TestSets.TestOutputWriter;
 import Virologist.Virologist;
 
 public class StealBehavior {
@@ -31,11 +32,13 @@ public class StealBehavior {
      * @param propertyHandler       annak virológusnak a tárolója, aki lop
      */
     public void steal(Collectible collectible, Virologist affected, PropertyHandler propertyHandler) {
-        System.out.println("-> StealBehavior.steal(Collectible collectible, Virologist affected, PropertyHandler propertyHandler)");
         PropertyHandler ph2 = affected.getPropertyHandler();
-        if (ph2.getEquipments().contains(collectible) || ph2.getAminoAcids().contains(collectible) || ph2.getNucleotids().contains(collectible)) {
-            collectible.beCollected(propertyHandler);
+        collectible.beCollected(propertyHandler);
+        //ha sikeresen begyűjtötte, akkor el kell venni a másiktól
+        if(propertyHandler.getEquipments().contains(collectible) || propertyHandler.getAminoAcids().contains(collectible) || propertyHandler.getNucleotids().contains(collectible)){
             collectible.beRemoved(ph2);
+            System.out.println("Successful steal, stolen item: "+collectible.getName());
+            TestOutputWriter.appendToTestOutput("Successful steal, stolen item: "+collectible.getName());
         }
     }
 }

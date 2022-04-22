@@ -38,7 +38,7 @@ public class Gloves extends Equipment {
      */
     @Override
     public void addBehaviour(Virologist v) {
-        this.gloveDef = new GloveDefBehavior(v);
+        this.gloveDef = new GloveDefBehavior(v, this);
         v.add(gloveDef);
         System.out.println("-> addBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez a Cape-bol adódó viselkedést.\n\n");
     }

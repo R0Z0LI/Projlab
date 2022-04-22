@@ -10,9 +10,6 @@ public class CreateBehavior {
         virologist = v;
     }
 
-    public CreateBehavior() {
-    }
-
     public void setVirologist(Virologist v) {
         virologist = v;
     }
@@ -28,7 +25,6 @@ public class CreateBehavior {
      * @param code genetikai kód, amelyből az ágenst elő kell állítani.
      */
     public void create(GenCode code) {
-        System.out.println("->CreateBehavior. create(GenCode code)");
         virologist.getPropertyHandler().makeAgent(code);
     }
 }

@@ -1,9 +1,6 @@
 package Game;
 
-import Agent.AmnesiaAgent;
-import Agent.CrazyDanceAgent;
-import Agent.ParalyseAgent;
-import Agent.ProtectionAgent;
+import Agent.*;
 import Field.Field;
 import Gencode.AmnesiaCode;
 import Gencode.CrazyDanceCode;
@@ -23,20 +20,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    private final ArrayList<Steppable> steppables;
+    private static ArrayList<Steppable> steppables;
     private boolean testingFinished = false;
-    private ArrayList<Virologist> virologists = new ArrayList<>();
+    private static boolean gameRunning = false;
+    private static ArrayList<Virologist> virologists = new ArrayList<>();
     private ArrayList<Field> fields = new ArrayList<>();
 
     public Game() {
         steppables = new ArrayList<>();
     }
 
-    public void addSteppable(Steppable s) {
+    public static void addSteppable(Steppable s) {
         steppables.add(s);
     }
 
     public void start() {
+        gameRunning=true;
         //initTest();
         readFromFile();
     }
@@ -89,7 +88,7 @@ public class Game {
                     String bearAgentOnLaboratory = scan.nextLine();
                     if(!bearAgentOnLaboratory.equals("0")){
                         if(bearAgentOnLaboratory.contains("baa")){
-
+                            laboratory.add(new BearDanceAgent());
                         }
                     }
                     readAfterField(scan, laboratory);
@@ -164,7 +163,7 @@ public class Game {
 
     private void readAfterField(Scanner scan, Field field){
         String viro = scan.nextLine();
-        if(!viro.equals("0")){
+        while(!viro.equals("0")){
             Virologist virologist = new Virologist(field);
             virologists.add(virologist);
             String materials = scan.nextLine();
@@ -238,6 +237,7 @@ public class Game {
                 }
             }
             String virologistEnd = scan.nextLine();
+            viro = scan.nextLine();
         }
         String fieldEnd = scan.nextLine();
     }
@@ -264,7 +264,7 @@ public class Game {
                     checkAndAddNeighbors(parameter, field);
 
                 }
-                System.out.println("Created Field: " + field.toString());
+                System.out.println("Created Field: " + field.getName());
             } else if(input.contains("CreateLabor")){
                 String[] parameters = input.split(" ");
                 Laboratory laboratory = new Laboratory();
@@ -282,7 +282,7 @@ public class Game {
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, shelter);
                 }
-                System.out.println("Created Shelter: " + shelter.toString());
+                System.out.println("Created Shelter: " + shelter.getName());
             } else if(input.contains("CreateWareHouse")){
                 String[] parameters = input.split(" ");
                 Warehouse warehouse = new Warehouse();
@@ -291,7 +291,7 @@ public class Game {
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, warehouse);
                 }
-                System.out.println("Created WareHouse: " + warehouse.toString());
+                System.out.println("Created WareHouse: " + warehouse.getName());
             } else if(input.contains("CreateAmino")){
                 String[] split = input.split(" ");
                 String parameter = split[1];
@@ -511,8 +511,6 @@ public class Game {
             System.out.println("Field does not exist with this name: " + fieldName);
         }
     }
-
-
     private Field findFieldByName(String nextString) {
         for (Field field : fields) {
             if (field.getName().equals(nextString)) {
@@ -522,10 +520,21 @@ public class Game {
         return null;
     }
 
-    public void removeSteppable(Steppable s) {
+    /**+
+     * futtatja a játékot, sorban meghívja a virológusok yourTurn függvényét
+     */
+    public void runGame(){
+        while(gameRunning){
+            for(int i=0; i<virologists.size(); ++i){
+                virologists.get(i).yourTurn();
+            }
+            stepSteppabbles();
+        }
+    }
+    public static void removeSteppable(Steppable s) {
         steppables.remove(s);
     }
-
+    public static void removeVirologist(Virologist v){virologists.remove(v);}
     public void stepSteppabbles() {
         for (Steppable s : steppables) {
             s.step();
@@ -533,7 +542,12 @@ public class Game {
     }
 
     public void endGame() {
+        gameRunning=false;
         System.out.println("! A jatek veget ert.");
+    }
+    public static void endGame(Virologist v) {
+        gameRunning=false;
+        System.out.println("! A jatek veget ert.\nGyoztes: "+v.getName());
     }
 
 

@@ -1,6 +1,7 @@
 package Behaviors;
 
 import Agent.Agent;
+import TestSets.TestOutputWriter;
 import Virologist.Virologist;
 
 public class CapeDefenseBehavior extends DefenseBehavior {
@@ -20,15 +21,16 @@ public class CapeDefenseBehavior extends DefenseBehavior {
      * @param attacker a virológus, aki az ágenst keni
      */
     public void defend(Agent agent, Virologist attacker) {
-        System.out.println("-> CapeDefBehavior.defend(Agent Agent, Virologist attacker)");
         double chance = Math.random() * 100;
         if (chance > DEFENSE_CHANCE_PERCENT) {
-            System.out.println("! A kopeny védése nem jott ossze.");
+            System.out.println(virologist.getName()+" used cape for defense. Defense failed.");
+            TestOutputWriter.appendToTestOutput(virologist.getName()+" used cape for defense. Defense failed.\n");
             priority--;
             virologist.resortDefenseBehaviors();
             virologist.beInfected(agent, attacker);
         } else {
-            System.out.println("! A kopeny most megvédett.\n");
+            System.out.println(virologist.getName()+" used cape for defense. Successful defense.");
+            TestOutputWriter.appendToTestOutput(virologist.getName()+" used cape for defense. Successful defense.");
         }
     }
 }

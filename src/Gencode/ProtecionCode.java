@@ -10,7 +10,7 @@ import Agent.ProtectionAgent;
  */
 public class ProtecionCode extends GenCode {
     private static int id = 0;
-
+    public int getUid(){return id;}
     /**
      * ProtecionCode constructor
      * @param aminoNeeded The needed amoniacid amount.

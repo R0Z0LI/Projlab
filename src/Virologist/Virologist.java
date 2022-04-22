@@ -7,6 +7,8 @@ import Agent.Agent;
 import Behaviors.*;
 import Equipments.Equipment;
 import Gencode.GenCode;
+import Game.Game;
+import TestSets.TestOutputWriter;
 
 import java.util.*;
 
@@ -46,10 +48,6 @@ public class Virologist {
         DefenseBehavior defenseBehavior = new DefenseBehavior(this);
         this.defenseBehaviors.add(defenseBehavior);
     }
-    @Override
-    public String toString(){
-        return name;
-    }
     public String getName() {
         return name;
     }
@@ -63,6 +61,7 @@ public class Virologist {
     public void collect(Collectible collectible) {
         if(collectible==null){
             System.out.println("There is no such thing on this field.");
+            TestOutputWriter.appendToTestOutput("There is no such thing on this field.\n");
             return;
         }
         collectBehaviors.firstElement().collect(collectible, myProperties);
@@ -77,6 +76,7 @@ public class Virologist {
     public void step(Field field) {
         if(field==null){
             System.out.println("You can't move there, it's not your neighbor. \n");
+            TestOutputWriter.appendToTestOutput("You can't move there, it's not your neighbor. \n");
             return;
         }
         movementBehaviors.firstElement().move(this.currentField, field);
@@ -92,12 +92,15 @@ public class Virologist {
     public void steal(Collectible collectible, Virologist affected)  {
         if(affected.getStealableThings() == null) {
             System.out.println("This virologist is not paralysed.");
+            TestOutputWriter.appendToTestOutput("This virologist is not paralysed.\n");
             return;
         }
         if(affected.getStealableThings().contains(collectible))
             stealBehaviors.firstElement().steal(collectible, affected, myProperties);
-        else
+        else {
             System.out.println("The virologist does not have that equipment.");
+            TestOutputWriter.appendToTestOutput("The virologist does not have that equipment.\n");
+        }
     }
 
     /**
@@ -109,6 +112,7 @@ public class Virologist {
     public void createAgent(GenCode genCode) {
         if(genCode==null){
             System.out.println("You don't own this code.");
+            TestOutputWriter.appendToTestOutput("You don't own this code.\n");
             return;
         }
         createBehaviors.firstElement().create(genCode);
@@ -124,13 +128,17 @@ public class Virologist {
     public void applyAgent(Agent agent, Virologist affected) {
         if(agent==null){
             System.out.println("You don't own this agent.");
+            TestOutputWriter.appendToTestOutput("You don't own this agent.\n");
             return;
         }
         if(affected==null){
             System.out.println("You can't see that virologist.");
+            TestOutputWriter.appendToTestOutput("You can't see that virologist.\n");
             return;
         }
         applyBehaviors.firstElement().apply(agent, affected);
+        //ha már felhasználta, el lesz távolítva
+        myProperties.remove(agent);
     }
     /**+
      * megpróbálja megölni a másik virológust
@@ -139,6 +147,7 @@ public class Virologist {
     public void attack(Virologist victim){
         if(victim==null){
             System.out.println("You can't see that virologist.");
+            TestOutputWriter.appendToTestOutput("You can't see that virologist.\n");
             return;
         }
         attackBehaviors.firstElement().attack(victim);
@@ -151,16 +160,17 @@ public class Virologist {
     public void destroy(Equipment equipment) {
         if(equipment==null){
             System.out.println("You don’t own this equipment.");
+            TestOutputWriter.appendToTestOutput("You don’t own this equipment.\n");
             return;
         }
         myProperties.remove(equipment);
     }
-    //TODO toString metódus a tárgyaknak, virologusnak, mezoknek... minednnek
     /**
      * Elindítja a virológus körét
      * A játékos parancsait beolvassa, értelmezi
      */
     public void yourTurn() {
+        actionCounter=2;
         //meghívja az automatikus viselkedést
         automaticBehaviors.firstElement().execute();
         //amíg van akció, várja a játékos utasításait
@@ -170,10 +180,10 @@ public class Virologist {
             System.out.println("Elerheto virologusok a mezon:");
             //kiírja az összes elérhető virológust
             for(Virologist v : viros){
-                System.out.println(v.toString());
+                System.out.println(v.getName());
                 //kiírja a virológusok lopható cuccait
                for(Collectible c : v.getStealableThings()) {
-                   System.out.println(c.toString());
+                   System.out.println(c.getName());
                }
             }
             //beolvassa a játékos parancsát
@@ -184,14 +194,14 @@ public class Virologist {
                     //megkeresi, kire kell kenni
                     Virologist affected=null;
                     for(Virologist v : viros)
-                        if(v.toString().equals(command[2])) {
+                        if(v.getName().equals(command[2])) {
                             affected = v;
                             break;
                         }
                     //megkeresi, melyik ágenst kell kenni
                     Agent agent=null;
                     for(Agent a : myProperties.getAgents())
-                        if(a.toString().equals(command[3])) {
+                        if(a.getName().equals(command[3])) {
                             agent=a;
                             break;
                         }
@@ -203,8 +213,8 @@ public class Virologist {
                 case "Create":
                     GenCode code=null;
                     //megkeresi, melyik kódról van szó
-                    for(GenCode g : myProperties.getGenCodes())
-                        if(g.toString().equals(command[2])){
+                    for(GenCode g : myProperties.getGenCodes().values())
+                        if(g.getName().equals(command[2])){
                            code=g;
                            break;
                         }
@@ -214,7 +224,7 @@ public class Virologist {
                     //megkeresi, kit kell megölni
                     Virologist victim=null;
                     for(Virologist v : viros)
-                        if(v.toString().equals(command[2])) {
+                        if(v.getName().equals(command[2])) {
                             victim = v;
                             break;
                         }
@@ -224,7 +234,7 @@ public class Virologist {
                     //megkeresi, hova kell menni
                     Field nextField = null;
                     for(Field f : currentField.getNeighbours())
-                        if(f.toString().equals(command[2])){
+                        if(f.getName().equals(command[2])){
                             nextField=f;
                             break;
                         }
@@ -234,14 +244,14 @@ public class Virologist {
                     //megkeresi, hogy kitől kell lopni
                     Virologist stealVictim=null;
                     for(Virologist v : viros)
-                        if(v.toString().equals(command[2])) {
+                        if(v.getName().equals(command[2])) {
                             stealVictim = v;
                             break;
                         }
                     //megkeresi, hogy mit kell lopni
                     Collectible stealable=null;
                     for(Collectible c: stealVictim.getStealableThings())
-                        if(c.toString().equals(command[3])){
+                        if(c.getName().equals(command[3])){
                             stealable=c;
                             break;
                         }
@@ -251,12 +261,13 @@ public class Virologist {
                     //megkeresi, hogy mit kell eldobni
                     Equipment equipment=null;
                     for(Equipment e: myProperties.getEquipments())
-                        if(e.toString().equals(command[2])){
+                        if(e.getName().equals(command[2])){
                             equipment=e;
                         }
                     destroy(equipment);
                     break;
             }
+            actionCounter--;
         }
     }
 
@@ -270,15 +281,19 @@ public class Virologist {
     public void beInfected(Agent agent, Virologist attacker) {
         defenseBehaviors.firstElement().defend(agent, attacker);
     }
-    //TODO beKilled()
-    public void beKilled(){}
+    public void beKilled(){
+        Game.removeVirologist(this);
+        System.out.println(name+ " died.");
+        TestOutputWriter.appendToTestOutput(name+ " died.");
+    }
     /**
      * currentField settere
      *
      * @param field Erre változtatja meg
      */
     public void setCurrentField(Field field) {
-        System.out.println(name+" stepped on "+field.toString());
+        System.out.println(name+" stepped on "+field.getName());
+        TestOutputWriter.appendToTestOutput(name+" stepped on "+field.getName());
         this.currentField = field;
     }
 

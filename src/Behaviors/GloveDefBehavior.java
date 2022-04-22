@@ -1,15 +1,19 @@
 package Behaviors;
 
 import Agent.Agent;
+import Equipments.Gloves;
+import TestSets.TestOutputWriter;
 import Virologist.Virologist;
 
 public class GloveDefBehavior extends DefenseBehavior {
     private int usability;
+    private Gloves gloves;
 
-    public GloveDefBehavior(Virologist v) {
+    public GloveDefBehavior(Virologist v, Gloves glove) {
         super(v);
+        gloves=glove;
         priority = 4;
-        usability = 1;
+        usability = 3;
     }
 
     /**
@@ -20,29 +24,14 @@ public class GloveDefBehavior extends DefenseBehavior {
      */
     @Override
     public void defend(Agent agent, Virologist attacker) {
-        if (usability == -1) {
-            priority = 4;
-            virologist.resortDefenseBehaviors();
-            System.out.println("->GloveDefBehavior.defend()");
-            System.out.println("!A kesztyu a kenést kezdeményezo (támado) virologusra visszadobja az ágenst.");
-            usability = 1;
+        if (usability >0) {
+            System.out.println(virologist.getName()+" used gloves for defense. Successful defense and application is returned.");
+            TestOutputWriter.appendToTestOutput(virologist.getName()+" used gloves for defense. Successful defense and application is returned.");
             attacker.beInfected(agent, virologist);
         }
-        if (usability == 0) {
-            System.out.println("->GloveDefBehavior.defend()");
-            System.out.println("!A kesztyu elhasználodott, egy korig nem véd.");
-            priority = 0;
-            virologist.resortDefenseBehaviors();
-            usability--;
-            virologist.beInfected(agent, attacker);
-        }
-        if (usability == 1) {
-            priority = 4;
-            virologist.resortDefenseBehaviors();
-            System.out.println("->GloveDefBehavior.defend()");
-            System.out.println("!A kesztyu a kenést kezdeményezo (támado) virologusra visszadobja az ágenst.");
-            usability--;
-            attacker.beInfected(agent, virologist);
+        usability--;
+        if(usability<=0){
+            gloves.removeBehavior(virologist);
         }
 
     }

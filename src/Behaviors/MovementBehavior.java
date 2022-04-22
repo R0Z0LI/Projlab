@@ -1,6 +1,7 @@
 package Behaviors;
 
 import Field.Field;
+import TestSets.TestOutputWriter;
 import Virologist.Virologist;
 
 public class MovementBehavior {
@@ -29,8 +30,8 @@ public class MovementBehavior {
      * @param after  a mező, amelyre léptetni kell
      */
     public void move(Field before, Field after) {
-        System.out.println("->MovementBehavior.move(Field before, Field after)");
-        System.out.println("! A virologus lép egy szomszédos mezore.");
+        System.out.println(virologist.getName()+" stepped on "+after.getName());
+        TestOutputWriter.appendToTestOutput(virologist.getName()+" stepped on "+after.getName());
         before.removeVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrentField(after);

@@ -3,7 +3,7 @@ package Behaviors;
 import Virologist.Virologist;
 
 public class AttackBehavior {
-    Virologist viro;
+    protected Virologist viro;
     public void setVirologist(Virologist v){
         viro=v;
     }

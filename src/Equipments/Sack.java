@@ -38,7 +38,7 @@ public class Sack extends Equipment {
     @Override
     public void addBehaviour(Virologist v) {
         System.out.println("-> addBehToStack(Virologist v)\n! Megnoveli a megadott virológus által felveheto anyagmennyiséget.\n\n");
-        v.getPropertyHandler().setMaxMaterial(extraSpace);
+        v.getPropertyHandler().changeMaxMaterial(extraSpace);
     }
 
     /**
@@ -48,7 +48,7 @@ public class Sack extends Equipment {
      */
     @Override
     public void removeBehavior(Virologist v) {
-        v.getPropertyHandler().setMaxMaterial(-extraSpace);
+        v.getPropertyHandler().changeMaxMaterial(-extraSpace);
     }
 
     /**

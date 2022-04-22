@@ -30,7 +30,6 @@ public class CollectBehavior {
      * @param handler     egy virológus tárolója, amelybe bele kell tenni a tárgyat
      */
     public void collect(Collectible collectible, PropertyHandler handler) {
-        System.out.println("-> CollectBehavior.collect(Collectible collectible, PropertyHandler handler)");
         collectible.beCollected(handler);
     }
 }

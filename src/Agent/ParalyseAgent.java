@@ -2,6 +2,7 @@ package Agent;
 
 import Behaviors.*;
 import Virologist.Virologist;
+import Game.Game;
 
 public class ParalyseAgent extends Agent {
     private static int id = 0;
@@ -30,7 +31,7 @@ public class ParalyseAgent extends Agent {
     public void addBehavior(Virologist v) {
         stunnedBeh.setVirologist(v);
         v.add(stunnedBeh);
-        System.out.println("-> AddBehToStack(Virologist v)\n! Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.\n\n");
+        Game.addSteppable(this);
     }
 
     /**+
@@ -40,5 +41,6 @@ public class ParalyseAgent extends Agent {
     @Override
     public void removeBehavior(Virologist v) {
         v.remove(stunnedBeh);
+        Game.removeSteppable(this);
     }
 }

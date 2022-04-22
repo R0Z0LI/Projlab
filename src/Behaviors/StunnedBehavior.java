@@ -2,6 +2,7 @@ package Behaviors;
 
 import Collectible.Collectible;
 import PropertyHandler.PropertyHandler;
+import TestSets.TestOutputWriter;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ public class StunnedBehavior extends AutomaticBehavior{
     @Override
     public void execute(){
         System.out.println(viro.toString()+" is paralysed, can’t do anything.");
+        TestOutputWriter.appendToTestOutput(viro.toString()+" is paralysed, can’t do anything.\n");
         viro.setActionCounter(0);
     }
 
