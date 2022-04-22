@@ -33,7 +33,7 @@ public class Axe extends Equipment{
      */
     @Override
     public void addBehaviour(Virologist v) {
-        this.axeAttackBehavior = new AxeAttackBehavior(); // TODO AxeAttackBehavior constructor with virologist
+        this.axeAttackBehavior = new AxeAttackBehavior(v);
         v.add(axeAttackBehavior);
     }
 
