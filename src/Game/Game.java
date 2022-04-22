@@ -557,9 +557,12 @@ public class Game {
         int roundCounter = 0;
         while(gameRunning){
             for(int i = 1; i <= virologists.size() && allCommands.length > i * roundCounter; ++i) {
-                String[] currCommand = allCommands[i * roundCounter].split(" ");
-                while (currCommand[1].equals(virologists.get(i-1).getName())) {
-                    virologists.get(i - 1).yourTurn(allCommands[i * roundCounter]);
+                virologists.get(i-1).setActionCounter(2);
+                for(int j=0; j< allCommands.length; ++j) {
+                    String[] currCommand = allCommands[i * roundCounter +j].split(" ");
+                    if (currCommand[1].equals(virologists.get(i - 1).getName())) {
+                        virologists.get(i - 1).yourTurn(allCommands[i * roundCounter]);
+                    }
                 }
 
                 // stopping the game

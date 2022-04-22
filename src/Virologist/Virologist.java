@@ -49,8 +49,8 @@ public class Virologist {
         this.defenseBehaviors.add(defenseBehavior);
         AutomaticBehavior automaticBehavior = new AutomaticBehavior(this);
         this.automaticBehaviors.add(automaticBehavior);
-        //AttackBehavior attackBehavior = new AttackBehavior(this);
-        //this.attackBehaviors.add(attackBehavior);
+        AttackBehavior attackBehavior = new AttackBehavior(this);
+        this.attackBehaviors.add(attackBehavior);
     }
     public String getName() {
         return name;
@@ -280,12 +280,11 @@ public class Virologist {
      * A játékos parancsait beolvassa, értelmezi
      */
     public void yourTurn(String commands) {
-        actionCounter=2;
         //meghívja az automatikus viselkedést
         automaticBehaviors.firstElement().execute();
         //amíg van akció, végrehajtja az utasításokat
         String[] command = commands.split(" ");
-        while(actionCounter>0){
+        if(actionCounter>0){
             ArrayList<Virologist> viros = new ArrayList<>();
             viros.addAll(currentField.GetTouchableVirologists());
             switch(command[0]){
@@ -392,8 +391,6 @@ public class Virologist {
      * @param field Erre változtatja meg
      */
     public void setCurrentField(Field field) {
-        System.out.println(name+" stepped on "+field.getName());
-        TestInOutHandler.appendToTestOutput(name+" stepped on "+field.getName());
         this.currentField = field;
     }
 

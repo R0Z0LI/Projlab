@@ -31,7 +31,7 @@ public class MovementBehavior {
      */
     public void move(Field before, Field after) {
         System.out.println(virologist.getName()+" stepped on "+after.getName());
-        TestInOutHandler.appendToTestOutput(virologist.getName()+" stepped on "+after.getName());
+        TestInOutHandler.appendToTestOutput(virologist.getName()+" stepped on "+after.getName()+"\n");
         before.removeVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrentField(after);
