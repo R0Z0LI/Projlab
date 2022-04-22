@@ -1,11 +1,12 @@
 package Equipments;
 
+import Behaviors.AxeAttackBehavior;
 import Field.Shelter;
 import Virologist.Virologist;
 
 public class Axe extends Equipment{
     private static int id = 0;
-    // TODO axe behavior
+    private AxeAttackBehavior axeAttackBehavior;
 
     /**
      * Axce constructor
@@ -32,8 +33,8 @@ public class Axe extends Equipment{
      */
     @Override
     public void addBehaviour(Virologist v) {
-        System.out.println("The Axe has no behavior to add");
-        // TODO
+        this.axeAttackBehavior = new AxeAttackBehavior(); // TODO AxeAttackBehavior constructor with virologist
+        v.add(axeAttackBehavior);
     }
 
     /**
@@ -43,6 +44,6 @@ public class Axe extends Equipment{
      */
     @Override
     public void removeBehavior(Virologist v) {
-        // TODO
+        v.remove(axeAttackBehavior);
     }
 }
