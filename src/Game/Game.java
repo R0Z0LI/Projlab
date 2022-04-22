@@ -45,10 +45,13 @@ public class Game {
             Scanner scan = new Scanner(file);
             while(scan.hasNext()){
                 String input = scan.nextLine();
+
                 if(input.contains("fid")){
                     Field field = new Field();
                     fields.add(field);
                     String fieldNeighbors = scan.nextLine();
+
+                    // neighbours
                     if(!fieldNeighbors.equals("0")) {
                         String[] split = fieldNeighbors.split(" ");
                         for (int i = 0; i < split.length; i++) {
@@ -56,7 +59,12 @@ public class Game {
                             checkAndAddNeighbors(parameter, field);
                         }
                     }
-                    readAfterField(scan, field);
+
+                    // virologists
+                    do {
+                        readAfterField(scan, field);
+                    } while(!scan.nextLine().equals(field.getName()));
+
                 } else if(input.contains("lab")){
                     Laboratory laboratory = new Laboratory();
                     fields.add(laboratory);
@@ -90,7 +98,12 @@ public class Game {
                             laboratory.add(new BearDanceAgent());
                         }
                     }
-                    readAfterField(scan, laboratory);
+
+                    // virologists
+                    do {
+                        readAfterField(scan, laboratory);
+                    } while(!scan.nextLine().equals(laboratory.getName()));
+
                 } else if(input.contains("who")){
                     Warehouse warehouse = new Warehouse();
                     fields.add(warehouse);
@@ -112,7 +125,12 @@ public class Game {
                             warehouse.add(nucleotid);
                         }
                     }
-                    readAfterField(scan, warehouse);
+
+                    // virologists
+                    do {
+                        readAfterField(scan, warehouse);
+                    } while(!scan.nextLine().equals(warehouse.getName()));
+
                 } else if(input.contains("shl")){
                     Shelter shelter = new Shelter();
                     fields.add(shelter);
@@ -140,21 +158,26 @@ public class Game {
                             shelter.add(cape);
                         }
                     }
-                    readAfterField(scan, shelter);
+
+                    // virologists
+                    do {
+                        readAfterField(scan, shelter);
+                    } while(!scan.nextLine().equals(shelter.getName()));
+
                 }
             }
-            System.out.println("field0 name: " + fields.get(0).getName() + "\nfield1 name: " + fields.get(1).getName() + "\nfield2 name: " + fields.get(2).getName() + "\nfield3 name: " + fields.get(3).getName()
+            /*System.out.println("field0 name: " + fields.get(0).getName() + "\nfield1 name: " + fields.get(1).getName() + "\nfield2 name: " + fields.get(2).getName() + "\nfield3 name: " + fields.get(3).getName()
                     + "\nfield0 neighbors: " + fields.get(1).getNeighbours().get(0).getName()
                     + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(1).getName()
                     + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(2).getName()
                     + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(3).getName()
                     + "\nvirologist0 name: " + virologists.get(0).getName() + "\nvirologist0 equipment's name: "
-                    //+ "\nVirologist's equipment 0: " + virologists.get(0).getPropertyHandler().getEquipments().get(0).getName()
-                    //+ "\nVirologist's equipment 1: " + virologists.get(0).getPropertyHandler().getEquipments().get(1).getName()
-                    /*+ "\nviro code0: " + virologists.get(0).getPropertyHandler().getGenCodes().get(0).getName()
+                    + "\nVirologist's equipment 0: " + virologists.get(0).getPropertyHandler().getEquipments().get(0).getName()
+                    + "\nVirologist's equipment 1: " + virologists.get(0).getPropertyHandler().getEquipments().get(1).getName()
+                    + "\nviro code0: " + virologists.get(0).getPropertyHandler().getGenCodes().get(0).getName()
                     + "\nviro code1: " + virologists.get(0).getPropertyHandler().getGenCodes().get(1).getName()
                     + "\nviro code2: " + virologists.get(0).getPropertyHandler().getGenCodes().get(2).getName()
-                    + "\nviro code3: " + virologists.get(0).getPropertyHandler().getGenCodes().get(3).getName()*/);
+                    + "\nviro code3: " + virologists.get(0).getPropertyHandler().getGenCodes().get(3).getName());*/
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -162,9 +185,10 @@ public class Game {
 
     private void readAfterField(Scanner scan, Field field) {
         String viro = scan.nextLine();
-        while(!viro.equals("0")){
+        if(!viro.equals("0")){
             Virologist virologist = new Virologist(field);
             virologists.add(virologist);
+
             String materials = scan.nextLine();
             if(!materials.equals("0")) {
                 String splitMaterial[] = materials.split(" ");
@@ -178,6 +202,7 @@ public class Game {
                     }
                 }
             }
+
             String agents = scan.nextLine();
             if(!agents.equals("0")) {
                 String splitAgents[] = agents.split(" ");
@@ -197,6 +222,7 @@ public class Game {
                     }
                 }
             }
+
             String equipments = scan.nextLine();
             if(!equipments.equals("0")) {
                 String splitEquipments[] = equipments.split(" ");
@@ -216,6 +242,7 @@ public class Game {
                     }
                 }
             }
+
             String codes = scan.nextLine();
             if(!codes.equals("0")) {
                 String splitCodes[] = codes.split(" ");
@@ -235,14 +262,8 @@ public class Game {
                     }
                 }
             }
-            String virologistEnd = scan.nextLine();
-            String fieldEnd = scan.nextLine();
-            if(fieldEnd.equals(field.getName())) {
-                viro = "0";
-            }
-            else {
-                viro = scan.nextLine();
-            }
+
+            scan.nextLine(); // reading in closing vir
         }
 
     }
@@ -267,7 +288,6 @@ public class Game {
                 for (int i = 1; i < parameters.length; i++) {
                     String parameter = parameters[i];
                     checkAndAddNeighbors(parameter, field);
-
                 }
                 System.out.println("Created Field: " + field.getName());
             } else if(input.contains("CreateLabor")){
@@ -533,13 +553,18 @@ public class Game {
      */
     public void runGame(){
         String filecontent = handler.getInput();
-        String [] allCommands= filecontent.split("\n");
-        int roundCounter=1;
+        String [] allCommands = filecontent.split("\n");
+        int roundCounter = 0;
         while(gameRunning){
-            for(int i=0; i<virologists.size() && allCommands.length>i*roundCounter; ++i){
-                String[] currCommand= allCommands[i*roundCounter].split(" ");
-                while (currCommand[1].equals(virologists.get(i).getName()))
-                    virologists.get(i).yourTurn(allCommands[i*roundCounter]);
+            for(int i = 1; i <= virologists.size() && allCommands.length > i * roundCounter; ++i) {
+                String[] currCommand = allCommands[i * roundCounter].split(" ");
+                while (currCommand[1].equals(virologists.get(i-1).getName())) {
+                    virologists.get(i - 1).yourTurn(allCommands[i * roundCounter]);
+                }
+
+                // stopping the game
+                if (allCommands.length <= i * roundCounter + 1)
+                    gameRunning = false;
             }
             stepSteppabbles();
             roundCounter++;

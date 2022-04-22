@@ -50,7 +50,7 @@ public class TestInOutHandler {
             Scanner sc = new Scanner(inFile);
             String input = new String();
             while(sc.hasNext())
-                input=input + sc.next() + "\n";
+                input = input + sc.nextLine() + "\n";
             sc.close();
             return input;
         }

@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class Virologist {
     private String name;
-    private static int id = 0;
+    private static int id = 1;
     private int actionCounter;
     private PropertyHandler myProperties;
     private Field currentField;
@@ -47,6 +47,10 @@ public class Virologist {
         this.stealBehaviors.add(stealBehavior);
         DefenseBehavior defenseBehavior = new DefenseBehavior(this);
         this.defenseBehaviors.add(defenseBehavior);
+        AutomaticBehavior automaticBehavior = new AutomaticBehavior(this);
+        this.automaticBehaviors.add(automaticBehavior);
+        //AttackBehavior attackBehavior = new AttackBehavior(this);
+        //this.attackBehaviors.add(attackBehavior);
     }
     public String getName() {
         return name;
@@ -270,6 +274,7 @@ public class Virologist {
             actionCounter--;
         }
     }
+
     /**
      * Elindítja a virológus körét
      * A játékos parancsait beolvassa, értelmezi
