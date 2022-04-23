@@ -487,10 +487,10 @@ public class Game {
             //Field neighbour = findFieldByName(parameter);
             //if (neighbour != null) {
                 //field.addNeighbour(neighbour);
-                for(int i = 0; i < this.fields.size(); i++){
-                    if(fields.get(i).getName().equals(parameter)) {
-                        field.addNeighbour(fields.get(i));
-                        fields.get(i).addNeighbour(field);
+                for(Field field1 : fields){
+                    if(field1.getName().equals(parameter)) {
+                        field.addNeighbour(field1);
+                        field1.addNeighbour(field);
                     }
                // }
             //} else {
