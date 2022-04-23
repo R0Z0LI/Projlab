@@ -1,59 +1,75 @@
-import TestSets.*;
+import Game.*;
 
 import java.util.Scanner;
 
 public class TestSetup {
 
    public static void main(String[] args) {
-        String cyan="\u001B[36m";
         boolean run = true;
         while (run) {
             Scanner sc = new Scanner(System.in);
-            System.out.println(cyan+"Mit szeretnel tesztelni? Valassz egy szamot:");
+            System.out.println("Mit szeretnel tesztelni? Valassz egy szamot:");
             System.out.println("1. Move Virologist");
-            System.out.println("2. Collect");
-            System.out.println("3. Create Agent");
-            System.out.println("4. Apply Agent");
-            System.out.println("5. Steal");
+            System.out.println("2. Collect Materials");
+            System.out.println("3. Collect Equipments");
+            System.out.println("4. Collect Gencode and win the game");
+            System.out.println("5. Create an agent");
             System.out.println("6. Throw equipment");
-            System.out.println("7. Step Agent");
-            System.out.println("8. Kill Virologist");
-            System.out.println("9. Komplex1");
-            System.out.println("10. Komplex2");
+            System.out.println("7. Steal something");
+            System.out.println("8. Apply an agent");
+            System.out.println("9. Bear Test");
+            System.out.println("10. Move + Collect + Throw");
             System.out.println("If you want to stop testing, then write anything.");
 
+            Game game = new Game();
             switch (sc.next()) {
-                case "1":   // move test
-                    Movement_TestSet test1 = new Movement_TestSet();
-                    test1.test();
+                case "1":   // Move Virologist
+                    game.getHandler().setInputFile("tests//move_commands.txt");
+                    // game.getHandler().setOutputFile(...); // TODO fájlok outputhoz
+                    game.start("tests//move_testInit.txt");
                     break;
-                case "2":   // collect test
-                    Collect_TestSet test2 = new Collect_TestSet();
-                    test2.test();
+                case "2":   // Collect Materials
+                    game.getHandler().setInputFile("tests//collectMaterials_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//collectMaterials_testInit.txt");
                     break;
-                case "3":   // create test
-                    CreateAgent_TestSet test3 =new CreateAgent_TestSet();
-                    test3.test();
+                case "3":   // Collect Equipments
+                    game.getHandler().setInputFile("tests//collectEquipments_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//collectEquipments_testInit.txt");
                     break;
-                case "4":   // apply test
-                    ApplyAgent_TestSet test4 = new ApplyAgent_TestSet();
-                    test4.test();
+                case "4":   // Collect Gencode and win the game
+                    game.getHandler().setInputFile("tests//collectGenCodeWin_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//collectGenCodeWin_testInit.txt");
                     break;
-                case "5":   // steal test
-                    Steal_TestSet test5 = new Steal_TestSet();
-                    test5.test();
+                case "5":   // Create an agent
+                    game.getHandler().setInputFile("tests//create_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//create_testInit.txt");
                     break;
-                case "6":   // throw test
-                    ThrowEquipment_TestSet test6 = new ThrowEquipment_TestSet();
-                    test6.test();
+                case "6":   // Throw equipment
+                    game.getHandler().setInputFile("tests//throw_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//throw_testInit.txt");
                     break;
-                case "7":   //
-                    StepAgent_TestSet test7 = new StepAgent_TestSet();
-                    test7.test();
+                case "7":   // Steal something
+                    game.getHandler().setInputFile("tests//steal_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//steal_testInit.txt");
                     break;
-                    case "8":
-                    Kill_TestSet test8 = new Kill_TestSet();
-                    test8.test();
+                case "8":   // Apply an agent
+                    game.getHandler().setInputFile("tests//apply_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//apply_testInit.txt");
+                    break;
+                case "9":   // Bear Test
+                    game.getHandler().setInputFile("tests//bear_commands.txt");
+                    // game.getHandler().setOutputFile(...);
+                    game.start("tests//bear_testInit.txt");
+                    break;
+                case "10":  // Move + Collect + Throw
+                    // TODO ezt a tesztet még meg kell csinálni
                     break;
                 default:
                     run = false;

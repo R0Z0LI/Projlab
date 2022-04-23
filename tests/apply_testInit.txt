@@ -1,0 +1,15 @@
+fid1
+0
+vir1
+0
+cda1 pra1
+0
+0
+vir1
+vir2
+0
+paa1
+0
+0
+vir2
+fid1

@@ -1,0 +1,3 @@
+Apply vir1 vir2 paa1
+Steal vir1 vir2 cpe1
+Steal vir1 vir2 glv1

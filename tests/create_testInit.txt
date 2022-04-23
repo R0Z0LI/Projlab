@@ -1,0 +1,10 @@
+fid1
+0
+vir1
+aac1 aac2 ncd1
+0
+0
+0
+cdc1 pac1
+vir1
+fid1

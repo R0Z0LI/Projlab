@@ -1,0 +1,3 @@
+Create vir1 cdc1
+Create vir1 pac1
+List vir1

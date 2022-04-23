@@ -1,0 +1,3 @@
+Collect vir1
+Move vir1 who2
+Collect vir1

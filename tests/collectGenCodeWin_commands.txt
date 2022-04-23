@@ -1,0 +1,7 @@
+Collect vir1
+Move vir1 lab2
+Collect vir1
+Move vir1 lab3
+Collect vir1
+Move vir1 lab4
+Collect vir1

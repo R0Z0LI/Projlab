@@ -1,0 +1,21 @@
+fid1
+0
+vir1
+0
+paa1
+sck1 axe1
+0
+vir1
+vir2
+0
+0
+glv1 cpe1
+0
+vir2
+vir3
+0
+0
+0
+0
+vir3
+fid1

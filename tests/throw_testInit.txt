@@ -1,0 +1,9 @@
+fid1
+0
+vir1
+0
+0
+axe1 sck1
+0
+vir1
+fid1

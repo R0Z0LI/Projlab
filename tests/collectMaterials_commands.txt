@@ -1,0 +1,3 @@
+Collect vir1
+Move vir1 shl2
+Collect vir1
