@@ -6,8 +6,8 @@ public class App {
         //TODO megadni a bemeneti fájlt inicializáláshoz és parancsokhoz pl konstruktorban
         Game game = new Game();
         game.start();
-        TestInOutHandler testHandler = new TestInOutHandler();
+       // TestInOutHandler testHandler = new TestInOutHandler();
         //TODO a többi tesztnél még testHandler.setOutputFile(fájlnév);
-        testHandler.writeInFile();
+        //testHandler.writeInFile();
     }
 }

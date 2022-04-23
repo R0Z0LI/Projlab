@@ -30,18 +30,22 @@ public class Game {
     }
 
     public void start() {
-        gameRunning=true;
+        gameRunning = true;
         //initTest();
-        readFromFile();
-        runGame();
+        //File file = new File("G:\\projlab\\Projlab\\initTest.txt");
+        //readFromFile(file);
+        //File file1 = new File("G:\\projlab\\Projlab\\moveTest.txt");
+        //readFromFile(file1);
+        File file2 = new File("G:\\projlab\\Projlab\\testin.txt");
+        readFromFile(file2);
+        //runGame();
     }
     public ArrayList<Virologist> getVirologists(){
         return virologists;
     }
 
-    private void readFromFile() {
+    private void readFromFile(File file) {
         try {
-            File file = new File("moveTest.txt");
             Scanner scan = new Scanner(file);
             while(scan.hasNext()){
                 String input = scan.nextLine();
@@ -74,8 +78,20 @@ public class Game {
                         for (int i = 0; i < split.length; i++) {
                             String parameter = split[i];
                             checkAndAddNeighbors(parameter, laboratory);
+                            for(Field field : fields){
+                                if(field.getName().equals(parameter)){
+                                    laboratory.addNeighbour(field);
+                                }
+                            }
                         }
                     }
+                    String bearAgentOnLaboratory = scan.nextLine();
+                    if(!bearAgentOnLaboratory.equals("0")){
+                        if(bearAgentOnLaboratory.contains("baa")){
+                            laboratory.add(new BearDanceAgent());
+                        }
+                    }
+
                     String codeOnLabor = scan.nextLine();
                     if(!codeOnLabor.equals("0")){
                         if(codeOnLabor.contains("amc")){
@@ -92,12 +108,7 @@ public class Game {
                             laboratory.add(protecionCode);
                         }
                     }
-                    String bearAgentOnLaboratory = scan.nextLine();
-                    if(!bearAgentOnLaboratory.equals("0")){
-                        if(bearAgentOnLaboratory.contains("baa")){
-                            laboratory.add(new BearDanceAgent());
-                        }
-                    }
+
 
                     // virologists
                     do {
@@ -166,18 +177,11 @@ public class Game {
 
                 }
             }
-            /*System.out.println("field0 name: " + fields.get(0).getName() + "\nfield1 name: " + fields.get(1).getName() + "\nfield2 name: " + fields.get(2).getName() + "\nfield3 name: " + fields.get(3).getName()
-                    + "\nfield0 neighbors: " + fields.get(1).getNeighbours().get(0).getName()
-                    + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(1).getName()
-                    + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(2).getName()
-                    + "\nfield1 neighbors: " + fields.get(1).getNeighbours().get(3).getName()
-                    + "\nvirologist0 name: " + virologists.get(0).getName() + "\nvirologist0 equipment's name: "
-                    + "\nVirologist's equipment 0: " + virologists.get(0).getPropertyHandler().getEquipments().get(0).getName()
-                    + "\nVirologist's equipment 1: " + virologists.get(0).getPropertyHandler().getEquipments().get(1).getName()
-                    + "\nviro code0: " + virologists.get(0).getPropertyHandler().getGenCodes().get(0).getName()
-                    + "\nviro code1: " + virologists.get(0).getPropertyHandler().getGenCodes().get(1).getName()
-                    + "\nviro code2: " + virologists.get(0).getPropertyHandler().getGenCodes().get(2).getName()
-                    + "\nviro code3: " + virologists.get(0).getPropertyHandler().getGenCodes().get(3).getName());*/
+            System.out.println("field0 name: " + fields.get(0).getName() + "\nfield1 name: " + fields.get(1).getName() + "\nfield2 name: " + fields.get(0).getName() + "\nfield3 name: " + fields.get(1).getName()
+                    + "\nfield1 neighbor1: " + fields.get(0).getNeighbours().get(0).getName()
+                    + "\nfield1 neighbor2: " + fields.get(1).getNeighbours().get(0).getName()
+                    //+ "\nfield1 neighbor3: " + fields.get(1).getNeighbours().get(0).getName()
+                    + "\nvirologist0 name: " + virologists.get(0).getName() + "\nvirologist0 equipment's name: ");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -509,13 +513,10 @@ public class Game {
 
     private void checkAndAddNeighbors(String parameter, Field field){ //lab0 lab1
         if (parameter.contains("lab") || parameter.contains("fid") || parameter.contains("shl") || parameter.contains("who")) {
-            //Field neighbour = findFieldByName(parameter);
             //if (neighbour != null) {
-                //field.addNeighbour(neighbour);
                 for(Field field1 : fields){
                     if(field1.getName().equals(parameter)) {
-                        field.addNeighbour(field1);
-                        field1.addNeighbour(field);
+                        field.addNeighbour(field1);;
                     }
                // }
             //} else {

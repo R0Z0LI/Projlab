@@ -1,4 +1,4 @@
-lab1
+lab0
 0
 0
 amc1
@@ -8,22 +8,22 @@ vir1
 0
 0
 vir1
+lab0
 lab1
-lab2
-lab1
+lab0
 0
 pac1
 0
+lab1
 lab2
-lab3
-lab1 lab2
+lab0 lab1
 0
 cdc1
 0
+lab2
 lab3
-lab4
-lab1 lab2 lab3
+lab0 lab1 lab2
 0
 prc1
 0
-lab4
+lab3
