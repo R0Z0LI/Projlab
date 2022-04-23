@@ -10,7 +10,7 @@ import Agent.ProtectionAgent;
  */
 public class ProtecionCode extends GenCode {
     private static int id = 0;
-
+    public int getUid(){return id;}
     /**
      * ProtecionCode constructor
      * @param aminoNeeded The needed amoniacid amount.
@@ -40,30 +40,6 @@ public class ProtecionCode extends GenCode {
      */
     @Override
     public Agent revealAgent() {
-        System.out.println("-> ProtectionCode.revealAgent()");
-        System.out.println("! Elkeszult egy védo agens\n");
         return new ProtectionAgent(30);
-    }
-
-    /**
-     * Begyűjteti magát a virológus PropertyHandlerével.
-     *
-     * @param propertyHandler amihez hozzá kell adni a felvett ProtecionCode-t
-     */
-    @Override
-    public void beCollected(PropertyHandler propertyHandler) {
-        propertyHandler.add(this);
-        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyujteti magat a virologus PropertyHandlerével.\n\n");
-    }
-
-    /**
-     * Eltávolíttatja magát a virológus PropertyHandleréből.
-     *
-     * @param propertyHandler amiből ki kell törölni a törlendő ProtecionCode-t
-     */
-    @Override
-    public void beRemoved(PropertyHandler propertyHandler) {
-        propertyHandler.deleteGenCode(this);
-        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltavolittatja magat a virologus PropertyHandlerébol.\n\n");
     }
 }

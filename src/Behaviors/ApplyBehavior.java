@@ -1,6 +1,7 @@
 package Behaviors;
 
 import Agent.Agent;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class ApplyBehavior {
@@ -30,12 +31,11 @@ public class ApplyBehavior {
      * @param affected virológus, akire kenni kell
      */
     public void apply(Agent agent, Virologist affected) {
-        System.out.println("->ApplyBehavior.apply(Agent, affected)");
         if (affected == virologist) {
-            System.out.println("! A virologus rakeni magara az agenst.\n");
             agent.addBehavior(virologist);
         } else {
-            System.out.println("! A  masik virologusra rakenik az agenst.");
+            System.out.println(virologist.getName()+" tried to apply "+agent.getName()+" on "+affected.getName());
+            TestInOutHandler.appendToTestOutput(virologist.getName()+" tried to apply "+agent.getName()+" on "+affected.getName());
             affected.beInfected(agent, virologist);
         }
 

@@ -9,11 +9,11 @@ import java.util.List;
  * A játék egy mezőjét reprezentáló osztály
  */
 public class Field {
-    private static int id = 0;
-    protected static ArrayList<Field> fields = new ArrayList<>();    // TODO ez itt így mi? mármint ez a neighbours vagy valami más?
-    protected ArrayList<Virologist> virologists = new ArrayList<>();
-    private ArrayList<Field> neighbours = new ArrayList<>();
     protected String name;
+    private static int id = 1;
+    protected static ArrayList<Field> fields = new ArrayList<>(); // the map's fields
+    protected ArrayList<Virologist> virologists = new ArrayList<>(); // the virologists on this field
+    private ArrayList<Field> neighbours = new ArrayList<>();
 
     /**
      * Field constructor
@@ -28,6 +28,7 @@ public class Field {
         return name;
     }
 
+    // gets all the fields on the map
     public static List<Field> getFields() {
         return fields;
     }
@@ -38,7 +39,6 @@ public class Field {
      * @return visszaadja a mezőről elérhető virológusok listáját
      */
     public ArrayList<Virologist> GetTouchableVirologists() {
-        //System.out.println("-> GetTouchableVirologists()\n! virologists getterje\n <- return virologists\n\n");
         return virologists;
     }
 
@@ -48,7 +48,6 @@ public class Field {
      * @param virologist Ezt adja hozzá
      */
     public void addVirologist(Virologist virologist) {
-        //System.out.println("-> AddVirologist(Virologist virologsit)\n! Hozzaadja a parameterkent megadott virologust a mezon levo virologusokhoz\n\n");
         virologists.add(virologist);
     }
 
@@ -58,7 +57,6 @@ public class Field {
      * @param virologist Ezt a virológust törli ki
      */
     public void removeVirologist(Virologist virologist) {
-        //System.out.println("-> RemoveVirologist(Virologist Virologist)\n! Kitorli a parameterkent megadott virologust a mezon levo virologusok kozul\n\n");
         virologists.remove(virologist);
     }
 
@@ -77,7 +75,6 @@ public class Field {
      */
     public void rampage() {
         //
-        System.out.println("\tA virologist tried to rampage on a non-warehouse. Nothing happened.");
     }
 
     /**
@@ -86,7 +83,6 @@ public class Field {
      * @return A szomszédos mezők listáját adja vissza
      */
     public ArrayList<Field> getNeighbours() {
-        //System.out.println("-> getNeighbours()\n! Visszaadja a szomszedos mezoket\n <- neighbours\n\n");
         return neighbours;
     }
 

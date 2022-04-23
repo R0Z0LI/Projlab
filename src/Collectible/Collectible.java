@@ -17,4 +17,5 @@ public interface Collectible {
      * @param propertyHandler Az eltávolító PropertyHandler.
      */
     void beRemoved(PropertyHandler propertyHandler);
+    String getName();
 }

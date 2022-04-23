@@ -1,6 +1,6 @@
 package Agent;
 
-import Steppable.Steppable;
+import Game.Steppable;
 import Virologist.Virologist;
 
 /**
@@ -18,7 +18,7 @@ public abstract class Agent implements Steppable {
 
     public Agent() {
     }
-
+    public String getName(){return name;}
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
     }

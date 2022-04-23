@@ -1,7 +1,6 @@
 package Gencode;
 
 import Field.Laboratory;
-import PropertyHandler.PropertyHandler;
 import Agent.Agent;
 import Agent.CrazyDanceAgent;
 
@@ -10,7 +9,7 @@ import Agent.CrazyDanceAgent;
  */
 public class CrazyDanceCode extends GenCode{
     private static int id = 0;
-
+    public int getUid(){return id;}
     /**
      * CrazyDanceCode constructor
      * @param aminoNeeded The needed amoniacid amount.
@@ -41,30 +40,6 @@ public class CrazyDanceCode extends GenCode{
      */
     @Override
     public Agent revealAgent() {
-        System.out.println("-> CrazyDanceCode.revealAgent()");
-        System.out.println("! Elkeszult egy vitustánc ágens\n");
         return new CrazyDanceAgent(30);
-    }
-
-    /**
-     * Begyűjteti magát a virológus PropertyHandlerével.
-     *
-     * @param propertyHandler   amihez hozzá kell adni a felvett CrazyDanceCode-t
-     */
-    @Override
-    public void beCollected(PropertyHandler propertyHandler) {
-        propertyHandler.add(this);
-        System.out.println("beCollected(PropertyHandler propertyHandler)\n! Begyujteti magát a virologus PropertyHandlerével.\n\n");
-    }
-
-    /**
-     * Eltávolíttatja magát a virológus PropertyHandleréből.
-     *
-     * @param propertyHandler   amiből ki kell törölni a törlendő CrazyDanceCode-t
-     */
-    @Override
-    public void beRemoved(PropertyHandler propertyHandler) {
-        propertyHandler.deleteGenCode(this);
-        System.out.println("beRemoved(PropertyHandler propertyHandler)\n! Eltávolittatja magát a virologus PropertyHandlerébol.\n\n");
     }
 }

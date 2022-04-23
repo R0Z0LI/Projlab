@@ -80,7 +80,7 @@ public class Steal_TestSet {
 
                 // changing available space
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                stealingViro.getPropertyHandler().setMaxMaterial(sc.nextInt());
+                stealingViro.getPropertyHandler().changeMaxMaterial(sc.nextInt());
 
                 // putting the valuables in the other virologist
                 for (int i = 0; i < amount; i++)
@@ -97,7 +97,7 @@ public class Steal_TestSet {
 
                 // changing available space
                 System.out.print("Mennyi aminosavat tud még eltárolni? [0…10] ");
-                stealingViro.getPropertyHandler().setMaxMaterial(sc.nextInt());
+                stealingViro.getPropertyHandler().changeMaxMaterial(sc.nextInt());
 
                 // putting the valuables in the other virologist
                 for (int i = 0; i < amount; i++)
