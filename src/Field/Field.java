@@ -86,7 +86,7 @@ public class Field {
         return neighbours;
     }
 
-    /*
+
     @Override
     public String toString() {
         String name = this.name;
@@ -96,5 +96,5 @@ public class Field {
         }
         return name + ", [" + neighbours + "]";
     }
-    */
+
 }
