@@ -18,15 +18,13 @@ public class AmnesiaAgent extends Agent{
 
     }
 
-    /**+
+    /**
      * Törli a virológus által megismert összes genetikai kódot.
      * @param virologist  virológus, akinek a PropertyHandleréből törölni kell a genetikai kódokat.
      */
     @Override
     public void addBehavior(Virologist virologist) {
-        System.out.println("-> AddBehToStack(Virologist virologist)\n! A felejto agens hatni fog.\n\n");
         virologist.getPropertyHandler().deleteGenCodes();
-
     }
 
     @Override

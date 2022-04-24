@@ -1,7 +1,6 @@
 package Gencode;
 
 import Field.Laboratory;
-import PropertyHandler.PropertyHandler;
 import Agent.Agent;
 import Agent.ProtectionAgent;
 

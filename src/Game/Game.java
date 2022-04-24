@@ -59,10 +59,12 @@ public class Game {
 
                     // neighbours
                     String fieldNeighbors = scan.nextLine();
+                    System.out.println(fieldNeighbors);
                     if(!fieldNeighbors.equals("0")) {
                         String[] split = fieldNeighbors.split(" ");
                         for (int i = 0; i < split.length; i++) {
                             String parameter = split[i];
+                            System.out.println("Creating connection: " + parameter);
                             checkAndAddNeighbors(parameter, field);
                         }
                     }
@@ -542,14 +544,10 @@ public class Game {
 
     private void checkAndAddNeighbors(String parameter, Field field){ //lab0 lab1
         if (parameter.contains("lab") || parameter.contains("fid") || parameter.contains("shl") || parameter.contains("who")) {
-            //if (neighbour != null) {
-                for(Field field1 : fields){
-                    if(field1.getName().equals(parameter)) {
-                        field.addNeighbour(field1);;
-                    }
-               // }
-            //} else {
-              //  System.out.println("Field does not exist with this name: " + parameter);
+            for(Field f : fields){
+                // if the given neighbour (parameter) is in the game already
+                if(f.getName().equals(parameter))
+                    field.addNeighbour(f); // just add it as a neighbour
             }
         } else if (!parameter.equals("")) {
             System.out.println("'" + parameter + "' is not a valid parameter.");
@@ -605,7 +603,7 @@ public class Game {
 
                     // go through the virologists to find the one that has to the command
                     if (virologists.get(i - 1).getActionCounter() > 0 && currCommand[1].equals(virologists.get(i - 1).getName())) {
-                        virologists.get(i - 1).yourTurn(allCommands[i * roundCounter]);
+                        virologists.get(i - 1).yourTurn(allCommands[currentCommandNum]);
                         currentCommandNum++; // we use up a command
                     }
                 }

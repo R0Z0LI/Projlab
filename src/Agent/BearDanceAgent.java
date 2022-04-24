@@ -3,7 +3,9 @@ package Agent;
 import Behaviors.BearBehavior;
 import Virologist.Virologist;
 
-public class BearDanceAgent extends Agent{
+public class BearDanceAgent extends Agent {
+    private static int id = 0;
+
     /**
      * Kitörli a megadott virológus verméből a medve viselkedést
      * Nem lehet kitörölni

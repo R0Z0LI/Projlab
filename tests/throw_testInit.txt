@@ -1,9 +1,9 @@
-fid1
+fid0
 0
-vir1
+vir0
 0
 0
-axe1 sck1
+axe0 sck0
 0
-vir1
-fid1
+vir0
+fid0
