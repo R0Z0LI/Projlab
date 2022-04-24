@@ -46,9 +46,13 @@ public class AminoAcid implements Collectible {
         if (propertyHandler.getAminoAcids().size() + propertyHandler.getNucleotids().size() < propertyHandler.getMaxMaterial()) {
             // adding this to Virologist
             propertyHandler.add(this);
+            System.out.println("Successful collect: "+ this.getName()+" collected by "+this.getName()+".");
+            TestInOutHandler.appendToTestOutput("Successful collect: "+ this.getName()+" collected by "+this.getName()+".\n");
+
             // removing it from the warehouse
             currPosition.remove(this);
         } else {
+            System.out.println("There is not enough space in your inventory for "+this.getName());
             TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for " + this.name);
         }
     }

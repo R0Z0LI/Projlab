@@ -61,11 +61,7 @@ public class PropertyHandler {
     public void add(AminoAcid aminoAcid) {
         if (maxMaterial > aminoAcids.size()+nucleotids.size()) {
             aminoAcids.add(aminoAcid);
-            System.out.println("Successful collect: "+ aminoAcid.getName()+" collected by "+virologist.getName()+".");
-            TestInOutHandler.appendToTestOutput("Successful collect: "+ aminoAcid.getName()+" collected by "+virologist.getName()+".\n");
-        }
-        else{
-            System.out.println("There is not enough space in your inventory for "+aminoAcid.getName());
+        } else {
             TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+aminoAcid.getName()+"\n");
         }
     }

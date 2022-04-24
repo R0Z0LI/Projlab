@@ -50,9 +50,13 @@ public abstract class Equipment implements Collectible {
         if (propertyHandler.getEquipments().size() < propertyHandler.getMaxEquipment()) {
             // adding this to Virologist
             propertyHandler.add(this);
+            System.out.println("Successful collect: "+ this.getName()+" collected by "+this.getName()+".");
+            TestInOutHandler.appendToTestOutput("Successful collect: "+ this.getName()+" collected by "+this.getName()+".\n");
+
             // removing it from the shelter
             currPosition.remove(this);
         } else {
+            System.out.println("There is not enough space in your inventory for " + this.getName());
             TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for " + this.name);
         }
     }

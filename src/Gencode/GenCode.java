@@ -4,8 +4,7 @@ import Collectible.Collectible;
 import Field.Laboratory;
 import Agent.Agent;
 import PropertyHandler.PropertyHandler;
-
-import java.util.UUID;
+import TestSets.TestInOutHandler;
 
 /**
  * Gentikai kódot reprezentáló osztály.
@@ -61,6 +60,8 @@ public abstract class GenCode implements Collectible {
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
         propertyHandler.add(this);
+        System.out.println("Successful collect: "+ this.getName()+" collected by "+this.getName()+".");
+        TestInOutHandler.appendToTestOutput("Successful collect: "+ this.getName()+" collected by "+this.getName()+".\n");
     }
 
     /* TODO Ez kell? Mármint csak felejtésnél törlünk, de akkor mindent. */
