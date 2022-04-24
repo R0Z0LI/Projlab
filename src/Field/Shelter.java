@@ -1,5 +1,6 @@
 package Field;
 
+import Collectible.Collectible;
 import Equipments.Equipment;
 
 import java.util.ArrayList;
@@ -33,6 +34,16 @@ public class Shelter extends Field{
      */
     public void remove(Equipment equipment){
         equipments.remove(equipment);
+    }
+
+    /**
+     * Get the collectibles from this field
+     * @return
+     */
+    public Collectible getCollectible() {
+        if (!equipments.isEmpty())
+            return equipments.get(0);
+        return null;
     }
 
     /**

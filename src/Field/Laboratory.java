@@ -64,6 +64,16 @@ public class Laboratory extends Field {
     */
 
     /**
+     * Get the collectibles from this field
+     * @return
+     */
+    public Collectible getCollectible() {
+        if (!genCodes.isEmpty())
+            return genCodes.get(0);
+        return null;
+    }
+
+    /**
      * currGenCode getterje
      *
      * @return Visszaadja a genCodes-ot

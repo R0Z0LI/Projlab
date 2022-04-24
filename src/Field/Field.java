@@ -79,6 +79,14 @@ public class Field {
     }
 
     /**
+     * Get the collectibles from this field
+     * @return
+     */
+    public Collectible getCollectible() {
+        return null;
+    }
+
+    /**
      * Visszaadja a szomszédos mezőket
      *
      * @return A szomszédos mezők listáját adja vissza
