@@ -111,6 +111,7 @@ public class Game {
                         }
                     }
 
+
                     // virologists
                     readAfterField(scan, laboratory);
 

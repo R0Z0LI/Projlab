@@ -306,7 +306,7 @@ public class Virologist {
                     applyAgent(agent, affected);
                     break;
                 case "Collect":
-                    // TODO
+                    collect(currentField.getCollectible());
                     break;
                 case "Create":
                     GenCode code=null;

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Field {
     protected String name;
-    private static int id = 0;
+    private static int id = 1;
     protected static ArrayList<Field> fields = new ArrayList<>(); // the map's fields
     protected ArrayList<Virologist> virologists = new ArrayList<>(); // the virologists on this field
     private ArrayList<Field> neighbours = new ArrayList<>();
@@ -94,7 +94,6 @@ public class Field {
     public ArrayList<Field> getNeighbours() {
         return neighbours;
     }
-
 
     @Override
     public String toString() {
