@@ -1,7 +1,7 @@
 lab0
 0
-0
 amc0
+0
 vir0
 0
 0
@@ -11,19 +11,19 @@ vir0
 lab0
 lab1
 lab0
-0
 pac1
+0
 0
 lab1
 lab2
 lab0 lab1
-0
 cdc2
+0
 0
 lab2
 lab3
 lab0 lab1 lab2
-0
 prc3
+0
 0
 lab3

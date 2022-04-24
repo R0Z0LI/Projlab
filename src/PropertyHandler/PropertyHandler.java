@@ -49,7 +49,7 @@ public class PropertyHandler {
         genCodes.put(genCode.getUid(), genCode);
         System.out.println("Successful collect: "+ genCode.getName()+" collected by "+virologist.getName()+".");
         TestInOutHandler.appendToTestOutput("Successful collect: "+ genCode.getName()+" collected by "+virologist.getName());
-        if(genCodes.size() == maxGencode)
+        if(genCodes.size() == maxGencode - 1)
             Game.endGame(virologist);
     }
 
@@ -131,8 +131,10 @@ public class PropertyHandler {
             Agent createdAgent=genCode.revealAgent();
             add(createdAgent);
             System.out.println(createdAgent.getName()+" successfully created.\n");
+            TestInOutHandler.appendToTestOutput(createdAgent.getName()+" successfully created.");
         } else {
             System.out.println("There is not enough material in your inventory for this agent to be created.\n");
+            TestInOutHandler.appendToTestOutput("There is not enough material in your inventory for this agent to be created.");
         }
 
     }

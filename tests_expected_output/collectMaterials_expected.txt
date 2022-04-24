@@ -1,5 +1,5 @@
-Successful collect: aac1 collected by vir1.
+Successful collect: aac0 collected by vir0
 
-vir1 stepped on shl1.
+vir0 stepped on who1
 
-There is not enough space in your inventory.
+There is not enough space in your inventory for ncd2

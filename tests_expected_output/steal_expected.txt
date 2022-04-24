@@ -1,7 +1,7 @@
-vir0 tried to apply paa0 on vir1.
+vir0 tried to apply paa0 on vir1
 vir1 used nothing for defense. Defense failed.
-paa0 successfully applied on vir1.
+paa0 successfully applied on vir1
 
-Successful steal, stolen item: sck0.
-Successful collect: sck0 collected by vir0.
-sck0 successfully removed from vir1.
+Successful collect: sck0 collected by vir0
+sck0 successfully removed from vir1
+Successful steal, stolen item: sck0
