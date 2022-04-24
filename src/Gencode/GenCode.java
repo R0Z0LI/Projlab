@@ -13,7 +13,9 @@ import java.util.UUID;
 public abstract class GenCode implements Collectible {
     protected Laboratory currentPosition;
 
-    public abstract int getUid();
+    protected static int id = 0; // 2 gencodes id can NOT be the same
+    public int getUid(){return id;}
+
     protected String name;
     // needed materials for the agent creation
     private int aminoNeeded;

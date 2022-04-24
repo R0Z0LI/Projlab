@@ -1,15 +1,15 @@
+who0
+0
+aac0
+vir0
+ncd0 aac1 aac2 aac3 ncd1
+0
+0
+0
+vir0
+who0
 who1
+who0
+ncd2
 0
-aac1
-vir1
-ncd1 aac2 aac3 aac4 ncd2
-0
-0
-0
-vir1
 who1
-who2
-who1
-ncd3
-0
-who2

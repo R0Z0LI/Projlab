@@ -1,3 +1,3 @@
-Collect vir1
-Move vir1 shl2
-Collect vir1
+Collect vir0
+Move vir0 who1
+Collect vir0

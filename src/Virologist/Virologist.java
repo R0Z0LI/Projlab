@@ -306,8 +306,7 @@ public class Virologist {
                     applyAgent(agent, affected);
                     break;
                 case "Collect":
-
-
+                    // TODO
                     break;
                 case "Create":
                     GenCode code=null;
@@ -348,13 +347,17 @@ public class Virologist {
                             break;
                         }
                     //megkeresi, hogy mit kell lopni
-                    Collectible stealable=null;
-                    for(Collectible c: stealVictim.getStealableThings())
-                        if(c.getName().equals(command[3])){
-                            stealable=c;
-                            break;
+                    Collectible stealable = null;
+                    // if there is anyone stunned and there are stealable things
+                    if (stealVictim != null && stealVictim.getStealableThings() != null) {
+                        for (Collectible c : stealVictim.getStealableThings()) {
+                            if (c.getName().equals(command[3])) {
+                                stealable = c;
+                                break;
+                            }
                         }
-                    steal(stealable, stealVictim);
+                        steal(stealable, stealVictim);
+                    }
                     break;
                 case "Throw":
                     //megkeresi, hogy mit kell eldobni
@@ -365,11 +368,13 @@ public class Virologist {
                         }
                     destroy(equipment);
                     break;
+                    // TODO - LIST COMMAND
             }
             actionCounter--;
         }
     }
 
+    public int getActionCounter() { return actionCounter; }
 
     /**
      * A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának

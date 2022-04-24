@@ -1,15 +1,15 @@
+shl0
+0
+sck0
+vir0
+0
+0
+axe0 glv0
+0
+vir0
+shl0
 shl1
+shl0
+cpe0
 0
-sck1
-vir1
-0
-0
-axe glv1
-0
-vir1
 shl1
-shl2
-shl1
-cpe1
-0
-shl2

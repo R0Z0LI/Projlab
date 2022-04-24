@@ -1,15 +1,15 @@
-fid1
+fid0
 0
+vir0
+0
+cda0 pra0
+0
+0
+vir0
 vir1
 0
-cda1 pra1
+paa0
 0
 0
 vir1
-vir2
-0
-paa1
-0
-0
-vir2
-fid1
+fid0
