@@ -191,7 +191,7 @@ public class PropertyHandler {
         }
     }
     public String toString(){
-        String things= new String();
+        String things = new String();
         return "viro cuccai";
     }
 

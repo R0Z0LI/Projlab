@@ -377,9 +377,10 @@ public class Virologist {
     }
 
     public int getActionCounter() { return actionCounter; }
+
     public String toString(){
-        String v= new String();
-        return "viro neve"+myProperties.toString();
+        String v = new String();
+        return "viro neve" + myProperties.toString();
     }
 
     /**

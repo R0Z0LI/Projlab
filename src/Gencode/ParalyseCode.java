@@ -11,6 +11,7 @@ public class ParalyseCode extends GenCode {
     private static int id = 0;
     private static int Uid=2;
     public int getUid(){return Uid;}
+
     /**
      * ParalyseCode constructor
      * @param aminoNeeded The needed amoniacid amount.
@@ -41,6 +42,6 @@ public class ParalyseCode extends GenCode {
      */
     @Override
     public Agent revealAgent() {
-        return new ParalyseAgent();
+        return new ParalyseAgent(3);
     }
 }

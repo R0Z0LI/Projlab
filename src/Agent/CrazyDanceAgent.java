@@ -3,6 +3,7 @@ package Agent;
 import Behaviors.CrazyMoveBehavior;
 import Virologist.Virologist;
 import Game.Game;
+
 /**
  * Vitustáncot reprezentáló osztály.
  */
@@ -10,8 +11,12 @@ public class CrazyDanceAgent extends Agent {
     private static int id = 0;
     private CrazyMoveBehavior crazyMove;
 
-    public CrazyDanceAgent(int timeleft) {
-        super(timeleft);
+    /**
+     * CrazyDanceAgent constructor
+     * @param timeLeft remaining time
+     */
+    public CrazyDanceAgent(int timeLeft) {
+        super(timeLeft);
         this.name = "cda" + id++;
         crazyMove = new CrazyMoveBehavior();
     }

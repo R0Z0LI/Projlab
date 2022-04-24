@@ -73,7 +73,6 @@ public class TestSetup {
                 game.getHandler().setOutputFile("tests_output//komplex_testInit.txt");
                 game.start("tests//komplex_testInit.txt");
                 break;
-
         }
     }
 }

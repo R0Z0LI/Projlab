@@ -2,20 +2,24 @@ package Agent;
 
 import Virologist.Virologist;
 
-/**+
+/**
  * Amnézia ágenst reprezentáló osztály.
  */
 public class AmnesiaAgent extends Agent{
     private static int id = 0;
 
-    public AmnesiaAgent(int timeleft) {
-        super(timeleft);
+    /**
+     * AmnesiaAgent constructor
+     * @param timeLeft remaining time
+     */
+    public AmnesiaAgent(int timeLeft) {
+        super(timeLeft);
         this.name = "ama" + id++;
     }
 
     @Override
     public void removeBehavior(Virologist v) {
-
+        // does nothing
     }
 
     /**
@@ -27,8 +31,4 @@ public class AmnesiaAgent extends Agent{
         virologist.getPropertyHandler().deleteGenCodes();
     }
 
-    @Override
-    public void step() {
-        super.step();
-    }
 }

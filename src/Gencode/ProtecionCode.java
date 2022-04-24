@@ -10,6 +10,7 @@ import Agent.ProtectionAgent;
 public class ProtecionCode extends GenCode {
     private static int id = 0;
     private static int Uid=3;
+
     public int getUid(){return Uid;}
     /**
      * ProtecionCode constructor

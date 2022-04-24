@@ -8,8 +8,12 @@ public class ParalyseAgent extends Agent {
     private static int id = 0;
     private StunnedBehavior stunnedBeh;
 
-    public ParalyseAgent() {
-        super(2);
+    /**
+     * ParalyseAgent constructor
+     * @param timeLeft remaining time
+     */
+    public ParalyseAgent(int timeLeft) {
+        super(timeLeft);
         this.name = "paa" + id++;
         stunnedBeh = new StunnedBehavior();
     }
