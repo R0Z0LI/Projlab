@@ -2,6 +2,10 @@ package Field;
 
 import Collectible.Collectible;
 import Equipments.Equipment;
+import Gencode.GenCode;
+import Materials.AminoAcid;
+import Materials.Nucleotid;
+import Virologist.Virologist;
 
 import java.util.ArrayList;
 
@@ -54,4 +58,25 @@ public class Shelter extends Field{
     public ArrayList<Equipment> getEquipments(){
         return equipments;
     }
+    public String toString() {
+            String name = this.name;
+            String neighbours = "";
+            for (Field neighbour : this.neighbours) {
+                neighbours += neighbour.name + " ";
+            }
+            if(neighbours.equals(""))
+                neighbours="0";
+            String viros= "";
+            for(Virologist v : virologists)
+                viros+=v.toString();
+            if(viros.equals(""))
+                viros="0";
+            String things ="";
+            for(Equipment e: equipments)
+                things+=e.getName()+" ";
+            if(things.equals(""))
+                things="0";
+            return name + "\n" + neighbours+"\n"+things + "\n"+ viros+"\n"+name+"\n";
+    }
+
 }

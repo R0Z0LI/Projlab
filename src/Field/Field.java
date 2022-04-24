@@ -1,6 +1,7 @@
 package Field;
 
 import Collectible.Collectible;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Field {
     private static int id = 0;
     protected static ArrayList<Field> fields = new ArrayList<>(); // the map's fields
     protected ArrayList<Virologist> virologists = new ArrayList<>(); // the virologists on this field
-    private ArrayList<Field> neighbours = new ArrayList<>();
+    protected ArrayList<Field> neighbours = new ArrayList<>();
 
     /**
      * Field constructor
@@ -100,11 +101,27 @@ public class Field {
     @Override
     public String toString() {
         String name = this.name;
-        String neighbours = " ";
+        String neighbours ="";
         for (Field neighbour : this.neighbours) {
             neighbours += neighbour.name + " ";
         }
-        return name + ", [" + neighbours + "]";
+        if(neighbours.equals(""))
+            neighbours="0";
+        String viros= "";
+        for(Virologist v : virologists)
+            viros+=v.toString();
+        if(viros.equals(""))
+            viros="0";
+        return name + "\n" + neighbours + "\n"+ viros+"\n"+name+"\n";
+    }
+    public static void list(String fid){
+        for(Field f: fields){
+            if(f.getName().equals(fid)) {
+                System.out.println(f.toString());
+                TestInOutHandler.appendToTestOutput(f.toString()+"\n");
+            }
+
+        }
     }
 
 }

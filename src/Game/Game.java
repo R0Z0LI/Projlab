@@ -338,6 +338,10 @@ public class Game {
                     } else {
                         // the current command is not directed towards this virologist
                         virologists.get(i - 1).setActionCounter(-1);
+                        if(currCommand[0].equals("List")) {
+                            Field.list(currCommand[1]);
+                            currentCommandNum++;
+                        }
                     }
 
                     // when we kill someone he is removed, it causes bugs -> we don't like that
