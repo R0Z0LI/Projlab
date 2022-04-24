@@ -176,10 +176,8 @@ public class Game {
                             shelter.add(cape);
                         }
                     }
-
                     // virologists
                     readAfterField(scan, shelter);
-
                 }
             }
             for(Field f: fields){
@@ -214,10 +212,10 @@ public class Game {
                     for (int i = 0; i < splitMaterial.length; i++) {
                         if (splitMaterial[i].contains("aac")) {
                             AminoAcid aminoAcid = new AminoAcid();
-                            virologist.getPropertyHandler().add(aminoAcid);
+                            virologist.getPropertyHandler().getAminoAcids().add(aminoAcid);
                         } else if (splitMaterial[i].contains(("ncd"))) {
                             Nucleotid nucleotid = new Nucleotid();
-                            virologist.getPropertyHandler().add(nucleotid);
+                            virologist.getPropertyHandler().getNucleotids().add(nucleotid);
                         }
                     }
                 }
@@ -250,18 +248,18 @@ public class Game {
                     for (int i = 0; i < splitEquipments.length; i++) {
                         if (splitEquipments[i].contains("cpe")) {
                             Cape cape = new Cape();
-                            virologist.getPropertyHandler().add(cape);
+                            virologist.getPropertyHandler().getEquipments().add(cape);
                             virologist.add(new CapeDefenseBehavior(virologist));
                         } else if (splitEquipments[i].contains("sck")) {
                             Sack sack = new Sack();
-                            virologist.getPropertyHandler().add(sack);
+                            virologist.getPropertyHandler().getEquipments().add(sack);
                         } else if (splitEquipments[i].contains("glv")) {
                             Gloves gloves = new Gloves();
-                            virologist.getPropertyHandler().add(gloves);
+                            virologist.getPropertyHandler().getEquipments().add(gloves);
                             virologist.add(new GloveDefBehavior(virologist, new Gloves()));
                         } else if (splitEquipments[i].contains("axe")) {
                             Axe axe = new Axe();
-                            virologist.getPropertyHandler().add(axe);
+                            virologist.getPropertyHandler().getEquipments().add(axe);
                             virologist.add(new AxeAttackBehavior(virologist));
                         }
                     }
@@ -274,23 +272,21 @@ public class Game {
                     for (int i = 0; i < splitCodes.length; i++) {
                         if (splitCodes[i].contains("amc")) {
                             AmnesiaCode amnesiaCode = new AmnesiaCode(4, 4);
-                            virologist.getPropertyHandler().add(amnesiaCode);
+                            virologist.getPropertyHandler().getGenCodes().put(amnesiaCode.getUid(),amnesiaCode);
                         } else if (splitCodes[i].contains("prc")) {
                             ProtecionCode protecionCode = new ProtecionCode(4, 4);
-                            virologist.getPropertyHandler().add(protecionCode);
+                            virologist.getPropertyHandler().getGenCodes().put(protecionCode.getUid(),protecionCode);
                         } else if (splitCodes[i].contains("cdc")) {
                             CrazyDanceCode crazyDanceCode = new CrazyDanceCode(1, 1);
-                            virologist.getPropertyHandler().add(crazyDanceCode);
+                            virologist.getPropertyHandler().getGenCodes().put(crazyDanceCode.getUid(), crazyDanceCode);
                         } else if (splitCodes[i].contains("pac")) {
                             ParalyseCode paralyseCode = new ParalyseCode(1, 2);
-                            virologist.getPropertyHandler().add(paralyseCode);
+                            virologist.getPropertyHandler().getGenCodes().put(paralyseCode.getUid(), paralyseCode);
                         }
                     }
                 }
-
                 scan.nextLine(); // reading in closing vir
             }
-
             viro = scan.nextLine(); //nextvir or fieldEnd
 
         } while(viro.startsWith("vir"));
@@ -346,7 +342,7 @@ public class Game {
                 }
 
                 // stopping the game
-                if (allCommands.length <= currentCommandNum + 1)
+                if (allCommands.length <= currentCommandNum )
                     gameRunning = false;
             }
             stepSteppabbles();

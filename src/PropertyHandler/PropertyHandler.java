@@ -36,7 +36,7 @@ public class PropertyHandler {
     public PropertyHandler(Virologist v) {
         this.virologist = v;
         this.maxEquipment = 3;
-        this.maxMaterial = 10;
+        this.maxMaterial = 6;
         this.maxGencode = 4;
     }
 
@@ -46,9 +46,9 @@ public class PropertyHandler {
      * @param genCode Ezt adja hozzá
      */
     public void add(GenCode genCode) {
-        if(genCodes.containsKey(genCode.getUid()))
-            return;
         genCodes.put(genCode.getUid(), genCode);
+        System.out.println("Successful collect: "+ genCode.getName()+" collected by "+virologist.getName()+".");
+        TestInOutHandler.appendToTestOutput("Successful collect: "+ genCode.getName()+" collected by "+virologist.getName()+".\n");
         if(genCodes.size() == maxGencode)
             Game.endGame(virologist);
     }

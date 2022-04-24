@@ -18,6 +18,7 @@ public class ParalyseCode extends GenCode {
     public ParalyseCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "pac" + id++;
+        Uid=2;
     }
 
     /**
