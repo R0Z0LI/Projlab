@@ -12,8 +12,8 @@ public class StunnedBehavior extends AutomaticBehavior{
      */
     @Override
     public void execute(){
-        System.out.println(viro.getName()+" is paralysed, can’t do anything.");
-        TestInOutHandler.appendToTestOutput(viro.getName()+" is paralysed, can’t do anything.\n");
+        System.out.println(viro.getName() + " is paralysed, can not do anything.");
+        TestInOutHandler.appendToTestOutput(viro.getName() + " is paralysed, can not do anything.\n");
         viro.setActionCounter(0);
     }
 

@@ -3,13 +3,13 @@ fid0
 vir0
 0
 paa0
-sck0 axe0
+axe0
 0
 vir0
 vir1
 0
 0
-glv0 cpe0
+sck0
 0
 vir1
 vir2

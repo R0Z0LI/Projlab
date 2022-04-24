@@ -11,7 +11,7 @@ public class GloveDefBehavior extends DefenseBehavior {
 
     public GloveDefBehavior(Virologist v, Gloves glove) {
         super(v);
-        gloves=glove;
+        gloves = glove;
         priority = 4;
         usability = 3;
     }
@@ -24,15 +24,14 @@ public class GloveDefBehavior extends DefenseBehavior {
      */
     @Override
     public void defend(Agent agent, Virologist attacker) {
-        if (usability >0) {
-            System.out.println(virologist.getName()+" used gloves for defense. Successful defense and application is returned.");
-            TestInOutHandler.appendToTestOutput(virologist.getName()+" used gloves for defense. Successful defense and application is returned.");
+        if (usability > 0) {
+            System.out.println(virologist.getName() + " used gloves for defense. Successful defense and application is returned.");
+            TestInOutHandler.appendToTestOutput(virologist.getName() + " used gloves for defense. Successful defense and application is returned.");
             attacker.beInfected(agent, virologist);
         }
         usability--;
-        if(usability<=0){
+        if(usability <= 0)
             gloves.removeBehavior(virologist);
-        }
 
     }
 }

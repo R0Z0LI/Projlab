@@ -45,7 +45,7 @@ public class AminoAcid implements Collectible {
         // adding this to Virologist
         propertyHandler.add(this);
         // only collect, if there is enough space in inventory
-        if (propertyHandler.getAminoAcids().size() + propertyHandler.getNucleotids().size() < propertyHandler.getMaxMaterial()) {
+        if (propertyHandler.getAminoAcids().size() + propertyHandler.getNucleotids().size() < propertyHandler.getMaxMaterial() && currPosition != null) {
             // removing it from the warehouse
             currPosition.remove(this);
         }
