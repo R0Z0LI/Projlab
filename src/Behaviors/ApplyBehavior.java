@@ -11,9 +11,6 @@ public class ApplyBehavior {
         virologist = v;
     }
 
-    public ApplyBehavior() {
-    }
-
     public void setVirologist(Virologist v) {
         virologist = v;
     }
@@ -23,7 +20,6 @@ public class ApplyBehavior {
     }
 
     /**
-     * +
      * Végrehajtja egy ágens kenését. (Nem feltétlenül lesz sikeres, hiszen
      * az áldozat kivédheti.)
      *
@@ -34,8 +30,8 @@ public class ApplyBehavior {
         if (affected == virologist) {
             agent.addBehavior(virologist);
         } else {
-            System.out.println(virologist.getName()+" tried to apply "+agent.getName()+" on "+affected.getName());
-            TestInOutHandler.appendToTestOutput(virologist.getName()+" tried to apply "+agent.getName()+" on "+affected.getName());
+            System.out.println(virologist.getName() + " tried to apply " + agent.getName() + " on " + affected.getName());
+            TestInOutHandler.appendToTestOutput(virologist.getName() + " tried to apply " + agent.getName() + " on " + affected.getName());
             affected.beInfected(agent, virologist);
         }
 

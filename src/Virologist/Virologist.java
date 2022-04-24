@@ -35,8 +35,7 @@ public class Virologist {
         this.actionCounter = 2;
         this.myProperties = new PropertyHandler(this);
         currentField = field;
-        MovementBehavior movementBehavior = new MovementBehavior(this);
-        this.movementBehaviors.add(movementBehavior);
+        this.movementBehaviors.add(new MovementBehavior(this));
         CreateBehavior createBehavior = new CreateBehavior(this);
         this.createBehaviors.add(createBehavior);
         ApplyBehavior applyBehavior = new ApplyBehavior(this);
@@ -362,10 +361,11 @@ public class Virologist {
                 case "Throw":
                     //megkeresi, hogy mit kell eldobni
                     Equipment equipment=null;
-                    for(Equipment e: myProperties.getEquipments())
+                    for(Equipment e: myProperties.getEquipments()){
                         if(e.getName().equals(command[2])){
                             equipment=e;
                         }
+                    }
                     destroy(equipment);
                     break;
                 case "List":
