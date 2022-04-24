@@ -70,7 +70,7 @@ public class TestSetup {
                 break;
             case "10":  // Move + Collect + Throw
                 game.getHandler().setInputFile("tests//komplex_commands.txt");
-                game.getHandler().setOutputFile("tests_output//komplex_testInit.txt");
+                game.getHandler().setOutputFile("tests_output//komplex.txt");
                 game.start("tests//komplex_testInit.txt");
                 break;
         }

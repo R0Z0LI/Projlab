@@ -27,7 +27,7 @@ public class ParalyseAgent extends Agent {
         }
     }
 
-    /**+
+    /**
      * Hozzáadja a megadott virológus verméhez azokat a viselkedéseket, amiket a ParalyseAgent okoz.
      * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedéseket.
      */
@@ -38,7 +38,7 @@ public class ParalyseAgent extends Agent {
         Game.addSteppable(this);
     }
 
-    /**+
+    /**
      * Kitörli a megadott virológus verméből azokat a viselkedéseket, amiket a ParalyseAgent okoz.
      * @param v  virológus, akinek a verméből törölni kell a viselkedéseket.
      */
