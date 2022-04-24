@@ -180,9 +180,6 @@ public class Game {
                     readAfterField(scan, shelter);
                 }
             }
-            for(Field f: fields){
-                System.out.println(f.toString()+"\n");
-            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
