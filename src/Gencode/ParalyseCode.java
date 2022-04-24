@@ -8,7 +8,9 @@ import Agent.ParalyseAgent;
  * Bénuló ágens kódját reprezentáló osztály.
  */
 public class ParalyseCode extends GenCode {
-
+    private static int id = 0;
+    private static int Uid=2;
+    public int getUid(){return Uid;}
     /**
      * ParalyseCode constructor
      * @param aminoNeeded The needed amoniacid amount.
@@ -18,7 +20,6 @@ public class ParalyseCode extends GenCode {
     public ParalyseCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "pac" + id++;
-        Uid=2;
     }
 
     /**

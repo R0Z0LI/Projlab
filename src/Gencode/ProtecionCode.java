@@ -8,7 +8,9 @@ import Agent.ProtectionAgent;
  * Védő ágens kódját reprezentáló osztály.
  */
 public class ProtecionCode extends GenCode {
-
+    private static int id = 0;
+    private static int Uid=3;
+    public int getUid(){return Uid;}
     /**
      * ProtecionCode constructor
      * @param aminoNeeded The needed amoniacid amount.
@@ -18,7 +20,6 @@ public class ProtecionCode extends GenCode {
     public ProtecionCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "prc" + id++;
-        Uid=3;
     }
 
     public ProtecionCode(int aminoNeeded, int nucleoNeeded){
