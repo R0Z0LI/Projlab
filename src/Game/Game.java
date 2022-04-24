@@ -1,6 +1,9 @@
 package Game;
 
 import Agent.*;
+import Behaviors.AxeAttackBehavior;
+import Behaviors.CapeDefenseBehavior;
+import Behaviors.GloveDefBehavior;
 import Gencode.*;
 import Materials.*;
 import Field.*;
@@ -15,7 +18,6 @@ import java.util.Scanner;
 
 public class Game {
     private static ArrayList<Steppable> steppables;
-    private boolean testingFinished = false;
     private static boolean gameRunning = false;
     private static ArrayList<Virologist> virologists = new ArrayList<>();
     private ArrayList<Field> fields = new ArrayList<>();
@@ -59,12 +61,10 @@ public class Game {
 
                     // neighbours
                     String fieldNeighbors = scan.nextLine();
-                    System.out.println(fieldNeighbors);
                     if(!fieldNeighbors.equals("0")) {
                         String[] split = fieldNeighbors.split(" ");
                         for (int i = 0; i < split.length; i++) {
                             String parameter = split[i];
-                            System.out.println("Creating connection: " + parameter);
                             checkAndAddNeighbors(parameter, field);
                         }
                     }
@@ -87,12 +87,6 @@ public class Game {
                         }
                     }
 
-                    // Bear agent on lab
-                    String bearAgentOnLaboratory = scan.nextLine();
-                    if(!bearAgentOnLaboratory.equals("0"))
-                        if(bearAgentOnLaboratory.contains("baa"))
-                            laboratory.add(new BearDanceAgent());
-
                     // Genetic Codes on lab
                     String codeOnLabor = scan.nextLine();
                     if(!codeOnLabor.equals("0")){
@@ -110,6 +104,13 @@ public class Game {
                             laboratory.add(protecionCode);
                         }
                     }
+
+                    // Bear agent on lab
+                    String bearAgentOnLaboratory = scan.nextLine();
+                    if(!bearAgentOnLaboratory.equals("0"))
+                        if(bearAgentOnLaboratory.contains("baa"))
+                            laboratory.add(new BearDanceAgent());
+
                     // virologists
                     readAfterField(scan, laboratory);
 
@@ -248,15 +249,18 @@ public class Game {
                         if (splitEquipments[i].contains("cpe")) {
                             Cape cape = new Cape();
                             virologist.getPropertyHandler().getEquipments().add(cape);
+                            virologist.add(new CapeDefenseBehavior(virologist));
                         } else if (splitEquipments[i].contains("sck")) {
                             Sack sack = new Sack();
                             virologist.getPropertyHandler().getEquipments().add(sack);
                         } else if (splitEquipments[i].contains("glv")) {
                             Gloves gloves = new Gloves();
                             virologist.getPropertyHandler().getEquipments().add(gloves);
+                            virologist.add(new GloveDefBehavior(virologist, new Gloves()));
                         } else if (splitEquipments[i].contains("axe")) {
                             Axe axe = new Axe();
                             virologist.getPropertyHandler().getEquipments().add(axe);
+                            virologist.add(new AxeAttackBehavior(virologist));
                         }
                     }
                 }
@@ -288,245 +292,6 @@ public class Game {
         } while(viro.startsWith("vir"));
     }
 
-    private void initTest() {
-        System.out.println("Give your commands fella");
-        Scanner scan = new Scanner(System.in);
-        while (!testingFinished) {
-            String input = scan.nextLine();
-            if (input.contains("CreateVirologist")) {
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if (parameter.contains("lab") || parameter.contains("who") || parameter.contains("shl") || parameter.contains("fid")) {
-                    createVirologistOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if (input.contains("CreateField")) {
-                String[] parameters = input.split(" ");
-                Field field = new Field();
-                fields.add(field);
-                for (int i = 1; i < parameters.length; i++) {
-                    String parameter = parameters[i];
-                    checkAndAddNeighbors(parameter, field);
-                }
-                System.out.println("Created Field: " + field.getName());
-            } else if(input.contains("CreateLabor")){
-                String[] parameters = input.split(" ");
-                Laboratory laboratory = new Laboratory();
-                fields.add(laboratory);
-                for(int i = 1; i < parameters.length; i++){
-                    String parameter = parameters[i];
-                    checkAndAddNeighbors(parameter, laboratory);
-                }
-                System.out.println("Created Labor: " + laboratory.getName() + laboratory.getFields());
-            } else if(input.contains("CreateShelter")){
-                String[] parameters = input.split(" ");
-                Shelter shelter = new Shelter();
-                fields.add(shelter);
-                for(int i = 1; i < parameters.length; i++){
-                    String parameter = parameters[i];
-                    checkAndAddNeighbors(parameter, shelter);
-                }
-                System.out.println("Created Shelter: " + shelter.getName());
-            } else if(input.contains("CreateWareHouse")){
-                String[] parameters = input.split(" ");
-                Warehouse warehouse = new Warehouse();
-                fields.add(warehouse);
-                for(int i = 1; i < parameters.length; i++){
-                    String parameter = parameters[i];
-                    checkAndAddNeighbors(parameter, warehouse);
-                }
-                System.out.println("Created WareHouse: " + warehouse.getName());
-            } else if(input.contains("CreateAmino")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if (parameter.contains("who")) {
-                    createAminoOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateNucleo")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("who")){
-                    createNucleoOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateGlove")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("shl")){
-                    createGloveOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateCape")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("shl")){
-                    createCapeOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateAxe")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("shl")){
-                    createGloveOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateSack")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("shl")){
-                    createSackOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateParalyseCode")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("lab")){
-                    createParalyseCodeOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateAmnesiaCode")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("lab")){
-                    createAmnesiaCodeOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateProtectionCode")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("lab")){
-                    createProtectionCodeOnField(parameter);
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            } else if(input.contains("CreateCrazeyDanceCode")){
-                String[] split = input.split(" ");
-                String parameter = split[1];
-                if(parameter.contains("lab")){
-                    createCrazyDanceCodeOnField(parameter);
-                } else if(input.contains("ListFields")){
-                    System.out.println(Field.getFields());
-                } else {
-                    System.out.println("'" + parameter + "' is not a valid parameter");
-                }
-            }
-        }
-    }
-
-    //TODO kiírásokat átnézni, mert szerintem nem az amit megadtunk
-    private void createCrazyDanceCodeOnField(String parameter) {
-        Laboratory laboratory = (Laboratory) findFieldByName(parameter);
-        if (laboratory != null) {
-            //TODO pontos értékek az amino, nucleonak
-            ProtecionCode protecionCode = new ProtecionCode(4, 1, laboratory);
-            laboratory.add(protecionCode);
-            System.out.println("Created ProtectionCode with name " + protecionCode.toString() + ", on field: " + laboratory.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + parameter);
-        }
-    }
-
-    private void createProtectionCodeOnField(String parameter) {
-        Laboratory laboratory = (Laboratory) findFieldByName(parameter);
-        if (laboratory != null) {
-            //TODO pontos értékek az amino, nucleonak
-            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(4, 1, laboratory);
-            laboratory.add(crazyDanceCode);
-            System.out.println("Created CrazyDanceCode with name " + crazyDanceCode.toString() + ", on field: " + laboratory.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + parameter);
-        }
-    }
-
-    private void createAmnesiaCodeOnField(String parameter) {
-        Laboratory laboratory = (Laboratory) findFieldByName(parameter);
-        if (laboratory != null) {
-            //TODO pontos értékek az amino, nucleonak
-            AmnesiaCode amnesiaCode = new AmnesiaCode(4, 1, laboratory);
-            laboratory.add(amnesiaCode);
-            System.out.println("Created AmnesiaCode with name " + amnesiaCode.toString() + ", on field: " + laboratory.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + parameter);
-        }
-    }
-
-    private void createParalyseCodeOnField(String parameter) {
-        Laboratory laboratory = (Laboratory) findFieldByName(parameter);
-        if (laboratory != null) {
-            //TODO pontos értékek az amino, nucleonak
-            ParalyseCode paralyseCode = new ParalyseCode(4, 1, laboratory);
-            laboratory.add(paralyseCode);
-            System.out.println("Created ParalyseCode with name " + paralyseCode.toString() + ", on field: " + laboratory.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + parameter);
-        }
-    }
-
-    private void createSackOnField(String parameter) {
-        Shelter shelter = (Shelter) findFieldByName(parameter);
-        if (shelter != null) {
-            Sack sack = new Sack(shelter);
-            shelter.add(sack);
-            System.out.println("Created Sack with name " + sack.toString() + ", on field: " + shelter.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + parameter);
-        }
-    }
-
-    private void createCapeOnField(String parameter) {
-        Shelter shelter = (Shelter) findFieldByName(parameter);
-        if (shelter != null) {
-            Cape cape = new Cape(shelter);
-            shelter.add(cape);
-            System.out.println("Created Cape with name " + cape.toString() + ", on field: " + shelter.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + parameter);
-        }
-    }
-
-    private void createGloveOnField(String parameter) {
-        Shelter shelter = (Shelter) findFieldByName(parameter);
-        if (shelter != null) {
-            Gloves glove = new Gloves(shelter);
-            shelter.add(glove);
-            System.out.println("Created Glove with name " + glove.toString() + ", on field: " + shelter.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + parameter);
-        }
-    }
-
-    private void createNucleoOnField(String fieldName) {
-        Warehouse warehouse = (Warehouse)findFieldByName(fieldName);
-        if (warehouse != null) {
-            Nucleotid nucleotid = new Nucleotid(warehouse);
-            warehouse.add(nucleotid);
-            System.out.println("Created Nucleotid with name " + nucleotid.getName() + ", on field: " + warehouse.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + fieldName);
-        }
-    }
-
-    private void createAminoOnField(String fieldName) {
-        Warehouse warehouse = (Warehouse) findFieldByName(fieldName);
-        if (warehouse != null) {
-            AminoAcid aminoAcid = new AminoAcid(warehouse);
-            warehouse.add(aminoAcid);
-            System.out.println("Created AminoAcid with name " + aminoAcid.getName() + ", on field: " + warehouse.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + fieldName);
-        }
-    }
-
     private void checkAndAddNeighbors(String parameter, Field field){ //lab0 lab1
         if (parameter.contains("lab") || parameter.contains("fid") || parameter.contains("shl") || parameter.contains("who")) {
             for(Field f : fields){
@@ -539,26 +304,8 @@ public class Game {
         }
     }
 
-    private void createVirologistOnField(String fieldName) {
-        Field field = findFieldByName(fieldName);
-        if (field != null) {
-            Virologist virologist = new Virologist(field);
-            virologists.add(virologist);
-            System.out.println("Created virologist with name " + virologist.getName() + ", on field: " + field.toString());
-        } else {
-            System.out.println("Field does not exist with this name: " + fieldName);
-        }
-    }
     public void addVirologistManually(Virologist virologist){
         virologists.add(virologist);
-    }
-    private Field findFieldByName(String nextString) {
-        for (Field field : fields) {
-            if (field.getName().equals(nextString)) {
-                return field;
-            }
-        }
-        return null;
     }
 
     /**
@@ -580,7 +327,7 @@ public class Game {
                 virologists.get(i-1).setActionCounter(2); // every virologist starts with 2 actions
 
                 // TESTING - go through the commands
-                while (virologists.get(i-1).getActionCounter() > 0 && allCommands.length > currentCommandNum) {//for(int j = 0; j < allCommands.length; ++j) {
+                while (virologists.get(i-1).getActionCounter() > 0 && allCommands.length > currentCommandNum) {
                     // the current command
                     String[] currCommand = allCommands[currentCommandNum].split(" ");
 
@@ -588,6 +335,9 @@ public class Game {
                     if (virologists.get(i - 1).getActionCounter() > 0 && currCommand[1].equals(virologists.get(i - 1).getName())) {
                         virologists.get(i - 1).yourTurn(allCommands[currentCommandNum]);
                         currentCommandNum++; // we use up a command
+                    } else {
+                        // the current command is not directed towards this virologist
+                        virologists.get(i - 1).setActionCounter(-1);
                     }
                 }
 
@@ -602,7 +352,9 @@ public class Game {
     public static void removeSteppable(Steppable s) {
         steppables.remove(s);
     }
+
     public static void removeVirologist(Virologist v){virologists.remove(v);}
+
     public void stepSteppabbles() {
         for (Steppable s : steppables) {
             s.step();
@@ -614,6 +366,7 @@ public class Game {
         System.out.println("A jatek veget ert.");
         TestInOutHandler.appendToTestOutput("A jatek veget ert.");
     }
+
     public static void endGame(Virologist v) {
         gameRunning=false;
         System.out.println("A jatek veget ert.\tGyoztes: "+v.getName());

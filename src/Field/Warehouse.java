@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * A raktárat reprezentáló osztály
  */
 public class Warehouse extends Field {
-    private static int id =0;
+    private static int id = 0;
     private ArrayList<Nucleotid> nucleotids = new ArrayList<>();
     private ArrayList<AminoAcid> aminoAcids = new ArrayList<>();
 
@@ -17,6 +17,7 @@ public class Warehouse extends Field {
      * Warehouse constructor
      */
     public Warehouse(){
+        super(0);
         this.name = "who" + id++;
         fields.add(this);
     }

@@ -16,6 +16,7 @@ public class Shelter extends Field{
      * Shelter constructor
      */
     public Shelter(){
+        super(0);
         this.name = "shl" + id++;
         fields.add(this);
     }

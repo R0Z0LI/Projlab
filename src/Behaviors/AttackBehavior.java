@@ -13,5 +13,5 @@ public class AttackBehavior {
     public Virologist getVirologist(){
         return viro;
     }
-    public void attack( Virologist v){ }
+    public void attack(Virologist v){ }
 }

@@ -19,6 +19,7 @@ public class Laboratory extends Field {
      * Laboratory constructor
      */
     public Laboratory() {
+        super(0);
         this.name = "lab" + id++;
         fields.add(this);
     }

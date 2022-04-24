@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Field {
     protected String name;
-    private static int id = 1;
+    private static int id = 0;
     protected static ArrayList<Field> fields = new ArrayList<>(); // the map's fields
     protected ArrayList<Virologist> virologists = new ArrayList<>(); // the virologists on this field
     private ArrayList<Field> neighbours = new ArrayList<>();
@@ -23,6 +23,8 @@ public class Field {
         name = "fid" + id++;
         fields.add(this);
     }
+
+    public Field(int arg) {}
 
     // gets name/id of this object
     public String getName() {
