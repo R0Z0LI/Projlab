@@ -30,7 +30,7 @@ public class ProtectionAgent extends Agent{
         Game.removeSteppable(this);
     }
 
-    /**+
+    /**
      * Hozzáadja a megadott virológus verméhez a defAgentDef viselkedést, amit az aktuális ágens okoz.
      * Game steppeble-hez is hozzáadja magát
      * @param v  virológus, akinek a verméhez hozzá kell adni a viselkedést.

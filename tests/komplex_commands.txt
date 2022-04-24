@@ -2,5 +2,5 @@ Move vir0 who0
 Collect vir0
 Move vir0 shl0
 Collect vir0
-Move vur0 fid2
+Move vir0 fid1
 Throw vir0 glv0

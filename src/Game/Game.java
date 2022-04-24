@@ -229,7 +229,7 @@ public class Game {
                             AmnesiaAgent amnesiaAgent = new AmnesiaAgent(4);
                             virologist.getPropertyHandler().add(amnesiaAgent);
                         } else if (splitAgents[i].contains("paa")) {
-                            ParalyseAgent paralyseAgent = new ParalyseAgent();
+                            ParalyseAgent paralyseAgent = new ParalyseAgent(3);
                             virologist.getPropertyHandler().add(paralyseAgent);
                         } else if (splitAgents[i].contains("cda")) {
                             CrazyDanceAgent crazyDanceAgent = new CrazyDanceAgent(5);
