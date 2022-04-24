@@ -369,6 +369,7 @@ public class Virologist {
         }
     }
 
+    public int getActionCounter() { return actionCounter; }
 
     /**
      * A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának
