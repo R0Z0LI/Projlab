@@ -1,0 +1,8 @@
+Successful collect: amc1 collected by vir1.
+vir1 stepped on lab2.
+Successful collect: pac1 collected by vir1.
+vir1 stepped on lab3.
+Successful collect: cdc1 collected by vir1.
+vir1 stepped on lab4.
+Successful collect: prc1 collected by vir1.
+vir1 won the game.

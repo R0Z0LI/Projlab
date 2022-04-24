@@ -1,0 +1,5 @@
+Successful collect: aac1 collected by vir1.
+
+vir1 stepped on shl1.
+
+There is not enough space in your inventory.
