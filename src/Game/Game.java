@@ -343,6 +343,11 @@ public class Game {
                             currentCommandNum++;
                         }
                     }
+
+                    // when we kill someone he is removed, it causes bugs -> we don't like that
+                    if (currCommand[0].equals("Kill"))
+                        i--;
+
                 }
 
                 // stopping the game
@@ -353,6 +358,7 @@ public class Game {
             roundCounter++;
         }
     }
+
     public static void removeSteppable(Steppable s) {
         steppables.remove(s);
     }
