@@ -18,6 +18,7 @@ public class ProtecionCode extends GenCode {
     public ProtecionCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "prc" + id++;
+        Uid=3;
     }
 
     public ProtecionCode(int aminoNeeded, int nucleoNeeded){

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * A laboratóriumot reprezentáló osztály
  */
 public class Laboratory extends Field {
-    private static int id = 1;
+    private static int id = 0;
     private ArrayList<GenCode> genCodes = new ArrayList<>();
     private BearDanceAgent bearAgent = null;
 

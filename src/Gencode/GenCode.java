@@ -11,9 +11,10 @@ import TestSets.TestInOutHandler;
  */
 public abstract class GenCode implements Collectible {
     protected Laboratory currentPosition;
+    protected int Uid;
 
     protected static int id = 0; // 2 gencodes id can NOT be the same
-    public int getUid(){return id;}
+    public int getUid(){return Uid;}
 
     protected String name;
     // needed materials for the agent creation
@@ -60,8 +61,6 @@ public abstract class GenCode implements Collectible {
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
         propertyHandler.add(this);
-        System.out.println("Successful collect: "+ this.getName()+" collected by "+this.getName()+".");
-        TestInOutHandler.appendToTestOutput("Successful collect: "+ this.getName()+" collected by "+this.getName()+".\n");
     }
 
     /* TODO Ez kell? Mármint csak felejtésnél törlünk, de akkor mindent. */
