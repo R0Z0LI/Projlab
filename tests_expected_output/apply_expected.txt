@@ -1,8 +1,5 @@
-vir1 tried to apply pra1 on vir1.
-pra1 successfully applied on vir1.
+vir0 tried to apply cda0 on vir1.
+vir1 used nothing for defense. Defense failed.
 
-vir1 tried to apply cda1 on vir2.
-cda1 successfully applied on vir2.
-
-vir2 tried to apply paa1 on vir1.
-vir1 used protection agent for defense. Successful defense.
+vir1 tried to apply paa0 on vir0.
+vir0 used protection agent for defense. Successful defense.
