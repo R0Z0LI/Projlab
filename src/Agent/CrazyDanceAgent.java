@@ -1,6 +1,7 @@
 package Agent;
 
 import Behaviors.CrazyMoveBehavior;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 import Game.Game;
 
@@ -37,6 +38,8 @@ public class CrazyDanceAgent extends Agent {
      */
     @Override
     public void addBehavior(Virologist v) {
+        System.out.println(name+" successfully applied on "+v.getName());
+        TestInOutHandler.appendToTestOutput(name+" successfully applied on "+v.getName());
         crazyMove.setVirologist(v);
         v.add(crazyMove);
         Game.addSteppable(this);
