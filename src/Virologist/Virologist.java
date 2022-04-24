@@ -306,7 +306,7 @@ public class Virologist {
                     applyAgent(agent, affected);
                     break;
                 case "Collect":
-
+                    // TODO
                     break;
                 case "Create":
                     GenCode code=null;
@@ -364,6 +364,7 @@ public class Virologist {
                         }
                     destroy(equipment);
                     break;
+                    // TODO - LIST COMMAND
             }
             actionCounter--;
         }

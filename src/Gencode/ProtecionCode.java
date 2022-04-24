@@ -8,8 +8,7 @@ import Agent.ProtectionAgent;
  * Védő ágens kódját reprezentáló osztály.
  */
 public class ProtecionCode extends GenCode {
-    private static int id = 0;
-    public int getUid(){return id;}
+
     /**
      * ProtecionCode constructor
      * @param aminoNeeded The needed amoniacid amount.

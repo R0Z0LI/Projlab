@@ -12,18 +12,18 @@ lab0
 lab1
 lab0
 0
-pac0
+pac1
 0
 lab1
 lab2
 lab0 lab1
 0
-cdc0
+cdc2
 0
 lab2
 lab3
 lab0 lab1 lab2
 0
-prc0
+prc3
 0
 lab3

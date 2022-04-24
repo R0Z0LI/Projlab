@@ -84,11 +84,11 @@ public class Game {
                         for (int i = 0; i < split.length; i++) {
                             String parameter = split[i];
                             checkAndAddNeighbors(parameter, laboratory);
-                            for(Field field : fields){
+                            /*for(Field field : fields){
                                 if(field.getName().equals(parameter)){
                                     laboratory.addNeighbour(field);
                                 }
-                            }
+                            }*/
                         }
                     }
 
@@ -286,10 +286,10 @@ public class Game {
                             ProtecionCode protecionCode = new ProtecionCode(4, 4);
                             virologist.getPropertyHandler().add(protecionCode);
                         } else if (splitCodes[i].contains("cdc")) {
-                            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(4, 4);
+                            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(1, 1);
                             virologist.getPropertyHandler().add(crazyDanceCode);
                         } else if (splitCodes[i].contains("pac")) {
-                            ParalyseCode paralyseCode = new ParalyseCode(4, 4);
+                            ParalyseCode paralyseCode = new ParalyseCode(1, 2);
                             virologist.getPropertyHandler().add(paralyseCode);
                         }
                     }
@@ -590,16 +590,16 @@ public class Game {
 
         // game loop
         while (gameRunning) {
-            // goes through every virologist
+            // 1 turn: goes through every virologist
             for (int i = 1; i <= virologists.size() && allCommands.length > i * roundCounter; ++i) {
-                virologists.get(i-1).setActionCounter(2);
+                virologists.get(i-1).setActionCounter(2); // every virologist starts with 2 actions
 
-                // go through the commands
-                for(int j = 0; j < allCommands.length; ++j) {
+                // TESTING - go through the commands
+                while (virologists.get(i-1).getActionCounter() > 0 && allCommands.length > currentCommandNum) {//for(int j = 0; j < allCommands.length; ++j) {
                     // the current command
                     String[] currCommand = allCommands[currentCommandNum].split(" ");
 
-                    System.out.println("Used command: " + allCommands[currentCommandNum]); // DELETE
+                    System.out.println("ActionNum:" + virologists.get(i-1).getActionCounter() +  " " + "Used command:" + allCommands[currentCommandNum]); // DELETE
 
                     // go through the virologists to find the one that has to the command
                     if (virologists.get(i - 1).getActionCounter() > 0 && currCommand[1].equals(virologists.get(i - 1).getName())) {

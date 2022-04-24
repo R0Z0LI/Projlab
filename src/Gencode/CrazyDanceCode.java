@@ -8,8 +8,7 @@ import Agent.CrazyDanceAgent;
  * Vitustáncot okozó ágens létrehozásához szükséges genetikai kódot reprezentáló osztály.
  */
 public class CrazyDanceCode extends GenCode{
-    private static int id = 0;
-    public int getUid(){return id;}
+
     /**
      * CrazyDanceCode constructor
      * @param aminoNeeded The needed amoniacid amount.

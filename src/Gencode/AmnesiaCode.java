@@ -8,8 +8,7 @@ import Agent.AmnesiaAgent;
  * Felejtő ágens kódját reprezentáló osztály.
  */
 public class AmnesiaCode extends GenCode {
-    private static int id = 0;
-    public int getUid(){return id;}
+
     /**
      * AmnesiaCode constructor
      * @param aminoNeeded The needed amoniacid amount.
