@@ -368,7 +368,7 @@ public class Virologist {
                         }
                     destroy(equipment);
                     break;
-                    // TODO - LIST COMMAND
+                // TODO - LIST COMMAND
             }
             actionCounter--;
         }

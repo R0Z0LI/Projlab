@@ -1,5 +1,6 @@
 package Field;
 
+import Collectible.Collectible;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
@@ -75,6 +76,14 @@ public class Field {
      */
     public void rampage() {
         //
+    }
+
+    /**
+     * Get the collectibles from this field
+     * @return
+     */
+    public Collectible getCollectible() {
+        return null;
     }
 
     /**

@@ -1,6 +1,7 @@
 package Field;
 
 import Agent.BearDanceAgent;
+import Collectible.Collectible;
 import Gencode.GenCode;
 import Virologist.Virologist;
 
@@ -61,6 +62,16 @@ public class Laboratory extends Field {
         System.out.println("\tRemoved a gencode from lab.");
     }
     */
+
+    /**
+     * Get the collectibles from this field
+     * @return
+     */
+    public Collectible getCollectible() {
+        if (!genCodes.isEmpty())
+            return genCodes.get(0);
+        return null;
+    }
 
     /**
      * currGenCode getterje

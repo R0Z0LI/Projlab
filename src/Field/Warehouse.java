@@ -1,5 +1,6 @@
 package Field;
 
+import Collectible.Collectible;
 import Materials.*;
 
 import java.util.ArrayList;
@@ -63,6 +64,18 @@ public class Warehouse extends Field {
      */
     public void remove(Nucleotid nucleotid) {
         nucleotids.remove(nucleotid);
+    }
+
+    /**
+     * Get the collectibles from this field
+     * @return
+     */
+    public Collectible getCollectible() {
+        if (!aminoAcids.isEmpty())
+            return aminoAcids.get(0);
+        else if (!nucleotids.isEmpty())
+            return nucleotids.get(0);
+        return null;
     }
 
     /**
