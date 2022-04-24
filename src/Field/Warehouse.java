@@ -108,7 +108,7 @@ public class Warehouse extends Field {
             neighbours="0";
         String viros= "";
         for(Virologist v : virologists)
-            viros+=v.toString();
+            viros+=v.toString()+" ";
         if(viros.equals(""))
             viros="0";
         String things = "";
