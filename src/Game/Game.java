@@ -111,9 +111,7 @@ public class Game {
 
 
                     // virologists
-                    do {
                         readAfterField(scan, laboratory);
-                    } while(!scan.nextLine().equals(laboratory.getName()));
 
                 } else if(input.contains("who")){
                     Warehouse warehouse = new Warehouse();
@@ -138,9 +136,7 @@ public class Game {
                     }
 
                     // virologists
-                    do {
                         readAfterField(scan, warehouse);
-                    } while(!scan.nextLine().equals(warehouse.getName()));
 
                 } else if(input.contains("shl")){
                     Shelter shelter = new Shelter();
@@ -171,9 +167,7 @@ public class Game {
                     }
 
                     // virologists
-                    do {
                         readAfterField(scan, shelter);
-                    } while(!scan.nextLine().equals(shelter.getName()));
 
                 }
             }
@@ -562,18 +556,20 @@ public class Game {
         String filecontent = handler.getInput();
         String [] allCommands = filecontent.split("\n");
         int roundCounter = 0;
+        int offset=0;
         while(gameRunning){
-            for(int i = 1; i <= virologists.size() && allCommands.length > i * roundCounter; ++i) {
+            for(int i = 1; i <= virologists.size(); ++i) { //aktualis virologus
                 virologists.get(i-1).setActionCounter(2);
-                for(int j=0; j< allCommands.length; ++j) {
-                    String[] currCommand = allCommands[i * roundCounter +j].split(" ");
-                    if (currCommand[1].equals(virologists.get(i - 1).getName())) {
-                        virologists.get(i - 1).yourTurn(allCommands[i * roundCounter]);
+
+                for(int j=i*roundCounter; j+offset< allCommands.length && j<2; offset++) { //aktualis parancs
+                    String[] currCommand = allCommands[j+offset].split(" ");
+                    if (currCommand[1].equals(virologists.get(i-1).getName())) {
+                        virologists.get(i-1).yourTurn(allCommands[j+offset]);
                     }
                 }
 
                 // stopping the game
-                if (allCommands.length <= i * roundCounter + 1)
+                if (allCommands.length <= i * roundCounter + offset)
                     gameRunning = false;
             }
             stepSteppabbles();

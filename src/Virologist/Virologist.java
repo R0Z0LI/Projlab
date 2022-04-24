@@ -307,6 +307,7 @@ public class Virologist {
                     break;
                 case "Collect":
 
+
                     break;
                 case "Create":
                     GenCode code=null;
