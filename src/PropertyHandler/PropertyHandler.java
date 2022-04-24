@@ -48,7 +48,7 @@ public class PropertyHandler {
     public void add(GenCode genCode) {
         genCodes.put(genCode.getUid(), genCode);
         System.out.println("Successful collect: "+ genCode.getName()+" collected by "+virologist.getName()+".");
-        TestInOutHandler.appendToTestOutput("Successful collect: "+ genCode.getName()+" collected by "+virologist.getName()+".\n");
+        TestInOutHandler.appendToTestOutput("Successful collect: "+ genCode.getName()+" collected by "+virologist.getName());
         if(genCodes.size() == maxGencode)
             Game.endGame(virologist);
     }
@@ -62,11 +62,11 @@ public class PropertyHandler {
         if (maxMaterial > aminoAcids.size()+nucleotids.size()) {
             aminoAcids.add(aminoAcid);
             System.out.println("Successful collect: "+ aminoAcid.getName()+" collected by "+virologist.getName()+".");
-            TestInOutHandler.appendToTestOutput("Successful collect: "+ aminoAcid.getName()+" collected by "+virologist.getName()+".\n");
+            TestInOutHandler.appendToTestOutput("Successful collect: "+ aminoAcid.getName()+" collected by "+virologist.getName());
         }
         else{
             System.out.println("There is not enough space in your inventory for "+aminoAcid.getName());
-            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+aminoAcid.getName()+"\n");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+aminoAcid.getName());
         }
     }
 
@@ -79,11 +79,11 @@ public class PropertyHandler {
         if (maxMaterial > nucleotids.size()+aminoAcids.size()) {
             nucleotids.add(nucleotid);
             System.out.println("Successful collect: "+ nucleotid.getName()+" collected by "+virologist.getName()+".");
-            TestInOutHandler.appendToTestOutput("Successful collect: "+ nucleotid.getName()+" collected by "+virologist.getName()+".\n");
+            TestInOutHandler.appendToTestOutput("Successful collect: "+ nucleotid.getName()+" collected by "+virologist.getName());
         }
         else{
             System.out.println("There is not enough space in your inventory for "+nucleotid.getName());
-            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+nucleotid.getName()+"\n");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+nucleotid.getName());
         }
     }
 
@@ -97,11 +97,11 @@ public class PropertyHandler {
             equipments.add(equipment);
             equipment.addBehaviour(virologist);
             System.out.println("Successful collect: "+ equipment.getName()+" collected by "+virologist.getName()+".");
-            TestInOutHandler.appendToTestOutput("Successful collect: "+ equipment.getName()+" collected by "+virologist.getName()+".\n");
+            TestInOutHandler.appendToTestOutput("Successful collect: "+ equipment.getName()+" collected by "+virologist.getName());
         }
         else{
             System.out.println("There is not enough space in your inventory for "+equipment.getName());
-            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+equipment.getName()+"\n");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+equipment.getName());
         }
 
     }
@@ -176,7 +176,7 @@ public class PropertyHandler {
             equipments.remove(equipment);
             equipment.removeBehavior(virologist);
             System.out.println(equipment.getName()+" successfully removed from "+virologist.getName()+".");
-            TestInOutHandler.appendToTestOutput(equipment.getName()+" successfully removed from "+virologist.getName()+".\n");
+            TestInOutHandler.appendToTestOutput(equipment.getName()+" successfully removed from "+virologist.getName());
         }
     }
 

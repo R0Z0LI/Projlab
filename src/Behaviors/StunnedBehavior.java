@@ -7,17 +7,17 @@ import TestSets.TestInOutHandler;
 import java.util.ArrayList;
 
 public class StunnedBehavior extends AutomaticBehavior{
-    /**+
+    /**
      * bénít: nem engedélyez több akciót
      */
     @Override
     public void execute(){
         System.out.println(viro.getName() + " is paralysed, can not do anything.");
-        TestInOutHandler.appendToTestOutput(viro.getName() + " is paralysed, can not do anything.\n");
+        TestInOutHandler.appendToTestOutput(viro.getName() + " is paralysed, can not do anything.");
         viro.setActionCounter(0);
     }
 
-    /**+
+    /**
      * visszaadja a virológus összes ellopható dolgát
      * @param ph a virológus eszközkezelője
      * @return ellopható dolgok

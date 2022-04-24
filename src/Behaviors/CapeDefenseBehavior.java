@@ -24,7 +24,7 @@ public class CapeDefenseBehavior extends DefenseBehavior {
         double chance = Math.random() * 100;
         if (chance > DEFENSE_CHANCE_PERCENT) {
             System.out.println(virologist.getName()+" used cape for defense. Defense failed.");
-            TestInOutHandler.appendToTestOutput(virologist.getName()+" used cape for defense. Defense failed.\n");
+            TestInOutHandler.appendToTestOutput(virologist.getName()+" used cape for defense. Defense failed.");
             priority--;
             virologist.resortDefenseBehaviors();
             virologist.beInfected(agent, attacker);

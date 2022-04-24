@@ -64,7 +64,7 @@ public class Virologist {
     public void collect(Collectible collectible) {
         if(collectible==null){
             System.out.println("There is no such thing on this field.");
-            TestInOutHandler.appendToTestOutput("There is no such thing on this field.\n");
+            TestInOutHandler.appendToTestOutput("There is no such thing on this field.");
             return;
         }
         collectBehaviors.firstElement().collect(collectible, myProperties);
@@ -79,7 +79,7 @@ public class Virologist {
     public void step(Field field) {
         if(field==null){
             System.out.println("You can't move there, it's not your neighbor. \n");
-            TestInOutHandler.appendToTestOutput("You can't move there, it's not your neighbor. \n");
+            TestInOutHandler.appendToTestOutput("You can't move there, it's not your neighbor.");
             return;
         }
         movementBehaviors.firstElement().move(this.currentField, field);
@@ -95,14 +95,14 @@ public class Virologist {
     public void steal(Collectible collectible, Virologist affected)  {
         if(affected.getStealableThings() == null) {
             System.out.println("This virologist is not paralysed.");
-            TestInOutHandler.appendToTestOutput("This virologist is not paralysed.\n");
+            TestInOutHandler.appendToTestOutput("This virologist is not paralysed.");
             return;
         }
         if(affected.getStealableThings().contains(collectible))
             stealBehaviors.firstElement().steal(collectible, affected, myProperties);
         else {
             System.out.println("The virologist does not have that equipment.");
-            TestInOutHandler.appendToTestOutput("The virologist does not have that equipment.\n");
+            TestInOutHandler.appendToTestOutput("The virologist does not have that equipment.");
         }
     }
 
@@ -115,7 +115,7 @@ public class Virologist {
     public void createAgent(GenCode genCode) {
         if(genCode==null){
             System.out.println("You don't own this code.");
-            TestInOutHandler.appendToTestOutput("You don't own this code.\n");
+            TestInOutHandler.appendToTestOutput("You don't own this code.");
             return;
         }
         createBehaviors.firstElement().create(genCode);
@@ -131,12 +131,12 @@ public class Virologist {
     public void applyAgent(Agent agent, Virologist affected) {
         if(agent==null){
             System.out.println("You don't own this agent.");
-            TestInOutHandler.appendToTestOutput("You don't own this agent.\n");
+            TestInOutHandler.appendToTestOutput("You don't own this agent.");
             return;
         }
         if(affected==null){
             System.out.println("You can't see that virologist.");
-            TestInOutHandler.appendToTestOutput("You can't see that virologist.\n");
+            TestInOutHandler.appendToTestOutput("You can't see that virologist.");
             return;
         }
         applyBehaviors.firstElement().apply(agent, affected);
@@ -150,7 +150,7 @@ public class Virologist {
     public void attack(Virologist victim){
         if(victim==null){
             System.out.println("You can't see that virologist.");
-            TestInOutHandler.appendToTestOutput("You can't see that virologist.\n");
+            TestInOutHandler.appendToTestOutput("You can't see that virologist.");
             return;
         }
         attackBehaviors.firstElement().attack(victim);
@@ -163,7 +163,7 @@ public class Virologist {
     public void destroy(Equipment equipment) {
         if(equipment==null){
             System.out.println("You don’t own this equipment.");
-            TestInOutHandler.appendToTestOutput("You don’t own this equipment.\n");
+            TestInOutHandler.appendToTestOutput("You don’t own this equipment.");
             return;
         }
         myProperties.remove(equipment);

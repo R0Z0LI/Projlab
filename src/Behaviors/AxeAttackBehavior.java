@@ -10,7 +10,7 @@ public class AxeAttackBehavior extends AttackBehavior{
     @Override
     public void attack( Virologist v){
         System.out.println(viro.getName()+" successfully used axe.");
-        TestInOutHandler.appendToTestOutput(viro.getName()+" successfully used axe.\n");
+        TestInOutHandler.appendToTestOutput(viro.getName()+" successfully used axe.");
         v.beKilled();
     }
 }

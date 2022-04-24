@@ -377,7 +377,7 @@ public class Game {
     public static void endGame(Virologist v) {
         gameRunning=false;
         System.out.println("A jatek veget ert.\tGyoztes: "+v.getName());
-        TestInOutHandler.appendToTestOutput("A jatek veget ert.\tGyoztes: "+v.getName()+"\n");
+        TestInOutHandler.appendToTestOutput("A jatek veget ert.\tGyoztes: "+v.getName());
     }
 
     public TestInOutHandler getHandler() { return handler; }

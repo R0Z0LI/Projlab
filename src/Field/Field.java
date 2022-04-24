@@ -118,7 +118,7 @@ public class Field {
         for(Field f: fields){
             if(f.getName().equals(fid)) {
                 System.out.println(f.toString());
-                TestInOutHandler.appendToTestOutput(f.toString()+"\n");
+                TestInOutHandler.appendToTestOutput(f.toString());
             }
 
         }
