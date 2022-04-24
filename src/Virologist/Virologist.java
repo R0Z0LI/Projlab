@@ -449,7 +449,7 @@ public class Virologist {
      * @param beh
      */
     public void add(AutomaticBehavior beh){
-        this.automaticBehaviors.add(beh);
+        this.automaticBehaviors.add(0, beh);
     }
 
     /**+

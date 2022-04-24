@@ -24,7 +24,7 @@ vir1
 0
 vir1
 who0
-fid0
+fid1
 who0
 vir2
 0
@@ -32,4 +32,4 @@ vir2
 axe0
 0
 vir2
-fid0
+fid1
