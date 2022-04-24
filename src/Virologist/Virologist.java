@@ -162,8 +162,8 @@ public class Virologist {
      */
     public void destroy(Equipment equipment) {
         if(equipment==null){
-            System.out.println("You don’t own this equipment.");
-            TestInOutHandler.appendToTestOutput("You don’t own this equipment.");
+            System.out.println("The virologist does not have that equipment.");
+            TestInOutHandler.appendToTestOutput("The virologist does not have that equipment.");
             return;
         }
         myProperties.remove(equipment);

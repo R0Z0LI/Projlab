@@ -25,7 +25,7 @@ public class TestInOutHandler {
      * @param output ezt kell hozzáfűzni
      */
     public static void appendToTestOutput(String output){
-      fullTestOutput= output.concat(fullTestOutput);
+      fullTestOutput+= output+"\n";
     }
 
     /**

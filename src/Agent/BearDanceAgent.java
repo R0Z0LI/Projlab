@@ -1,12 +1,15 @@
 package Agent;
 
 import Behaviors.BearBehavior;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class BearDanceAgent extends Agent {
     private static int id = 0;
 
-    // TODO constructor
+    public BearDanceAgent(){
+        name="baa"+id++;
+    }
 
     /**
      * Kitörli a megadott virológus verméből a medve viselkedést
@@ -21,6 +24,8 @@ public class BearDanceAgent extends Agent {
      * @param v virológus, akinek a verméhez hozzá kell adni a viselkedést.
      */
     public  void addBehavior(Virologist v) {
+        System.out.println(name+" successfully applied on "+v.getName());
+        TestInOutHandler.appendToTestOutput(name+" successfully applied on "+v.getName());
         v.add(new BearBehavior(v));
     }
 }

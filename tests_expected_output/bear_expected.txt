@@ -1,8 +1,8 @@
-vir1 stepped on lab1
-vir1 has been infected.
-vir1 stepped on who1
-vir1 tried to apply baa1 on vir2
-baa1 successfully applied on vir2
-vir2 destroyed aac1 material.
-vir3 stepped on who1.
-vir3 successfully used an axe1. vir2 died.
+vir0 stepped on lab0.
+
+vir0 used nothing for defense. Defense failed.
+baa0 successfully applied on vir0.
+
+vir2 stepped on who0.
+vir2 successfully used axe.
+vir1 died.

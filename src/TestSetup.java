@@ -74,5 +74,6 @@ public class TestSetup {
                 game.start("tests//komplex_testInit.txt");
                 break;
         }
+        game.getHandler().writeInFile();
     }
 }
