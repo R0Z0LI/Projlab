@@ -215,7 +215,8 @@ public class Game {
             if(!viro.equals("0")) {
                 // create and add virologist to the game
                 Virologist virologist = new Virologist(field);
-                virologists.add(virologist);
+                virologists.add(virologist); // adding it to the game
+                field.addVirologist(virologist); // adding it to the field
 
                 // materials in the inventory
                 String materials = scan.nextLine();
@@ -591,7 +592,7 @@ public class Game {
         // game loop
         while (gameRunning) {
             // 1 turn: goes through every virologist
-            for (int i = 1; i <= virologists.size() && allCommands.length > i * roundCounter; ++i) {
+            for (int i = 1; i <= virologists.size() && allCommands.length > i * roundCounter && gameRunning; ++i) {
                 virologists.get(i-1).setActionCounter(2); // every virologist starts with 2 actions
 
                 // TESTING - go through the commands
