@@ -1,25 +1,26 @@
 package TestSets;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
 //TODO ezt használni és beállítani a fájlneveket
 public class TestInOutHandler {
-    private  File outFile=new File("testout.txt");
-    private  File inFile=new File("testin.txt");
+    private  File outFile = new File("testout.txt");
+    private  File inFile = new File("testin.txt");
+
     /**
      * több példányt is létre lehet hozni, de mindegyik ezt a kimeneti fájlt fogja szerkeszteni
      */
-    private static String fullTestOutput= new String();
+    private static String fullTestOutput = new String();
 
     public void setOutputFile(String fileName){
         outFile = new File(fileName);
     }
     public void setInputFile(String fileName){ inFile = new File(fileName); }
 
-    /**+
+    /**
      * hozzáfűzi a kimeneti stringhez a megadott szöveget
      * @param output ezt kell hozzáfűzni
      */
@@ -27,7 +28,7 @@ public class TestInOutHandler {
       fullTestOutput= output.concat(fullTestOutput);
     }
 
-    /**+
+    /**
      * kiírja a tárolt stringet fájlba
      */
     public void writeInFile(){
@@ -41,7 +42,7 @@ public class TestInOutHandler {
         }
     }
 
-    /**+
+    /**
      * mindent beolvas az inputfile-ból
      * @return az inputfáj tartalma string-ként változatlanul
      */
@@ -59,6 +60,7 @@ public class TestInOutHandler {
         }
         return null;
     }
+
     //TODO legyen ilyen?
     public static void writeToConsole(){}
 }

@@ -29,17 +29,18 @@ public class Game {
         steppables.add(s);
     }
 
-    public void start() {
+    public void start(String path) {
         gameRunning = true;
         //initTest();
         //File file = new File("G:\\projlab\\Projlab\\initTest.txt");
         //readFromFile(file);
-        File file1 = new File("moveTest.txt");
+        File file1 = new File(path);
         readFromFile(file1);
         //File file2 = new File("G:\\projlab\\Projlab\\testin.txt");
         //readFromFile(file2);
         runGame();
     }
+
     public ArrayList<Virologist> getVirologists(){
         return virologists;
     }
@@ -600,5 +601,6 @@ public class Game {
         TestInOutHandler.appendToTestOutput("A jatek veget ert.\tGyoztes: "+v.getName()+"\n");
     }
 
+    public TestInOutHandler getHandler() { return handler; }
 
 }

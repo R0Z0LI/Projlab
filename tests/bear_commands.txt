@@ -1,0 +1,3 @@
+Move vir1 lab1
+Move vir3 who1
+Kill vir3 vir2

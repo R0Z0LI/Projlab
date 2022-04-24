@@ -1,0 +1,15 @@
+who1
+0
+aac1
+vir1
+ncd1 aac2 aac3 aac4 ncd2
+0
+0
+0
+vir1
+who1
+who2
+who1
+ncd3
+0
+who2
