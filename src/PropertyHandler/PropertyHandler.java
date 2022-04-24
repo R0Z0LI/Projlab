@@ -61,7 +61,9 @@ public class PropertyHandler {
     public void add(AminoAcid aminoAcid) {
         if (maxMaterial > aminoAcids.size()+nucleotids.size()) {
             aminoAcids.add(aminoAcid);
-        } else {
+        }
+        else{
+            System.out.println("There is not enough space in your inventory for "+aminoAcid.getName());
             TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+aminoAcid.getName()+"\n");
         }
     }
@@ -74,8 +76,6 @@ public class PropertyHandler {
     public void add(Nucleotid nucleotid) {
         if (maxMaterial > nucleotids.size()+aminoAcids.size()) {
             nucleotids.add(nucleotid);
-            System.out.println("Successful collect: "+ nucleotid.getName()+" collected by "+virologist.getName()+".");
-            TestInOutHandler.appendToTestOutput("Successful collect: "+ nucleotid.getName()+" collected by "+virologist.getName()+".\n");
         }
         else{
             System.out.println("There is not enough space in your inventory for "+nucleotid.getName());
@@ -92,8 +92,6 @@ public class PropertyHandler {
         if (maxEquipment > equipments.size()) {
             equipments.add(equipment);
             equipment.addBehaviour(virologist);
-            System.out.println("Successful collect: "+ equipment.getName()+" collected by "+virologist.getName()+".");
-            TestInOutHandler.appendToTestOutput("Successful collect: "+ equipment.getName()+" collected by "+virologist.getName()+".\n");
         }
         else{
             System.out.println("There is not enough space in your inventory for "+equipment.getName());
@@ -101,6 +99,7 @@ public class PropertyHandler {
         }
 
     }
+
     /**
      * Hozzáadja a paraméterként kapott ágenst a saját ágenseihez.
      *
@@ -132,6 +131,7 @@ public class PropertyHandler {
         }
 
     }
+
     /**
      * Eltávolítja a paraméterként kapott genetikai kódot a saját genetikai kódjaiból
      */
