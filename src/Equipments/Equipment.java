@@ -3,6 +3,7 @@ package Equipments;
 import Collectible.Collectible;
 import Field.Shelter;
 import PropertyHandler.PropertyHandler;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 /**
@@ -45,14 +46,12 @@ public abstract class Equipment implements Collectible {
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
+        // adding this to Virologist
+        propertyHandler.add(this);
         // only collect, if there is enough space in inventory
         if (propertyHandler.getEquipments().size() < propertyHandler.getMaxEquipment()) {
-            // adding this to Virologist
-            propertyHandler.add(this);
             // removing it from the shelter
             currPosition.remove(this);
-        } else {
-            System.out.println("\tThere is not enough space in your inventory.");
         }
     }
 

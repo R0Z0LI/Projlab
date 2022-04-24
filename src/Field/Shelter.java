@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * A menedéket reprezentáló osztály
  */
 public class Shelter extends Field{
-    private static int id = 1;
+    private static int id = 0;
     private ArrayList<Equipment> equipments = new ArrayList<>();
 
     /**

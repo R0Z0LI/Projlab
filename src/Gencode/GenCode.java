@@ -4,17 +4,17 @@ import Collectible.Collectible;
 import Field.Laboratory;
 import Agent.Agent;
 import PropertyHandler.PropertyHandler;
-
-import java.util.UUID;
+import TestSets.TestInOutHandler;
 
 /**
  * Gentikai kódot reprezentáló osztály.
  */
 public abstract class GenCode implements Collectible {
     protected Laboratory currentPosition;
+    protected int Uid;
 
     protected static int id = 0; // 2 gencodes id can NOT be the same
-    public int getUid(){return id;}
+    public int getUid(){return Uid;}
 
     protected String name;
     // needed materials for the agent creation

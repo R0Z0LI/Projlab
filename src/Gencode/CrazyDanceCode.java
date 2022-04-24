@@ -18,6 +18,7 @@ public class CrazyDanceCode extends GenCode{
     public CrazyDanceCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "cdc" + id++;
+        Uid=1;
     }
 
     /**

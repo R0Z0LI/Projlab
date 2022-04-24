@@ -3,6 +3,7 @@ package Materials;
 import Collectible.Collectible;
 import Field.Warehouse;
 import PropertyHandler.PropertyHandler;
+import TestSets.TestInOutHandler;
 
 /**
  * A nukleotid-ot reprezentáló osztály
@@ -40,14 +41,13 @@ public class Nucleotid implements Collectible {
      */
     @Override
     public void beCollected(PropertyHandler propertyHandler) {
+        // adding this to Virologist
+        propertyHandler.add(this);
         // only collect, if there is enough space in inventory
         if (propertyHandler.getAminoAcids().size() + propertyHandler.getNucleotids().size() < propertyHandler.getMaxMaterial()) {
-            // adding this to Virologist
-            propertyHandler.add(this);
+
             // removing it from the warehouse
             currPosition.remove(this);
-        } else {
-            System.out.println("\tThere is not enough space in your inventory.");
         }
     }
 
