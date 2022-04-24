@@ -1,0 +1,10 @@
+axe0 successfully removed from vir0.
+The virologist does not have that equipment.
+fid0
+vir0
+0
+0
+sck0
+0
+vir0
+fid0
