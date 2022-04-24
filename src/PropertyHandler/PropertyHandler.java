@@ -191,8 +191,30 @@ public class PropertyHandler {
         }
     }
     public String toString(){
-        String things= new String();
-        return "viro cuccai";
+        String eqips= "";
+        String material="";
+        String codes="";
+        String agen="";
+        for(Agent a: agents)
+            agen+=a.getName();
+        if(agen.equals(""))
+            agen="0";
+        for(GenCode g: genCodes.values())
+            codes+=g.getName();
+        if(codes.equals(""))
+            codes="0";
+        for(AminoAcid a: aminoAcids)
+            material+=a.getName();
+        for(Nucleotid n: nucleotids)
+            material+=n.getName();
+        if(material.equals(""))
+            material="0";
+        for(Equipment e: equipments)
+            eqips+=e.getName();
+        if(eqips.equals(""))
+            eqips="0";
+
+        return material+"\n"+agen+"\n"+eqips+"\n"+codes;
     }
 
     /**

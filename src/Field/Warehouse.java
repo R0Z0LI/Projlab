@@ -1,7 +1,9 @@
 package Field;
 
 import Collectible.Collectible;
+import Gencode.GenCode;
 import Materials.*;
+import Virologist.Virologist;
 
 import java.util.ArrayList;
 
@@ -95,5 +97,27 @@ public class Warehouse extends Field {
      */
     public ArrayList<Nucleotid> getNucleotids() {
         return nucleotids;
+    }
+    public String toString() {
+        String name = this.name;
+        String neighbours = "";
+        for (Field neighbour : this.neighbours) {
+            neighbours += neighbour.name + " ";
+        }
+        if(neighbours.equals(""))
+            neighbours="0";
+        String viros= "";
+        for(Virologist v : virologists)
+            viros+=v.toString();
+        if(viros.equals(""))
+            viros="0";
+        String things = "";
+        for(AminoAcid a: aminoAcids)
+            things+=a.getName()+" ";
+        for(Nucleotid n: nucleotids)
+            things+=n.getName()+" ";
+        if(things.equals(""))
+            things="0";
+        return name + "\n" + neighbours+"\n"+things + "\n"+ viros+"\n"+name+"\n";
     }
 }

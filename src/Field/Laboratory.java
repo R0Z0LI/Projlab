@@ -3,6 +3,8 @@ package Field;
 import Agent.BearDanceAgent;
 import Collectible.Collectible;
 import Gencode.GenCode;
+import Materials.AminoAcid;
+import Materials.Nucleotid;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
@@ -49,6 +51,28 @@ public class Laboratory extends Field {
     }
     public void add(BearDanceAgent agent){
         bearAgent=agent;
+    }
+    public String toString() {
+        String name = this.name;
+        String neighbours = "";
+        for (Field neighbour : this.neighbours) {
+            neighbours += neighbour.name + " ";
+        }
+        if(neighbours.equals(""))
+            neighbours="0";
+        String viros= "";
+        for(Virologist v : virologists)
+            viros+=v.toString();
+        if(viros.equals(""))
+            viros="0";
+        String things = "";
+        for(GenCode g: genCodes)
+            things+=g.getName()+" ";
+        if(bearAgent!=null)
+            things+="\n"+bearAgent.getName();
+        if(things.equals(""))
+            things="0";
+        return name + "\n" + neighbours+"\n"+things + "\n"+ viros+"\n"+name+"\n";
     }
 
     // TODO this should still work as intended, but will leave this here just in case
