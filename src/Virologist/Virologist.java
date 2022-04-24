@@ -361,10 +361,11 @@ public class Virologist {
                 case "Throw":
                     //megkeresi, hogy mit kell eldobni
                     Equipment equipment=null;
-                    for(Equipment e: myProperties.getEquipments())
+                    for(Equipment e: myProperties.getEquipments()){
                         if(e.getName().equals(command[2])){
                             equipment=e;
                         }
+                    }
                     destroy(equipment);
                     break;
                 case "List":
