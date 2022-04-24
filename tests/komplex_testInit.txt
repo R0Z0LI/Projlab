@@ -1,4 +1,3 @@
-Move + Collect + Throw
 fid0
 0
 vir0

@@ -69,7 +69,9 @@ public class TestSetup {
                 game.start("tests//bear_testInit.txt");
                 break;
             case "10":  // Move + Collect + Throw
-                // TODO ezt a tesztet még meg kell csinálni
+                game.getHandler().setInputFile("tests//komplex_commands.txt");
+                game.getHandler().setOutputFile("tests_output//komplex_testInit.txt");
+                game.start("tests//komplex_testInit.txt");
                 break;
 
         }
