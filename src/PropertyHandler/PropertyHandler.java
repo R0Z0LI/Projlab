@@ -61,8 +61,7 @@ public class PropertyHandler {
     public void add(AminoAcid aminoAcid) {
         if (maxMaterial > aminoAcids.size()+nucleotids.size()) {
             aminoAcids.add(aminoAcid);
-        }
-        else{
+        } else {
             System.out.println("There is not enough space in your inventory for "+aminoAcid.getName());
             TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for "+aminoAcid.getName()+"\n");
         }

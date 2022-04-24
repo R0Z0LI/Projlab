@@ -3,6 +3,7 @@ package Materials;
 import Collectible.Collectible;
 import Field.Warehouse;
 import PropertyHandler.PropertyHandler;
+import TestSets.TestInOutHandler;
 
 /**
  * A nukleotid-ot reprezentáló osztály
@@ -47,7 +48,7 @@ public class Nucleotid implements Collectible {
             // removing it from the warehouse
             currPosition.remove(this);
         } else {
-            System.out.println("\tThere is not enough space in your inventory.");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for " + this.name);
         }
     }
 

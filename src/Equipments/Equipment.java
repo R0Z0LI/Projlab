@@ -3,6 +3,7 @@ package Equipments;
 import Collectible.Collectible;
 import Field.Shelter;
 import PropertyHandler.PropertyHandler;
+import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 /**
@@ -52,7 +53,7 @@ public abstract class Equipment implements Collectible {
             // removing it from the shelter
             currPosition.remove(this);
         } else {
-            System.out.println("\tThere is not enough space in your inventory.");
+            TestInOutHandler.appendToTestOutput("There is not enough space in your inventory for " + this.name);
         }
     }
 

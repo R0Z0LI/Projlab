@@ -84,11 +84,6 @@ public class Game {
                         for (int i = 0; i < split.length; i++) {
                             String parameter = split[i];
                             checkAndAddNeighbors(parameter, laboratory);
-                            /*for(Field field : fields){
-                                if(field.getName().equals(parameter)){
-                                    laboratory.addNeighbour(field);
-                                }
-                            }*/
                         }
                     }
 
@@ -190,13 +185,7 @@ public class Game {
             for(Field f: fields){
                 System.out.println(f.toString()+"\n");
             }
-           /* System.out.println("field0 name: " + fields.get(0).getName() + "\nfield1 name: " + fields.get(1).getName() + "\nfield2 name: " + fields.get(0).getName() + "\nfield3 name: " + fields.get(1).getName()
-                    + "\nfield1 neighbor1: " + fields.get(0).getNeighbours().get(0).getName()
-                    + "\nfield1 neighbor2: " + fields.get(1).getNeighbours().get(0).getName()
-                    //+ "\nfield1 neighbor3: " + fields.get(1).getNeighbours().get(0).getName()
-                    + "\nvirologist0 name: " + virologists.get(0).getName() + "\nvirologist0 equipment's name: ");
 
-            */
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -599,8 +588,6 @@ public class Game {
                 while (virologists.get(i-1).getActionCounter() > 0 && allCommands.length > currentCommandNum) {//for(int j = 0; j < allCommands.length; ++j) {
                     // the current command
                     String[] currCommand = allCommands[currentCommandNum].split(" ");
-
-                    System.out.println("ActionNum:" + virologists.get(i-1).getActionCounter() +  " " + "Used command:" + allCommands[currentCommandNum]); // DELETE
 
                     // go through the virologists to find the one that has to the command
                     if (virologists.get(i - 1).getActionCounter() > 0 && currCommand[1].equals(virologists.get(i - 1).getName())) {
