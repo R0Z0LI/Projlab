@@ -196,21 +196,21 @@ public class PropertyHandler {
         String codes="";
         String agen="";
         for(Agent a: agents)
-            agen+=a.getName();
+            agen+=a.getName()+" ";
         if(agen.equals(""))
             agen="0";
         for(GenCode g: genCodes.values())
-            codes+=g.getName();
+            codes+=g.getName()+" ";
         if(codes.equals(""))
             codes="0";
         for(AminoAcid a: aminoAcids)
-            material+=a.getName();
+            material+=a.getName()+" ";
         for(Nucleotid n: nucleotids)
-            material+=n.getName();
+            material+=n.getName()+" ";
         if(material.equals(""))
             material="0";
         for(Equipment e: equipments)
-            eqips+=e.getName();
+            eqips+=e.getName()+" ";
         if(eqips.equals(""))
             eqips="0";
 
