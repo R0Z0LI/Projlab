@@ -8,7 +8,7 @@ glv0
 vir0
 fid0
 who0
-fid0
+fid1
 aac0
 0
 who0
@@ -18,6 +18,6 @@ sck0
 0
 shl0
 fid1
-shl0
+who0
 0
 fid1
