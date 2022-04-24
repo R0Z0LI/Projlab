@@ -368,13 +368,19 @@ public class Virologist {
                         }
                     destroy(equipment);
                     break;
-                // TODO - LIST COMMAND
+                case "List":
+                    toString();
+                    break;
             }
             actionCounter--;
         }
     }
 
     public int getActionCounter() { return actionCounter; }
+    public String toString(){
+        String v= new String();
+        return "viro neve"+myProperties.toString();
+    }
 
     /**
      * A DefenseBeh első elemétől függően meghívja az DefenseBehavior objekt leszármazottjának
@@ -441,7 +447,7 @@ public class Virologist {
      * @param beh Ezt az elemet adja hozzá
      */
     public void add(ApplyBehavior beh) {
-        this.applyBehaviors.add(beh);
+        this.applyBehaviors.add(0,beh);
     }
 
     /**+
@@ -449,7 +455,7 @@ public class Virologist {
      * @param beh
      */
     public void add(AutomaticBehavior beh){
-        this.automaticBehaviors.add(beh);
+        this.automaticBehaviors.add(0,beh);
     }
 
     /**+
@@ -457,7 +463,7 @@ public class Virologist {
      * @param beh
      */
     public void add(AttackBehavior beh){
-        this.attackBehaviors.add(beh);
+        this.attackBehaviors.add(0,beh);
     }
     /**
      * defenseBeh settere
@@ -476,7 +482,7 @@ public class Virologist {
      * @param beh Ezt az elemet adja hozzá
      */
     public void add(StealBehavior beh) {
-        this.stealBehaviors.add(beh);
+        this.stealBehaviors.add(0,beh);
     }
 
     /**
@@ -485,7 +491,7 @@ public class Virologist {
      * @param beh Ezt az elemet adja hozzá
      */
     public void add(CollectBehavior beh) {
-        this.collectBehaviors.add(beh);
+        this.collectBehaviors.add(0,beh);
     }
 
     /**
@@ -494,7 +500,7 @@ public class Virologist {
      * @param beh Ezt az elemet adja hozzá
      */
     public void add(CreateBehavior beh) {
-        this.createBehaviors.add(beh);
+        this.createBehaviors.add(0,beh);
     }
 
     /**
@@ -503,7 +509,7 @@ public class Virologist {
      * @param beh Ezt az elemet adja hozzá
      */
     public void add(MovementBehavior beh) {
-        this.movementBehaviors.add(beh);
+        this.movementBehaviors.add(0,beh);
     }
     //TODO kell-e még most is
     /**

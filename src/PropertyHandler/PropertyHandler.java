@@ -174,6 +174,9 @@ public class PropertyHandler {
     public void remove(Equipment equipment) {
         if (equipments.size() != 0) {
             equipments.remove(equipment);
+            equipment.removeBehavior(virologist);
+            System.out.println(equipment.getName()+" successfully removed from "+virologist.getName()+".");
+            TestInOutHandler.appendToTestOutput(equipment.getName()+" successfully removed from "+virologist.getName()+".\n");
         }
     }
 
@@ -186,6 +189,10 @@ public class PropertyHandler {
         if (agents.size() != 0) {
             agents.remove(agent);
         }
+    }
+    public String toString(){
+        String things= new String();
+        return "viro cuccai";
     }
 
     /**
