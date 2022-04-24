@@ -1,0 +1,24 @@
+Move + Collect + Throw
+fid0
+0
+vir0
+0
+0
+glv0
+0
+vir0
+fid0
+who0
+fid0
+aac0
+0
+who0
+shl0
+who0
+sck0
+0
+shl0
+fid1
+shl0
+0
+fid1
