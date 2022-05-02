@@ -80,8 +80,8 @@ public class Menu extends JPanel implements ActionListener {
      * Starts a game
      */
     private void startButtonPressed() {
-        //Game game = new Game();
-        //game.start("src//defaultMap.txt");
+        Game game = new Game();
+        game.start("src//defaultMap.txt");
     }
 
     /**
