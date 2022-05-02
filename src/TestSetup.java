@@ -23,54 +23,54 @@ public class TestSetup {
         Game game = new Game();
         switch (sc.next()) {
             case "1":   // Move Virologist
-                game.getHandler().setInputFile("tests//move_commands.txt");
-                game.getHandler().setOutputFile("tests_output//move.txt");
-                game.start("tests//move_testInit.txt");
+                game.getHandler().setInputFile("src//tests//move_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//move.txt");
+                game.start("src//tests//move_testInit.txt");
                 break;
             case "2":   // Collect Materials
-                game.getHandler().setInputFile("tests//collectMaterials_commands.txt");
-                game.getHandler().setOutputFile("tests_output//collectMaterials.txt");
-                game.start("tests//collectMaterials_testInit.txt");
+                game.getHandler().setInputFile("src//tests//collectMaterials_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//collectMaterials.txt");
+                game.start("src//tests//collectMaterials_testInit.txt");
                 break;
             case "3":   // Collect Equipments
-                game.getHandler().setInputFile("tests//collectEquipments_commands.txt");
-                game.getHandler().setOutputFile("tests_output//collectEquipments.txt");
-                game.start("tests//collectEquipments_testInit.txt");
+                game.getHandler().setInputFile("src//tests//collectEquipments_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//collectEquipments.txt");
+                game.start("src//tests//collectEquipments_testInit.txt");
                 break;
             case "4":   // Collect Gencode and win the game
-                game.getHandler().setInputFile("tests//collectGenCodeWin_commands.txt");
-                game.getHandler().setOutputFile("tests_output//collectGenCodeWin.txt");
-                game.start("tests//collectGenCodeWin_testInit.txt");
+                game.getHandler().setInputFile("src//tests//collectGenCodeWin_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//collectGenCodeWin.txt");
+                game.start("src//tests//collectGenCodeWin_testInit.txt");
                 break;
             case "5":   // Create an agent
-                game.getHandler().setInputFile("tests//create_commands.txt");
-                game.getHandler().setOutputFile("tests_output//create.txt");
-                game.start("tests//create_testInit.txt");
+                game.getHandler().setInputFile("src//tests//create_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//create.txt");
+                game.start("src//tests//create_testInit.txt");
                 break;
             case "6":   // Throw equipment
-                game.getHandler().setInputFile("tests//throw_commands.txt");
-                game.getHandler().setOutputFile("tests_output//throw.txt");
-                game.start("tests//throw_testInit.txt");
+                game.getHandler().setInputFile("src//tests//throw_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//throw.txt");
+                game.start("src//tests//throw_testInit.txt");
                 break;
             case "7":   // Steal something
-                game.getHandler().setInputFile("tests//steal_commands.txt");
-                game.getHandler().setOutputFile("tests_output//steal.txt");
-                game.start("tests//steal_testInit.txt");
+                game.getHandler().setInputFile("src//tests//steal_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//steal.txt");
+                game.start("src//tests//steal_testInit.txt");
                 break;
             case "8":   // Apply an agent
-                game.getHandler().setInputFile("tests//apply_commands.txt");
-                game.getHandler().setOutputFile("tests_output//apply.txt");
-                game.start("tests//apply_testInit.txt");
+                game.getHandler().setInputFile("src//tests//apply_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//apply.txt");
+                game.start("src//tests//apply_testInit.txt");
                 break;
             case "9":   // Bear Test
-                game.getHandler().setInputFile("tests//bear_commands.txt");
-                game.getHandler().setOutputFile("tests_output//bear.txt");
-                game.start("tests//bear_testInit.txt");
+                game.getHandler().setInputFile("src//tests//bear_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//bear.txt");
+                game.start("src//tests//bear_testInit.txt");
                 break;
             case "10":  // Move + Collect + Throw
-                game.getHandler().setInputFile("tests//komplex_commands.txt");
-                game.getHandler().setOutputFile("tests_output//komplex.txt");
-                game.start("tests//komplex_testInit.txt");
+                game.getHandler().setInputFile("src//tests//komplex_commands.txt");
+                game.getHandler().setOutputFile("src//tests_output//komplex.txt");
+                game.start("src//tests//komplex_testInit.txt");
                 break;
         }
         game.getHandler().writeInFile();

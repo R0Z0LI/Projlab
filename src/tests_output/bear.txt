@@ -1,0 +1,6 @@
+vir0 stepped on lab0
+vir0 used nothing for defense. Defense failed.
+baa0 successfully applied on vir0
+vir2 stepped on who0
+vir2 successfully used axe.
+vir1 died.
