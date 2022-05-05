@@ -26,7 +26,7 @@ public class Menu extends JPanel implements ActionListener {
         virologistNum = 2;
         names.add(new JTextField("Bob"));
         names.add(new JTextField("John"));
-        numberLabel = new JLabel("2");
+        numberLabel = new JLabel(String.valueOf(virologistNum));
         file = new JTextField("defaultMap.txt");
         startButton = new JButton("Start");
         addButton = new JButton("^");
@@ -90,6 +90,7 @@ public class Menu extends JPanel implements ActionListener {
     private void addButtonPressed() {
         virologistNum++;
         names.add(new JTextField("Lajos" + virologistNum));
+        updateVirologistNum();
         drawVirologistNames();
     }
 
@@ -99,9 +100,19 @@ public class Menu extends JPanel implements ActionListener {
     private void removeButtonPressed() {
         if (virologistNum > 2) {
             virologistNum--;
-            this.add(names.remove(virologistNum - 1));
+            removeDrawnVirologistNames();
+            names.remove(virologistNum);
             drawVirologistNames();
+            updateVirologistNum();
         }
+    }
+
+
+    private void removeDrawnVirologistNames(){
+        for(int i = 0; i < virologistNum + 1; i++){
+            this.remove(names.get(i));
+        }
+        this.updateUI();
     }
 
     /**
@@ -109,11 +120,16 @@ public class Menu extends JPanel implements ActionListener {
      */
     private void drawVirologistNames() {
         GridBagConstraints c = new GridBagConstraints();
+
         c.gridx = 4;
         for (int i = 0; i < virologistNum; i++) {
             c.gridy = i;
             this.add(names.get(i), c);
         }
         this.updateUI();
+    }
+
+    private void updateVirologistNum(){
+        numberLabel.setText(String.valueOf(virologistNum));
     }
 }
