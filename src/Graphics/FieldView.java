@@ -5,7 +5,7 @@ import Virologist.Virologist;
 
 import javax.swing.*;
 
-public class FieldView {
+public class FieldView extends JPanel{
     private Field myField;
 
     public void setActiveVirologist(Virologist v) {}

@@ -36,7 +36,7 @@ public class Game {
     /**
      * futtatja a játékot, sorban meghívja a virológusok yourTurn függvényét a fájl input paraméterekkel
      */
-    public void runGame(){
+    public void runGame(int test){
         gameRunning = true;
         int roundCounter = 0;
         int currentCommandNum = 0;
@@ -82,6 +82,9 @@ public class Game {
             stepSteppabbles();
             roundCounter++;
         }
+    }
+    public void runGame(){
+        //TODO
     }
 
     public static void removeVirologist(Virologist v){virologists.remove(v);}

@@ -8,12 +8,13 @@ public class GameFrame extends JFrame {
     private CommandView actualCommandView;
     private PropertyHandlerView actualPropertyHandlerView;
     private EndGameView actualEndGameView;
+    private static GameFrame theGameFrame;
 
     /**
      * GameFrame constructor
      * Starts with a simple menu.
      */
-    public GameFrame() {
+    private GameFrame() {
         super("Virologist Jam");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(500, 500);
@@ -22,6 +23,15 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * this is the singelton object of GameFrame, available from everywhere
+     * @return theGameFrame of this game
+     */
+    public static GameFrame Instance(){
+        theGameFrame=new GameFrame();
+        return theGameFrame;
+    }
+    //TO DO ezeket meg is kell jeleníteni
     public void setView(FieldView fv) { actualFieldView = fv; }
     public void setView(CommandView cv) { actualCommandView = cv; }
     public void setView(PropertyHandlerView phv) { actualPropertyHandlerView = phv; }
