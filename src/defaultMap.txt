@@ -42,12 +42,12 @@ who1 fid0 fid1
 fid3
 who2
 fid3 fid1
-cpe0
+aac
 0
 who2
 lab1
 who2 shl0
-cda1
+amc1
 0
 0
 lab1
@@ -55,3 +55,23 @@ fid4
 lab1 fid2
 0
 fid4
+shl2
+fid2 fid4
+sck0
+0
+shl2
+lab2
+shl2 fid2
+amc3
+0
+0
+lab2
+fid5
+lab2
+0
+fid5
+shl3
+fid2 lab2 fid5 who1
+cpe0
+0
+shl3

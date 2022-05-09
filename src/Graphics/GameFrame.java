@@ -14,7 +14,7 @@ public class GameFrame extends JFrame {
      * GameFrame constructor
      * Starts with a simple menu.
      */
-    private GameFrame() {
+    public GameFrame() {
         super("Virologist Jam");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(500, 500);
