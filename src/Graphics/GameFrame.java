@@ -1,6 +1,7 @@
 package Graphics;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GameFrame extends JFrame {
     private Menu startMenu;
@@ -31,13 +32,17 @@ public class GameFrame extends JFrame {
         theGameFrame=new GameFrame();
         return theGameFrame;
     }
-    //TO DO ezeket meg is kell jeleníteni
+
     public void setView(FieldView fv) { actualFieldView = fv; }
     public void setView(CommandView cv) { actualCommandView = cv; }
     public void setView(PropertyHandlerView phv) { actualPropertyHandlerView = phv; }
     public void setView(EndGameView egv) { actualEndGameView = egv; }
 
-    public void displayGameView() {}
+    public void displayGameView() {
+        this.remove(startMenu);
+        this.add(actualCommandView, BorderLayout.EAST);
+
+    }
     public void displayEndGame() {}
 
 }
