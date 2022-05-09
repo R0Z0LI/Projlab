@@ -1,18 +1,57 @@
 fid0
 0
-vir0
 0
-0
-0
-0
-vir0
 fid0
 fid1
 fid0
-vir1
 0
-0
-0
-0
-vir1
 fid1
+lab0
+fid1
+pac0
+0
+0
+lab0
+shl0
+lab0
+glv0
+0
+shl0
+who0
+lab0 shl0
+aac
+0
+who0
+fid2
+who0
+0
+fid2
+shl1
+fid2 who1 lab0
+axe0
+0
+shl1
+who1
+shl1 lab0 fid1
+ncd
+0
+who1
+fid3
+who1 fid0 fid1
+0
+fid3
+who2
+fid3 fid1
+cpe0
+0
+who2
+lab1
+who2 shl0
+cda1
+0
+0
+lab1
+fid4
+lab1 fid2
+0
+fid4
