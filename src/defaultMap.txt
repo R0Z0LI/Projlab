@@ -27,7 +27,7 @@ who0
 0
 fid2
 shl1
-fid2 who1 lab0
+fid2 who0 lab0
 axe0
 0
 shl1
@@ -87,6 +87,7 @@ fid6
 lab3
 shl1 who1 fid6
 cdc
+0
 0
 lab3
 fid7
