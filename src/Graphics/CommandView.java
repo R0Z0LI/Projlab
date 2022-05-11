@@ -49,9 +49,8 @@ public class CommandView extends JPanel implements ActionListener {
      */
     public void update(){
         this.removeAll();
-        //asking for info about viro
         //fieldinfo
-       /* Field field = myVirologist.getCurrentField();
+        Field field = myVirologist.getCurrentField();
         fieldName.setText(field.getName());
 
         //display labels
@@ -82,12 +81,12 @@ public class CommandView extends JPanel implements ActionListener {
         //displaying collectible thing
         if(coll!=null)
             innerPanel.add(thing);
-        this.add(innerPanel);*/
-        this.add(new JLabel("itt vagyok"));
+        this.add(innerPanel);
     }
 
     public void activateView(){
-        GameFrame.Instance().setView(this);
+        GameFrame w= GameFrame.Instance();
+        w.setView(this);
     }
     private void virologistChosen(Virologist v){
         //chosen viro

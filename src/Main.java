@@ -10,7 +10,8 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         GameFrame.Init();
-       // GameFrame window = GameFrame.Instance();
+        GameFrame window = GameFrame.Instance();
+        window.displayStartGame();
     }
 
 }
