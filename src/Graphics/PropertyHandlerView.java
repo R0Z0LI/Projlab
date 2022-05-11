@@ -2,6 +2,8 @@ package Graphics;
 
 import PropertyHandler.PropertyHandler;
 
-public class PropertyHandlerView {
+import javax.swing.*;
+
+public class PropertyHandlerView extends JPanel {
     private PropertyHandler myPropertyHandler;
 }

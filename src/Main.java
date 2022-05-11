@@ -1,13 +1,16 @@
 import Agent.*;
+import Field.Field;
 import Graphics.FieldView;
-import Graphics.GameFrame;
+import Graphics.*;
+import Virologist.Virologist;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        GameFrame window = GameFrame.Instance();
+        GameFrame.Init();
+       // GameFrame window = GameFrame.Instance();
     }
 
 }

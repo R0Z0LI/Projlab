@@ -51,53 +51,85 @@ public class CommandView extends JPanel implements ActionListener {
         this.removeAll();
         //asking for info about viro
         //fieldinfo
-        Field field = myVirologist.getCurrentField();
+       /* Field field = myVirologist.getCurrentField();
         fieldName.setText(field.getName());
-        //otherviros info
-        List<Virologist> viros=field.GetTouchableVirologists();
+
+        //display labels
         JPanel innerPanel = new JPanel();
-        innerPanel.setLayout(new GridLayout(10,2,30,50));
-        int i=5;
+        innerPanel.setLayout(new GridLayout(0,2,30,50));
+        innerPanel.add(new JLabel("Field:"));
+        innerPanel.add(fieldName);
+        innerPanel.add(new JLabel("Vir:"),2);
+        //otherviros info + display viro buttons
+        int i=0;
+        List<Virologist> viros=field.GetTouchableVirologists();
         for(Virologist v :viros){
             JButton vButton=new JButton(v.getName());
             virButtons.put(vButton, v);
-            innerPanel.add(vButton, i++);
+            innerPanel.add(vButton);
+            ++i;
         }
+        //ez csak kitoltes
+        if(i%2 ==0) innerPanel.add(new JLabel());
+        innerPanel.add(new JLabel("Thing:"));
         //collectible info
         Collectible coll=field.getCollectible();
-        JButton thing = new JButton(coll.getName());
-        thingButtons.put(thing, coll);
-        //displaying everything
-        innerPanel.add(fieldName,1);
-        innerPanel.add(new JLabel("Vir:"),3);
-        if(i%2 ==1) i++;
-        innerPanel.add(new JLabel("Thing:"),i);
-        innerPanel.add(thing,++i );
+        JButton thing=null;
+        if(coll!=null) {
+            thing = new JButton(coll.getName());
+            thingButtons.put(thing, coll);
+        }
+        //displaying collectible thing
+        if(coll!=null)
+            innerPanel.add(thing);
+        this.add(innerPanel);*/
+        this.add(new JLabel("itt vagyok"));
+    }
 
+    public void activateView(){
+        GameFrame.Instance().setView(this);
     }
     private void virologistChosen(Virologist v){
+        //chosen viro
         chosenVirologist=v;
         chosenViroName.setText(v.getName());
+        //agents
         agentChooser=new JComboBox<>();
         List<Agent> agents= myVirologist.getPropertyHandler().getAgents();
         for(Agent a : agents){
             agentChooser.addItem(a.getName());
         }
+        //stealables
         stealableChooser=new JComboBox<>();
         List<Collectible> stealables=myVirologist.getStealableThings();
         for(Collectible c: stealables){
             stealableChooser.addItem(c.getName());
         }
+        //layout
         JPanel innerPanel = new JPanel();
-        innerPanel.setLayout(new GridLayout(5,2,30,50));
-        innerPanel.add(chosenViroName,1);
+        innerPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        innerPanel.add(chosenViroName,c);
+        c.gridx=0;
+        c.gridy=1;
         innerPanel.add(applyButton,3);
+        c.gridx=0;
+        c.gridy=2;
         innerPanel.add(stealButton,5);
+        c.gridx=0;
+        c.gridy=3;
         innerPanel.add(attackButton,7);
+        c.gridx=1;
+        c.gridy=1;
         innerPanel.add(agentChooser,4);
+        c.gridx=1;
+        c.gridy=2;
         innerPanel.add(stealableChooser,6);
+        c.gridx=0;
+        c.gridy=4;
         innerPanel.add(backButton,9);
-        this.add(innerPanel, BorderLayout.CENTER);
+        this.add(innerPanel);
     }
     public void actionPerformed(ActionEvent e){
         if (e.getSource().equals(attackButton)) {

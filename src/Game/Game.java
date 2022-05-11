@@ -1,6 +1,10 @@
 package Game;
 
 import Field.*;
+import Graphics.CommandView;
+import Graphics.FieldView;
+import Graphics.GameFrame;
+import Graphics.PropertyHandlerView;
 import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
@@ -84,6 +88,12 @@ public class Game {
         }
     }
     public void runGame(){
+        GameFrame window = GameFrame.Instance();
+        CommandView cv=new CommandView(new Virologist(new Field()));
+        cv.activateView();
+        window.setView(new PropertyHandlerView());
+        window.setView(new FieldView());
+        window.displayGameView();
         //TODO
     }
 

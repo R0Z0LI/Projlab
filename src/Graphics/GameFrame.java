@@ -16,12 +16,15 @@ public class GameFrame extends JFrame {
      * Starts with a simple menu.
      */
     private GameFrame() {
-        super("Virologist Jam");
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setSize(500, 500);
+       super("Virologist Jam");
+       this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+       this.setSize(500, 500);
         startMenu = new Menu();
         this.add(startMenu);
         this.setVisible(true);
+    }
+    public static void Init(){
+        theGameFrame=new GameFrame();
     }
 
     /**
@@ -29,7 +32,6 @@ public class GameFrame extends JFrame {
      * @return theGameFrame of this game
      */
     public static GameFrame Instance(){
-        theGameFrame=new GameFrame();
         return theGameFrame;
     }
 
@@ -39,10 +41,28 @@ public class GameFrame extends JFrame {
     public void setView(EndGameView egv) { actualEndGameView = egv; }
 
     public void displayGameView() {
-        this.remove(startMenu);
-        this.add(actualCommandView, BorderLayout.EAST);
-
+        this.removeAll();
+        /*this.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridheight=2;
+        this.add(actualFieldView, c);
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 0.5;
+        c.gridx = 1;
+        c.gridy = 0;
+        this.add(actualPropertyHandlerView, c);
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 0.5;
+        c.gridx = 1;
+        c.gridy = 1;*/
+        this.add(actualCommandView, BorderLayout.CENTER);
+        this.setVisible(true);
     }
     public void displayEndGame() {}
+
 
 }
