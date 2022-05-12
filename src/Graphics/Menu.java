@@ -14,7 +14,7 @@ public class Menu extends JPanel implements ActionListener {
     JButton addButton, removeButton;
     JLabel numberLabel;
     ArrayList<JTextField> names = new ArrayList<>();
-    JTextField file;
+    JTextField fileTextField;
 
     /**
      * Menu constructor
@@ -27,7 +27,7 @@ public class Menu extends JPanel implements ActionListener {
         names.add(new JTextField("Bob"));
         names.add(new JTextField("John"));
         numberLabel = new JLabel(String.valueOf(virologistNum));
-        file = new JTextField("defaultMap.txt");
+        fileTextField = new JTextField("defaultMap.txt");
         startButton = new JButton("Start");
         addButton = new JButton("^");
         removeButton = new JButton("v");
@@ -51,7 +51,7 @@ public class Menu extends JPanel implements ActionListener {
 
         c.gridy = 7;
         c.gridx = 0;
-        this.add(file, c);
+        this.add(fileTextField, c);
 
         drawVirologistNames();
 
@@ -81,7 +81,14 @@ public class Menu extends JPanel implements ActionListener {
      */
     private void startButtonPressed() {
         Game game = new Game();
-        game.start("src//defaultMap.txt");
+        String path = fileTextField.getText();
+        //most teszt miatt átírva fixre
+        path="src//defaultMap.txt";
+        ArrayList<String> viroNames=new ArrayList<>();
+        for(JTextField nameFields: names){
+            viroNames.add(nameFields.getText());
+        }
+        game.start(path,viroNames);
     }
 
     /**

@@ -25,15 +25,21 @@ public class Game {
     private void gameInit(String filePath) {
         MapInitiater mapIn = new MapInitiater(this);
         mapIn.readFromFile(new File(filePath));
-        // TODO putting down virologists on random fields
+        //putting down virologists on random fields
+        mapIn.putVirosOnFields(virologists);
     }
 
     /**
      * Initializes the map, and starts the game.
      * @param path path to the file that contains the map initialization
      */
-    public void start(String path) {
+    public void start(String path, ArrayList<String> viroNames) {
+        //creating the player viros
+        for(String name : viroNames){
+            virologists.add(new Virologist(name));  //valamiért üres marad...
+        }
         gameInit(path); // reading from a file and initializing a map
+        gameRunning=true;
         runGame(); // start running the game
     }
 
@@ -88,13 +94,21 @@ public class Game {
         }
     }
     public void runGame(){
+        /*teszt
         GameFrame window = GameFrame.Instance();
-        CommandView cv=new CommandView(new Virologist(new Field()));
+        CommandView cv=new CommandView(new Virologist("Alice"));
         cv.activateView();
         window.setView(new PropertyHandlerView());
         window.setView(new FieldView());
         window.displayGameView();
+        */
         //TODO
+        while(gameRunning){
+            for (Virologist activeViro: virologists) {
+                activeViro.yourTurn();
+            }
+            stepSteppabbles();
+        }
     }
 
     public static void removeVirologist(Virologist v){virologists.remove(v);}

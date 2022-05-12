@@ -11,6 +11,7 @@ import Virologist.Virologist;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -27,6 +28,22 @@ public class MapInitiater {
      */
     public MapInitiater(Game game) { this.game = game; }
 
+    /**
+     * puts virologists on random fields on the map
+     * @param viros all the viros in game
+     */
+    public void putVirosOnFields(ArrayList<Virologist> viros){
+        if(fields.isEmpty())
+            return;
+        Random rand = new Random();
+        int idx;
+        for(Virologist v : viros) {
+            idx=rand.nextInt(fields.size());
+            Field chosenField=fields.get(idx);
+            chosenField.addVirologist(v);
+            v.setCurrentField(chosenField);
+        }
+    }
     /**
      * Reads from a given file, and initializes a map
      * @param file the given file

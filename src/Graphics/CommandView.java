@@ -26,6 +26,7 @@ public class CommandView extends JPanel implements ActionListener {
     private JComboBox<String> agentChooser;
     private JComboBox<String> stealableChooser;
     private JButton backButton;
+    //TODO lehetne még egy endTurnButton
 
     public CommandView(Virologist myViro){
         myVirologist=myViro;
@@ -41,7 +42,7 @@ public class CommandView extends JPanel implements ActionListener {
         chosenViroName=new JLabel();
         virButtons=new HashMap<>();
         thingButtons=new HashMap<>();
-        update();
+
     }
 
     /**
@@ -85,8 +86,7 @@ public class CommandView extends JPanel implements ActionListener {
     }
 
     public void activateView(){
-        GameFrame w= GameFrame.Instance();
-        w.setView(this);
+        GameFrame.Instance().setView(this);
     }
     private void virologistChosen(Virologist v){
         //chosen viro

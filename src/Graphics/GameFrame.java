@@ -43,13 +43,12 @@ public class GameFrame extends JFrame {
     public void displayGameView() {
         this.remove(startMenu);
         this.getContentPane().removeAll();
-
-
         this.add(actualFieldView);
-
+        actualFieldView.setBackground(Color.CYAN);
         this.add(actualPropertyHandlerView);
-
+        actualPropertyHandlerView.setBackground(Color.BLUE);
         this.add(actualCommandView);
+        actualCommandView.setBackground(Color.PINK);
         validate();
 
     }

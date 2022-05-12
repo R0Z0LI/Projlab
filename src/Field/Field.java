@@ -1,6 +1,7 @@
 package Field;
 
 import Collectible.Collectible;
+import Graphics.FieldView;
 import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * A játék egy mezőjét reprezentáló osztály
  */
 public class Field {
+    protected FieldView view;
     protected String name;
     private static int id = 0;
     protected static ArrayList<Field> fields = new ArrayList<>(); // the map's fields
@@ -23,6 +25,7 @@ public class Field {
     public Field() {
         name = "fid" + id++;
         fields.add(this);
+        view=new FieldView();
     }
 
     public Field(int arg) {}
@@ -32,6 +35,9 @@ public class Field {
         return name;
     }
 
+    public FieldView getView(){
+        return view;
+    }
     // gets all the fields on the map
     public static List<Field> getFields() {
         return fields;

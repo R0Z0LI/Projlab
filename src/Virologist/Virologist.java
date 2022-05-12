@@ -2,6 +2,8 @@ package Virologist;
 
 import Collectible.Collectible;
 import Field.Field;
+import Graphics.CommandView;
+import Graphics.VirologistView;
 import PropertyHandler.PropertyHandler;
 import Agent.Agent;
 import Behaviors.*;
@@ -19,6 +21,8 @@ public class Virologist {
     private String name;
     private static int id = 0;
     private int actionCounter;
+    private CommandView myCommandView;
+    private VirologistView myViroView;
     private PropertyHandler myProperties;
     private Field currentField;
     private Stack<MovementBehavior> movementBehaviors = new Stack<>();
@@ -30,11 +34,10 @@ public class Virologist {
     private Stack<AutomaticBehavior> automaticBehaviors = new Stack<>();
     private Stack<AttackBehavior> attackBehaviors = new Stack<>();
 
-    public Virologist(Field field) {
-        this.name = "vir" + id++;
-        this.actionCounter = 2;
+    public Virologist(String name) {
+        this.name = name;
+        this.actionCounter = 3;
         this.myProperties = new PropertyHandler(this);
-        currentField = field;
         this.movementBehaviors.add(new MovementBehavior(this));
         CreateBehavior createBehavior = new CreateBehavior(this);
         this.createBehaviors.add(createBehavior);
@@ -50,6 +53,31 @@ public class Virologist {
         this.automaticBehaviors.add(automaticBehavior);
         AttackBehavior attackBehavior = new AttackBehavior(this);
         this.attackBehaviors.add(attackBehavior);
+        myViroView= new VirologistView(id);
+        myCommandView=new CommandView(this);
+    }
+    public Virologist(Field field) {
+        this.name = "vir"+id++;
+        currentField=field;
+        this.actionCounter = 3;
+        this.myProperties = new PropertyHandler(this);
+        this.movementBehaviors.add(new MovementBehavior(this));
+        CreateBehavior createBehavior = new CreateBehavior(this);
+        this.createBehaviors.add(createBehavior);
+        ApplyBehavior applyBehavior = new ApplyBehavior(this);
+        this.applyBehaviors.add(applyBehavior);
+        CollectBehavior collectBehavior = new CollectBehavior(this);
+        this.collectBehaviors.add(collectBehavior);
+        StealBehavior stealBehavior = new StealBehavior(this);
+        this.stealBehaviors.add(stealBehavior);
+        DefenseBehavior defenseBehavior = new DefenseBehavior(this);
+        this.defenseBehaviors.add(defenseBehavior);
+        AutomaticBehavior automaticBehavior = new AutomaticBehavior(this);
+        this.automaticBehaviors.add(automaticBehavior);
+        AttackBehavior attackBehavior = new AttackBehavior(this);
+        this.attackBehaviors.add(attackBehavior);
+        myViroView= new VirologistView(id);
+        myCommandView=new CommandView(this);
     }
     public String getName() {
         return name;
@@ -68,6 +96,7 @@ public class Virologist {
             return;
         }
         collectBehaviors.firstElement().collect(collectible, myProperties);
+        actionCounter--;
     }
 
     /**
@@ -83,6 +112,7 @@ public class Virologist {
             return;
         }
         movementBehaviors.firstElement().move(this.currentField, field);
+        actionCounter--;
     }
 
     /**
@@ -98,8 +128,10 @@ public class Virologist {
             TestInOutHandler.appendToTestOutput("This virologist is not paralysed.");
             return;
         }
-        if(affected.getStealableThings().contains(collectible))
+        if(affected.getStealableThings().contains(collectible)) {
             stealBehaviors.firstElement().steal(collectible, affected, myProperties);
+            actionCounter--;
+        }
         else {
             System.out.println("The virologist does not have that equipment.");
             TestInOutHandler.appendToTestOutput("The virologist does not have that equipment.");
@@ -119,6 +151,7 @@ public class Virologist {
             return;
         }
         createBehaviors.firstElement().create(genCode);
+        actionCounter--;
     }
 
     /**
@@ -142,6 +175,7 @@ public class Virologist {
         applyBehaviors.firstElement().apply(agent, affected);
         //ha már felhasználta, el lesz távolítva
         myProperties.remove(agent);
+        actionCounter--;
     }
     /**+
      * megpróbálja megölni a másik virológust
@@ -154,6 +188,7 @@ public class Virologist {
             return;
         }
         attackBehaviors.firstElement().attack(victim);
+        actionCounter--;
     }
     /**
      * Elpusztítja a virológus egyik, a játékos által választott felszerelését
@@ -167,110 +202,22 @@ public class Virologist {
             return;
         }
         myProperties.remove(equipment);
+        actionCounter--;
     }
     /**
      * Elindítja a virológus körét
      * A játékos parancsait beolvassa, értelmezi
      */
     public void yourTurn() {
-        actionCounter=2;
+        actionCounter=3;
+        myCommandView.update();
+        myCommandView.activateView();
         //meghívja az automatikus viselkedést
         automaticBehaviors.firstElement().execute();
         //amíg van akció, várja a játékos utasításait
         while(actionCounter>0){
-            ArrayList<Virologist> viros = new ArrayList<>();
-            viros.addAll(currentField.GetTouchableVirologists());
-            System.out.println("Elerheto virologusok a mezon:");
-            //kiírja az összes elérhető virológust
-            for(Virologist v : viros){
-                System.out.println(v.getName());
-                //kiírja a virológusok lopható cuccait
-               for(Collectible c : v.getStealableThings()) {
-                   System.out.println(c.getName());
-               }
-            }
-            //beolvassa a játékos parancsát
-            Scanner scanner = new Scanner(System.in);
-            String[] command = scanner.next().split(" ");
-            switch(command[0]){
-                case "Apply":
-                    //megkeresi, kire kell kenni
-                    Virologist affected=null;
-                    for(Virologist v : viros)
-                        if(v.getName().equals(command[2])) {
-                            affected = v;
-                            break;
-                        }
-                    //megkeresi, melyik ágenst kell kenni
-                    Agent agent=null;
-                    for(Agent a : myProperties.getAgents())
-                        if(a.getName().equals(command[3])) {
-                            agent=a;
-                            break;
-                        }
-                    applyAgent(agent, affected);
-                    break;
-                case "Collect":
+        //vár a parancsokra
 
-                    break;
-                case "Create":
-                    GenCode code=null;
-                    //megkeresi, melyik kódról van szó
-                    for(GenCode g : myProperties.getGenCodes().values())
-                        if(g.getName().equals(command[2])){
-                           code=g;
-                           break;
-                        }
-                    createAgent(code);
-                    break;
-                case "Kill":
-                    //megkeresi, kit kell megölni
-                    Virologist victim=null;
-                    for(Virologist v : viros)
-                        if(v.getName().equals(command[2])) {
-                            victim = v;
-                            break;
-                        }
-                    attack(victim);
-                    break;
-                case "Move":
-                    //megkeresi, hova kell menni
-                    Field nextField = null;
-                    for(Field f : currentField.getNeighbours())
-                        if(f.getName().equals(command[2])){
-                            nextField=f;
-                            break;
-                        }
-                    step(nextField);
-                    break;
-                case "Steal":
-                    //megkeresi, hogy kitől kell lopni
-                    Virologist stealVictim=null;
-                    for(Virologist v : viros)
-                        if(v.getName().equals(command[2])) {
-                            stealVictim = v;
-                            break;
-                        }
-                    //megkeresi, hogy mit kell lopni
-                    Collectible stealable=null;
-                    for(Collectible c: stealVictim.getStealableThings())
-                        if(c.getName().equals(command[3])){
-                            stealable=c;
-                            break;
-                        }
-                    steal(stealable, stealVictim);
-                    break;
-                case "Throw":
-                    //megkeresi, hogy mit kell eldobni
-                    Equipment equipment=null;
-                    for(Equipment e: myProperties.getEquipments())
-                        if(e.getName().equals(command[2])){
-                            equipment=e;
-                        }
-                    destroy(equipment);
-                    break;
-            }
-            actionCounter--;
         }
     }
 
@@ -433,6 +380,21 @@ public class Virologist {
         actionCounter-=number;
     }
 
+    /**
+     * visszaadja a virológust megjelenítő objektumot
+     * @return
+     */
+    public VirologistView getVirologistView(){
+        return myViroView;
+    }
+
+    /**
+     * visszaadja a CommandView-t
+     * @return
+     */
+    public CommandView getCommandView(){
+        return myCommandView;
+    }
     /**+
      * visszaadja a virológustól ellopható dolgokat
      * @return ellopható dolgok

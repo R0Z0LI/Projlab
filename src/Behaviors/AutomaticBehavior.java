@@ -1,6 +1,7 @@
 package Behaviors;
 
 import Collectible.Collectible;
+import Graphics.VirologistView;
 import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
@@ -18,6 +19,8 @@ public class AutomaticBehavior {
     public Virologist getVirologist(){
         return viro;
     }
-    public void execute(){ }
+    public void execute(){
+        viro.getVirologistView().displayVirologist(viro.getCurrentField().getView(), VirologistView.ACTIVE_MODE);
+    }
     public ArrayList<Collectible> getStealables(PropertyHandler ph){return null;}
 }
