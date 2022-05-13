@@ -35,6 +35,7 @@ public class MapInitiater {
     public void putVirosOnFields(ArrayList<Virologist> viros){
         if(fields.isEmpty())
             return;
+
         Random rand = new Random();
         int idx;
         for(Virologist v : viros) {
@@ -186,7 +187,7 @@ public class MapInitiater {
         }
 
         game.setFields(fields);
-        game.setVirologists(virologists);
+        //game.setVirologists(virologists); // we only need this if we want to set the virologist's location ourselves
     }
 
     /**

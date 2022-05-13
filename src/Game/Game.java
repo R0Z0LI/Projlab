@@ -38,8 +38,9 @@ public class Game {
         for(String name : viroNames){
             virologists.add(new Virologist(name));  //valamiért üres marad...
         }
+
         gameInit(path); // reading from a file and initializing a map
-        gameRunning=true;
+        gameRunning = true;
         runGame(); // start running the game
     }
 

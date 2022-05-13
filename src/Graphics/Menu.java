@@ -84,21 +84,25 @@ public class Menu extends JPanel implements ActionListener {
         String path = fileTextField.getText();
         //most teszt miatt átírva fixre
         path="src//defaultMap.txt";
-        ArrayList<String> viroNames=new ArrayList<>();
-        for(JTextField nameFields: names){
+        ArrayList<String> viroNames = new ArrayList<>();
+        for (JTextField nameFields: names) {
             viroNames.add(nameFields.getText());
         }
-        game.start(path,viroNames);
+
+        game.start(path, viroNames);
     }
 
     /**
      * Adding an extra virologist
      */
     private void addButtonPressed() {
-        virologistNum++;
-        names.add(new JTextField("Lajos" + virologistNum));
-        updateVirologistNum();
-        drawVirologistNames();
+        if (virologistNum < 6) { // for now there can be only 6 players
+            virologistNum++;
+            // TODO - pick a random name from a simple txt file
+            names.add(new JTextField("Lajos" + virologistNum));
+            updateVirologistNum();
+            drawVirologistNames();
+        }
     }
 
     /**
@@ -114,9 +118,11 @@ public class Menu extends JPanel implements ActionListener {
         }
     }
 
-
+    /**
+     * Removes a shown virologist name from the menu
+     */
     private void removeDrawnVirologistNames(){
-        for(int i = 0; i < virologistNum + 1; i++){
+        for (int i = 0; i < virologistNum + 1; i++) {
             this.remove(names.get(i));
         }
         this.updateUI();
@@ -136,6 +142,9 @@ public class Menu extends JPanel implements ActionListener {
         this.updateUI();
     }
 
+    /**
+     * Updates the number in the menu
+     */
     private void updateVirologistNum(){
         numberLabel.setText(String.valueOf(virologistNum));
     }

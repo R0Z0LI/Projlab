@@ -1,8 +1,5 @@
 package Graphics;
 
-import Field.Field;
-import Virologist.Virologist;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,6 +37,18 @@ public class GameFrame extends JFrame {
     public void setView(PropertyHandlerView phv) { actualPropertyHandlerView = phv; }
     public void setView(EndGameView egv) { actualEndGameView = egv; }
 
+    /**
+     * Displays the start of the game - MENU
+     */
+    public void displayStartGame(){
+        startMenu = new Menu();
+        this.add(startMenu);
+        this.setVisible(true);
+    }
+
+    /**
+     * Displays the game itself
+     */
     public void displayGameView() {
         this.remove(startMenu);
         this.getContentPane().removeAll();
@@ -50,14 +59,8 @@ public class GameFrame extends JFrame {
         this.add(actualCommandView);
         actualCommandView.setBackground(Color.PINK);
         validate();
-
     }
+
+    // TODO
     public void displayEndGame() {}
-    public void displayStartGame(){
-        startMenu = new Menu();
-        this.add(startMenu);
-        this.setVisible(true);
-    }
-
-
 }
