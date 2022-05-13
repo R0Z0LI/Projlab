@@ -2,6 +2,7 @@ package Field;
 
 import Collectible.Collectible;
 import Gencode.GenCode;
+import Graphics.FieldView;
 import Materials.*;
 import Virologist.Virologist;
 

@@ -3,6 +3,7 @@ package Virologist;
 import Collectible.Collectible;
 import Field.Field;
 import Graphics.CommandView;
+import Graphics.FieldView;
 import Graphics.VirologistView;
 import PropertyHandler.PropertyHandler;
 import Agent.Agent;
@@ -395,7 +396,8 @@ public class Virologist {
     public CommandView getCommandView(){
         return myCommandView;
     }
-    /**+
+
+    /**
      * visszaadja a virológustól ellopható dolgokat
      * @return ellopható dolgok
      */
@@ -412,7 +414,7 @@ public class Virologist {
         this.applyBehaviors.add(0,beh);
     }
 
-    /**+
+    /**
      * automatikus behavior hozzáadása
      * @param beh
      */
@@ -420,13 +422,14 @@ public class Virologist {
         this.automaticBehaviors.add(0,beh);
     }
 
-    /**+
+    /**
      * támadási viselkedés hozzáadása
      * @param beh
      */
     public void add(AttackBehavior beh){
         this.attackBehaviors.add(0,beh);
     }
+
     /**
      * defenseBeh settere
      *

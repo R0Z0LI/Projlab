@@ -3,6 +3,7 @@ package Field;
 import Collectible.Collectible;
 import Equipments.Equipment;
 import Gencode.GenCode;
+import Graphics.FieldView;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
 import Virologist.Virologist;

@@ -3,6 +3,7 @@ package Field;
 import Agent.BearDanceAgent;
 import Collectible.Collectible;
 import Gencode.GenCode;
+import Graphics.FieldView;
 import Materials.AminoAcid;
 import Materials.Nucleotid;
 import Virologist.Virologist;

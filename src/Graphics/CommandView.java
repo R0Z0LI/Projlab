@@ -29,58 +29,61 @@ public class CommandView extends JPanel implements ActionListener {
     //TODO lehetne még egy endTurnButton
 
     public CommandView(Virologist myViro){
-        myVirologist=myViro;
-        applyButton=new JButton("Apply");
+        myVirologist = myViro;
+        applyButton = new JButton("Apply");
         applyButton.addActionListener(this);
-        attackButton=new JButton("Attack");
+        attackButton = new JButton("Attack");
         attackButton.addActionListener(this);
-        stealButton=new JButton("Steal");
+        stealButton = new JButton("Steal");
         stealButton.addActionListener(this);
-        backButton=new JButton("Back");
+        backButton = new JButton("Back");
         backButton.addActionListener(this);
-        fieldName=new JLabel();
-        chosenViroName=new JLabel();
-        virButtons=new HashMap<>();
-        thingButtons=new HashMap<>();
-
+        fieldName = new JLabel();
+        chosenViroName = new JLabel();
+        virButtons = new HashMap<>();
+        thingButtons = new HashMap<>();
     }
 
     /**
      * displays fieldname, touchable virologists, collectible things
      */
     public void update(){
-        this.removeAll();
-        //fieldinfo
+        this.removeAll(); // clears everything
+
+        // fieldinfo
         Field field = myVirologist.getCurrentField();
         fieldName.setText(field.getName());
 
-        //display labels
+        // display labels
         JPanel innerPanel = new JPanel();
         innerPanel.setLayout(new GridLayout(0,2,30,50));
         innerPanel.add(new JLabel("Field:"));
         innerPanel.add(fieldName);
         innerPanel.add(new JLabel("Vir:"),2);
-        //otherviros info + display viro buttons
-        int i=0;
-        List<Virologist> viros=field.GetTouchableVirologists();
-        for(Virologist v :viros){
-            JButton vButton=new JButton(v.getName());
+
+        // otherviros info + display viro buttons
+        int i = 0;
+        List<Virologist> viros = field.GetTouchableVirologists();
+        for(Virologist v : viros){
+            JButton vButton = new JButton(v.getName());
             virButtons.put(vButton, v);
             innerPanel.add(vButton);
             ++i;
         }
         //ez csak kitoltes
-        if(i%2 ==0) innerPanel.add(new JLabel());
+        if(i % 2 == 0) innerPanel.add(new JLabel());
         innerPanel.add(new JLabel("Thing:"));
+
         //collectible info
-        Collectible coll=field.getCollectible();
-        JButton thing=null;
-        if(coll!=null) {
+        Collectible coll = field.getCollectible();
+        JButton thing = null;
+        if(coll != null) {
             thing = new JButton(coll.getName());
             thingButtons.put(thing, coll);
         }
+
         //displaying collectible thing
-        if(coll!=null)
+        if(coll != null)
             innerPanel.add(thing);
         this.add(innerPanel);
     }
@@ -88,6 +91,7 @@ public class CommandView extends JPanel implements ActionListener {
     public void activateView(){
         GameFrame.Instance().setView(this);
     }
+
     private void virologistChosen(Virologist v){
         //chosen viro
         chosenVirologist=v;
@@ -130,6 +134,7 @@ public class CommandView extends JPanel implements ActionListener {
         innerPanel.add(backButton,9);
         this.add(innerPanel);
     }
+
     public void actionPerformed(ActionEvent e){
         if (e.getSource().equals(attackButton)) {
             attackButtonPressed();
@@ -145,9 +150,11 @@ public class CommandView extends JPanel implements ActionListener {
             thingButtonPressed(thingButtons.get(e.getSource()));
         }
     }
+
     private void attackButtonPressed(){
         myVirologist.attack(chosenVirologist);
     }
+
     private void stealButtonPressed(){
         String sName =(String)stealableChooser.getSelectedItem();
         Collectible stealable=null;
@@ -159,6 +166,7 @@ public class CommandView extends JPanel implements ActionListener {
         if(stealable!=null)
              myVirologist.steal(stealable, chosenVirologist);
     }
+
     private void applyButtonPressed(){
         String aName=(String)agentChooser.getSelectedItem();
         List<Agent> agents= myVirologist.getPropertyHandler().getAgents();
@@ -170,9 +178,11 @@ public class CommandView extends JPanel implements ActionListener {
         if(agent!=null)
             myVirologist.applyAgent(agent, chosenVirologist);
     }
+
     private void backButtonPressed(){
         update();
     }
+
     private void thingButtonPressed(Collectible thing){
         myVirologist.collect(thing);
     }

@@ -25,7 +25,6 @@ public class Field {
     public Field() {
         name = "fid" + id++;
         fields.add(this);
-        view=new FieldView();
     }
 
     public Field(int arg) {}
@@ -38,6 +37,10 @@ public class Field {
     public FieldView getView(){
         return view;
     }
+    public void setView(FieldView fv){
+        view = fv;
+    }
+
     // gets all the fields on the map
     public static List<Field> getFields() {
         return fields;

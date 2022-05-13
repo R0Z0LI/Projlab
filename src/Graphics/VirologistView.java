@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 //TODO beállítani a pontos méreteket
 public class VirologistView extends Canvas {
     private Image viroIcon;
@@ -65,7 +66,7 @@ public class VirologistView extends Canvas {
             x = 10;
             y = 10;
         }
-        Graphics g=fv.getGraphics();
+        Graphics g = fv.getGraphics();
         g.drawImage(viroIcon,x,y,this);
     }
 

@@ -9,5 +9,4 @@ public class Main {
         GameFrame window = GameFrame.Instance();
         window.displayStartGame();
     }
-
 }

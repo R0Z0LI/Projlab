@@ -19,17 +19,6 @@ public class Game {
     TestInOutHandler handler = new TestInOutHandler();
 
     /**
-     * Initializes the map and its virologists
-     * @param filePath
-     */
-    private void gameInit(String filePath) {
-        MapInitiater mapIn = new MapInitiater(this);
-        mapIn.readFromFile(new File(filePath));
-        //putting down virologists on random fields
-        mapIn.putVirosOnFields(virologists);
-    }
-
-    /**
      * Initializes the map, and starts the game.
      * @param path path to the file that contains the map initialization
      */
@@ -40,8 +29,19 @@ public class Game {
         }
 
         gameInit(path); // reading from a file and initializing a map
+
         gameRunning = true;
         runGame(); // start running the game
+    }
+
+    /**
+     * Initializes the map and its virologists
+     * @param filePath
+     */
+    private void gameInit(String filePath) {
+        MapInitiater mapIn = new MapInitiater(this);
+        mapIn.readFromFile(new File(filePath));
+        mapIn.putVirosOnFields(virologists);
     }
 
     /**
@@ -95,20 +95,22 @@ public class Game {
         }
     }
     public void runGame(){
-        /*teszt
         GameFrame window = GameFrame.Instance();
-        CommandView cv=new CommandView(new Virologist("Alice"));
-        cv.activateView();
+
         window.setView(new PropertyHandlerView());
-        window.setView(new FieldView());
-        window.displayGameView();
-        */
+
         //TODO
+
         while(gameRunning){
             for (Virologist activeViro: virologists) {
-                activeViro.yourTurn();
+                window.setView(new CommandView(activeViro));
+                window.setView(new FieldView(activeViro.getCurrentField()));
+                window.displayGameView();
+                break;
+                //activeViro.yourTurn();
             }
             stepSteppabbles();
+            gameRunning = false;
         }
     }
 
