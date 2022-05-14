@@ -59,8 +59,6 @@ public class CommandView extends JPanel implements ActionListener {
         int i = 0;
         List<Virologist> viros = field.GetTouchableVirologists();
 
-
-
             //if(v!=myVirologist){
 
 
