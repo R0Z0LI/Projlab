@@ -37,11 +37,13 @@ public class FieldView extends JPanel implements ActionListener {
                 activeVirologist.step(field);
             }
         }
+
         this.update();
         activeVirologist.setActionCounter(activeVirologist.getActionCounter() - 1);
 
         GameFrame.instance().setView(activeVirologist.getMyCommandView());
         activeVirologist.getCommandView().update();
+
 
     }
 
