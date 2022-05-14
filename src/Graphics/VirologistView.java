@@ -23,28 +23,28 @@ public class VirologistView extends Canvas {
     public VirologistView(int viroNumber) {
         BufferedImage inputimage;
         try {
-            inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//stunnedicon.png"));
+            inputimage = ImageIO.read(new File("src/pictures/stunnedicon.png"));
             stunnedIcon = inputimage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-            inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//bearicon.png"));
+            inputimage = ImageIO.read(new File("src/pictures/bearicon.png"));
             bearIcon = inputimage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-            inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//actionicon.png"));
+            inputimage = ImageIO.read(new File("src/pictures/actionicon.png"));
             actionIcon = inputimage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             int viroPic = viroNumber % 5;
             switch (viroPic) {
                 case 0:
-                    inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//viro.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro.png"));
                     break;
                 case 1:
-                    inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//viro2.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro2.png"));
                     break;
                 case 2:
-                    inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//viro3.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro3.png"));
                     break;
                 case 3:
-                    inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//viro4.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro4.png"));
                     break;
                 case 4:
-                    inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//viro5.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro5.png"));
                     break;
             }
             viroIcon = inputimage.getScaledInstance(200, 250, Image.SCALE_DEFAULT);
