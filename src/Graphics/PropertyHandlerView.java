@@ -52,10 +52,11 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         c.gridx = 0;
         c.gridy = 2;
         this.add(genLabel, c);
-        List<GenCode> genCodes = myPropertyHandler.getGenCodes().values().stream().toList();
-        for (int i = 0; i < genCodes.size(); i++) {
-            c.gridx = 1 + i;
-            genButtons.add(new JButton(genCodes.get(i).getName()));
+        Collection<GenCode> genCodes = myPropertyHandler.getGenCodes().values();
+        int j=0;
+        for (GenCode g : genCodes) {
+            c.gridx = 1 + j++;
+            genButtons.add(new JButton(g.getName()));
             this.add(genButtons.get(genButtons.size()), c);
         }
 
