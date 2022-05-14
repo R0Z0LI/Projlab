@@ -1,6 +1,5 @@
 package Agent;
 
-import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 /**
@@ -31,7 +30,6 @@ AmnesiaAgent extends Agent{
     @Override
     public void addBehavior(Virologist virologist) {
         System.out.println(name+" successfully applied on "+virologist.getName());
-        TestInOutHandler.appendToTestOutput(name+" successfully applied on "+virologist.getName());
         virologist.getPropertyHandler().deleteGenCodes();
     }
 

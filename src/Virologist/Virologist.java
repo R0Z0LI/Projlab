@@ -12,7 +12,6 @@ import Behaviors.*;
 import Equipments.Equipment;
 import Gencode.GenCode;
 import Game.Game;
-import TestSets.TestInOutHandler;
 
 import java.util.*;
 
@@ -86,7 +85,6 @@ public class Virologist {
     public void collect(Collectible collectible) {
         if(collectible==null){
             System.out.println("There is no such thing on this field.");
-            TestInOutHandler.appendToTestOutput("There is no such thing on this field.");
             return;
         }
         collectBehaviors.firstElement().collect(collectible, myProperties);
@@ -102,7 +100,6 @@ public class Virologist {
     public void step(Field field) {
         if(field==null){
             System.out.println("You can't move there, it's not your neighbor. \n");
-            TestInOutHandler.appendToTestOutput("You can't move there, it's not your neighbor.");
             return;
         }
         movementBehaviors.firstElement().move(this.currentField, field);
@@ -119,7 +116,6 @@ public class Virologist {
     public void steal(Collectible collectible, Virologist affected)  {
         if(affected.getStealableThings() == null) {
             System.out.println("This virologist is not paralysed.");
-            TestInOutHandler.appendToTestOutput("This virologist is not paralysed.");
             return;
         }
         if(affected.getStealableThings().contains(collectible)) {
@@ -128,7 +124,6 @@ public class Virologist {
         }
         else {
             System.out.println("The virologist does not have that equipment.");
-            TestInOutHandler.appendToTestOutput("The virologist does not have that equipment.");
         }
     }
 
@@ -141,7 +136,6 @@ public class Virologist {
     public void createAgent(GenCode genCode) {
         if(genCode==null){
             System.out.println("You don't own this code.");
-            TestInOutHandler.appendToTestOutput("You don't own this code.");
             return;
         }
         createBehaviors.firstElement().create(genCode);
@@ -158,12 +152,10 @@ public class Virologist {
     public void applyAgent(Agent agent, Virologist affected) {
         if(agent==null){
             System.out.println("You don't own this agent.");
-            TestInOutHandler.appendToTestOutput("You don't own this agent.");
             return;
         }
         if(affected==null){
             System.out.println("You can't see that virologist.");
-            TestInOutHandler.appendToTestOutput("You can't see that virologist.");
             return;
         }
         applyBehaviors.firstElement().apply(agent, affected);
@@ -179,7 +171,6 @@ public class Virologist {
     public void attack(Virologist victim){
         if(victim==null){
             System.out.println("You can't see that virologist.");
-            TestInOutHandler.appendToTestOutput("You can't see that virologist.");
             return;
         }
         attackBehaviors.firstElement().attack(victim);
@@ -194,7 +185,6 @@ public class Virologist {
     public void destroy(Equipment equipment) {
         if(equipment==null){
             System.out.println("The virologist does not have that equipment.");
-            TestInOutHandler.appendToTestOutput("The virologist does not have that equipment.");
             return;
         }
         myProperties.remove(equipment);
@@ -207,121 +197,12 @@ public class Virologist {
      */
     public void yourTurn() {
         actionCounter = 3;
+
         myCommandView.update();
         myCommandView.activateView();
-        FieldView fieldView = new FieldView(this);
-        fieldView.update();
-        fieldView.activateView();
-        GameFrame.instance().displayGameView();
-        //meghívja az automatikus viselkedést
-        automaticBehaviors.firstElement().execute();
-        //amíg van akció, várja a játékos utasításait
-        while(actionCounter > 0){
-        //vár a parancsokra
 
-        }
-    }
-
-    /**
-     * Elindítja a virológus körét
-     * A játékos parancsait beolvassa, értelmezi
-     */
-    public void yourTurn(String commands) {
         //meghívja az automatikus viselkedést
-        automaticBehaviors.firstElement().execute();
-        //amíg van akció, végrehajtja az utasításokat
-        String[] command = commands.split(" ");
-        if(actionCounter>0){
-            ArrayList<Virologist> viros = new ArrayList<>();
-            viros.addAll(currentField.GetTouchableVirologists());
-            switch(command[0]){
-                case "Apply":
-                    //megkeresi, kire kell kenni
-                    Virologist affected=null;
-                    for(Virologist v : viros)
-                        if(v.getName().equals(command[2])) {
-                            affected = v;
-                            break;
-                        }
-                    //megkeresi, melyik ágenst kell kenni
-                    Agent agent=null;
-                    for(Agent a : myProperties.getAgents())
-                        if(a.getName().equals(command[3])) {
-                            agent=a;
-                            break;
-                        }
-                    applyAgent(agent, affected);
-                    break;
-                case "Collect":
-                    collect(currentField.getCollectible());
-                    break;
-                case "Create":
-                    GenCode code=null;
-                    //megkeresi, melyik kódról van szó
-                    for(GenCode g : myProperties.getGenCodes().values())
-                        if(g.getName().equals(command[2])){
-                            code=g;
-                            break;
-                        }
-                    createAgent(code);
-                    break;
-                case "Kill":
-                    //megkeresi, kit kell megölni
-                    Virologist victim=null;
-                    for(Virologist v : viros)
-                        if(v.getName().equals(command[2])) {
-                            victim = v;
-                            break;
-                        }
-                    attack(victim);
-                    break;
-                case "Move":
-                    //megkeresi, hova kell menni
-                    Field nextField = null;
-                    for(Field f : currentField.getNeighbours())
-                        if(f.getName().equals(command[2])){
-                            nextField=f;
-                            break;
-                        }
-                    step(nextField);
-                    break;
-                case "Steal":
-                    //megkeresi, hogy kitől kell lopni
-                    Virologist stealVictim=null;
-                    for(Virologist v : viros)
-                        if(v.getName().equals(command[2])) {
-                            stealVictim = v;
-                            break;
-                        }
-                    //megkeresi, hogy mit kell lopni
-                    Collectible stealable = null;
-                    // if there is anyone stunned and there are stealable things
-                    if (stealVictim != null && stealVictim.getStealableThings() != null) {
-                        for (Collectible c : stealVictim.getStealableThings()) {
-                            if (c.getName().equals(command[3])) {
-                                stealable = c;
-                                break;
-                            }
-                        }
-                        steal(stealable, stealVictim);
-                    }
-                    break;
-                case "Throw":
-                    //megkeresi, hogy mit kell eldobni
-                    Equipment equipment=null;
-                    for(Equipment e: myProperties.getEquipments()){
-                        if(e.getName().equals(command[2])){
-                            equipment=e;
-                        }
-                    }
-                    destroy(equipment);
-                    break;
-                case "List":
-                    toString();
-                    break;
-            }
-            actionCounter--;
-        }
+        //automaticBehaviors.firstElement().execute();
     }
 
     public int getActionCounter() { return actionCounter; }
@@ -344,7 +225,6 @@ public class Virologist {
     public void beKilled(){
         Game.removeVirologist(this);
         System.out.println(name+ " died.");
-        TestInOutHandler.appendToTestOutput(name+ " died.");
     }
 
     /**
@@ -354,6 +234,7 @@ public class Virologist {
      */
     public void setCurrentField(Field field) {
         this.currentField = field;
+        this.currentField.setView(new FieldView(this));
     }
 
     /**+

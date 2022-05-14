@@ -1,10 +1,9 @@
 package Graphics;
 
-import Agent.Agent;
 import Agent.*;
-import Equipments.Axe;
-import Equipments.Equipment;
-import Equipments.Gloves;
+import Equipments.*;
+import Game.Game;
+import Gencode.GenCode;
 import Gencode.*;
 import PropertyHandler.PropertyHandler;
 
@@ -86,22 +85,23 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
             this.add(equipmentButtons.get(equipmentButtons.size()-1), c);
         }
 
-        this.invalidate();
+        this.validate();
         this.repaint();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton b = (JButton)e.getSource();
-        String name = b.getName();
-        if (name.contains("amc") || name.contains("cdc") || name.contains("pac") || name.contains("prc") )
-        {
+        String name = b.getText();
+        if (name.contains("amc") || name.contains("cdc") || name.contains("pac") || name.contains("prc") ) {
             genButtonPressed(name);
-        }
-
-        else if (name.contains("ama") ||name.contains("baa") || name.contains("cda") || name.contains("paa") || name.contains("pra") )
-        {
+            Game.actionHappened();
+        } else if (name.contains("ama") || name.contains("baa") || name.contains("cda") || name.contains("paa") || name.contains("pra") ) {
             agentButtonPressed(name);
+            Game.actionHappened();
+        } else if (name.contains("axe") || name.contains("glv") || name.contains("sck") || name.contains("cpe")) {
+            equipmentButtonPressed(name);
+            Game.actionHappened();
         }
     }
 
@@ -164,10 +164,8 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         }
     }
 
-
-
     private void agentButtonPressed(String agentName) {
-         if(agentName.contains("ama")){
+        if(agentName.contains("ama")){
             for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
                 if(myPropertyHandler.getAgents().get(i).getName().contains("ama")){
                     AmnesiaAgent aa=(AmnesiaAgent) myPropertyHandler.getAgents().get(i);
@@ -189,78 +187,52 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
             }
         }
 
-         else if(agentName.contains("cda")){
-             for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                 if(myPropertyHandler.getAgents().get(i).getName().contains("cda")){
-                     CrazyDanceAgent cda=(CrazyDanceAgent) myPropertyHandler.getAgents().get(i);
-                     cda.addBehavior(myPropertyHandler.getVirologist());
-                     myPropertyHandler.remove(cda);
-                     update();
-                 }
-             }
-         }
+        else if(agentName.contains("cda")){
+            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
+                if(myPropertyHandler.getAgents().get(i).getName().contains("cda")){
+                    CrazyDanceAgent cda=(CrazyDanceAgent) myPropertyHandler.getAgents().get(i);
+                    cda.addBehavior(myPropertyHandler.getVirologist());
+                    myPropertyHandler.remove(cda);
+                    update();
+                }
+            }
+        }
 
-         else if(agentName.contains("paa")){
-             for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                 if(myPropertyHandler.getAgents().get(i).getName().contains("paa")){
-                     ParalyseAgent paa=(ParalyseAgent) myPropertyHandler.getAgents().get(i);
-                     paa.addBehavior(myPropertyHandler.getVirologist());
-                     myPropertyHandler.remove(paa);
-                     update();
-                 }
-             }
-         }
+        else if(agentName.contains("paa")){
+            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
+                if(myPropertyHandler.getAgents().get(i).getName().contains("paa")){
+                    ParalyseAgent paa=(ParalyseAgent) myPropertyHandler.getAgents().get(i);
+                    paa.addBehavior(myPropertyHandler.getVirologist());
+                    myPropertyHandler.remove(paa);
+                    update();
+                }
+            }
+        }
 
-         else if(agentName.contains("pra")){
-             for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                 if(myPropertyHandler.getAgents().get(i).getName().contains("pra")){
-                     ProtectionAgent pra=(ProtectionAgent) myPropertyHandler.getAgents().get(i);
-                     pra.addBehavior(myPropertyHandler.getVirologist());
-                     myPropertyHandler.remove(pra);
-                     update();
-                 }
-             }
-         }
+        else if(agentName.contains("pra")){
+            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
+                if(myPropertyHandler.getAgents().get(i).getName().contains("pra")){
+                    ProtectionAgent pra=(ProtectionAgent) myPropertyHandler.getAgents().get(i);
+                    pra.addBehavior(myPropertyHandler.getVirologist());
+                    myPropertyHandler.remove(pra);
+                    update();
+                }
+            }
+        }
     }
+
     private void equipmentButtonPressed(String equipmentName) {
-        if(equipmentName.contains("axe")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("axe")){
-                    myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                    update();
-                }
+        // get the needed equipment
+        Equipment eq = null;
+        for(int i = 0; i < myPropertyHandler.getEquipments().size(); i++){
+            if(myPropertyHandler.getEquipments().get(i).getName().equals(equipmentName)) {
+                eq = myPropertyHandler.getEquipments().get(i);
+                break;
             }
         }
 
-        else if(equipmentName.contains("cpe")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("cpe")){
-                    myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                    update();
-                }
-            }
-        }
-
-        else if(equipmentName.contains("glv")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("glv")){
-                    Gloves glove=(Gloves) myPropertyHandler.getEquipments().get(i);
-                    if(glove.getUsability()>0) {
-                        myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                        update();
-                    }
-                }
-            }
-        }
-
-        else if(equipmentName.contains("sck")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("sck")){
-                    myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                    update();
-                }
-            }
-        }
+        Game.getActiveVirologist().destroy(eq);
+        this.update();
     }
 
     public void activateView(){

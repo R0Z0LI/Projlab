@@ -1,3 +1,0 @@
-Collect vir0
-Move vir0 shl1
-Collect vir0

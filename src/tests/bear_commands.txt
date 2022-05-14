@@ -1,3 +1,0 @@
-Move vir0 lab0
-Move vir2 who0
-Kill vir2 vir1

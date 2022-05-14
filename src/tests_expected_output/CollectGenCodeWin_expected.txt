@@ -1,8 +1,0 @@
-Successful collect: amc0 collected by vir0
-vir0 stepped on lab1
-Successful collect: pac0 collected by vir0
-vir0 stepped on lab2
-Successful collect: cdc0 collected by vir0
-vir0 stepped on lab3
-Successful collect: prc0 collected by vir0
-vir0 won the game.

@@ -4,7 +4,6 @@ import Collectible.Collectible;
 import Field.Laboratory;
 import Agent.Agent;
 import PropertyHandler.PropertyHandler;
-import TestSets.TestInOutHandler;
 
 /**
  * Gentikai kódot reprezentáló osztály.

@@ -1,7 +1,6 @@
 package Behaviors;
 
 import Field.Field;
-import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class MovementBehavior {
@@ -23,7 +22,6 @@ public class MovementBehavior {
     }
 
     /**
-     * +
      * A virológust a megadott szomszédos mezőre lépteti.
      *
      * @param before a virológus eredeti pozíciója
@@ -31,7 +29,6 @@ public class MovementBehavior {
      */
     public void move(Field before, Field after) {
         System.out.println(virologist.getName()+" stepped on "+after.getName());
-        TestInOutHandler.appendToTestOutput(virologist.getName()+" stepped on "+after.getName());
         before.removeVirologist(virologist);
         after.addVirologist(virologist);
         virologist.setCurrentField(after);

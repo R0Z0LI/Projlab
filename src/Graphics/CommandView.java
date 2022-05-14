@@ -2,6 +2,7 @@ package Graphics;
 import Agent.Agent;
 import Collectible.Collectible;
 import Field.Field;
+import Game.Game;
 import Virologist.Virologist;
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +25,7 @@ public class CommandView extends JPanel implements ActionListener {
     private JComboBox<String> stealableChooser;
     private JButton backButton;
     //TODO lehetne még egy endTurnButton
+
     public CommandView(Virologist myViro){
         myVirologist = myViro;
 
@@ -41,41 +43,40 @@ public class CommandView extends JPanel implements ActionListener {
         virButtons = new HashMap<>();
         thingButtons = new HashMap<>();
     }
+
     /**
      * displays fieldname, touchable virologists, collectible things
      */
     public void update(){
         this.removeAll(); // clears everything
+
         // fieldinfo
         Field field = myVirologist.getCurrentField();
         fieldName.setText(field.getName());
+
         // display labels
         JPanel innerPanel = new JPanel();
         innerPanel.setLayout(new GridLayout(0,2,30,50));
         innerPanel.add(new JLabel("Field:"));
         innerPanel.add(fieldName);
         innerPanel.add(new JLabel("Vir:"),2);
+
         // otherviros info + display viro buttons
         int i = 0;
         List<Virologist> viros = field.GetTouchableVirologists();
 
-            //if(v!=myVirologist){
-
-
         for (Virologist v : viros) {
-
-            //if(v!=myVirologist){
-
             JButton vButton = new JButton(v.getName());
             vButton.addActionListener(this);
             virButtons.put(vButton, v);
             innerPanel.add(vButton);
             ++i;
-            //}
         }
+
         //ez csak kitoltes
         if(i % 2 == 0) innerPanel.add(new JLabel());
         innerPanel.add(new JLabel("Thing:"));
+
         //collectible info
         Collectible coll = field.getCollectible();
         JButton thing = null;
@@ -84,13 +85,20 @@ public class CommandView extends JPanel implements ActionListener {
             thing.addActionListener(this);
             thingButtons.put(thing, coll);
         }
+
         //displaying collectible thing
         if(coll != null)
             innerPanel.add(thing);
         this.add(innerPanel);
+
         this.validate();
         this.repaint();
+
+        boolean sad = false;
+        if (sad) { GameFrame.instance().displayGameView(); } else { sad = false; }
     }
+
+
     public void activateView(){
         GameFrame.instance().setView(this);
     }
@@ -141,19 +149,25 @@ public class CommandView extends JPanel implements ActionListener {
         this.validate();
         this.repaint();
     }
+
     public void actionPerformed(ActionEvent e){
         if (e.getSource().equals(attackButton)) {
             attackButtonPressed();
+            Game.actionHappened();
         } else if (e.getSource().equals(applyButton)) {
             applyButtonPressed();
+            Game.actionHappened();
         } else if (e.getSource().equals(stealButton)) {
             stealButtonPressed();
+            Game.actionHappened();
         }  else if (e.getSource().equals(backButton)) {
             backButtonPressed();
         } else if(virButtons.containsKey(e.getSource())){
             virologistChosen(virButtons.get(e.getSource()));
         }else if(thingButtons.containsKey(e.getSource())){
             thingButtonPressed(thingButtons.get(e.getSource()), (JButton)e.getSource());
+            GameFrame.instance().getActualPropertyHandlerView().update();
+            Game.actionHappened();
         }
     }
 
@@ -194,11 +208,8 @@ public class CommandView extends JPanel implements ActionListener {
             }
     }
 
-
-
     private void backButtonPressed(){
-        this.removeAll();
-        update();
+        this.update();
     }
 
     private void thingButtonPressed(Collectible thing, JButton thingButton){

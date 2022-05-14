@@ -1,6 +1,7 @@
 package Graphics;
 
 import Field.Field;
+import Game.Game;
 import Virologist.Virologist;
 
 import javax.swing.*;
@@ -8,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 
 public class FieldView extends JPanel implements ActionListener {
     private Field myField;
@@ -25,21 +25,22 @@ public class FieldView extends JPanel implements ActionListener {
         update();
     }
 
-    /*
-        + void setVirologistIcon(ImageIcon icon): megjeleníti a virológus képét
-        + void setChosenVirologistIcon(ImageIcon icon): megjeleníti az akcióhoz kiválasztott másik virológus képét
+    /**
+     * Step on another field
+     * @param pressedButton
      */
     private void neighborButtonPressed(JButton pressedButton) {
         String fieldName = pressedButton.getText();
         for(Field field : myField.getNeighbours()) {
             if (fieldName.equals(field.getName())) {
                 activeVirologist.step(field);
+                break;
             }
         }
         this.update();
 
-        GameFrame.instance().setView(activeVirologist.getMyCommandView());
-        GameFrame.instance().displayGameView();
+        activeVirologist.getMyCommandView().activateView();
+        Game.actionHappened();
     }
 
     /**
@@ -51,6 +52,7 @@ public class FieldView extends JPanel implements ActionListener {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 20, 20, 20);
+
         // adding neighbour buttons
         this.myField = activeVirologist.getCurrentField();
         for (int i = 0; i < myField.getNeighbours().size(); i++) {
@@ -62,12 +64,12 @@ public class FieldView extends JPanel implements ActionListener {
             this.add(neighbourButton, c);
         }
         for(JButton jButton : neighbours) System.out.println(jButton.getText());
-        this.validate();
-        this.repaint();
+
         // TODO - ICONS
         this.validate();
         this.repaint();
         this.myField.setView(this);
+        this.activateView();
     }
 
     /**
@@ -83,7 +85,7 @@ public class FieldView extends JPanel implements ActionListener {
      */
     public void setActiveVirologist(Virologist v) {
         activeVirologist = v;
-        this.update();
+        //this.update();
     }
 
     public void setVirologistIcon(ImageIcon icon) {

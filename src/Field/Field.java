@@ -2,7 +2,6 @@ package Field;
 
 import Collectible.Collectible;
 import Graphics.FieldView;
-import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
@@ -126,7 +125,6 @@ public class Field {
         for(Field f: fields){
             if(f.getName().equals(fid)) {
                 System.out.println(f.toString());
-                TestInOutHandler.appendToTestOutput(f.toString());
             }
 
         }
