@@ -44,6 +44,7 @@ public class CommandView extends JPanel implements ActionListener {
         thingButtons = new HashMap<>();
     }
 
+
     /**
      * displays fieldname, touchable virologists, collectible things
      */
