@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class FieldView extends JPanel implements ActionListener {
     private Field myField;
@@ -36,6 +37,7 @@ public class FieldView extends JPanel implements ActionListener {
                 activeVirologist.step(field);
             }
         }
+
         this.update();
         activeVirologist.setActionCounter(activeVirologist.getActionCounter() - 1);
         CommandView commandView = new CommandView(activeVirologist);
@@ -47,6 +49,7 @@ public class FieldView extends JPanel implements ActionListener {
      * Updates the shown FieldView
      */
     public void update() {
+        neighbours.clear();
         this.removeAll();
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
