@@ -2,6 +2,7 @@ package Graphics;
 import Agent.Agent;
 import Collectible.Collectible;
 import Field.Field;
+import Game.Game;
 import Virologist.Virologist;
 import javax.swing.*;
 import java.awt.*;
@@ -90,13 +91,13 @@ public class CommandView extends JPanel implements ActionListener {
             innerPanel.add(thing);
         this.add(innerPanel);
 
-        innerPanel.validate();
-        innerPanel.repaint();
-
         this.validate();
         this.repaint();
 
+        boolean sad = false;
+        if (sad) { GameFrame.instance().displayGameView(); } else { sad = false; }
     }
+
 
     public void activateView(){
         GameFrame.instance().setView(this);
@@ -148,19 +149,25 @@ public class CommandView extends JPanel implements ActionListener {
         this.validate();
         this.repaint();
     }
+
     public void actionPerformed(ActionEvent e){
         if (e.getSource().equals(attackButton)) {
             attackButtonPressed();
+            Game.actionHappened();
         } else if (e.getSource().equals(applyButton)) {
             applyButtonPressed();
+            Game.actionHappened();
         } else if (e.getSource().equals(stealButton)) {
             stealButtonPressed();
+            Game.actionHappened();
         }  else if (e.getSource().equals(backButton)) {
             backButtonPressed();
         } else if(virButtons.containsKey(e.getSource())){
             virologistChosen(virButtons.get(e.getSource()));
         }else if(thingButtons.containsKey(e.getSource())){
             thingButtonPressed(thingButtons.get(e.getSource()), (JButton)e.getSource());
+            GameFrame.instance().getActualPropertyHandlerView().update();
+            Game.actionHappened();
         }
     }
 
@@ -202,7 +209,6 @@ public class CommandView extends JPanel implements ActionListener {
     }
 
     private void backButtonPressed(){
-        //this.removeAll();
         this.update();
     }
 

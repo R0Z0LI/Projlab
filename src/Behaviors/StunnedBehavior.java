@@ -3,7 +3,6 @@ package Behaviors;
 import Collectible.Collectible;
 import Graphics.VirologistView;
 import PropertyHandler.PropertyHandler;
-import TestSets.TestInOutHandler;
 
 import java.util.ArrayList;
 
@@ -15,7 +14,6 @@ public class StunnedBehavior extends AutomaticBehavior{
     public void execute(){
         viro.getVirologistView().displayStunnedVirologist(viro.getCurrentField().getView(), VirologistView.ACTIVE_MODE);
         System.out.println(viro.getName() + " is paralysed, can not do anything.");
-        TestInOutHandler.appendToTestOutput(viro.getName() + " is paralysed, can not do anything.");
         viro.setActionCounter(0);
     }
 

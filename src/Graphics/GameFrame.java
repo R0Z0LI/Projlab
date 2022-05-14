@@ -59,18 +59,21 @@ public class GameFrame extends JFrame {
         c.weightx = 1;
         c.weighty = 1;
 
+        // Field view
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = 2;
         this.add(actualFieldView, c);
         actualFieldView.setBackground(Color.CYAN);
 
+        // PH view
         c.gridx = 1;
         c.gridy = 0;
         c.gridheight = 1;
         this.add(actualPropertyHandlerView, c);
         actualPropertyHandlerView.setBackground(Color.BLUE);
 
+        // command view
         c.gridx = 1;
         c.gridy = 1;
         c.gridheight = 1;
@@ -93,4 +96,8 @@ public class GameFrame extends JFrame {
     public CommandView getActualCommandView() {
         return actualCommandView;
     }
+    public PropertyHandlerView getActualPropertyHandlerView() {
+        return actualPropertyHandlerView;
+    }
+
 }

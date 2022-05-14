@@ -3,7 +3,6 @@ package Materials;
 import Collectible.Collectible;
 import Field.Warehouse;
 import PropertyHandler.PropertyHandler;
-import TestSets.TestInOutHandler;
 
 /**
  * A nukleotid-ot reprezentáló osztály

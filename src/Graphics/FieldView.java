@@ -1,6 +1,7 @@
 package Graphics;
 
 import Field.Field;
+import Game.Game;
 import Virologist.Virologist;
 
 import javax.swing.*;
@@ -8,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 
 public class FieldView extends JPanel implements ActionListener {
     private Field myField;
@@ -39,8 +39,8 @@ public class FieldView extends JPanel implements ActionListener {
         }
         this.update();
 
-        GameFrame.instance().setView(activeVirologist.getMyCommandView());
-        GameFrame.instance().displayGameView();
+        activeVirologist.getMyCommandView().activateView();
+        Game.actionHappened();
     }
 
     /**
@@ -52,6 +52,7 @@ public class FieldView extends JPanel implements ActionListener {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 20, 20, 20);
+
         // adding neighbour buttons
         this.myField = activeVirologist.getCurrentField();
         for (int i = 0; i < myField.getNeighbours().size(); i++) {
@@ -68,6 +69,7 @@ public class FieldView extends JPanel implements ActionListener {
         this.validate();
         this.repaint();
         this.myField.setView(this);
+        this.activateView();
     }
 
     /**
@@ -83,7 +85,7 @@ public class FieldView extends JPanel implements ActionListener {
      */
     public void setActiveVirologist(Virologist v) {
         activeVirologist = v;
-        this.update();
+        //this.update();
     }
 
     public void setVirologistIcon(ImageIcon icon) {}

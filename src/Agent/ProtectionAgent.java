@@ -1,7 +1,6 @@
 package Agent;
 
 import Behaviors.DefAgentDefBehavior;
-import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 import Game.Game;
 
@@ -39,7 +38,6 @@ public class ProtectionAgent extends Agent{
     @Override
     public void addBehavior(Virologist v) {
         System.out.println(name+" successfully applied on "+v.getName());
-        TestInOutHandler.appendToTestOutput(name+" successfully applied on "+v.getName());
         defAgentDef.setVirologist(v);
         v.add(defAgentDef);
         Game.addSteppable(this);

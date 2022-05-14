@@ -1,5 +1,0 @@
-Successful collect: aac0 collected by vir0
-
-vir0 stepped on who1
-
-There is not enough space in your inventory for ncd2

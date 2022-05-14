@@ -1,7 +1,0 @@
-Collect vir0
-Move vir0 lab1
-Collect vir0
-Move vir0 lab2
-Collect vir0
-Move vir0 lab3
-Collect vir0

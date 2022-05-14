@@ -1,7 +1,6 @@
 package Agent;
 
 import Behaviors.*;
-import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 import Game.Game;
 
@@ -35,7 +34,6 @@ public class ParalyseAgent extends Agent {
     @Override
     public void addBehavior(Virologist v) {
         System.out.println(name+" successfully applied on "+v.getName());
-        TestInOutHandler.appendToTestOutput(name+" successfully applied on "+v.getName());
         stunnedBeh.setVirologist(v);
         v.add(stunnedBeh);
         Game.addSteppable(this);

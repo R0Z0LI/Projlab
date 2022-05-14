@@ -1,7 +1,6 @@
 package Agent;
 
 import Behaviors.BearBehavior;
-import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class BearDanceAgent extends Agent {
@@ -25,7 +24,6 @@ public class BearDanceAgent extends Agent {
      */
     public  void addBehavior(Virologist v) {
         System.out.println(name+" successfully applied on "+v.getName());
-        TestInOutHandler.appendToTestOutput(name+" successfully applied on "+v.getName());
         v.add(new BearBehavior(v));
     }
 }

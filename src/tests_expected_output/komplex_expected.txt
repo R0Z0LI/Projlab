@@ -1,6 +1,0 @@
-vir0 stepped on who0
-Successful collect: aac0 collected by vir0.
-vir0 stepped on shl0
-Successful collect: sck0 collected by vir0.
-vir0 stepped on fid1
-glv0 successfully removed from vir0.

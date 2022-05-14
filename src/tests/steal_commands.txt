@@ -1,2 +1,0 @@
-Apply vir0 vir1 paa0
-Steal vir0 vir1 sck0

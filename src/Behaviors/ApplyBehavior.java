@@ -1,7 +1,6 @@
 package Behaviors;
 
 import Agent.Agent;
-import TestSets.TestInOutHandler;
 import Virologist.Virologist;
 
 public class ApplyBehavior {
@@ -31,7 +30,6 @@ public class ApplyBehavior {
             agent.addBehavior(virologist);
         } else {
             System.out.println(virologist.getName() + " tried to apply " + agent.getName() + " on " + affected.getName());
-            TestInOutHandler.appendToTestOutput(virologist.getName() + " tried to apply " + agent.getName() + " on " + affected.getName());
             affected.beInfected(agent, virologist);
         }
 
