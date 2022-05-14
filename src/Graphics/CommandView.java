@@ -65,11 +65,13 @@ public class CommandView extends JPanel implements ActionListener {
         int i = 0;
         List<Virologist> viros = field.GetTouchableVirologists();
         for(Virologist v : viros){
+            //if(v!=myVirologist){
             JButton vButton = new JButton(v.getName());
             vButton.addActionListener(this);
             virButtons.put(vButton, v);
             innerPanel.add(vButton);
             ++i;
+            //}
         }
         //ez csak kitoltes
         if(i % 2 == 0) innerPanel.add(new JLabel());
@@ -164,6 +166,7 @@ public class CommandView extends JPanel implements ActionListener {
 
     private void attackButtonPressed(){
         myVirologist.attack(chosenVirologist);
+        update();
     }
 
     private void stealButtonPressed(){
@@ -174,8 +177,10 @@ public class CommandView extends JPanel implements ActionListener {
             if(c.getName().equals(sName))
                 stealable=c;
         }
-        if(stealable!=null)
-             myVirologist.steal(stealable, chosenVirologist);
+        if(stealable!=null) {
+            myVirologist.steal(stealable, chosenVirologist);
+            update();
+        }
     }
 
     private void applyButtonPressed(){
@@ -186,8 +191,10 @@ public class CommandView extends JPanel implements ActionListener {
             if(a.getName().equals(aName))
                 agent=a;
         }
-        if(agent!=null)
+        if(agent!=null) {
             myVirologist.applyAgent(agent, chosenVirologist);
+            update();
+        }
     }
 
     private void backButtonPressed(){
@@ -197,8 +204,8 @@ public class CommandView extends JPanel implements ActionListener {
 
     private void thingButtonPressed(Collectible thing, JButton thingButton){
         myVirologist.collect(thing);
+        thingButtons.remove(thingButton);
         this.remove(thingButton);
-        this.validate();
-        this.repaint();
+        update();
     }
 }
