@@ -179,28 +179,6 @@ public class CommandView extends JPanel implements ActionListener {
 
     }
 
-    private void applyButtonPressed() {
-        String aName = (String) agentChooser.getSelectedItem();
-        List<Agent> agents = myVirologist.getPropertyHandler().getAgents();
-        Agent agent = null;
-        for (Agent a : agents) {
-            if (a.getName().equals(aName))
-                agent = a;
-        }
-
-        if(agent!=null) {
-
-            myVirologist.applyAgent(agent, chosenVirologist);
-            update();
-        }
-
-        if(stealable!=null) {
-            myVirologist.steal(stealable, chosenVirologist);
-            update();
-        }
-
-    }
-
     private void applyButtonPressed(){
         String aName=(String)agentChooser.getSelectedItem();
         List<Agent> agents= myVirologist.getPropertyHandler().getAgents();
@@ -215,6 +193,8 @@ public class CommandView extends JPanel implements ActionListener {
                 update();
             }
     }
+
+
 
     private void backButtonPressed(){
         this.removeAll();
