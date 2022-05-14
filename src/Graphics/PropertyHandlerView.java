@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PropertyHandlerView extends JPanel implements ActionListener {
     private PropertyHandler myPropertyHandler;
-    private JLabel aminoLabel = new JLabel("Am:"), nucleoLabel = new JLabel("Nu:");
+    private JLabel aminoLabel = new JLabel(), nucleoLabel = new JLabel();
     private JLabel genLabel = new JLabel("GCs:");
     private ArrayList<JButton> genButtons = new ArrayList<>();
     private JLabel agentLabel = new JLabel("Ag:");
@@ -27,22 +27,28 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         // labels
         c.gridx = 0;
         c.gridy = 0;
+        aminoLabel.setText("Am: " + myPropertyHandler.getAminoAcids().size());
         this.add(aminoLabel, c);
+
         c.gridx = 0;
         c.gridy = 1;
+        aminoLabel.setText("Nu: " + myPropertyHandler.getNucleotids().size());
         this.add(nucleoLabel, c);
+
         c.gridx = 0;
         c.gridy = 2;
         this.add(genLabel, c);
+
         c.gridx = 0;
         c.gridy = 4;
         this.add(agentLabel, c);
+
         c.gridx = 0;
         c.gridy = 6;
         this.add(equipmentLabel, c);
 
         // buttons
-        // TODO
+
     }
 
     public void update() {

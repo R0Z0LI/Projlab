@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
     private GameFrame() {
        super("Virologist Jam");
        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       this.setSize(500, 500);
+       this.setSize(700, 500);
 
        startMenu = new Menu();
     }
@@ -51,10 +51,14 @@ public class GameFrame extends JFrame {
      */
     public void displayGameView() {
         this.getContentPane().removeAll();
-
+        
+        // general
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
+        c.weightx = 1;
+        c.weighty = 1;
+        this.setBackground(Color.BLACK);
 
         c.gridx = 0;
         c.gridy = 0;

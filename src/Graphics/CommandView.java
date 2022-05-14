@@ -30,6 +30,7 @@ public class CommandView extends JPanel implements ActionListener {
 
     public CommandView(Virologist myViro){
         myVirologist = myViro;
+
         applyButton = new JButton("Apply");
         applyButton.addActionListener(this);
         attackButton = new JButton("Attack");
@@ -38,6 +39,7 @@ public class CommandView extends JPanel implements ActionListener {
         stealButton.addActionListener(this);
         backButton = new JButton("Back");
         backButton.addActionListener(this);
+
         fieldName = new JLabel();
         chosenViroName = new JLabel();
         virButtons = new HashMap<>();
