@@ -60,7 +60,7 @@ public class EndGameView extends  JPanel implements ActionListener {
     }
 
     private void restartButtonPressed() {
-        GameFrame gameFrame = GameFrame.Instance();
+        GameFrame gameFrame = GameFrame.instance();
     }
 
 }

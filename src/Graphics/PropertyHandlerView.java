@@ -96,7 +96,7 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
     private void equipmentButtonPressed(String equipmentName) {}
 
     public void activateView(){
-        GameFrame.Instance().setView(this);
+        GameFrame.instance().setView(this);
     }
 
 }

@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
     private GameFrame() {
        super("Virologist Jam");
        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       this.setSize(700, 500);
+       this.setSize(1000, 1000);
 
        startMenu = new Menu();
     }
@@ -34,7 +34,7 @@ public class GameFrame extends JFrame {
      * this is the singelton object of GameFrame, available from everywhere
      * @return theGameFrame of this game
      */
-    public static GameFrame Instance(){
+    public static GameFrame instance(){
         return theGameFrame;
     }
 
@@ -51,14 +51,13 @@ public class GameFrame extends JFrame {
      */
     public void displayGameView() {
         this.getContentPane().removeAll();
-        
+
         // general
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 1;
         c.weighty = 1;
-        this.setBackground(Color.BLACK);
 
         c.gridx = 0;
         c.gridy = 0;
@@ -90,4 +89,8 @@ public class GameFrame extends JFrame {
     public void setView(CommandView cv) { actualCommandView = cv; }
     public void setView(PropertyHandlerView phv) { actualPropertyHandlerView = phv; }
     public void setView(EndGameView egv) { actualEndGameView = egv; }
+
+    public CommandView getActualCommandView() {
+        return actualCommandView;
+    }
 }

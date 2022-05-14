@@ -30,28 +30,38 @@ public class FieldView extends JPanel implements ActionListener {
         + void setChosenVirologistIcon(ImageIcon icon): megjeleníti az akcióhoz kiválasztott másik virológus képét
      */
     private void neighborButtonPressed(JButton pressedButton) {
-
+        String fieldName = pressedButton.getText();
+        for(Field field : myField.getNeighbours()) {
+            if (fieldName.equals(field.getName())) {
+                activeVirologist.step(field);
+            }
+        }
+        this.update();
+        activeVirologist.setActionCounter(activeVirologist.getActionCounter() - 1);
+        CommandView commandView = new CommandView(activeVirologist);
+        GameFrame.instance().setView(commandView);
+        GameFrame.instance().getActualCommandView().update();
     }
 
     /**
      * Updates the shown FieldView
      */
     public void update() {
+        this.removeAll();
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(5, 5, 5, 5);
-
+        c.insets = new Insets(20, 20, 20, 20);
         // adding neighbour buttons
         this.myField = activeVirologist.getCurrentField();
-        ArrayList<Field> myFieldNeighbours = myField.getNeighbours();
-        for (int i = 0; i < myFieldNeighbours.size(); i++) {
+        for (int i = 0; i < myField.getNeighbours().size(); i++) {
             c.gridx = i;
             c.gridy = 4;
-            JButton neighbourButton = new JButton(myFieldNeighbours.get(i).getName());
+            JButton neighbourButton = new JButton(myField.getNeighbours().get(i).getName());
+            neighbourButton.addActionListener(this);
             neighbours.add(neighbourButton);
             this.add(neighbourButton, c);
         }
-
+        for(JButton jButton : neighbours) System.out.println(jButton.getText());
         // TODO - ICONS
 
         this.myField.setView(this);
@@ -61,7 +71,7 @@ public class FieldView extends JPanel implements ActionListener {
      * Beállítja megjelenésre az aktuális View-t
      */
     public void activateView(){
-        GameFrame.Instance().setView(this);
+        GameFrame.instance().setView(this);
     }
 
     /**
@@ -78,6 +88,11 @@ public class FieldView extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO - step
+        for(JButton jButton : neighbours){
+            if(e.getSource().equals(jButton)){
+                neighborButtonPressed(jButton);
+                break;
+            }
+        }
     }
 }
