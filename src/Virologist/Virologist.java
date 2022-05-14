@@ -22,6 +22,7 @@ public class Virologist {
     private String name;
     private static int id = 0;
     private int actionCounter;
+
     private CommandView myCommandView;
     private VirologistView myViroView;
     private PropertyHandler myProperties;
@@ -557,6 +558,14 @@ public class Virologist {
      */
     public void remove(DefenseBehavior beh) {
         this.defenseBehaviors.remove(beh);
+    }
+
+    public CommandView getMyCommandView() {
+        return myCommandView;
+    }
+
+    public void setMyCommandView(CommandView myCommandView) {
+        this.myCommandView = myCommandView;
     }
 }
 

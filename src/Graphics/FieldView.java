@@ -26,7 +26,7 @@ public class FieldView extends JPanel implements ActionListener {
     }
 
     /**
-     * Step onto another
+     * Step on another field
      * @param pressedButton
      */
     private void neighborButtonPressed(JButton pressedButton) {
@@ -37,12 +37,10 @@ public class FieldView extends JPanel implements ActionListener {
                 break;
             }
         }
-
         this.update();
-        CommandView commandView = activeVirologist.getCommandView();
-        commandView.update();
-        GameFrame.instance().setView(commandView);
-        GameFrame.instance().getActualCommandView().update();
+
+        GameFrame.instance().setView(activeVirologist.getMyCommandView());
+        GameFrame.instance().displayGameView();
     }
 
     /**
@@ -65,6 +63,7 @@ public class FieldView extends JPanel implements ActionListener {
             this.add(neighbourButton, c);
         }
         for(JButton jButton : neighbours) System.out.println(jButton.getText());
+
         // TODO - ICONS
         this.validate();
         this.repaint();

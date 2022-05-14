@@ -83,7 +83,7 @@ public class Menu extends JPanel implements ActionListener {
         Game game = new Game();
         String path = fileTextField.getText();
         //most teszt miatt átírva fixre
-        path="src/defaultMap.txt";
+        path="G://projlab//Projlab//src//defaultMap.txt";
         ArrayList<String> viroNames = new ArrayList<>();
         for (JTextField nameFields: names) {
             viroNames.add(nameFields.getText());
