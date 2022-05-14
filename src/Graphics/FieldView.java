@@ -26,7 +26,6 @@ public class FieldView extends JPanel implements ActionListener {
     }
 
     /*
-        -void neighborButtonPressed(JButton pressedButton): a kiválasztott mezőre lépteti a virológust
         + void setVirologistIcon(ImageIcon icon): megjeleníti a virológus képét
         + void setChosenVirologistIcon(ImageIcon icon): megjeleníti az akcióhoz kiválasztott másik virológus képét
      */
@@ -37,14 +36,10 @@ public class FieldView extends JPanel implements ActionListener {
                 activeVirologist.step(field);
             }
         }
-
         this.update();
-        activeVirologist.setActionCounter(activeVirologist.getActionCounter() - 1);
 
         GameFrame.instance().setView(activeVirologist.getMyCommandView());
-        activeVirologist.getCommandView().update();
-
-
+        GameFrame.instance().displayGameView();
     }
 
     /**
