@@ -98,12 +98,12 @@ public class Game {
 
         while(gameRunning){
             for (Virologist activeViro: virologists) {
-                window.setView(new CommandView(activeViro));
+               /* window.setView(new CommandView(activeViro));
                 window.setView(activeViro.getCurrentField().getView());
                 window.setView(new PropertyHandlerView(activeViro.getPropertyHandler()));
                 window.displayGameView();
-                break;
-                //activeViro.yourTurn();
+                break;*/
+                activeViro.yourTurn();
             }
             stepSteppabbles();
             gameRunning = false;

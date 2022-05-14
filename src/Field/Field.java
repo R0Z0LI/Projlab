@@ -12,8 +12,8 @@ import java.util.List;
  * A játék egy mezőjét reprezentáló osztály
  */
 public class Field {
-    protected FieldView view;
     protected String name;
+    protected FieldView view;
     private static int id = 0;
     protected static ArrayList<Field> fields = new ArrayList<>(); // the map's fields
     protected ArrayList<Virologist> virologists = new ArrayList<>(); // the virologists on this field
@@ -26,19 +26,18 @@ public class Field {
         name = "fid" + id++;
         fields.add(this);
     }
+    public FieldView getView() {
+        return view;
+    }
 
+    public void setView(FieldView view) {
+        this.view = view;
+    }
     public Field(int arg) {}
 
     // gets name/id of this object
     public String getName() {
         return name;
-    }
-
-    public FieldView getView(){
-        return view;
-    }
-    public void setView(FieldView fv){
-        view = fv;
     }
 
     // gets all the fields on the map

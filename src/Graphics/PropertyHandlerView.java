@@ -86,7 +86,7 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
             this.add(equipmentButtons.get(equipmentButtons.size()-1), c);
         }
 
-        this.validate();
+        this.invalidate();
         this.repaint();
     }
 

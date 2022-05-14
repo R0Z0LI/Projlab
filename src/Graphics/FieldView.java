@@ -86,7 +86,9 @@ public class FieldView extends JPanel implements ActionListener {
         this.update();
     }
 
-    public void setVirologistIcon(ImageIcon icon) {}
+    public void setVirologistIcon(ImageIcon icon) {
+
+    }
     public void setChosenVirologistIcon(ImageIcon icon) {}
 
     @Override

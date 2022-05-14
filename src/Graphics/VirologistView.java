@@ -1,6 +1,7 @@
 package Graphics;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -58,60 +59,48 @@ public class VirologistView extends Canvas {
      * displays a virologist
      *
      * @param mode passive or active: determines the position of the viro
-     * @param fv   the field panel
      */
     public void displayVirologist(FieldView fv, int mode) {
-        int x = 5;
-        int y = 5;
         if (mode == ACTIVE_MODE) {
-            x = 10;
-            y = 10;
+            Icon vir= new ImageIcon(viroIcon);
+           fv.add(new JLabel(vir));
+            return;
         }
-        Graphics g = fv.getGraphics();
-        g.drawImage(viroIcon, x, y, this);
+
     }
 
     /**
      * displays a bear infected virologist
      *
      * @param mode passive or active: determines the position of the viro
-     * @param fv   the field panel
      */
     public void displayBearVirologist(FieldView fv, int mode) {
-        int x = 5;
-        int y = 5;
+        ImageIcon icon= new ImageIcon(bearIcon);
         if (mode == ACTIVE_MODE) {
-            x = 10;
-            y = 10;
+            fv.setVirologistIcon(icon);
+            return;
         }
-        Graphics g = fv.getGraphics();
-        g.drawImage(viroIcon, x, y, this);
-        g.drawImage(bearIcon, x - 10, y + 10, this);
+        fv.setChosenVirologistIcon(icon);
     }
 
     /**
      * displays a stunned virologist
      *
      * @param mode passive or active: determines the position of the viro
-     * @param fv   the field panel
      */
     public void displayStunnedVirologist(FieldView fv, int mode) {
-        int x = 5;
-        int y = 5;
+        ImageIcon icon= new ImageIcon(stunnedIcon);
         if (mode == ACTIVE_MODE) {
-            x = 10;
-            y = 10;
+           fv.setVirologistIcon(icon);
+           return;
         }
-        Graphics g = fv.getGraphics();
-        g.drawImage(viroIcon, x, y, this);
-        g.drawImage(stunnedIcon, x - 10, y + 10, this);
+        fv.setChosenVirologistIcon(icon);
 
     }
 
     /**
      * displays an action icon
      *
-     * @param fv the field panel
      */
     public void displayAction(FieldView fv) {
         Graphics g = fv.getGraphics();

@@ -4,6 +4,7 @@ import Collectible.Collectible;
 import Field.Field;
 import Graphics.CommandView;
 import Graphics.FieldView;
+import Graphics.GameFrame;
 import Graphics.VirologistView;
 import PropertyHandler.PropertyHandler;
 import Agent.Agent;
@@ -208,6 +209,10 @@ public class Virologist {
         actionCounter = 3;
         myCommandView.update();
         myCommandView.activateView();
+        FieldView fieldView = new FieldView(this);
+        fieldView.update();
+        fieldView.activateView();
+        GameFrame.instance().displayGameView();
         //meghívja az automatikus viselkedést
         automaticBehaviors.firstElement().execute();
         //amíg van akció, várja a játékos utasításait
@@ -349,7 +354,6 @@ public class Virologist {
      */
     public void setCurrentField(Field field) {
         this.currentField = field;
-        this.currentField.setView(new FieldView(this));
     }
 
     /**+
