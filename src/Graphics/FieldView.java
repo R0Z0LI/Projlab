@@ -37,12 +37,12 @@ public class FieldView extends JPanel implements ActionListener {
                 activeVirologist.step(field);
             }
         }
-
         this.update();
         activeVirologist.setActionCounter(activeVirologist.getActionCounter() - 1);
-        CommandView commandView = activeVirologist.getCommandView();
-        GameFrame.instance().setView(commandView);
-        GameFrame.instance().getActualCommandView().update();
+
+        GameFrame.instance().setView(activeVirologist.getMyCommandView());
+        activeVirologist.getCommandView().update();
+
     }
 
     /**
@@ -65,6 +65,8 @@ public class FieldView extends JPanel implements ActionListener {
             this.add(neighbourButton, c);
         }
         for(JButton jButton : neighbours) System.out.println(jButton.getText());
+        this.validate();
+        this.repaint();
         // TODO - ICONS
         this.validate();
         this.repaint();
