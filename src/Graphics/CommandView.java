@@ -65,7 +65,12 @@ public class CommandView extends JPanel implements ActionListener {
         // otherviros info + display viro buttons
         int i = 0;
         List<Virologist> viros = field.GetTouchableVirologists();
-        for(Virologist v : viros){
+
+
+            //if(v!=myVirologist){
+
+
+        for (Virologist v : viros) {
             //if(v!=myVirologist){
 
             JButton vButton = new JButton(v.getName());
