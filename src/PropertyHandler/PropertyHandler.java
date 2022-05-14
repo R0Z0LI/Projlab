@@ -260,4 +260,5 @@ public class PropertyHandler {
     public void setVirologist(Virologist virologist) {
         this.virologist = virologist;
     }
+    public Virologist getVirologist(){return virologist;};
 }

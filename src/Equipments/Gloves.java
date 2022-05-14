@@ -21,6 +21,8 @@ public class Gloves extends Equipment {
         this.currPosition = field;
     }
 
+    public int getUsability(){return usability;};
+
     /**
      * Gloves constructor without any parameters.
      * Should be used when adding to the inventory directly.

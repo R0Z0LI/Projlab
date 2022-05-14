@@ -6,7 +6,8 @@ import Virologist.Virologist;
 /**
  * Amnézia ágenst reprezentáló osztály.
  */
-public class AmnesiaAgent extends Agent{
+public class
+AmnesiaAgent extends Agent{
     private static int id = 0;
 
     /**
