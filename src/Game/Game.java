@@ -97,14 +97,11 @@ public class Game {
     public void runGame(){
         GameFrame window = GameFrame.Instance();
 
-        window.setView(new PropertyHandlerView());
-
-        //TODO
-
         while(gameRunning){
             for (Virologist activeViro: virologists) {
                 window.setView(new CommandView(activeViro));
-                window.setView(new FieldView(activeViro.getCurrentField()));
+                window.setView(activeViro.getCurrentField().getView());
+                window.setView(new PropertyHandlerView(activeViro.getPropertyHandler()));
                 window.displayGameView();
                 break;
                 //activeViro.yourTurn();

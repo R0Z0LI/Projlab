@@ -39,47 +39,38 @@ public class Virologist {
         this.name = name;
         this.actionCounter = 3;
         this.myProperties = new PropertyHandler(this);
+
         this.movementBehaviors.add(new MovementBehavior(this));
-        CreateBehavior createBehavior = new CreateBehavior(this);
-        this.createBehaviors.add(createBehavior);
-        ApplyBehavior applyBehavior = new ApplyBehavior(this);
-        this.applyBehaviors.add(applyBehavior);
-        CollectBehavior collectBehavior = new CollectBehavior(this);
-        this.collectBehaviors.add(collectBehavior);
-        StealBehavior stealBehavior = new StealBehavior(this);
-        this.stealBehaviors.add(stealBehavior);
-        DefenseBehavior defenseBehavior = new DefenseBehavior(this);
-        this.defenseBehaviors.add(defenseBehavior);
-        AutomaticBehavior automaticBehavior = new AutomaticBehavior(this);
-        this.automaticBehaviors.add(automaticBehavior);
-        AttackBehavior attackBehavior = new AttackBehavior(this);
-        this.attackBehaviors.add(attackBehavior);
-        myViroView= new VirologistView(id);
-        myCommandView=new CommandView(this);
+        this.createBehaviors.add(new CreateBehavior(this));
+        this.applyBehaviors.add(new ApplyBehavior(this));
+        this.collectBehaviors.add(new CollectBehavior(this));
+        this.stealBehaviors.add(new StealBehavior(this));
+        this.defenseBehaviors.add(new DefenseBehavior(this));
+        this.automaticBehaviors.add(new AutomaticBehavior(this));
+        this.attackBehaviors.add(new AttackBehavior(this));
+
+        myViroView = new VirologistView(id);
+        myCommandView = new CommandView(this);
     }
     public Virologist(Field field) {
-        this.name = "vir"+id++;
-        currentField=field;
+        this.name = "vir" + id++;
+        currentField = field;
         this.actionCounter = 3;
         this.myProperties = new PropertyHandler(this);
+
         this.movementBehaviors.add(new MovementBehavior(this));
-        CreateBehavior createBehavior = new CreateBehavior(this);
-        this.createBehaviors.add(createBehavior);
-        ApplyBehavior applyBehavior = new ApplyBehavior(this);
-        this.applyBehaviors.add(applyBehavior);
-        CollectBehavior collectBehavior = new CollectBehavior(this);
-        this.collectBehaviors.add(collectBehavior);
-        StealBehavior stealBehavior = new StealBehavior(this);
-        this.stealBehaviors.add(stealBehavior);
-        DefenseBehavior defenseBehavior = new DefenseBehavior(this);
-        this.defenseBehaviors.add(defenseBehavior);
-        AutomaticBehavior automaticBehavior = new AutomaticBehavior(this);
-        this.automaticBehaviors.add(automaticBehavior);
-        AttackBehavior attackBehavior = new AttackBehavior(this);
-        this.attackBehaviors.add(attackBehavior);
-        myViroView= new VirologistView(id);
-        myCommandView=new CommandView(this);
+        this.createBehaviors.add(new CreateBehavior(this));
+        this.applyBehaviors.add(new ApplyBehavior(this));
+        this.collectBehaviors.add(new CollectBehavior(this));
+        this.stealBehaviors.add(new StealBehavior(this));
+        this.defenseBehaviors.add(new DefenseBehavior(this));
+        this.automaticBehaviors.add(new AutomaticBehavior(this));
+        this.attackBehaviors.add(new AttackBehavior(this));
+
+        myViroView = new VirologistView(id);
+        myCommandView = new CommandView(this);
     }
+
     public String getName() {
         return name;
     }
@@ -178,7 +169,8 @@ public class Virologist {
         myProperties.remove(agent);
         actionCounter--;
     }
-    /**+
+
+    /**
      * megpróbálja megölni a másik virológust
      * @param victim akit meg kell ölni
      */
@@ -191,6 +183,7 @@ public class Virologist {
         attackBehaviors.firstElement().attack(victim);
         actionCounter--;
     }
+
     /**
      * Elpusztítja a virológus egyik, a játékos által választott felszerelését
      *
@@ -205,18 +198,19 @@ public class Virologist {
         myProperties.remove(equipment);
         actionCounter--;
     }
+
     /**
      * Elindítja a virológus körét
      * A játékos parancsait beolvassa, értelmezi
      */
     public void yourTurn() {
-        actionCounter=3;
+        actionCounter = 3;
         myCommandView.update();
         myCommandView.activateView();
         //meghívja az automatikus viselkedést
         automaticBehaviors.firstElement().execute();
         //amíg van akció, várja a játékos utasításait
-        while(actionCounter>0){
+        while(actionCounter > 0){
         //vár a parancsokra
 
         }
@@ -340,11 +334,13 @@ public class Virologist {
     public void beInfected(Agent agent, Virologist attacker) {
         defenseBehaviors.firstElement().defend(agent, attacker);
     }
+
     public void beKilled(){
         Game.removeVirologist(this);
         System.out.println(name+ " died.");
         TestInOutHandler.appendToTestOutput(name+ " died.");
     }
+
     /**
      * currentField settere
      *
@@ -352,6 +348,7 @@ public class Virologist {
      */
     public void setCurrentField(Field field) {
         this.currentField = field;
+        this.currentField.setView(new FieldView(this));
     }
 
     /**+
@@ -359,6 +356,7 @@ public class Virologist {
      * @return pozíció
      */
     public Field getCurrentField(){return currentField;}
+
     /**
      * Visszaadja a PropertyHandlerét a virológusnak
      *
@@ -367,13 +365,14 @@ public class Virologist {
     public PropertyHandler getPropertyHandler() {
         return myProperties;
     }
-    /**+
+
+    /**
      * beállítja az actionCounter értékét
      * @param actionCount az új érték
      */
     public void setActionCounter(int actionCount){actionCounter=actionCount;}
 
-    /**+
+    /**
      * A megadott számmal csökkenti at actionCounter értékét
      * @param number csökkentés
      */
@@ -405,6 +404,7 @@ public class Virologist {
         ArrayList<Collectible> stealables = automaticBehaviors.firstElement().getStealables(myProperties);
         return stealables;
     }
+
     /**
      * applyBeh settere
      *
@@ -477,8 +477,8 @@ public class Virologist {
         this.movementBehaviors.add(0,beh);
     }
     //TODO kell-e még most is
+
     /**
-     * +
      * Újra sorba állítja a defense Behavior gyűjteményét prioritás szerint.
      */
     public void resortDefenseBehaviors() {
@@ -494,7 +494,7 @@ public class Virologist {
         this.movementBehaviors.remove(beh);
     }
 
-    /**+
+    /**
      * eltávolítja az automatikus viselkedést
      * @param beh
      */
@@ -502,13 +502,14 @@ public class Virologist {
         automaticBehaviors.remove(beh);
     }
 
-    /**+
+    /**
      * eltávolítja a támadási viselkedést
      * @param beh
      */
     public void remove(AttackBehavior beh){
         attackBehaviors.remove(beh);
     }
+
     //TODO kell?
     /**
      * Elveszi a stack-ből a paraméterként adott behavior-t
@@ -518,6 +519,7 @@ public class Virologist {
     public void remove(ApplyBehavior beh) {
         this.applyBehaviors.remove(beh);
     }
+
     //TODO kell?
     /**
      * Elveszi a stack-ből a paraméterként adott behavior-t
@@ -527,6 +529,7 @@ public class Virologist {
     public void remove(CreateBehavior beh) {
         this.createBehaviors.remove(beh);
     }
+
     //TODO kell?
     /**
      * Elveszi a stack-ből a paraméterként adott behavior-t
@@ -536,6 +539,7 @@ public class Virologist {
     public void remove(CollectBehavior beh) {
         this.collectBehaviors.remove(beh);
     }
+
     //TODO kell?
     /**
      * Elveszi a stack-ből a paraméterként adott behavior-t
