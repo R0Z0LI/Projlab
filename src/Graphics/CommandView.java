@@ -66,6 +66,7 @@ public class CommandView extends JPanel implements ActionListener {
         List<Virologist> viros = field.GetTouchableVirologists();
         for(Virologist v : viros){
             JButton vButton = new JButton(v.getName());
+            vButton.addActionListener(this);
             virButtons.put(vButton, v);
             innerPanel.add(vButton);
             ++i;
@@ -79,6 +80,7 @@ public class CommandView extends JPanel implements ActionListener {
         JButton thing = null;
         if(coll != null) {
             thing = new JButton(coll.getName());
+            thing.addActionListener(this);
             thingButtons.put(thing, coll);
         }
 
@@ -86,6 +88,8 @@ public class CommandView extends JPanel implements ActionListener {
         if(coll != null)
             innerPanel.add(thing);
         this.add(innerPanel);
+        this.validate();
+        this.repaint();
     }
 
     public void activateView(){
@@ -93,21 +97,26 @@ public class CommandView extends JPanel implements ActionListener {
     }
 
     private void virologistChosen(Virologist v){
+        this.removeAll();
+
         //chosen viro
         chosenVirologist=v;
         chosenViroName.setText(v.getName());
-        //agents
-        agentChooser=new JComboBox<>();
-        List<Agent> agents= myVirologist.getPropertyHandler().getAgents();
-        for(Agent a : agents){
-            agentChooser.addItem(a.getName());
+        try {
+            //agents
+            agentChooser = new JComboBox<>();
+            List<Agent> agents = myVirologist.getPropertyHandler().getAgents();
+            for (Agent a : agents) {
+                agentChooser.addItem(a.getName());
+            }
+            //stealables
+            stealableChooser = new JComboBox<>();
+            List<Collectible> stealables = myVirologist.getStealableThings();
+            for (Collectible c : stealables) {
+                stealableChooser.addItem(c.getName());
+            }
         }
-        //stealables
-        stealableChooser=new JComboBox<>();
-        List<Collectible> stealables=myVirologist.getStealableThings();
-        for(Collectible c: stealables){
-            stealableChooser.addItem(c.getName());
-        }
+        catch(NullPointerException ex) {}
         //layout
         JPanel innerPanel = new JPanel();
         innerPanel.setLayout(new GridBagLayout());
@@ -116,23 +125,25 @@ public class CommandView extends JPanel implements ActionListener {
         innerPanel.add(chosenViroName,c);
         c.gridx=0;
         c.gridy=1;
-        innerPanel.add(applyButton,3);
+        innerPanel.add(applyButton,c);
         c.gridx=0;
         c.gridy=2;
-        innerPanel.add(stealButton,5);
+        innerPanel.add(stealButton,c);
         c.gridx=0;
         c.gridy=3;
-        innerPanel.add(attackButton,7);
+        innerPanel.add(attackButton,c);
         c.gridx=1;
         c.gridy=1;
-        innerPanel.add(agentChooser,4);
+        innerPanel.add(agentChooser,c);
         c.gridx=1;
         c.gridy=2;
-        innerPanel.add(stealableChooser,6);
+        innerPanel.add(stealableChooser,c);
         c.gridx=0;
         c.gridy=4;
-        innerPanel.add(backButton,9);
+        innerPanel.add(backButton,c);
         this.add(innerPanel);
+        this.validate();
+        this.repaint();
     }
 
     public void actionPerformed(ActionEvent e){
@@ -147,7 +158,7 @@ public class CommandView extends JPanel implements ActionListener {
         } else if(virButtons.containsKey(e.getSource())){
             virologistChosen(virButtons.get(e.getSource()));
         }else if(thingButtons.containsKey(e.getSource())){
-            thingButtonPressed(thingButtons.get(e.getSource()));
+            thingButtonPressed(thingButtons.get(e.getSource()), (JButton)e.getSource());
         }
     }
 
@@ -180,10 +191,14 @@ public class CommandView extends JPanel implements ActionListener {
     }
 
     private void backButtonPressed(){
+        this.removeAll();
         update();
     }
 
-    private void thingButtonPressed(Collectible thing){
+    private void thingButtonPressed(Collectible thing, JButton thingButton){
         myVirologist.collect(thing);
+        this.remove(thingButton);
+        this.validate();
+        this.repaint();
     }
 }
