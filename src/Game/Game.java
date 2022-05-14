@@ -112,4 +112,5 @@ public class Game {
     public void setFields(ArrayList<Field> f) { fields = f; }
     public void setVirologists(ArrayList<Virologist> v) { virologists = v; }
 
+    public static Virologist getActiveVirologist() { return activeVirologist; }
 }

@@ -84,6 +84,14 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
             this.add(equipmentButtons.get(equipmentButtons.size()-1), c);
         }
 
+        // adding button listeners
+        for (JButton jb : genButtons)
+            jb.addActionListener(this);
+        for (JButton jb : agentButtons)
+            jb.addActionListener(this);
+        for (JButton jb : equipmentButtons)
+            jb.addActionListener(this);
+
         this.validate();
         this.repaint();
     }
@@ -91,12 +99,15 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton b = (JButton)e.getSource();
-        String name = b.getName();
+        String name = b.getText();
         if (name.contains("amc") || name.contains("cdc") || name.contains("pac") || name.contains("prc") ) {
             genButtonPressed(name);
             Game.actionHappened();
-        } else if (name.contains("ama") ||name.contains("baa") || name.contains("cda") || name.contains("paa") || name.contains("pra") ) {
+        } else if (name.contains("ama") || name.contains("baa") || name.contains("cda") || name.contains("paa") || name.contains("pra") ) {
             agentButtonPressed(name);
+            Game.actionHappened();
+        } else if (name.contains("axe") || name.contains("glv") || name.contains("sck") || name.contains("cpe")) {
+            equipmentButtonPressed(name);
             Game.actionHappened();
         }
     }
@@ -218,44 +229,17 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
     }
 
     private void equipmentButtonPressed(String equipmentName) {
-        if(equipmentName.contains("axe")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("axe")){
-                    myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                    update();
-                }
+        // get the needed equipment
+        Equipment eq = null;
+        for(int i = 0; i < myPropertyHandler.getEquipments().size(); i++){
+            if(myPropertyHandler.getEquipments().get(i).getName().equals(equipmentName)) {
+                eq = myPropertyHandler.getEquipments().get(i);
+                break;
             }
         }
 
-        else if(equipmentName.contains("cpe")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("cpe")){
-                    myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                    update();
-                }
-            }
-        }
-
-        else if(equipmentName.contains("glv")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("glv")){
-                    Gloves glove=(Gloves) myPropertyHandler.getEquipments().get(i);
-                    if(glove.getUsability()>0) {
-                        myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                        update();
-                    }
-                }
-            }
-        }
-
-        else if(equipmentName.contains("sck")){
-            for(int i=0; i<myPropertyHandler.getEquipments().size(); i++){
-                if(myPropertyHandler.getEquipments().get(i).getName().contains("sck")){
-                    myPropertyHandler.getEquipments().get(i).addBehaviour(myPropertyHandler.getVirologist());
-                    update();
-                }
-            }
-        }
+        Game.getActiveVirologist().destroy(eq);
+        this.update();
     }
 
     public void activateView(){
