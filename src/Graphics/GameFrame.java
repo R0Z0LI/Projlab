@@ -54,24 +54,24 @@ public class GameFrame extends JFrame {
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
 
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = 2;
-        //c.insets = new Insets(10, 10, 10, 10);
-        this.add(actualFieldView);
+        this.add(actualFieldView, c);
         actualFieldView.setBackground(Color.CYAN);
 
         c.gridx = 1;
         c.gridy = 0;
         c.gridheight = 1;
-        this.add(actualPropertyHandlerView);
+        this.add(actualPropertyHandlerView, c);
         actualPropertyHandlerView.setBackground(Color.BLUE);
 
         c.gridx = 1;
         c.gridy = 1;
         c.gridheight = 1;
-        this.add(actualCommandView);
+        this.add(actualCommandView, c);
         actualCommandView.update();
         actualCommandView.setBackground(Color.PINK);
 

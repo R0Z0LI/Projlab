@@ -19,35 +19,42 @@ public class FieldView extends JPanel implements ActionListener {
     /**
      * Empty constructor
      */
-    public FieldView(Field field) {
-        this.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        // adding neighbour buttons
-        this.myField = field;
-        ArrayList<Field> myFieldNeighbours = myField.getNeighbours();
-        for (int i = 0; i < myFieldNeighbours.size(); i++) {
-            c.gridx = i;
-            c.gridy = 4;
-            JButton neighbourButton = new JButton(myFieldNeighbours.get(i).getName());
-            neighbours.add(neighbourButton);
-            this.add(neighbourButton);
-        }
-        this.myField.setView(this);
+    public FieldView(Virologist v) {
+        activeVirologist = v;
+        update();
     }
 
     /*
         -void neighborButtonPressed(JButton pressedButton): a kiválasztott mezőre lépteti a virológust
-        +void update(): frissíti a mező megjelenítését, illetve beállítja, hogy aktuálisan ez a mező legyen megjelenítve
-        +void setActiveVirologist(Virologist v): beállítja a mezőn álló aktív virológust és egyben meghívja a saját update() függvényét is, hogy ez a mező legyen megjelenítve
         + void setVirologistIcon(ImageIcon icon): megjeleníti a virológus képét
         + void setChosenVirologistIcon(ImageIcon icon): megjeleníti az akcióhoz kiválasztott másik virológus képét
      */
     private void neighborButtonPressed(JButton pressedButton) {
 
     }
-    public void update() {
 
+    /**
+     * Updates the shown FieldView
+     */
+    public void update() {
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5, 5, 5, 5);
+
+        // adding neighbour buttons
+        this.myField = activeVirologist.getCurrentField();
+        ArrayList<Field> myFieldNeighbours = myField.getNeighbours();
+        for (int i = 0; i < myFieldNeighbours.size(); i++) {
+            c.gridx = i;
+            c.gridy = 4;
+            JButton neighbourButton = new JButton(myFieldNeighbours.get(i).getName());
+            neighbours.add(neighbourButton);
+            this.add(neighbourButton, c);
+        }
+
+        // TODO - ICONS
+
+        this.myField.setView(this);
     }
 
     /**
@@ -71,6 +78,6 @@ public class FieldView extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        // TODO - step
     }
 }
