@@ -24,6 +24,7 @@ public class CommandView extends JPanel implements ActionListener {
     private JComboBox<String> stealableChooser;
     private JButton backButton;
     //TODO lehetne még egy endTurnButton
+
     public CommandView(Virologist myViro){
         myVirologist = myViro;
 
@@ -41,41 +42,40 @@ public class CommandView extends JPanel implements ActionListener {
         virButtons = new HashMap<>();
         thingButtons = new HashMap<>();
     }
+
     /**
      * displays fieldname, touchable virologists, collectible things
      */
     public void update(){
         this.removeAll(); // clears everything
+
         // fieldinfo
         Field field = myVirologist.getCurrentField();
         fieldName.setText(field.getName());
+
         // display labels
         JPanel innerPanel = new JPanel();
         innerPanel.setLayout(new GridLayout(0,2,30,50));
         innerPanel.add(new JLabel("Field:"));
         innerPanel.add(fieldName);
         innerPanel.add(new JLabel("Vir:"),2);
+
         // otherviros info + display viro buttons
         int i = 0;
         List<Virologist> viros = field.GetTouchableVirologists();
 
-            //if(v!=myVirologist){
-
-
         for (Virologist v : viros) {
-
-            //if(v!=myVirologist){
-
             JButton vButton = new JButton(v.getName());
             vButton.addActionListener(this);
             virButtons.put(vButton, v);
             innerPanel.add(vButton);
             ++i;
-            //}
         }
+
         //ez csak kitoltes
         if(i % 2 == 0) innerPanel.add(new JLabel());
         innerPanel.add(new JLabel("Thing:"));
+
         //collectible info
         Collectible coll = field.getCollectible();
         JButton thing = null;
@@ -84,6 +84,7 @@ public class CommandView extends JPanel implements ActionListener {
             thing.addActionListener(this);
             thingButtons.put(thing, coll);
         }
+
         //displaying collectible thing
         if(coll != null)
             innerPanel.add(thing);
@@ -94,7 +95,9 @@ public class CommandView extends JPanel implements ActionListener {
 
         this.validate();
         this.repaint();
+
     }
+
     public void activateView(){
         GameFrame.instance().setView(this);
     }
@@ -198,11 +201,9 @@ public class CommandView extends JPanel implements ActionListener {
             }
     }
 
-
-
     private void backButtonPressed(){
-        this.removeAll();
-        update();
+        //this.removeAll();
+        this.update();
     }
 
     private void thingButtonPressed(Collectible thing, JButton thingButton){

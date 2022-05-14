@@ -39,8 +39,8 @@ public class FieldView extends JPanel implements ActionListener {
         }
 
         this.update();
-        activeVirologist.setActionCounter(activeVirologist.getActionCounter() - 1);
         CommandView commandView = activeVirologist.getCommandView();
+        commandView.update();
         GameFrame.instance().setView(commandView);
         GameFrame.instance().getActualCommandView().update();
     }
