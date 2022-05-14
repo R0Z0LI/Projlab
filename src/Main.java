@@ -6,7 +6,7 @@ import Graphics.*;
 public class Main {
     public static void main(String[] args) {
         GameFrame.Init();
-        GameFrame window = GameFrame.Instance();
+        GameFrame window = GameFrame.instance();
         window.displayStartGame();
     }
 }

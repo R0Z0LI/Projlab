@@ -2,7 +2,6 @@ package Game;
 
 import Field.*;
 import Graphics.CommandView;
-import Graphics.FieldView;
 import Graphics.GameFrame;
 import Graphics.PropertyHandlerView;
 import TestSets.TestInOutHandler;
@@ -95,7 +94,7 @@ public class Game {
         }
     }
     public void runGame(){
-        GameFrame window = GameFrame.Instance();
+        GameFrame window = GameFrame.instance();
 
         while(gameRunning){
             for (Virologist activeViro: virologists) {
