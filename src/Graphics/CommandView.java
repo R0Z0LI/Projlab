@@ -90,6 +90,10 @@ public class CommandView extends JPanel implements ActionListener {
         if(coll != null)
             innerPanel.add(thing);
         this.add(innerPanel);
+
+        innerPanel.validate();
+        innerPanel.repaint();
+
         this.validate();
         this.repaint();
     }

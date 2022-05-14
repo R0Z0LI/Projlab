@@ -25,16 +25,16 @@ public class FieldView extends JPanel implements ActionListener {
         update();
     }
 
-    /*
-        -void neighborButtonPressed(JButton pressedButton): a kiválasztott mezőre lépteti a virológust
-        + void setVirologistIcon(ImageIcon icon): megjeleníti a virológus képét
-        + void setChosenVirologistIcon(ImageIcon icon): megjeleníti az akcióhoz kiválasztott másik virológus képét
+    /**
+     * Step onto another
+     * @param pressedButton
      */
     private void neighborButtonPressed(JButton pressedButton) {
         String fieldName = pressedButton.getText();
         for(Field field : myField.getNeighbours()) {
             if (fieldName.equals(field.getName())) {
                 activeVirologist.step(field);
+                break;
             }
         }
 
