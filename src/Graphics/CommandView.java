@@ -25,6 +25,7 @@ public class CommandView extends JPanel implements ActionListener {
     private JComboBox<String> stealableChooser;
     private JButton backButton;
     private JButton endTurnButton;
+    private JButton endGameButton;
     //TODO lehetne még egy endTurnButton
 
     public CommandView(Virologist myViro){
@@ -40,6 +41,8 @@ public class CommandView extends JPanel implements ActionListener {
         backButton.addActionListener(this);
         endTurnButton = new JButton("End Turn");
         endTurnButton.addActionListener(this);
+        endGameButton = new JButton("End Game");
+        endGameButton.addActionListener(this);
 
         fieldName = new JLabel();
         chosenViroName = new JLabel();
@@ -106,6 +109,9 @@ public class CommandView extends JPanel implements ActionListener {
         this.add(Box.createVerticalGlue());
         this.add(new JLabel("Actions: "+myVirologist.getActionCounter()+"/3"));
         this.add(Box.createVerticalGlue());
+        this.add(endGameButton);
+        this.add(Box.createVerticalGlue());
+
 
         this.validate();
         this.repaint();
@@ -182,6 +188,8 @@ public class CommandView extends JPanel implements ActionListener {
             backButtonPressed();
         }else if(e.getSource().equals(endTurnButton)){
             endTurnButtonPressed();
+        }else if(e.getSource().equals(endGameButton)){
+            endGameButtonPressed();
         }else if(virButtons.containsKey(e.getSource())){
             virologistChosen(virButtons.get(e.getSource()));
         }else if(thingButtons.containsKey(e.getSource())){
@@ -235,6 +243,9 @@ public class CommandView extends JPanel implements ActionListener {
     private void endTurnButtonPressed() {
         myVirologist.setActionCounter(0);
         Game.actionHappened();
+    }
+    private void endGameButtonPressed(){
+        Game.endGame();
     }
     private void thingButtonPressed(Collectible thing, JButton thingButton){
         myVirologist.collect(thing);

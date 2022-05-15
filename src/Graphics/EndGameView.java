@@ -19,7 +19,7 @@ public class EndGameView extends  JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(600,600));
 
         // initializing the components
-        restartButton = new JButton("Start");
+        restartButton = new JButton("Restart");
         exitButton = new JButton("Exit");
 
         // placing the components

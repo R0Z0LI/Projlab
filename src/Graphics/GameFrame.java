@@ -86,7 +86,13 @@ public class GameFrame extends JFrame {
     }
 
     // TODO
-    public void displayEndGame() {}
+    public void displayEndGame() {
+        this.getContentPane().removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(actualEndGameView, BorderLayout.CENTER);
+        validate();
+        repaint();
+    }
 
     public void setView(FieldView fv) { actualFieldView = fv; }
     public void setView(CommandView cv) { actualCommandView = cv; }

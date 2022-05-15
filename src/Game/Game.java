@@ -2,6 +2,7 @@ package Game;
 
 import Field.*;
 import Graphics.CommandView;
+import Graphics.EndGameView;
 import Graphics.GameFrame;
 import Graphics.PropertyHandlerView;
 import Virologist.Virologist;
@@ -98,14 +99,20 @@ public class Game {
         }
     }
 
-    public void endGame() {
+    public static void endGame() {
         gameRunning=false;
         System.out.println("A jatek veget ert.");
+        EndGameView endView = new EndGameView(new Virologist("noone"));
+        GameFrame.instance().setView(endView);
+        GameFrame.instance().displayEndGame();
     }
 
     public static void endGame(Virologist v) {
         gameRunning = false;
         System.out.println(v.getName()+ " won the game.");
+        EndGameView endView = new EndGameView(v);
+        GameFrame.instance().setView(endView);
+        GameFrame.instance().displayEndGame();
     }
 
     public void setFields(ArrayList<Field> f) { fields = f; }
