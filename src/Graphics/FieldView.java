@@ -30,7 +30,7 @@ public class FieldView extends JPanel implements ActionListener {
     public FieldView(Virologist v) {
         try {
             BufferedImage inputimagelab = ImageIO.read(new File("src/pictures/labor_view2.jpg"));
-            backgroundImage_lab = inputimagelab.getScaledInstance(1000, 800, Image.SCALE_DEFAULT);
+            backgroundImage_lab = inputimagelab.getScaledInstance(1100, 800, Image.SCALE_DEFAULT);
 
             BufferedImage inputimageshelter = ImageIO.read(new File("src/pictures/air-raid-shelter-black-and-white.png"));
             backgroundImage_shelter = inputimageshelter.getScaledInstance(1100, 800, Image.SCALE_DEFAULT);
