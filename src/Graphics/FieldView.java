@@ -4,10 +4,14 @@ import Field.Field;
 import Game.Game;
 import Virologist.Virologist;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FieldView extends JPanel implements ActionListener {
@@ -53,6 +57,7 @@ public class FieldView extends JPanel implements ActionListener {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 20, 20, 20);
+
         //viroicon
         c.gridx=4;
         c.gridy=1;
@@ -65,9 +70,30 @@ public class FieldView extends JPanel implements ActionListener {
             this.add(chosenVirologistIcon,c);
         }
         c.gridwidth=1;
-        // adding neighbour buttons
+
+        // adding neighbour buttons and their icons
         this.myField = activeVirologist.getCurrentField();
         for (int i = 0; i < myField.getNeighbours().size(); i++) {
+            // icon
+            BufferedImage img = null;
+            String path = "src/pictures/" + myField.getNeighbours().get(i).getName().subSequence(0,3) + "icon.png";
+            try {
+                img = ImageIO.read(new File(path));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            JLabel label = new JLabel();
+            label.setSize(50, 100);
+            Image dimg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon imageIcon = new ImageIcon(dimg);
+            label.setIcon(imageIcon);
+
+            c.gridx = i;
+            c.gridy = 2;
+            this.add(label, c);
+
+            // button
             c.gridx = i;
             c.gridy = 4;
             JButton neighbourButton = new JButton(myField.getNeighbours().get(i).getName());
