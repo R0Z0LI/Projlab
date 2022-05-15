@@ -69,6 +69,7 @@ public class VirologistView extends Canvas {
      * @param mode passive or active: determines the position of the viro
      */
     public void displayVirologist(FieldView fv, int mode) {
+
         ImageIcon vir= new ImageIcon(viroIcon);
         if (mode == ACTIVE_MODE) {
 

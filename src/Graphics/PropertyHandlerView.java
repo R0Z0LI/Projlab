@@ -4,7 +4,6 @@ import Agent.*;
 import Equipments.*;
 import Game.Game;
 import Gencode.GenCode;
-import Gencode.*;
 import PropertyHandler.PropertyHandler;
 
 import javax.swing.*;
@@ -13,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 public class PropertyHandlerView extends JPanel implements ActionListener {
@@ -85,6 +83,14 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
             this.add(equipmentButtons.get(equipmentButtons.size()-1), c);
         }
 
+        // adding action listeners
+        for (JButton jb : genButtons)
+            jb.addActionListener(this);
+        for (JButton jb : agentButtons)
+            jb.addActionListener(this);
+        for (JButton jb : equipmentButtons)
+            jb.addActionListener(this);
+
         this.validate();
         this.repaint();
     }
@@ -106,119 +112,33 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
     }
 
     private void genButtonPressed(String genName) {
-        if(genName.contains("amc")){
-            for(int i=0; i<myPropertyHandler.getGenCodes().size(); i++){
-                if(myPropertyHandler.getGenCodes().get(i).getName().contains("amc")){
-                    AmnesiaCode ac= (AmnesiaCode) myPropertyHandler.getGenCodes().get(i);
-                    if(myPropertyHandler.getNucleotids().size()>= ac.getNucleoNeeded() && myPropertyHandler.getAminoAcids().size()>=ac.getAminoNeeded()){
-                        Agent agent= ac.revealAgent();
-                        myPropertyHandler.add(agent);
-                        myPropertyHandler.deleteGenCode(ac);
-                        update();
-                    }
-                    return;
-                }
+        // get the needed genCode
+        GenCode gc = null;
+        GenCode[] gcs = new GenCode[myPropertyHandler.getGenCodes().size()];
+        myPropertyHandler.getGenCodes().values().toArray(gcs);
+        for(int i = 0; i < myPropertyHandler.getGenCodes().size(); i++){
+            if(gcs[i].getName().equals(genName)) {
+                gc = myPropertyHandler.getGenCodes().get(i);
+                break;
             }
         }
-        else if(genName.contains("cdc")){
-            for(int i=0; i<myPropertyHandler.getGenCodes().size(); i++){
-                if(myPropertyHandler.getGenCodes().get(i).getName().contains("cdc")){
-                    CrazyDanceCode cc= (CrazyDanceCode) myPropertyHandler.getGenCodes().get(i);
-                    if(myPropertyHandler.getNucleotids().size()>= cc.getNucleoNeeded() && myPropertyHandler.getAminoAcids().size()>=cc.getAminoNeeded()){
-                        Agent agent= cc.revealAgent();
-                        myPropertyHandler.add(agent);
-                        myPropertyHandler.deleteGenCode(cc);
-                        update();
-                    }
-                    return;
-                }
-            }
-        }
-        else if(genName.contains("pac")){
-            for(int i=0; i<myPropertyHandler.getGenCodes().size(); i++){
-                if(myPropertyHandler.getGenCodes().get(i).getName().contains("pac")){
-                    ParalyseCode pc= (ParalyseCode) myPropertyHandler.getGenCodes().get(i);
-                    if(myPropertyHandler.getNucleotids().size()>= pc.getNucleoNeeded() && myPropertyHandler.getAminoAcids().size()>=pc.getAminoNeeded()){
-                        Agent agent= pc.revealAgent();
-                        myPropertyHandler.add(agent);
-                        myPropertyHandler.deleteGenCode(pc);
-                        update();
-                    }
-                    return;
-                }
-            }
-        }
-        else if(genName.contains("prc")){
-            for(int i=0; i<myPropertyHandler.getGenCodes().size(); i++){
-                if(myPropertyHandler.getGenCodes().get(i).getName().contains("prc")){
-                    ProtecionCode prc= (ProtecionCode) myPropertyHandler.getGenCodes().get(i);
-                    if(myPropertyHandler.getNucleotids().size()>= prc.getNucleoNeeded() && myPropertyHandler.getAminoAcids().size()>=prc.getAminoNeeded()){
-                        Agent agent= prc.revealAgent();
-                        myPropertyHandler.add(agent);
-                        myPropertyHandler.deleteGenCode(prc);
-                        update();
-                    }
-                    return;
-                }
-            }
-        }
+
+        Game.getActiveVirologist().createAgent(gc);
+        this.update();
     }
 
     private void agentButtonPressed(String agentName) {
-        if(agentName.contains("ama")){
-            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                if(myPropertyHandler.getAgents().get(i).getName().contains("ama")){
-                    AmnesiaAgent aa=(AmnesiaAgent) myPropertyHandler.getAgents().get(i);
-                    aa.addBehavior(myPropertyHandler.getVirologist());
-                    myPropertyHandler.remove(aa);
-                    update();
-                }
+        // get the needed agent
+        Agent ag = null;
+        for(int i = 0; i < myPropertyHandler.getAgents().size(); i++){
+            if(myPropertyHandler.getAgents().get(i).getName().equals(agentName)) {
+                ag = myPropertyHandler.getAgents().get(i);
+                break;
             }
         }
 
-        else if(agentName.contains("baa")){
-            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                if(myPropertyHandler.getAgents().get(i).getName().contains("baa")){
-                    BearDanceAgent bda=(BearDanceAgent) myPropertyHandler.getAgents().get(i);
-                    bda.addBehavior(myPropertyHandler.getVirologist());
-                    myPropertyHandler.remove(bda);
-                    update();
-                }
-            }
-        }
-
-        else if(agentName.contains("cda")){
-            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                if(myPropertyHandler.getAgents().get(i).getName().contains("cda")){
-                    CrazyDanceAgent cda=(CrazyDanceAgent) myPropertyHandler.getAgents().get(i);
-                    cda.addBehavior(myPropertyHandler.getVirologist());
-                    myPropertyHandler.remove(cda);
-                    update();
-                }
-            }
-        }
-
-        else if(agentName.contains("paa")){
-            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                if(myPropertyHandler.getAgents().get(i).getName().contains("paa")){
-                    ParalyseAgent paa=(ParalyseAgent) myPropertyHandler.getAgents().get(i);
-                    paa.addBehavior(myPropertyHandler.getVirologist());
-                    myPropertyHandler.remove(paa);
-                    update();
-                }
-            }
-        }
-
-        else if(agentName.contains("pra")){
-            for(int i=0; i<myPropertyHandler.getAgents().size(); i++){
-                if(myPropertyHandler.getAgents().get(i).getName().contains("pra")){
-                    ProtectionAgent pra=(ProtectionAgent) myPropertyHandler.getAgents().get(i);
-                    pra.addBehavior(myPropertyHandler.getVirologist());
-                    myPropertyHandler.remove(pra);
-                    update();
-                }
-            }
-        }
+        Game.getActiveVirologist().applyAgent(ag, Game.getActiveVirologist());
+        this.update();
     }
 
     private void equipmentButtonPressed(String equipmentName) {
