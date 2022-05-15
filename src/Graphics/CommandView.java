@@ -37,8 +37,8 @@ public class CommandView extends JPanel implements ActionListener {
     public CommandView(Virologist myViro){
         myVirologist = myViro;
         try {
-            BufferedImage inputimage = ImageIO.read(new File("src/pictures/commandViewBackground.jpg"));
-            backgroundImage = inputimage.getScaledInstance(1000, 600, Image.SCALE_DEFAULT);
+            BufferedImage inputimage = ImageIO.read(new File("src/pictures/commandViewBackground.png"));
+            backgroundImage = inputimage.getScaledInstance(800, 600, Image.SCALE_DEFAULT);
         } catch(IOException ex ){}
 
         applyButton = new JButton("Apply");
@@ -75,6 +75,7 @@ public class CommandView extends JPanel implements ActionListener {
 
         // display labels
         JPanel innerPanel = new JPanel();
+        innerPanel.setBackground(new Color(255,201,14));
         innerPanel.setLayout(new GridLayout(0,2,30,50));
         innerPanel.add(new JLabel("Field:"));
         innerPanel.add(fieldName);

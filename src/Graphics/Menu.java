@@ -27,7 +27,7 @@ public class Menu extends JPanel implements ActionListener {
     public Menu() {
         this.setLayout(new GridBagLayout());
         try {
-            BufferedImage inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//backGround.jpg"));
+            BufferedImage inputimage = ImageIO.read(new File("src/pictures/backGround.jpg"));
             backgroundImage = inputimage.getScaledInstance(1900, 1100, Image.SCALE_DEFAULT);
         } catch(IOException ex ){}
 
