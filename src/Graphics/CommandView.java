@@ -24,6 +24,7 @@ public class CommandView extends JPanel implements ActionListener {
     private JComboBox<String> agentChooser;
     private JComboBox<String> stealableChooser;
     private JButton backButton;
+    private JButton endTurnButton;
     //TODO lehetne még egy endTurnButton
 
     public CommandView(Virologist myViro){
@@ -37,6 +38,8 @@ public class CommandView extends JPanel implements ActionListener {
         stealButton.addActionListener(this);
         backButton = new JButton("Back");
         backButton.addActionListener(this);
+        endTurnButton = new JButton("End Turn");
+        endTurnButton.addActionListener(this);
 
         fieldName = new JLabel();
         chosenViroName = new JLabel();
@@ -49,6 +52,9 @@ public class CommandView extends JPanel implements ActionListener {
      */
     public void update(){
         this.removeAll(); // clears everything
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(Box.createVerticalGlue());
+        this.add(new JLabel("Player: "+myVirologist.getName()));
 
         // fieldinfo
         Field field = myVirologist.getCurrentField();
@@ -68,6 +74,7 @@ public class CommandView extends JPanel implements ActionListener {
         for (Virologist v : viros) {
             JButton vButton = new JButton(v.getName());
             vButton.addActionListener(this);
+            vButton.setMaximumSize(new Dimension(1,1));
             virButtons.put(vButton, v);
             innerPanel.add(vButton);
             ++i;
@@ -89,7 +96,16 @@ public class CommandView extends JPanel implements ActionListener {
         //displaying collectible thing
         if(coll != null)
             innerPanel.add(thing);
+
+
+        innerPanel.setMaximumSize(new Dimension(200,(i/2+2)*100));
+        this.add(Box.createVerticalGlue());
         this.add(innerPanel);
+        this.add(Box.createVerticalGlue());
+        this.add(endTurnButton);
+        this.add(Box.createVerticalGlue());
+        this.add(new JLabel("Actions: "+myVirologist.getActionCounter()+"/3"));
+        this.add(Box.createVerticalGlue());
 
         this.validate();
         this.repaint();
@@ -107,6 +123,8 @@ public class CommandView extends JPanel implements ActionListener {
         //chosen viro
         chosenVirologist=v;
         chosenViroName.setText(v.getName());
+        FieldView fv=myVirologist.getCurrentField().getView();
+        chosenVirologist.getVirologistView().displayVirologist(fv, VirologistView.PASSIVE_MODE);
         try {
             //agents
             agentChooser = new JComboBox<>();
@@ -162,7 +180,9 @@ public class CommandView extends JPanel implements ActionListener {
             Game.actionHappened();
         }  else if (e.getSource().equals(backButton)) {
             backButtonPressed();
-        } else if(virButtons.containsKey(e.getSource())){
+        }else if(e.getSource().equals(endTurnButton)){
+            endTurnButtonPressed();
+        }else if(virButtons.containsKey(e.getSource())){
             virologistChosen(virButtons.get(e.getSource()));
         }else if(thingButtons.containsKey(e.getSource())){
             thingButtonPressed(thingButtons.get(e.getSource()), (JButton)e.getSource());
@@ -184,8 +204,6 @@ public class CommandView extends JPanel implements ActionListener {
             if(c.getName().equals(sName))
                 stealable=c;
         }
-
-
         if(stealable!=null) {
             myVirologist.steal(stealable, chosenVirologist);
             update();
@@ -210,8 +228,14 @@ public class CommandView extends JPanel implements ActionListener {
 
     private void backButtonPressed(){
         this.update();
+        FieldView fv=myVirologist.getCurrentField().getView();
+        fv.removeChosenVirologistIcon();
+        fv.update();
     }
-
+    private void endTurnButtonPressed() {
+        myVirologist.setActionCounter(0);
+        Game.actionHappened();
+    }
     private void thingButtonPressed(Collectible thing, JButton thingButton){
         myVirologist.collect(thing);
         thingButtons.remove(thingButton);

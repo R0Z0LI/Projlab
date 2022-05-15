@@ -74,7 +74,6 @@ public class Game {
      * If a virologist did something, then this function is called
      */
     public static void actionHappened() {
-        activeVirologist.decreaseActionCounter(1);
         GameFrame.instance().displayGameView(); // update shown screen
 
         // if end of turn, then step steppables

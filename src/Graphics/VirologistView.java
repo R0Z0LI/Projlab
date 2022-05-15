@@ -33,22 +33,22 @@ public class VirologistView extends Canvas {
             int viroPic = viroNumber % 5;
             switch (viroPic) {
                 case 0:
-                    inputimage = ImageIO.read(new File("src/pictures/viro.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro1.png"));
                     break;
                 case 1:
-                    inputimage = ImageIO.read(new File("src/pictures/viro2.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro2b.png"));
                     break;
                 case 2:
-                    inputimage = ImageIO.read(new File("src/pictures/viro3.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro3b.png"));
                     break;
                 case 3:
-                    inputimage = ImageIO.read(new File("src/pictures/viro4.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro4b.png"));
                     break;
                 case 4:
-                    inputimage = ImageIO.read(new File("src/pictures/viro5.png"));
+                    inputimage = ImageIO.read(new File("src/pictures/viro5b.png"));
                     break;
             }
-            viroIcon = inputimage.getScaledInstance(200, 250, Image.SCALE_DEFAULT);
+            viroIcon = inputimage.getScaledInstance(300, 400, Image.SCALE_DEFAULT);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,11 +61,13 @@ public class VirologistView extends Canvas {
      * @param mode passive or active: determines the position of the viro
      */
     public void displayVirologist(FieldView fv, int mode) {
+        ImageIcon vir= new ImageIcon(viroIcon);
         if (mode == ACTIVE_MODE) {
-            Icon vir= new ImageIcon(viroIcon);
-           fv.add(new JLabel(vir));
+
+            fv.setVirologistIcon(vir);
             return;
         }
+        fv.setChosenVirologistIcon(vir);
 
     }
 

@@ -50,7 +50,7 @@ public class Virologist {
         this.automaticBehaviors.add(new AutomaticBehavior(this));
         this.attackBehaviors.add(new AttackBehavior(this));
 
-        myViroView = new VirologistView(id);
+        myViroView = new VirologistView(id++);
         myCommandView = new CommandView(this);
     }
     public Virologist(Field field) {
@@ -202,7 +202,7 @@ public class Virologist {
         myCommandView.activateView();
 
         //meghívja az automatikus viselkedést
-        //automaticBehaviors.firstElement().execute();
+        automaticBehaviors.firstElement().execute();
     }
 
     public int getActionCounter() { return actionCounter; }
