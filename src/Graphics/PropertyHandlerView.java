@@ -230,7 +230,6 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
                 break;
             }
         }
-
         Game.getActiveVirologist().destroy(eq);
         this.update();
     }
