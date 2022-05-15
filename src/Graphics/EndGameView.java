@@ -1,5 +1,6 @@
 package Graphics;
 
+import Game.Game;
 import Virologist.Virologist;
 
 
@@ -60,8 +61,9 @@ public class EndGameView extends  JPanel implements ActionListener {
     }
 
     private void restartButtonPressed() {
-        GameFrame gameFrame = GameFrame.instance();
-        gameFrame.Init();
+        GameFrame.Init();
+        GameFrame window = GameFrame.instance();
+        window.displayStartGame();
     }
 
 }
