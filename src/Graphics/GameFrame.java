@@ -50,6 +50,9 @@ public class GameFrame extends JFrame {
      * Displays the game itself
      */
     public void displayGameView() {
+        if (actualEndGameView != null)
+            return;
+
         this.getContentPane().removeAll();
 
         // general

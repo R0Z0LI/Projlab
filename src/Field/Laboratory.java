@@ -39,6 +39,7 @@ public class Laboratory extends Field {
         // infecting with bear agent, if there is any
         if (bearAgent != null) {
             virologist.beInfected(bearAgent, virologist);
+            virologist.setActionCounter(-1);
         }
     }
 

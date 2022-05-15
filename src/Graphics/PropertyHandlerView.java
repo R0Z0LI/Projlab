@@ -33,6 +33,7 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
 
     public void update() {
         this.removeAll();
+        this.genButtons.clear();
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridheight = 1;
@@ -54,14 +55,14 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         c.gridy = 2;
         this.add(genLabel, c);
         Collection<GenCode> genCodes = myPropertyHandler.getGenCodes().values();
-        int j=0;
+        int j = 0;
         for (GenCode g : genCodes) {
             c.gridx = 1 + j++;
             genButtons.add(new JButton(g.getName()));
             this.add(genButtons.get(genButtons.size()-1), c);
         }
 
-        // agents
+        // agent label and buttons
         c.gridx = 0;
         c.gridy = 3;
         this.add(agentLabel, c);
@@ -114,7 +115,7 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
     private void genButtonPressed(String genName) {
         // get the needed genCode
         GenCode gc = null;
-        GenCode[] gcs = new GenCode[myPropertyHandler.getGenCodes().size()];
+        GenCode[] gcs = new GenCode[myPropertyHandler.getGenCodes().values().size()];
         myPropertyHandler.getGenCodes().values().toArray(gcs);
         for(int i = 0; i < myPropertyHandler.getGenCodes().size(); i++){
             if(gcs[i].getName().equals(genName)) {

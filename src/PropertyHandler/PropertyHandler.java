@@ -60,8 +60,7 @@ public class PropertyHandler {
         if (maxMaterial > aminoAcids.size()+nucleotids.size()) {
             aminoAcids.add(aminoAcid);
             System.out.println("Successful collect: "+ aminoAcid.getName()+" collected by "+virologist.getName()+".");
-        }
-        else{
+        } else {
             System.out.println("There is not enough space in your inventory for "+aminoAcid.getName());
         }
     }
@@ -72,7 +71,7 @@ public class PropertyHandler {
      * @param nucleotid Ezt a nukleotidot adja hozzá
      */
     public void add(Nucleotid nucleotid) {
-        if (maxMaterial > nucleotids.size()+aminoAcids.size()) {
+        if (maxMaterial > nucleotids.size() + aminoAcids.size()) {
             nucleotids.add(nucleotid);
             System.out.println("Successful collect: "+ nucleotid.getName()+" collected by "+virologist.getName()+".");
         }

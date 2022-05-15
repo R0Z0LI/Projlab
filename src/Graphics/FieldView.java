@@ -77,15 +77,6 @@ public class FieldView extends JPanel implements ActionListener {
             this.add(neighbourButton, c);
         }
 
-        /* NOT WORKING
-        // add action icons
-        for (int i = 0; i < activeVirologist.getActionCounter(); i++) {
-            c.gridx = i;
-            c.gridy = 0;
-            String path = "src/pictures/actionicon.png";
-            this.add(makeIcon(path), c);
-        }*/
-
         this.validate();
         this.repaint();
         this.myField.setView(this);
@@ -159,6 +150,9 @@ public class FieldView extends JPanel implements ActionListener {
      * @param pressedButton
      */
     private void neighborButtonPressed(JButton pressedButton) {
+        if (activeVirologist.getActionCounter() <= 0)
+            return;
+
         removeChosenVirologistIcon();
 
         String fieldName = pressedButton.getText();

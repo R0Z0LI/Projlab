@@ -66,6 +66,8 @@ public class Game {
         window.displayGameView();
 
         activeVirologist.yourTurn(); // automatic behavior, and giving action points
+        if (activeVirologist.getActionCounter() <= 0)
+            runGame();
     }
 
     /**

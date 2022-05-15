@@ -92,16 +92,16 @@ public class MapInitiater {
                     String codeOnLabor = scan.nextLine();
                     if(!codeOnLabor.equals("0")){
                         if(codeOnLabor.contains("amc")){
-                            AmnesiaCode amnesiaCode = new AmnesiaCode(4, 4, laboratory);
+                            AmnesiaCode amnesiaCode = new AmnesiaCode(1, 0, laboratory);
                             laboratory.add(amnesiaCode);
                         } else if(codeOnLabor.contains("pac")){
-                            ParalyseCode paralyseCode = new ParalyseCode(4, 4, laboratory);
+                            ParalyseCode paralyseCode = new ParalyseCode(1, 0, laboratory);
                             laboratory.add(paralyseCode);
                         } else if(codeOnLabor.contains("cdc")){
-                            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(4, 4, laboratory);
+                            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(1, 0, laboratory);
                             laboratory.add(crazyDanceCode);
                         } else if(codeOnLabor.contains("prc")){
-                            ProtecionCode protecionCode = new ProtecionCode(4, 4, laboratory);
+                            ProtecionCode protecionCode = new ProtecionCode(1, 0, laboratory);
                             laboratory.add(protecionCode);
                         }
                     }
@@ -272,16 +272,16 @@ public class MapInitiater {
                     String splitCodes[] = codes.split(" ");
                     for (int i = 0; i < splitCodes.length; i++) {
                         if (splitCodes[i].contains("amc")) {
-                            AmnesiaCode amnesiaCode = new AmnesiaCode(4, 4);
+                            AmnesiaCode amnesiaCode = new AmnesiaCode(1, 0);
                             virologist.getPropertyHandler().getGenCodes().put(amnesiaCode.getUid(),amnesiaCode);
                         } else if (splitCodes[i].contains("prc")) {
-                            ProtecionCode protecionCode = new ProtecionCode(4, 4);
+                            ProtecionCode protecionCode = new ProtecionCode(1, 0);
                             virologist.getPropertyHandler().getGenCodes().put(protecionCode.getUid(),protecionCode);
                         } else if (splitCodes[i].contains("cdc")) {
-                            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(1, 1);
+                            CrazyDanceCode crazyDanceCode = new CrazyDanceCode(1, 0);
                             virologist.getPropertyHandler().getGenCodes().put(crazyDanceCode.getUid(), crazyDanceCode);
                         } else if (splitCodes[i].contains("pac")) {
-                            ParalyseCode paralyseCode = new ParalyseCode(1, 2);
+                            ParalyseCode paralyseCode = new ParalyseCode(1, 0);
                             virologist.getPropertyHandler().getGenCodes().put(paralyseCode.getUid(), paralyseCode);
                         }
                     }

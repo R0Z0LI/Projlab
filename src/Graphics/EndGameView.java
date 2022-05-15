@@ -8,11 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-public class EndGameView extends  JPanel implements ActionListener {
+public class EndGameView extends JPanel implements ActionListener {
     JButton restartButton;
     JButton exitButton;
-
 
     public EndGameView(Virologist v) {
         this.setLayout(new GridBagLayout());
@@ -26,7 +24,7 @@ public class EndGameView extends  JPanel implements ActionListener {
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 1;
-        this.add(new JLabel("A győztes nem más mint: "));
+        this.add(new JLabel("A gyoztes nem mas mint: "));
         this.add(new JLabel(v.getName()));
 
         c.gridx = 0;
@@ -41,7 +39,8 @@ public class EndGameView extends  JPanel implements ActionListener {
         restartButton.addActionListener(this);
         exitButton.addActionListener(this);
 
-
+        this.validate();
+        this.repaint();
     }
 
     @Override
