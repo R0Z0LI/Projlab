@@ -22,7 +22,6 @@ public class CommandView extends JPanel implements ActionListener {
     private JLabel fieldName;
     private JLabel chosenViroName;
     private HashMap<JButton, Virologist> virButtons;
-    //?? akkor végül is csak 1 lehet
     private HashMap<JButton, Collectible> thingButtons;
     private JButton applyButton;
     private JButton attackButton;
@@ -32,7 +31,6 @@ public class CommandView extends JPanel implements ActionListener {
     private JButton backButton;
     private JButton endTurnButton;
     private JButton endGameButton;
-    //TODO lehetne még egy endTurnButton
 
     public CommandView(Virologist myViro){
         myVirologist = myViro;
@@ -131,10 +129,19 @@ public class CommandView extends JPanel implements ActionListener {
         if (sad) { GameFrame.instance().displayGameView(); } else { sad = false; }
     }
 
-
+    /**
+     * főképernyőn megjelenít
+     */
     public void activateView(){
         GameFrame.instance().setView(this);
     }
+
+    /**
+     * virológus gomb megnyomásakor kijelöl egy virológust
+     * megjeleníti a vele lehetséges akciókat
+     * megjeleníti a kiválasztott virológus képét
+     * @param v virológus
+     */
     private void virologistChosen(Virologist v){
         this.removeAll();
         //chosen viro
@@ -159,6 +166,7 @@ public class CommandView extends JPanel implements ActionListener {
         catch(NullPointerException ex) {}
         //layout
         JPanel innerPanel = new JPanel();
+        innerPanel.setBackground(new Color(255,201,14));
         innerPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         innerPanel.add(chosenViroName,c);
@@ -210,11 +218,17 @@ public class CommandView extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * támadást indít
+     */
     private void attackButtonPressed(){
         myVirologist.attack(chosenVirologist);
         update();
     }
 
+    /**
+     * lopást indít
+     */
     private void stealButtonPressed(){
         String sName =(String)stealableChooser.getSelectedItem();
         Collectible stealable=null;
@@ -230,6 +244,9 @@ public class CommandView extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * kenést indít
+     */
     private void applyButtonPressed(){
         String aName=(String)agentChooser.getSelectedItem();
         List<Agent> agents= myVirologist.getPropertyHandler().getAgents();
@@ -245,16 +262,28 @@ public class CommandView extends JPanel implements ActionListener {
             }
     }
 
+    /**
+     * törli a kiválasztott virológust, eltünteti a képernyőről
+     * frissíti a megjelenítést alaphelyzetbe
+     */
     private void backButtonPressed(){
         this.update();
         FieldView fv=myVirologist.getCurrentField().getView();
         fv.removeChosenVirologistIcon();
         fv.update();
     }
+
+    /**
+     * a virológus körét befejezi
+     */
     private void endTurnButtonPressed() {
         myVirologist.setActionCounter(0);
         Game.actionHappened();
     }
+
+    /**
+     * befejezi a játékot
+     */
     private void endGameButtonPressed(){
         Game.endGame();
     }
@@ -264,6 +293,11 @@ public class CommandView extends JPanel implements ActionListener {
         this.remove(thingButton);
         update();
     }
+
+    /**
+     * beállítja a háttérképet
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -24,7 +24,7 @@ public class EndGameView extends  JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(600,600));
 
         try {
-            BufferedImage inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//end_backGround.jpg"));
+            BufferedImage inputimage = ImageIO.read(new File("src/pictures/end_backGround.jpg"));
             backgroundImage = inputimage.getScaledInstance(1900, 1100, Image.SCALE_DEFAULT);
         } catch(IOException ex ){}
 

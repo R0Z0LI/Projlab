@@ -25,7 +25,7 @@ public class VirologistView extends Canvas {
         BufferedImage inputimage;
         try {
             inputimage = ImageIO.read(new File("src/pictures/bearicon.png"));
-            bearIcon = inputimage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+            bearIcon = inputimage.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
             inputimage = ImageIO.read(new File("src/pictures/actionicon.png"));
             actionIcon = inputimage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             int viroPic = viroNumber % 5;

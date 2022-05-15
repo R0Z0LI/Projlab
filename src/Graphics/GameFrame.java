@@ -51,6 +51,8 @@ public class GameFrame extends JFrame {
      */
     public void displayGameView() {
         this.getContentPane().removeAll();
+        actualCommandView.setMaximumSize(new Dimension(this.getWidth()*3/10,this.getHeight()/2));
+        actualFieldView.setPreferredSize(new Dimension(this.getWidth()*7/10, this.getHeight()));
 
         // general
         this.setLayout(new GridBagLayout());
@@ -64,14 +66,12 @@ public class GameFrame extends JFrame {
         c.gridy = 0;
         c.gridheight = 2;
         this.add(actualFieldView, c);
-        actualFieldView.setBackground(Color.CYAN);
 
         // PH view
         c.gridx = 1;
         c.gridy = 0;
         c.gridheight = 1;
         this.add(actualPropertyHandlerView, c);
-        actualPropertyHandlerView.setBackground(Color.BLUE);
 
         // command view
         c.gridx = 1;

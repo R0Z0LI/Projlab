@@ -6,10 +6,14 @@ import Game.Game;
 import Gencode.GenCode;
 import PropertyHandler.PropertyHandler;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -24,15 +28,21 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
     private JLabel equipmentLabel = new JLabel("Eq:");
     private ArrayList<JButton> equipmentButtons = new ArrayList<>();
     private JLabel feedback= new JLabel("");
+    private Image backgroundImage;
 
     public PropertyHandlerView(PropertyHandler ph) {
         myPropertyHandler = ph;
-        this.setLayout(new GridBagLayout());
+        this.setLayout(new GridBagLayout());try {
+            BufferedImage inputimage = ImageIO.read(new File("src/pictures/propertyhandler.png"));
+            backgroundImage = inputimage.getScaledInstance(600, 500, Image.SCALE_DEFAULT);
+        } catch(IOException ex ){}
 
         this.update();
     }
 
-
+    /**
+     * frissíti a megjelenítést
+     */
     public void update() {
         this.removeAll();
 
@@ -124,6 +134,10 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * genetikai kód gombjának megnyomásakor a kódból megpróbál ágenst előállítani
+     * @param genName kód neve
+     */
     private void genButtonPressed(String genName) {
         // get the needed genCode
         GenCode gc = null;
@@ -140,6 +154,10 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         this.update();
     }
 
+    /**
+     * ágens gomb megnyomásakor magára keni a kiválasztott ágenst
+     * @param agentName ágens neve
+     */
     private void agentButtonPressed(String agentName) {
         // get the needed agent
         Agent ag = null;
@@ -154,6 +172,10 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         this.update();
     }
 
+    /**
+     * eszköz omb megnyomásakor az eszközt eldobja a virológus
+     * @param equipmentName eszköz neve
+     */
     private void equipmentButtonPressed(String equipmentName) {
         // get the needed equipment
         Equipment eq = null;
@@ -167,8 +189,21 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         this.update();
     }
 
+    /**
+     * a főképernyőn látszik
+     */
     public void activateView(){
         GameFrame.instance().setView(this);
+    }
+
+    /**
+     * háttérképet állít be
+     * @param g
+     */
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(backgroundImage, 50, 5, null);
     }
 
 }
