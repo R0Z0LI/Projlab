@@ -79,7 +79,7 @@ public class GameFrame extends JFrame {
         c.gridheight = 1;
         this.add(actualCommandView, c);
         actualCommandView.update();
-        actualCommandView.setBackground(Color.PINK);
+        //actualCommandView.setBackground(Color.PINK);
 
         this.validate();
         this.repaint();

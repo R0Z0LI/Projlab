@@ -4,13 +4,19 @@ import Collectible.Collectible;
 import Field.Field;
 import Game.Game;
 import Virologist.Virologist;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 public class CommandView extends JPanel implements ActionListener {
+    private Image backgroundImage;
     private Virologist myVirologist;
     private Virologist chosenVirologist;
     private JLabel fieldName;
@@ -30,6 +36,10 @@ public class CommandView extends JPanel implements ActionListener {
 
     public CommandView(Virologist myViro){
         myVirologist = myViro;
+        try {
+            BufferedImage inputimage = ImageIO.read(new File("src/pictures/commandViewBackground.jpg"));
+            backgroundImage = inputimage.getScaledInstance(1000, 600, Image.SCALE_DEFAULT);
+        } catch(IOException ex ){}
 
         applyButton = new JButton("Apply");
         applyButton.addActionListener(this);
@@ -252,5 +262,10 @@ public class CommandView extends JPanel implements ActionListener {
         thingButtons.remove(thingButton);
         this.remove(thingButton);
         update();
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(backgroundImage, 0, 0, null);
     }
 }
