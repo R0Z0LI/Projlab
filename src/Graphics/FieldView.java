@@ -140,19 +140,35 @@ public class FieldView extends JPanel implements ActionListener {
         activeVirologist = v;
     }
 
+    /**
+     * beállítja a virológusok iconját
+     * @param icon
+     */
     public void setVirologistIcon(ImageIcon icon) {
         virologistIcon = new JLabel(icon);
         update();
     }
+
+    /**
+     * beállítja a kiválasztott virológus iconját
+     * @param icon  Az ikon amit beállít
+     */
     public void setChosenVirologistIcon(ImageIcon icon) {
         chosenVirologistIcon = new JLabel(icon);
         update();
     }
 
+    /**
+     * Eltávolítja a kiválasztott virológust
+     */
     public void removeChosenVirologistIcon(){
         chosenVirologistIcon=null;
     }
 
+    /**
+     * Az event ami gombnyomásra történik
+     * @param e     Az event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         for(JButton jButton : neighbours){
