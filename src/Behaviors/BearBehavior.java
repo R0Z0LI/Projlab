@@ -1,11 +1,8 @@
 package Behaviors;
 
 import Agent.BearDanceAgent;
-import Collectible.Collectible;
 import Field.Field;
-import Graphics.CommandView;
 import Graphics.VirologistView;
-import PropertyHandler.PropertyHandler;
 import Virologist.Virologist;
 
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ public class BearBehavior extends AutomaticBehavior{
         viro.step(neighbours.get(index));
 
         //mindenkit megfertőz
-        Field field = viro.getCurrentField();
+        Field field =viro.getCurrentField();
         for(Virologist v :field.GetTouchableVirologists())
             if (viro != v)
                 v.beInfected(new BearDanceAgent(), viro);

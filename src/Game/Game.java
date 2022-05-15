@@ -99,7 +99,7 @@ public class Game {
     }
 
     public static void endGame() {
-        gameRunning=false;
+        gameRunning = false;
         System.out.println("A jatek veget ert.");
         EndGameView endView = new EndGameView(new Virologist("noone"));
         GameFrame.instance().setView(endView);
