@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,13 +19,18 @@ public class Menu extends JPanel implements ActionListener {
     JLabel numberLabel;
     ArrayList<JTextField> names = new ArrayList<>();
     JTextField fileTextField;
-    Image background = Toolkit.getDefaultToolkit().createImage("G://projlab//Projlab//src//pictures//Menu_backGround.jpg");
+    Image backgroundImage;
 
     /**
      * Menu constructor
      */
     public Menu() {
         this.setLayout(new GridBagLayout());
+        try {
+            BufferedImage inputimage = ImageIO.read(new File("G://projlab//Projlab//src//pictures//backGround.jpg"));
+            backgroundImage = inputimage.getScaledInstance(1900, 1100, Image.SCALE_DEFAULT);
+        } catch(IOException ex ){}
+
         // creating the components
         virologistNum = 2;
         names.add(new JTextField("Bob"));
@@ -67,8 +73,7 @@ public class Menu extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Image scaledImage = background.getScaledInstance(6000, 6000, Image.SCALE_DEFAULT);
-        g.drawImage(scaledImage, 200, 200, null);
+        g.drawImage(backgroundImage, 0, 0, null);
     }
 
     /**
