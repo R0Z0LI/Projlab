@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FieldView extends JPanel implements ActionListener {
+    private Image backgroundImage_lab;
+    private Image backgroundImage_shelter;
+    private Image backgroundImage_warehouse;
     private Field myField;
     private Virologist activeVirologist;
     private ArrayList<JButton> neighbours = new ArrayList<>();
@@ -25,6 +28,16 @@ public class FieldView extends JPanel implements ActionListener {
      * Constructor
      */
     public FieldView(Virologist v) {
+        try {
+            BufferedImage inputimagelab = ImageIO.read(new File("src/pictures/labor_view2.jpg"));
+            backgroundImage_lab = inputimagelab.getScaledInstance(1000, 800, Image.SCALE_DEFAULT);
+
+            BufferedImage inputimageshelter = ImageIO.read(new File("src/pictures/air-raid-shelter-black-and-white.png"));
+            backgroundImage_shelter = inputimageshelter.getScaledInstance(1100, 800, Image.SCALE_DEFAULT);
+
+            BufferedImage inputimageware = ImageIO.read(new File("src/pictures/warehouse.jpg"));
+            backgroundImage_warehouse = inputimageware.getScaledInstance(1000, 800, Image.SCALE_DEFAULT);
+        } catch(IOException ex ){}
         this.setLayout(new GridBagLayout());
 
         activeVirologist = v;
@@ -43,6 +56,7 @@ public class FieldView extends JPanel implements ActionListener {
         // general setting for the layout
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 20, 20, 20);
+
 
         // viroicon - icon of the virologists
         c.gridx = 4;
@@ -172,6 +186,20 @@ public class FieldView extends JPanel implements ActionListener {
 
         activeVirologist.getMyCommandView().activateView();
         Game.actionHappened();
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if(myField.getName().contains("lab")) {
+            g.drawImage(backgroundImage_lab, 0, 0, null);
+        }
+        else if(myField.getName().contains("shl")){
+            g.drawImage(backgroundImage_shelter, 0, 0, null);
+        }
+        else if(myField.getName().contains("who")){
+            g.drawImage(backgroundImage_warehouse, 0, 0, null);
+        }
     }
 
 }

@@ -32,6 +32,7 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         this.update();
     }
 
+
     public void update() {
         this.removeAll();
 
