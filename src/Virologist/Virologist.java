@@ -234,7 +234,6 @@ public class Virologist {
      */
     public void setCurrentField(Field field) {
         this.currentField = field;
-        this.currentField.setView(new FieldView(this));
     }
 
     /**+

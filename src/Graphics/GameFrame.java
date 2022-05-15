@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
     private GameFrame() {
        super("Virologist Jam");
        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-       this.setSize(1000, 1000);
+       this.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen
 
        startMenu = new Menu();
     }
@@ -85,7 +85,9 @@ public class GameFrame extends JFrame {
         this.repaint();
     }
 
-    // TODO
+    /**
+     * Displays the end of the game
+     */
     public void displayEndGame() {
         this.getContentPane().removeAll();
         this.setLayout(new BorderLayout());
@@ -105,5 +107,4 @@ public class GameFrame extends JFrame {
     public PropertyHandlerView getActualPropertyHandlerView() {
         return actualPropertyHandlerView;
     }
-
 }

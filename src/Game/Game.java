@@ -1,10 +1,7 @@
 package Game;
 
 import Field.*;
-import Graphics.CommandView;
-import Graphics.EndGameView;
-import Graphics.GameFrame;
-import Graphics.PropertyHandlerView;
+import Graphics.*;
 import Virologist.Virologist;
 
 import java.io.File;
@@ -62,13 +59,13 @@ public class Game {
             stepSteppabbles();
         }
 
-        activeVirologist.yourTurn(); // automatic behavior, and giving action points
-
         // show game parts on the screen
         window.setView(new CommandView(activeVirologist));
-        window.setView(activeVirologist.getCurrentField().getView());
+        window.setView(new FieldView(activeVirologist));
         window.setView(new PropertyHandlerView(activeVirologist.getPropertyHandler()));
         window.displayGameView();
+
+        activeVirologist.yourTurn(); // automatic behavior, and giving action points
     }
 
     /**
