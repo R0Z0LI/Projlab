@@ -22,48 +22,34 @@ public class FieldView extends JPanel implements ActionListener {
     private JLabel virologistIcon, chosenVirologistIcon;
 
     /**
-     * Empty constructor
+     * Constructor
      */
     public FieldView(Virologist v) {
+        this.setLayout(new GridBagLayout());
+
         activeVirologist = v;
+
         update();
-    }
-
-    /**
-     * Step on another field
-     * @param pressedButton
-     */
-    private void neighborButtonPressed(JButton pressedButton) {
-        removeChosenVirologistIcon();
-        String fieldName = pressedButton.getText();
-        for(Field field : myField.getNeighbours()) {
-            if (fieldName.equals(field.getName())) {
-                activeVirologist.step(field);
-                break;
-            }
-        }
-        this.update();
-
-        activeVirologist.getMyCommandView().activateView();
-        Game.actionHappened();
     }
 
     /**
      * Updates the shown FieldView
      */
     public void update() {
+        // clearing everything
         neighbours.clear();
         this.removeAll();
-        this.setLayout(new GridBagLayout());
+
+        // general setting for the layout
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 20, 20, 20);
 
-        //viroicon
-        c.gridx=4;
-        c.gridy=1;
-        c.gridwidth=3;
-        if(virologistIcon!=null)
-            this.add(virologistIcon,c);
+        // viroicon - icon of the virologists
+        c.gridx = 4;
+        c.gridy = 1;
+        c.gridwidth = 3;
+        if(virologistIcon != null)
+            this.add(virologistIcon, c);
         if(chosenVirologistIcon!=null) {
             c.gridx=0;
             c.gridy=1;
@@ -74,40 +60,60 @@ public class FieldView extends JPanel implements ActionListener {
         // adding neighbour buttons and their icons
         this.myField = activeVirologist.getCurrentField();
         for (int i = 0; i < myField.getNeighbours().size(); i++) {
-            // icon
-            BufferedImage img = null;
-            String path = "src/pictures/" + myField.getNeighbours().get(i).getName().subSequence(0,3) + "icon.png";
-            try {
-                img = ImageIO.read(new File(path));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Field currentNeighbour = myField.getNeighbours().get(i);
 
-            JLabel label = new JLabel();
-            label.setSize(50, 100);
-            Image dimg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon imageIcon = new ImageIcon(dimg);
-            label.setIcon(imageIcon);
-
+            // adding image
             c.gridx = i;
             c.gridy = 2;
-            this.add(label, c);
+            String path = "src/pictures/" + currentNeighbour.getName().subSequence(0,3) + "icon.png";
+            this.add(makeIcon(path), c);
 
             // button
             c.gridx = i;
             c.gridy = 4;
-            JButton neighbourButton = new JButton(myField.getNeighbours().get(i).getName());
+            JButton neighbourButton = new JButton(currentNeighbour.getName());
             neighbourButton.addActionListener(this);
             neighbours.add(neighbourButton);
             this.add(neighbourButton, c);
         }
-        for(JButton jButton : neighbours) System.out.println(jButton.getText());
 
-        // TODO - ICONS
+        /* NOT WORKING
+        // add action icons
+        for (int i = 0; i < activeVirologist.getActionCounter(); i++) {
+            c.gridx = i;
+            c.gridy = 0;
+            String path = "src/pictures/actionicon.png";
+            this.add(makeIcon(path), c);
+        }*/
+
         this.validate();
         this.repaint();
         this.myField.setView(this);
         this.activateView();
+    }
+
+    /**
+     * Makes an icon from a Path
+     * @param path - the given path
+     * @return - a label with an icon
+     */
+    private JLabel makeIcon(String path) {
+        // getting image
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // changing image
+        JLabel label = new JLabel();
+        label.setSize(50, 100);
+        Image dimg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        label.setIcon(imageIcon);
+
+        return label;
     }
 
     /**
@@ -123,17 +129,17 @@ public class FieldView extends JPanel implements ActionListener {
      */
     public void setActiveVirologist(Virologist v) {
         activeVirologist = v;
-        //this.update();
     }
 
     public void setVirologistIcon(ImageIcon icon) {
-        virologistIcon= new JLabel(icon);
+        virologistIcon = new JLabel(icon);
         update();
     }
     public void setChosenVirologistIcon(ImageIcon icon) {
-        chosenVirologistIcon=new JLabel(icon);
+        chosenVirologistIcon = new JLabel(icon);
         update();
     }
+
     public void removeChosenVirologistIcon(){
         chosenVirologistIcon=null;
     }
@@ -147,4 +153,25 @@ public class FieldView extends JPanel implements ActionListener {
             }
         }
     }
+
+    /**
+     * Step on another field
+     * @param pressedButton
+     */
+    private void neighborButtonPressed(JButton pressedButton) {
+        removeChosenVirologistIcon();
+
+        String fieldName = pressedButton.getText();
+        for(Field field : myField.getNeighbours()) {
+            if (fieldName.equals(field.getName())) {
+                activeVirologist.step(field);
+                break;
+            }
+        }
+        this.update();
+
+        activeVirologist.getMyCommandView().activateView();
+        Game.actionHappened();
+    }
+
 }

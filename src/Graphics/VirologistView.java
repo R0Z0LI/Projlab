@@ -69,15 +69,12 @@ public class VirologistView extends Canvas {
      * @param mode passive or active: determines the position of the viro
      */
     public void displayVirologist(FieldView fv, int mode) {
-
-        ImageIcon vir= new ImageIcon(viroIcon);
+        ImageIcon vir = new ImageIcon(viroIcon);
         if (mode == ACTIVE_MODE) {
-
             fv.setVirologistIcon(vir);
             return;
         }
         fv.setChosenVirologistIcon(vir);
-
     }
 
     /**
@@ -86,7 +83,7 @@ public class VirologistView extends Canvas {
      * @param mode passive or active: determines the position of the viro
      */
     public void displayBearVirologist(FieldView fv, int mode) {
-        ImageIcon icon= new ImageIcon(bearIcon);
+        ImageIcon icon = new ImageIcon(bearIcon);
         if (mode == ACTIVE_MODE) {
             fv.setVirologistIcon(icon);
             return;
@@ -100,18 +97,16 @@ public class VirologistView extends Canvas {
      * @param mode passive or active: determines the position of the viro
      */
     public void displayStunnedVirologist(FieldView fv, int mode) {
-        ImageIcon icon= new ImageIcon(stunnedIcon);
+        ImageIcon icon = new ImageIcon(stunnedIcon);
         if (mode == ACTIVE_MODE) {
            fv.setVirologistIcon(icon);
            return;
         }
         fv.setChosenVirologistIcon(icon);
-
     }
 
     /**
      * displays an action icon
-     *
      */
     public void displayAction(FieldView fv) {
         Graphics g = fv.getGraphics();

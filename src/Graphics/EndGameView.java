@@ -1,6 +1,5 @@
 package Graphics;
 
-import Game.Game;
 import Virologist.Virologist;
 
 
