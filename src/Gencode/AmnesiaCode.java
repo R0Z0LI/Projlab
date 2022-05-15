@@ -9,8 +9,8 @@ import Agent.AmnesiaAgent;
  */
 public class AmnesiaCode extends GenCode {
     private static int id = 0;
-    private static int Uid=1;
-    public int getUid(){return Uid;}
+    private static int Uid = 1;
+    public int getUid(){ return Uid; }
     /**
      * AmnesiaCode constructor
      * @param aminoNeeded The needed amoniacid amount.
@@ -20,10 +20,9 @@ public class AmnesiaCode extends GenCode {
     public AmnesiaCode(int aminoNeeded, int nucleoNeeded, Laboratory field) {
         super(aminoNeeded, nucleoNeeded, field);
         this.name = "amc" + id++;
-        Uid=0;
     }
 
-    public AmnesiaCode(int aminoNeeded, int nucleoNeeded){
+    public AmnesiaCode(int aminoNeeded, int nucleoNeeded) {
         super(aminoNeeded, nucleoNeeded);
         this.name = "amc" + id++;
     }

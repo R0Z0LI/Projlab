@@ -50,6 +50,9 @@ public class GameFrame extends JFrame {
      * Displays the game itself
      */
     public void displayGameView() {
+        if (actualEndGameView != null)
+            return;
+
         this.getContentPane().removeAll();
         actualCommandView.setMaximumSize(new Dimension(this.getWidth()*3/10,this.getHeight()/2));
         actualFieldView.setPreferredSize(new Dimension(this.getWidth()*7/10, this.getHeight()));

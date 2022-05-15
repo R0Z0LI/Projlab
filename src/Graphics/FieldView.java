@@ -95,15 +95,6 @@ public class FieldView extends JPanel implements ActionListener {
             this.add(neighbourButton, c);
         }
 
-        /* NOT WORKING
-        // add action icons
-        for (int i = 0; i < activeVirologist.getActionCounter(); i++) {
-            c.gridx = i;
-            c.gridy = 0;
-            String path = "src/pictures/actionicon.png";
-            this.add(makeIcon(path), c);
-        }*/
-
         this.validate();
         this.repaint();
         this.myField.setView(this);
@@ -149,19 +140,35 @@ public class FieldView extends JPanel implements ActionListener {
         activeVirologist = v;
     }
 
+    /**
+     * beállítja a virológusok iconját
+     * @param icon
+     */
     public void setVirologistIcon(ImageIcon icon) {
         virologistIcon = new JLabel(icon);
         update();
     }
+
+    /**
+     * beállítja a kiválasztott virológus iconját
+     * @param icon  Az ikon amit beállít
+     */
     public void setChosenVirologistIcon(ImageIcon icon) {
         chosenVirologistIcon = new JLabel(icon);
         update();
     }
 
+    /**
+     * Eltávolítja a kiválasztott virológust
+     */
     public void removeChosenVirologistIcon(){
         chosenVirologistIcon=null;
     }
 
+    /**
+     * Az event ami gombnyomásra történik
+     * @param e     Az event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         for(JButton jButton : neighbours){
@@ -177,6 +184,9 @@ public class FieldView extends JPanel implements ActionListener {
      * @param pressedButton
      */
     private void neighborButtonPressed(JButton pressedButton) {
+        if (activeVirologist.getActionCounter() <= 0)
+            return;
+
         removeChosenVirologistIcon();
 
         String fieldName = pressedButton.getText();

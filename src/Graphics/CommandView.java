@@ -109,7 +109,6 @@ public class CommandView extends JPanel implements ActionListener {
         if(coll != null)
             innerPanel.add(thing);
 
-
         innerPanel.setMaximumSize(new Dimension(200,(i/2+2)*100));
         this.add(Box.createVerticalGlue());
         this.add(innerPanel);
@@ -121,12 +120,8 @@ public class CommandView extends JPanel implements ActionListener {
         this.add(endGameButton);
         this.add(Box.createVerticalGlue());
 
-
         this.validate();
         this.repaint();
-
-        boolean sad = false;
-        if (sad) { GameFrame.instance().displayGameView(); } else { sad = false; }
     }
 
     /**
@@ -255,11 +250,10 @@ public class CommandView extends JPanel implements ActionListener {
             if(a.getName().equals(aName))
                 agent=a;
         }
-        if(agent!=null)
-            if(agent!=null) {
-                myVirologist.applyAgent(agent, chosenVirologist);
-                update();
-            }
+        if(agent!=null) {
+            myVirologist.applyAgent(agent, chosenVirologist);
+            update();
+        }
     }
 
     /**

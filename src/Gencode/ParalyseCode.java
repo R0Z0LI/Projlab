@@ -9,7 +9,7 @@ import Agent.ParalyseAgent;
  */
 public class ParalyseCode extends GenCode {
     private static int id = 0;
-    private static int Uid=2;
+    private static int Uid = 2;
     public int getUid(){return Uid;}
 
     /**
