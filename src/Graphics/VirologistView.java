@@ -24,8 +24,6 @@ public class VirologistView extends Canvas {
     public VirologistView(int viroNumber) {
         BufferedImage inputimage;
         try {
-            inputimage = ImageIO.read(new File("src/pictures/stunnedicon.png"));
-            stunnedIcon = inputimage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             inputimage = ImageIO.read(new File("src/pictures/bearicon.png"));
             bearIcon = inputimage.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             inputimage = ImageIO.read(new File("src/pictures/actionicon.png"));
@@ -33,18 +31,28 @@ public class VirologistView extends Canvas {
             int viroPic = viroNumber % 5;
             switch (viroPic) {
                 case 0:
+                    inputimage = ImageIO.read(new File("src/pictures/stunnedviro1.png"));
+                    stunnedIcon = inputimage.getScaledInstance(300, 430, Image.SCALE_DEFAULT);
                     inputimage = ImageIO.read(new File("src/pictures/viro1.png"));
                     break;
                 case 1:
+                    inputimage = ImageIO.read(new File("src/pictures/stunnedviro2.png"));
+                    stunnedIcon = inputimage.getScaledInstance(300, 430, Image.SCALE_DEFAULT);
                     inputimage = ImageIO.read(new File("src/pictures/viro2b.png"));
                     break;
                 case 2:
+                    inputimage = ImageIO.read(new File("src/pictures/stunnedviro3.png"));
+                    stunnedIcon = inputimage.getScaledInstance(300, 430, Image.SCALE_DEFAULT);
                     inputimage = ImageIO.read(new File("src/pictures/viro3b.png"));
                     break;
                 case 3:
+                    inputimage = ImageIO.read(new File("src/pictures/stunnedviro4.png"));
+                    stunnedIcon = inputimage.getScaledInstance(300, 430, Image.SCALE_DEFAULT);
                     inputimage = ImageIO.read(new File("src/pictures/viro4b.png"));
                     break;
                 case 4:
+                    inputimage = ImageIO.read(new File("src/pictures/stunnedviro5.png"));
+                    stunnedIcon = inputimage.getScaledInstance(300, 430, Image.SCALE_DEFAULT);
                     inputimage = ImageIO.read(new File("src/pictures/viro5b.png"));
                     break;
             }
