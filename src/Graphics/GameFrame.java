@@ -2,6 +2,8 @@ package Graphics;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class GameFrame extends JFrame {
     private Menu startMenu;
