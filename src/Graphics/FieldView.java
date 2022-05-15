@@ -18,6 +18,7 @@ public class FieldView extends JPanel implements ActionListener {
     private Image backgroundImage_lab;
     private Image backgroundImage_shelter;
     private Image backgroundImage_warehouse;
+    private Image backgroundImage_plain;
     private Field myField;
     private Virologist activeVirologist;
     private ArrayList<JButton> neighbours = new ArrayList<>();
@@ -37,6 +38,9 @@ public class FieldView extends JPanel implements ActionListener {
 
             BufferedImage inputimageware = ImageIO.read(new File("src/pictures/warehouse.jpg"));
             backgroundImage_warehouse = inputimageware.getScaledInstance(1000, 800, Image.SCALE_DEFAULT);
+
+            BufferedImage inputimageplain = ImageIO.read(new File("src/pictures/plain_field.jpg"));
+            backgroundImage_plain = inputimageplain.getScaledInstance(1100, 800, Image.SCALE_DEFAULT);
         } catch(IOException ex ){}
         this.setLayout(new GridBagLayout());
 
@@ -199,6 +203,9 @@ public class FieldView extends JPanel implements ActionListener {
         }
         else if(myField.getName().contains("who")){
             g.drawImage(backgroundImage_warehouse, 0, 0, null);
+        }
+        else if(myField.getName().contains("fid")){
+            g.drawImage(backgroundImage_plain, 0, 0, null);
         }
     }
 
