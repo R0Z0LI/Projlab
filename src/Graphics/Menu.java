@@ -26,8 +26,6 @@ public class Menu extends JPanel implements ActionListener {
     public Menu() {
         this.setLayout(new GridBagLayout());
         // creating the components
-
-        Image scaledImage = background.getScaledInstance(6000, 6000, Image.SCALE_DEFAULT);
         virologistNum = 2;
         names.add(new JTextField("Bob"));
         names.add(new JTextField("John"));
@@ -69,6 +67,7 @@ public class Menu extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Image scaledImage = background.getScaledInstance(6000, 6000, Image.SCALE_DEFAULT);
         g.drawImage(scaledImage, 200, 200, null);
     }
 
