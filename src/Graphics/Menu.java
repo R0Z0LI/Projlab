@@ -2,10 +2,14 @@ package Graphics;
 
 import Game.Game;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Menu extends JPanel implements ActionListener {
@@ -15,12 +19,17 @@ public class Menu extends JPanel implements ActionListener {
     JLabel numberLabel;
     ArrayList<JTextField> names = new ArrayList<>();
     JTextField fileTextField;
+    Image backgroundImage;
 
     /**
      * Menu constructor
      */
     public Menu() {
         this.setLayout(new GridBagLayout());
+        try {
+            BufferedImage inputimage = ImageIO.read(new File("src/pictures/backGround.jpg"));
+            backgroundImage = inputimage.getScaledInstance(1900, 1100, Image.SCALE_DEFAULT);
+        } catch(IOException ex ){}
 
         // creating the components
         virologistNum = 2;
@@ -59,6 +68,12 @@ public class Menu extends JPanel implements ActionListener {
         addButton.addActionListener(this);
         removeButton.addActionListener(this);
         startButton.addActionListener(this);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(backgroundImage, 0, 0, null);
     }
 
     /**

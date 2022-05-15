@@ -23,6 +23,7 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
     private ArrayList<JButton> agentButtons = new ArrayList<>();
     private JLabel equipmentLabel = new JLabel("Eq:");
     private ArrayList<JButton> equipmentButtons = new ArrayList<>();
+    private JLabel feedback= new JLabel("");
 
     public PropertyHandlerView(PropertyHandler ph) {
         myPropertyHandler = ph;
@@ -30,6 +31,7 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
 
         this.update();
     }
+
 
     public void update() {
         this.removeAll();
@@ -84,6 +86,11 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
             this.add(equipmentButtons.get(equipmentButtons.size()-1), c);
         }
 
+        c.gridx=0;
+        c.gridy=5;
+        feedback.setText("");
+        this.add(feedback,c);
+
         // adding action listeners
         for (JButton jb : genButtons)
             jb.addActionListener(this);
@@ -103,12 +110,18 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
         if (name.contains("amc") || name.contains("cdc") || name.contains("pac") || name.contains("prc") ) {
             genButtonPressed(name);
             Game.actionHappened();
+            feedback.setForeground(Color.red);
+            feedback.setText(name+" successfully learned");
         } else if (name.contains("ama") || name.contains("baa") || name.contains("cda") || name.contains("paa") || name.contains("pra") ) {
             agentButtonPressed(name);
             Game.actionHappened();
+            feedback.setForeground(Color.red);
+            feedback.setText("You have successfully applied"+ name+ " on yourself");
         } else if (name.contains("axe") || name.contains("glv") || name.contains("sck") || name.contains("cpe")) {
             equipmentButtonPressed(name);
             Game.actionHappened();
+            feedback.setForeground(Color.red);
+            feedback.setText(name+" successfully thrown away");
         }
     }
 
@@ -151,7 +164,6 @@ public class PropertyHandlerView extends JPanel implements ActionListener {
                 break;
             }
         }
-
         Game.getActiveVirologist().destroy(eq);
         this.update();
     }
